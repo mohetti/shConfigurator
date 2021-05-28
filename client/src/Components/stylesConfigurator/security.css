@@ -1,0 +1,41 @@
+.mgSecurity {
+  margin: 5% 15% 0 15%;
+}
+
+.securityContainer {
+  grid-area: contentContainer;
+  background-color: yellow;
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas:
+    '. motion windowSensor siren .'
+    'smoke lock . doorbell camera';
+}
+
+.motion {
+  grid-area: motion;
+}
+
+.windowSensor {
+  grid-area: windowSensor;
+}
+
+.siren {
+  grid-area: siren;
+}
+
+.smoke {
+  grid-area: smoke;
+}
+
+.lock {
+  grid-area: lock;
+}
+
+.doorbell {
+  grid-area: doorbell;
+}
+
+.camera {
+  grid-area: camera;
+}

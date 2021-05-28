@@ -1,0 +1,33 @@
+.mgHeating {
+  margin: 5% 15% 0 15%;
+}
+
+.heatingContainer {
+  grid-area: contentContainer;
+  background-color: yellow;
+  display: grid;
+  justify-content: space-between;
+  grid-template-areas:
+    'radiator . thermostatWired230 . thermostatWired24'
+    '. thermostatWireless . heatActors .';
+}
+
+.radiator {
+  grid-area: radiator;
+}
+
+.thermostatWired230 {
+  grid-area: thermostatWired230;
+}
+
+.thermostatWired24 {
+  grid-area: thermostatWired24;
+}
+
+.thermostatWireless {
+  grid-area: thermostatWireless;
+}
+
+.heatActors {
+  grid-area: heatActors;
+}

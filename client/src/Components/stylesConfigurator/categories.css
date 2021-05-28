@@ -1,0 +1,9 @@
+.mgCtg {
+  margin: 12% 15% 0 15%;
+}
+
+.typeContainer {
+  grid-area: contentContainer;
+  display: flex;
+  justify-content: space-between;
+}
