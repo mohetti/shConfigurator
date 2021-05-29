@@ -5,6 +5,8 @@ import Default from './Components/Default';
 import Start from './Components/Start';
 import Categories from './Components/Categories';
 import Lights from './Components/Lights';
+import Innerlights from './Components/Innerlights';
+import Gardenlights from './Components/Gardenlights';
 import Heating from './Components/Heating';
 import Security from './Components/Security';
 import Confirm from './Components/Confirm';
@@ -17,6 +19,8 @@ import './Components/stylesConfigurator/lights.css';
 import './Components/stylesConfigurator/categories.css';
 import './Components/stylesConfigurator/heating.css';
 import './Components/stylesConfigurator/security.css';
+import './Components/stylesConfigurator/innerlights.css';
+import './Components/stylesConfigurator/gardenlights.css';
 
 function App() {
   return (
@@ -25,16 +29,22 @@ function App() {
         <Route exact path="/start">
           <Start />
         </Route>
-        <Route exact path="/Categories">
+        <Route exact path="/kategorien">
           <Categories />
         </Route>
-        <Route exact path="/lights">
+        <Route exact path="/beleuchtung">
           <Lights />
         </Route>
-        <Route exact path="/heating">
+        <Route exact path="/innenbeleuchtung">
+          <Innerlights />
+        </Route>
+        <Route exact path="/gartenbeleuchtung">
+          <Gardenlights />
+        </Route>
+        <Route exact path="/heizung">
           <Heating />
         </Route>
-        <Route exact path="/security">
+        <Route exact path="/sicherheit">
           <Security />
         </Route>
         <Route exact path="/confirm">

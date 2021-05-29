@@ -1,4 +1,12 @@
+import { useHistory } from 'react-router-dom';
+
 function Start() {
+  let history = useHistory();
+
+  let start = () => {
+    return history.push('/kategorien');
+  };
+
   return (
     <div className="windowContainer">
       <header className="center">
@@ -23,7 +31,9 @@ function Start() {
         </p>
       </div>
       <div className="mgB">
-        <button className="btn">Starte Deine Auswahl</button>
+        <button onClick={start} className="btn">
+          Starte Deine Auswahl
+        </button>
       </div>
     </div>
   );

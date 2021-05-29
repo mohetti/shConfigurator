@@ -1,3 +1,5 @@
+import placeholder from '../images/placeholder.png';
+
 function Lights() {
   return (
     <div className="windowContainer">
@@ -7,27 +9,31 @@ function Lights() {
       <div className="configContainer mgtH">
         <div className="lightContainer mgLights">
           <div className="typeBox e27">
+            <img src={placeholder} />
             <div>E27 Glühbirnen</div>
           </div>
           <div className="typeBox e14">
+            <img src={placeholder} />
             <div>E14 Glühbirnen</div>
           </div>
           <div className="typeBox gu10">
+            <img src={placeholder} />
             <div>GU10 Spots</div>
           </div>
-          <div className="typeBox surfSpot">
-            <div>Akzentlicht</div>
-          </div>
           <div className="typeBox strip">
+            <img src={placeholder} />
             <div>Leuchtstreifen</div>
           </div>
           <div className="typeBox plug">
+            <img src={placeholder} />
             <div>Zwischenstecker</div>
           </div>
           <div className="typeBox innerLights">
+            <img src={placeholder} />
             <div>weitere Innenbeleuchtung</div>
           </div>
           <div className="typeBox garden">
+            <img src={placeholder} />
             <div>Gartenbeleuchtung</div>
           </div>
         </div>

@@ -4,7 +4,6 @@
 
 .heatingContainer {
   grid-area: contentContainer;
-  background-color: yellow;
   display: grid;
   justify-content: space-between;
   grid-template-areas:

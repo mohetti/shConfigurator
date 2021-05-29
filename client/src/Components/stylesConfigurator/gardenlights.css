@@ -1,0 +1,28 @@
+.mgGardenlights {
+  margin: 5% 15% 0 15%;
+}
+
+.gardenlightsContainer {
+  grid-area: contentContainer;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas:
+    'pathLight gardenSpot'
+    'wallGarden gardenStrip';
+}
+
+.pathLight {
+  grid-area: pathLight;
+}
+
+.gardenSpot {
+  grid-area: gardenSpot;
+}
+
+.wallGarden {
+  grid-area: wallGarden;
+}
+
+.gardenStrip {
+  grid-area: gardenStrip;
+}

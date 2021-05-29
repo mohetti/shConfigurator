@@ -7,8 +7,8 @@
   display: grid;
   justify-content: space-between;
   grid-template-areas:
-    'e27 e14 gu10 surfSpot'
-    'strip plug innerLights garden';
+    '. e27 e14 gu10 .'
+    'strip plug . innerLights garden';
 }
 
 .e27 {
@@ -21,10 +21,6 @@
 
 .gu10 {
   grid-area: gu10;
-}
-
-.surfSpot {
-  grid-area: surfSpot;
 }
 
 .strip {

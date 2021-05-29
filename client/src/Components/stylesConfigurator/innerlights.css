@@ -1,0 +1,28 @@
+.mgInnerlights {
+  margin: 5% 15% 0 15%;
+}
+
+.innerlightsContainer {
+  grid-area: contentContainer;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas:
+    'tableLamp recSpot'
+    'surfSpot ceiling';
+}
+
+.tableLamp {
+  grid-area: tableLamp;
+}
+
+.recSpot {
+  grid-area: recSpot;
+}
+
+.surfSpot {
+  grid-area: surfSpot;
+}
+
+.ceiling {
+  grid-area: ceiling;
+}

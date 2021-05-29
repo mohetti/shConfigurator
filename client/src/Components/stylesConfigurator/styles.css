@@ -42,13 +42,11 @@
 }
 
 .startContainer {
-  background-color: green;
   width: 80%;
   height: 60vh;
 }
 
 .configContainer {
-  background-color: green;
   display: grid;
   grid-template-areas:
     'contentContainer'
@@ -72,5 +70,16 @@
   height: 20vh;
   width: 20vh;
   border-radius: 15%;
-  background-color: red;
+  cursor: pointer;
+}
+
+.typeBox > img {
+  height: 17vh;
+  width: 20vh;
+}
+
+.selected {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
 }
