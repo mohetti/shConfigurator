@@ -1,6 +1,60 @@
 import placeholder from '../images/placeholder.png';
+import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 function Innerlights() {
+  const [tableLamp, setTableLamp] = useState(false);
+  const [recSpot, setRecSpot] = useState(false);
+  const [surfSpot, setSurfSpot] = useState(false);
+  const [ceiling, setCeiling] = useState(false);
+  const [garden, setGarden] = useState(false);
+
+  let history = useHistory();
+
+  useEffect(() => {
+    let tableSession = sessionStorage.getItem('tableLamp') === 'true';
+    let recSpotSession = sessionStorage.getItem('recSpot') === 'true';
+    let surfSpotSession = sessionStorage.getItem('surfSpot') === 'true';
+    let ceilingSession = sessionStorage.getItem('ceiling') === 'true';
+    let gardenSession = sessionStorage.getItem('garden') === 'true';
+
+    setTableLamp(tableSession);
+    setRecSpot(recSpotSession);
+    setSurfSpot(surfSpotSession);
+    setCeiling(ceilingSession);
+    setGarden(gardenSession);
+  }, []);
+
+  const back = () => {
+    sessionStorage.setItem('tableLamp', tableLamp);
+    sessionStorage.setItem('recSpot', recSpot);
+    sessionStorage.setItem('surfSpot', surfSpot);
+    sessionStorage.setItem('ceiling', ceiling);
+
+    return history.push('/beleuchtung');
+  };
+
+  const next = () => {
+    sessionStorage.setItem('tableLamp', tableLamp);
+    sessionStorage.setItem('recSpot', recSpot);
+    sessionStorage.setItem('surfSpot', surfSpot);
+    sessionStorage.setItem('ceiling', ceiling);
+
+    if (garden) return history.push('/gartenbeleuchtung');
+    return history.push('/heizung');
+  };
+
+  const infos = () => {
+    console.log('Placeholder');
+  };
+
+  const handleClick = (input) => {
+    if (input === 'tableLamp') return setTableLamp(!tableLamp);
+    if (input === 'recSpot') return setRecSpot(!recSpot);
+    if (input === 'surfSpot') return setSurfSpot(!surfSpot);
+    if (input === 'ceiling') return setCeiling(!ceiling);
+  };
+
   return (
     <div className="windowContainer">
       <header className="center">
@@ -8,27 +62,45 @@ function Innerlights() {
       </header>
       <div className="configContainer mgtH">
         <div className="innerlightsContainer mgInnerlights">
-          <div className="typeBox tableLamp">
+          <div
+            onClick={() => handleClick('tableLamp')}
+            className={`typeBox tableLamp ${tableLamp ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Tischlampe</div>
           </div>
-          <div className="typeBox recSpot">
+          <div
+            onClick={() => handleClick('recSpot')}
+            className={`typeBox recSpot ${recSpot ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Einbauspot</div>
           </div>
-          <div className="typeBox surfSpot">
+          <div
+            onClick={() => handleClick('surfSpot')}
+            className={`typeBox surfSpot ${surfSpot ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Aufbauspot</div>
           </div>
-          <div className="typeBox ceiling">
+          <div
+            onClick={() => handleClick('ceiling')}
+            className={`typeBox ceiling ${ceiling ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Deckenlampe</div>
           </div>
         </div>
         <div className="btnContainer">
-          <button className="btn">Zurück</button>
-          <button className="btn">Mehr Infos</button>
-          <button className="btn">Weiter</button>
+          <button onClick={back} className="btn">
+            Zurück
+          </button>
+          <button onClick={infos} className="btn">
+            Mehr Infos
+          </button>
+          <button onClick={next} className="btn">
+            Weiter
+          </button>
         </div>
       </div>
     </div>

@@ -4,30 +4,46 @@ import React, { useState, useEffect } from 'react';
 
 function Categories() {
   const [light, setLight] = useState(false);
+  const [heating, setHeating] = useState(false);
+  const [security, setSecurity] = useState(false);
+
   let history = useHistory();
 
   useEffect(() => {
-    let item = sessionStorage.getItem('light');
-    let res = item === 'true';
-    setLight(res);
+    let lightSession = sessionStorage.getItem('light') === 'true';
+    let heatingSession = sessionStorage.getItem('heating') === 'true';
+    let securitySession = sessionStorage.getItem('security') === 'true';
+    setLight(lightSession);
+    setHeating(heatingSession);
+    setSecurity(securitySession);
   }, []);
 
-  let back = () => {
+  const back = () => {
     sessionStorage.setItem('light', light);
+    sessionStorage.setItem('heating', heating);
+    sessionStorage.setItem('security', security);
+
     return history.push('/start');
   };
 
-  let next = () => {
+  const next = () => {
     sessionStorage.setItem('light', light);
-    return history.push('/beleuchtung');
+    sessionStorage.setItem('heating', heating);
+    sessionStorage.setItem('security', security);
+
+    if (light) return history.push('/beleuchtung');
+    if (heating) return history.push('/heizung');
+    if (security) return history.push('/sicherheit');
   };
 
-  let infos = () => {
+  const infos = () => {
     console.log('Placeholder');
   };
 
-  let lights = () => {
-    setLight(!light);
+  const handleClick = (input) => {
+    if (input === 'lights') return setLight(!light);
+    if (input === 'heating') return setHeating(!heating);
+    if (input === 'security') return setSecurity(!security);
   };
   return (
     <div className="windowContainer">
@@ -37,17 +53,23 @@ function Categories() {
       <div className="configContainer mgtH">
         <div className="typeContainer mgCtg">
           <div
-            onClick={lights}
+            onClick={() => handleClick('lights')}
             className={`typeBox ${light ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Beleuchtung</div>
           </div>
-          <div className="typeBox">
+          <div
+            onClick={() => handleClick('heating')}
+            className={`typeBox ${heating ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Heizung</div>
           </div>
-          <div className="typeBox">
+          <div
+            onClick={() => handleClick('security')}
+            className={`typeBox ${security ? 'selected' : ''}`}
+          >
             <img src={placeholder} />
             <div>Sicherheit</div>
           </div>
