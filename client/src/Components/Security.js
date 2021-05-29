@@ -1,5 +1,15 @@
 import placeholder from '../images/placeholder.png';
 
+/*
+      **********      NEXT STEPS      **********
+      => Klick Logik für Sicherheit
+      => Klick Logik verfeinern
+        => nach back zu Kategorien und Auflösung einer Kategorie, muss sessionStorage geupdated werden.
+        => beleuchtung übergang heizung ohne Auswahl von Heizung anpassen
+      => Implementierung von den Zusatzinfos
+
+*/
+
 function Security() {
   return (
     <div className="windowContainer">
