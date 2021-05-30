@@ -25,15 +25,62 @@ function Categories() {
 
     return history.push('/start');
   };
+  const reset = () => {
+    if (!light) {
+      let lightsList = [
+        'e27',
+        'e14',
+        'gu10',
+        'strip',
+        'plug',
+        'innerLights',
+        'garden',
+        'tableLampe',
+        'recSpot',
+        'surfSpot',
+        'ceiling',
+        'pathLight',
+        'gardenSpot',
+        'wallGarden',
+        'gardenStrip',
+      ];
+      lightsList.map((x) => sessionStorage.setItem(x, false));
+    }
+    if (!heating) {
+      let heatingList = [
+        'radiator',
+        'thermostatWired230',
+        'thermostatWired24',
+        'thermostatWireless',
+        'heatActors',
+      ];
+      heatingList.map((x) => sessionStorage.setItem(x, false));
+    }
+    if (!security) {
+      let securityList = [
+        'motion',
+        'windowSensor',
+        'siren',
+        'smoke',
+        'lock',
+        'doorbell',
+        'camera',
+      ];
+      securityList.map((x) => sessionStorage.setItem(x, false));
+    }
+  };
 
   const next = () => {
     sessionStorage.setItem('light', light);
     sessionStorage.setItem('heating', heating);
     sessionStorage.setItem('security', security);
 
+    reset();
+
     if (light) return history.push('/beleuchtung');
     if (heating) return history.push('/heizung');
     if (security) return history.push('/sicherheit');
+    else return alert('Bitte mindestens eine Kategorie auswählen.');
   };
 
   const infos = () => {

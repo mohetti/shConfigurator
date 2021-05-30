@@ -12,6 +12,7 @@ function Heating() {
   const [innerLights, setInnerLights] = useState(false);
   const [garden, setGarden] = useState(false);
   const [light, setLight] = useState(false);
+  const [security, setSecurity] = useState(false);
 
   let history = useHistory();
 
@@ -28,6 +29,7 @@ function Heating() {
     let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
     let gardenSession = sessionStorage.getItem('garden') === 'true';
     let lightSession = sessionStorage.getItem('light') === 'true';
+    let securitySession = sessionStorage.getItem('security') === 'true';
 
     setRadiator(radiatorSession);
     setThermostatWired230(thermostatWired230Session);
@@ -38,6 +40,7 @@ function Heating() {
     setInnerLights(innerLightsSession);
     setGarden(gardenSession);
     setLight(lightSession);
+    setSecurity(securitySession);
   }, []);
 
   const back = () => {
@@ -60,7 +63,8 @@ function Heating() {
     sessionStorage.setItem('thermostatWireless', thermostatWireless);
     sessionStorage.setItem('heatActors', heatActors);
 
-    return history.push('/sicherheit');
+    if (security) return history.push('/sicherheit');
+    return history.push('/confirm');
   };
 
   const infos = () => {
@@ -117,7 +121,7 @@ function Heating() {
             }`}
           >
             <img src={placeholder} />
-            <div>Akzentlicht</div>
+            <div>Thermostat (kabellos)</div>
           </div>
           <div
             onClick={() => handleClick('heatActors')}

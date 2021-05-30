@@ -8,6 +8,8 @@ function Innerlights() {
   const [surfSpot, setSurfSpot] = useState(false);
   const [ceiling, setCeiling] = useState(false);
   const [garden, setGarden] = useState(false);
+  const [heating, setHeating] = useState(false);
+  const [security, setSecurity] = useState(false);
 
   let history = useHistory();
 
@@ -17,12 +19,16 @@ function Innerlights() {
     let surfSpotSession = sessionStorage.getItem('surfSpot') === 'true';
     let ceilingSession = sessionStorage.getItem('ceiling') === 'true';
     let gardenSession = sessionStorage.getItem('garden') === 'true';
+    let heatingSession = sessionStorage.getItem('heating') === 'true';
+    let securitySession = sessionStorage.getItem('security') === 'true';
 
     setTableLamp(tableSession);
     setRecSpot(recSpotSession);
     setSurfSpot(surfSpotSession);
     setCeiling(ceilingSession);
     setGarden(gardenSession);
+    setHeating(heatingSession);
+    setSecurity(securitySession);
   }, []);
 
   const back = () => {
@@ -41,7 +47,9 @@ function Innerlights() {
     sessionStorage.setItem('ceiling', ceiling);
 
     if (garden) return history.push('/gartenbeleuchtung');
-    return history.push('/heizung');
+    if (heating) return history.push('/heizung');
+    if (security) return history.push('/sicherheit');
+    return history.push('/confirm');
   };
 
   const infos = () => {

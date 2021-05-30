@@ -8,6 +8,8 @@ function Gardenlights() {
   const [wallGarden, setWallGarden] = useState(false);
   const [gardenStrip, setGardenStrip] = useState(false);
   const [innerLights, setInnerLights] = useState(false);
+  const [heating, setHeating] = useState(false);
+  const [security, setSecurity] = useState(false);
 
   let history = useHistory();
 
@@ -17,12 +19,16 @@ function Gardenlights() {
     let wallGardenSession = sessionStorage.getItem('wallGarden') === 'true';
     let gardenStripSession = sessionStorage.getItem('gardenStrip') === 'true';
     let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
+    let heatingSession = sessionStorage.getItem('heating') === 'true';
+    let securitySession = sessionStorage.getItem('security') === 'true';
 
     setPathLight(pathLightSession);
     setGardenSpot(gardenSpotSession);
     setWallGarden(wallGardenSession);
     setGardenStrip(gardenStripSession);
     setInnerLights(innerLightsSession);
+    setHeating(heatingSession);
+    setSecurity(securitySession);
   }, []);
 
   const back = () => {
@@ -41,7 +47,9 @@ function Gardenlights() {
     sessionStorage.setItem('wallGarden', wallGarden);
     sessionStorage.setItem('gardenStrip', gardenStrip);
 
-    return history.push('/heizung');
+    if (heating) return history.push('/heizung');
+    if (security) return history.push('/sicherheit');
+    return history.push('/confirm');
   };
 
   const infos = () => {

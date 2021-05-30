@@ -10,6 +10,8 @@ function Lights() {
   const [plug, setPlug] = useState(false);
   const [innerLights, setInnerLights] = useState(false);
   const [garden, setGarden] = useState(false);
+  const [heating, setHeating] = useState(false);
+  const [security, setSecurity] = useState(false);
 
   let history = useHistory();
 
@@ -21,6 +23,8 @@ function Lights() {
     let plugSession = sessionStorage.getItem('plug') === 'true';
     let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
     let gardenSession = sessionStorage.getItem('garden') === 'true';
+    let heatingSession = sessionStorage.getItem('heating') === 'true';
+    let securitySession = sessionStorage.getItem('security') === 'true';
 
     setE27(e27Session);
     setE14(e14Session);
@@ -29,6 +33,8 @@ function Lights() {
     setPlug(plugSession);
     setInnerLights(innerLightsSession);
     setGarden(gardenSession);
+    setHeating(heatingSession);
+    setSecurity(securitySession);
   }, []);
 
   const back = () => {
@@ -43,6 +49,26 @@ function Lights() {
     return history.push('/kategorien');
   };
 
+  const reset = () => {
+    if (!garden) {
+      let gardenList = ['pathLight', 'gardenSpot', 'wallGarden', 'gardenStrip'];
+      gardenList.map((x) => sessionStorage.setItem(x, false));
+    }
+    if (!innerLights) {
+      let innerLightsList = [
+        'tableLamp',
+        'recSpot',
+        'surfSpot',
+        'ceiling',
+        'pathLight',
+        'gardenSpot',
+        'wallGarden',
+        'gardenStrip',
+      ];
+      innerLightsList.map((x) => sessionStorage.setItem(x, false));
+    }
+  };
+
   const next = () => {
     sessionStorage.setItem('e27', e27);
     sessionStorage.setItem('e14', e14);
@@ -52,9 +78,13 @@ function Lights() {
     sessionStorage.setItem('innerLights', innerLights);
     sessionStorage.setItem('garden', garden);
 
+    reset();
+
     if (innerLights) return history.push('/innenbeleuchtung');
     if (garden) return history.push('/gartenbeleuchtung');
-    return history.push('/heizung');
+    if (heating) return history.push('/heizung');
+    if (security) return history.push('/sicherheit');
+    return history.push('/confirm');
   };
 
   const infos = () => {
