@@ -4,6 +4,7 @@ function Start() {
   let history = useHistory();
 
   let start = () => {
+    sessionStorage.clear();
     return history.push('/kategorien');
   };
 

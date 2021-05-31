@@ -13,6 +13,7 @@ function Heating() {
   const [garden, setGarden] = useState(false);
   const [light, setLight] = useState(false);
   const [security, setSecurity] = useState(false);
+  const [lightbulbs, setLightbulbs] = useState(false);
 
   let history = useHistory();
 
@@ -30,6 +31,7 @@ function Heating() {
     let gardenSession = sessionStorage.getItem('garden') === 'true';
     let lightSession = sessionStorage.getItem('light') === 'true';
     let securitySession = sessionStorage.getItem('security') === 'true';
+    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
 
     setRadiator(radiatorSession);
     setThermostatWired230(thermostatWired230Session);
@@ -41,6 +43,7 @@ function Heating() {
     setGarden(gardenSession);
     setLight(lightSession);
     setSecurity(securitySession);
+    setLightbulbs(lightbulbsSession);
   }, []);
 
   const back = () => {
@@ -52,6 +55,7 @@ function Heating() {
 
     if (garden) return history.push('/gartenbeleuchtung');
     if (innerLights) return history.push('/innenbeleuchtung');
+    if (lightbulbs) return history.push('/gluehbirnen');
     if (light) return history.push('/beleuchtung');
     return history.push('/kategorien');
   };

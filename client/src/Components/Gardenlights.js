@@ -10,6 +10,7 @@ function Gardenlights() {
   const [innerLights, setInnerLights] = useState(false);
   const [heating, setHeating] = useState(false);
   const [security, setSecurity] = useState(false);
+  const [lightbulbs, setLightbulbs] = useState(false);
 
   let history = useHistory();
 
@@ -21,6 +22,7 @@ function Gardenlights() {
     let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
     let heatingSession = sessionStorage.getItem('heating') === 'true';
     let securitySession = sessionStorage.getItem('security') === 'true';
+    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
 
     setPathLight(pathLightSession);
     setGardenSpot(gardenSpotSession);
@@ -29,6 +31,7 @@ function Gardenlights() {
     setInnerLights(innerLightsSession);
     setHeating(heatingSession);
     setSecurity(securitySession);
+    setLightbulbs(lightbulbsSession);
   }, []);
 
   const back = () => {
@@ -38,6 +41,7 @@ function Gardenlights() {
     sessionStorage.setItem('gardenStrip', gardenStrip);
 
     if (innerLights) return history.push('/innenbeleuchtung');
+    if (lightbulbs) return history.push('/gluehbirnen');
     return history.push('/beleuchtung');
   };
 

@@ -1,0 +1,45 @@
+.mgLightbulbs {
+  margin: 5% 15% 0 15%;
+}
+
+.lightBulbContainer {
+  grid-area: contentContainer;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas:
+    'white ambiance multicolor'
+    'bulbs bulbs bulbs';
+}
+
+.white {
+  grid-area: white;
+}
+
+.ambiance {
+  grid-area: ambiance;
+}
+
+.multicolor {
+  grid-area: multicolor;
+}
+
+.bulbs {
+  grid-area: bulbs;
+  border: 2px solid red;
+  height: 30vh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas: 'e27 e14 gu10';
+}
+
+.e27 {
+  grid-area: e27;
+}
+
+.e14 {
+  grid-area: e14;
+}
+
+.gu10 {
+  grid-area: gu10;
+}

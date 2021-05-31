@@ -5,10 +5,10 @@
 .innerlightsContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-around;
+  justify-content: space-between;
   grid-template-areas:
-    'tableLamp recSpot'
-    'surfSpot ceiling';
+    'strip tableLamp recSpot wall'
+    'plug surfSpot recSwitch ceiling';
 }
 
 .tableLamp {
@@ -25,4 +25,20 @@
 
 .ceiling {
   grid-area: ceiling;
+}
+
+.strip {
+  grid-area: strip;
+}
+
+.plug {
+  grid-area: plug;
+}
+
+.recSwitch {
+  grid-area: recSwitch;
+}
+
+.wall {
+  grid-area: wall;
 }

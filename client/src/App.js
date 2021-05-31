@@ -5,6 +5,7 @@ import Default from './Components/Default';
 import Start from './Components/Start';
 import Categories from './Components/Categories';
 import Lights from './Components/Lights';
+import Lightbulbs from './Components/Lightbulbs';
 import Innerlights from './Components/Innerlights';
 import Gardenlights from './Components/Gardenlights';
 import Heating from './Components/Heating';
@@ -21,6 +22,7 @@ import './Components/stylesConfigurator/heating.css';
 import './Components/stylesConfigurator/security.css';
 import './Components/stylesConfigurator/innerlights.css';
 import './Components/stylesConfigurator/gardenlights.css';
+import './Components/stylesConfigurator/lightbulbs.css';
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
         </Route>
         <Route exact path="/beleuchtung">
           <Lights />
+        </Route>
+        <Route exact path="/gluehbirnen">
+          <Lightbulbs />
         </Route>
         <Route exact path="/innenbeleuchtung">
           <Innerlights />

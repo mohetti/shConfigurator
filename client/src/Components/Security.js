@@ -21,6 +21,7 @@ function Security() {
   const [garden, setGarden] = useState(false);
   const [light, setLight] = useState(false);
   const [heating, setHeating] = useState(false);
+  const [lightbulbs, setLightbulbs] = useState(false);
 
   let history = useHistory();
 
@@ -37,6 +38,7 @@ function Security() {
     let gardenSession = sessionStorage.getItem('garden') === 'true';
     let lightSession = sessionStorage.getItem('light') === 'true';
     let heatingSession = sessionStorage.getItem('heating') === 'true';
+    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
 
     setMotion(motionSession);
     setWindowSensor(windowSensorSession);
@@ -50,6 +52,7 @@ function Security() {
     setGarden(gardenSession);
     setLight(lightSession);
     setHeating(heatingSession);
+    setLightbulbs(lightbulbsSession);
   }, []);
 
   const back = () => {
@@ -64,6 +67,7 @@ function Security() {
     if (heating) return history.push('/heizung');
     if (garden) return history.push('/gartenbeleuchtung');
     if (innerLights) return history.push('/innenbeleuchtung');
+    if (lightbulbs) return history.push('/gluehbirnen');
     if (light) return history.push('/beleuchtung');
     return history.push('/kategorien');
   };
