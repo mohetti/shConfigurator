@@ -41,13 +41,20 @@ function Lights() {
     if (!innerLights) {
       let innerLightsList = [
         'tableLamp',
-        'recSwitch',
-        'wall',
-        'plug',
+        'recSwitchN',
+        'recSwitchD',
+        'wallA',
+        'wallM',
+        'plugN',
+        'plugD',
         'strip',
-        'recSpot',
-        'surfSpot',
-        'ceiling',
+        'recSpotW',
+        'recSpotA',
+        'recSpotM',
+        'surfSpotA',
+        'surfSpotM',
+        'ceilingA',
+        'ceilingM',
       ];
       innerLightsList.map((x) => sessionStorage.setItem(x, false));
     }

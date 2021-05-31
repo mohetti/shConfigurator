@@ -1,14 +1,66 @@
 .mgInnerlights {
   margin: 5% 15% 0 15%;
 }
-
+/*
+make grids for each of the 5 detailed choices and make for each individual clickhandlers
+*/
 .innerlightsContainer {
   grid-area: contentContainer;
   display: grid;
   justify-content: space-between;
   grid-template-areas:
     'strip tableLamp recSpot wall'
-    'plug surfSpot recSwitch ceiling';
+    '. . boxRecSpot .'
+    '. . . boxWall'
+    'plug surfSpot recSwitch ceiling'
+    'boxPlug . . .'
+    '. boxSurfSpot . .'
+    '. . boxRecSwitch .'
+    '. . . boxCeiling';
+}
+
+.boxRecSpot {
+  grid-area: boxRecSpot;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
+}
+
+.boxWall {
+  grid-area: boxWall;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
+}
+
+.boxPlug {
+  grid-area: boxPlug;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
+}
+
+.boxSurfSpot {
+  grid-area: boxSurfSpot;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
+}
+
+.boxRecSwitch {
+  grid-area: boxRecSwitch;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
+}
+
+.boxCeiling {
+  grid-area: boxCeiling;
+  border: 2px solid red;
+  height: 10vh;
+  margin-bottom: 2%;
 }
 
 .tableLamp {
