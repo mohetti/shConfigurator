@@ -9,7 +9,36 @@
   justify-content: space-between;
   grid-template-areas:
     '. motion windowSensor siren .'
-    'smoke lock . doorbell camera';
+    '. boxMotion . . .'
+    '. . . boxSiren .'
+    'smoke lock . doorbell camera'
+    '. . . . boxCamera';
+}
+.boxMotion {
+  grid-area: boxMotion;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-top: 2%;
+}
+
+.boxSiren {
+  grid-area: boxSiren;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-top: 2%;
+}
+
+.boxCamera {
+  grid-area: boxCamera;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-top: 2%;
 }
 
 .motion {

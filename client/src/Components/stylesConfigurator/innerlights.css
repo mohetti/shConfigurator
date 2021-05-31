@@ -39,28 +39,28 @@ make grids for each of the 5 detailed choices and make for each individual click
   grid-area: boxPlug;
   border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .boxSurfSpot {
   grid-area: boxSurfSpot;
   border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .boxRecSwitch {
   grid-area: boxRecSwitch;
   border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .boxCeiling {
   grid-area: boxCeiling;
   border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .tableLamp {

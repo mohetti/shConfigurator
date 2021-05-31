@@ -7,8 +7,28 @@
   display: grid;
   justify-content: space-around;
   grid-template-areas:
-    'pathLight gardenSpot'
-    'wallGarden gardenStrip';
+    'gardenSpot gardenStrip'
+    'pathLight wallGarden'
+    'boxPathLight .'
+    '. boxWallGarden';
+}
+
+.boxPathLight {
+  grid-area: boxPathLight;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-top: 2%;
+}
+
+.boxWallGarden {
+  grid-area: boxWallGarden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  height: 10vh;
+  margin-top: 2%;
 }
 
 .pathLight {

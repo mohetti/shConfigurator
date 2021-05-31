@@ -54,9 +54,11 @@ function Categories() {
         'surfSpotM',
         'ceilingA',
         'ceilingM',
-        'pathLight',
+        'pathLightW',
+        'pathLightM',
         'gardenSpot',
-        'wallGarden',
+        'wallGardenW',
+        'wallGardenM',
         'gardenStrip',
       ];
       lightsList.map((x) => sessionStorage.setItem(x, false));
@@ -67,19 +69,26 @@ function Categories() {
         'thermostatWired230',
         'thermostatWired24',
         'thermostatWireless',
-        'heatActors',
+        'heatActor12Motorized',
+        'heatActor24_06',
+        'heatActor24_10',
+        'heatActor230_06',
+        'heatActor230_10',
       ];
       heatingList.map((x) => sessionStorage.setItem(x, false));
     }
     if (!security) {
       let securityList = [
-        'motion',
+        'motionI',
+        'motionO',
         'windowSensor',
-        'siren',
+        'sirenI',
+        'sirenO',
         'smoke',
         'lock',
         'doorbell',
-        'camera',
+        'cameraI',
+        'cameraO',
       ];
       securityList.map((x) => sessionStorage.setItem(x, false));
     }

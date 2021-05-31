@@ -5,10 +5,49 @@
 .heatingContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-around;
   grid-template-areas:
-    'radiator . thermostatWired230 . thermostatWired24'
-    '. thermostatWireless . heatActors .';
+    'radiator thermostat heatActors'
+    'boxThermostat boxThermostat boxThermostat'
+    'boxHeatActors boxHeatActors boxHeatActors';
+}
+
+.boxThermostat {
+  grid-area: boxThermostat;
+  border: 2px solid red;
+  height: 30vh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas: 'thermostatWired230 thermostatWired24 thermostatWireless';
+}
+
+.boxHeatActors {
+  grid-area: boxHeatActors;
+  border: 2px solid red;
+  height: 30vh;
+  display: grid;
+  justify-content: space-around;
+  grid-template-areas: 'heatActor24_06 heatActor24_10 heatActor230_06 heatActor230_10 heatActor12Motorized';
+}
+
+.heatActor24_06 {
+  grid-area: heatActor24_06;
+}
+
+.heatActor24_10 {
+  grid-area: heatActor24_10;
+}
+
+.heatActor230_06 {
+  grid-area: heatActor230_06;
+}
+
+.heatActor230_10 {
+  grid-area: heatActor230_10;
+}
+
+.heatActor12Motorized {
+  grid-area: heatActor12Motorized;
 }
 
 .radiator {

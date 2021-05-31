@@ -2,20 +2,21 @@ import placeholder from '../images/placeholder.png';
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-/*
-      **********      NEXT STEPS      **********
-      => Implementierung von den Zusatzinfos
-
-*/
-
 function Security() {
-  const [motion, setMotion] = useState(false);
+  const [motionI, setMotionI] = useState(false);
+  const [motionO, setMotionO] = useState(false);
   const [windowSensor, setWindowSensor] = useState(false);
-  const [siren, setSiren] = useState(false);
+  const [sirenI, setSirenI] = useState(false);
+  const [sirenO, setSirenO] = useState(false);
   const [smoke, setSmoke] = useState(false);
   const [lock, setLock] = useState(false);
   const [doorbell, setDoorbell] = useState(false);
-  const [camera, setCamera] = useState(false);
+  const [cameraI, setCameraI] = useState(false);
+  const [cameraO, setCameraO] = useState(false);
+
+  const [boxMotion, setBoxMotion] = useState(false);
+  const [boxSiren, setBoxSiren] = useState(false);
+  const [boxCamera, setBoxCamera] = useState(false);
 
   const [innerLights, setInnerLights] = useState(false);
   const [garden, setGarden] = useState(false);
@@ -26,13 +27,16 @@ function Security() {
   let history = useHistory();
 
   useEffect(() => {
-    let motionSession = sessionStorage.getItem('motion') === 'true';
+    let motionSessionI = sessionStorage.getItem('motionI') === 'true';
+    let motionSessionO = sessionStorage.getItem('motionO') === 'true';
     let windowSensorSession = sessionStorage.getItem('windowSensor') === 'true';
-    let sirenSession = sessionStorage.getItem('siren') === 'true';
+    let sirenSessionI = sessionStorage.getItem('sirenI') === 'true';
+    let sirenSessionO = sessionStorage.getItem('sirenO') === 'true';
     let smokeSession = sessionStorage.getItem('smoke') === 'true';
     let lockSession = sessionStorage.getItem('lock') === 'true';
     let doorbellSession = sessionStorage.getItem('doorbell') === 'true';
-    let cameraSession = sessionStorage.getItem('camera') === 'true';
+    let cameraSessionI = sessionStorage.getItem('cameraI') === 'true';
+    let cameraSessionO = sessionStorage.getItem('cameraO') === 'true';
 
     let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
     let gardenSession = sessionStorage.getItem('garden') === 'true';
@@ -40,13 +44,16 @@ function Security() {
     let heatingSession = sessionStorage.getItem('heating') === 'true';
     let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
 
-    setMotion(motionSession);
+    setMotionI(motionSessionI);
+    setMotionO(motionSessionO);
     setWindowSensor(windowSensorSession);
-    setSiren(sirenSession);
+    setSirenI(sirenSessionI);
+    setSirenO(sirenSessionO);
     setSmoke(smokeSession);
     setLock(lockSession);
     setDoorbell(doorbellSession);
-    setCamera(cameraSession);
+    setCameraI(cameraSessionI);
+    setCameraO(cameraSessionO);
 
     setInnerLights(innerLightsSession);
     setGarden(gardenSession);
@@ -56,13 +63,16 @@ function Security() {
   }, []);
 
   const back = () => {
-    sessionStorage.setItem('motion', motion);
+    sessionStorage.setItem('motionI', motionI);
+    sessionStorage.setItem('motionO', motionO);
     sessionStorage.setItem('windowSensor', windowSensor);
-    sessionStorage.setItem('siren', siren);
+    sessionStorage.setItem('sirenI', sirenI);
+    sessionStorage.setItem('sirenO', sirenO);
     sessionStorage.setItem('smoke', smoke);
     sessionStorage.setItem('lock', lock);
     sessionStorage.setItem('doorbell', doorbell);
-    sessionStorage.setItem('camera', camera);
+    sessionStorage.setItem('cameraI', cameraI);
+    sessionStorage.setItem('cameraO', cameraO);
 
     if (heating) return history.push('/heizung');
     if (garden) return history.push('/gartenbeleuchtung');
@@ -73,13 +83,16 @@ function Security() {
   };
 
   const next = () => {
-    sessionStorage.setItem('motion', motion);
+    sessionStorage.setItem('motionI', motionI);
+    sessionStorage.setItem('motionO', motionO);
     sessionStorage.setItem('windowSensor', windowSensor);
-    sessionStorage.setItem('siren', siren);
+    sessionStorage.setItem('sirenI', sirenI);
+    sessionStorage.setItem('sirenO', sirenO);
     sessionStorage.setItem('smoke', smoke);
     sessionStorage.setItem('lock', lock);
     sessionStorage.setItem('doorbell', doorbell);
-    sessionStorage.setItem('camera', camera);
+    sessionStorage.setItem('cameraI', cameraI);
+    sessionStorage.setItem('cameraO', cameraO);
 
     return history.push('/confirm');
   };
@@ -89,13 +102,37 @@ function Security() {
   };
 
   const handleClick = (input) => {
-    if (input === 'motion') return setMotion(!motion);
+    if (input === 'motionI') return setMotionI(!motionI);
+    if (input === 'motionO') return setMotionO(!motionO);
     if (input === 'windowSensor') return setWindowSensor(!windowSensor);
-    if (input === 'siren') return setSiren(!siren);
+    if (input === 'sirenI') return setSirenI(!sirenI);
+    if (input === 'sirenO') return setSirenO(!sirenO);
     if (input === 'smoke') return setSmoke(!smoke);
     if (input === 'lock') return setLock(!lock);
     if (input === 'doorbell') return setDoorbell(!doorbell);
-    if (input === 'camera') return setCamera(!camera);
+    if (input === 'cameraI') return setCameraI(!cameraI);
+    if (input === 'cameraO') return setCameraO(!cameraO);
+  };
+
+  const openBox = (location) => {
+    if (location === 'motion') {
+      setBoxMotion(!boxMotion);
+      setBoxSiren(false);
+      setBoxCamera(false);
+      return;
+    }
+    if (location === 'siren') {
+      setBoxMotion(false);
+      setBoxSiren(!boxSiren);
+      setBoxCamera(false);
+      return;
+    }
+    if (location === 'camera') {
+      setBoxMotion(false);
+      setBoxSiren(false);
+      setBoxCamera(!boxCamera);
+      return;
+    }
   };
 
   return (
@@ -106,8 +143,8 @@ function Security() {
       <div className="configContainer mgtH">
         <div className="securityContainer mgSecurity">
           <div
-            onClick={() => handleClick('motion')}
-            className={`typeBox motion ${motion ? 'selected' : ''}`}
+            onClick={() => openBox('motion')}
+            className={`typeBox motion ${motionI || motionO ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Bewegungsmelder</div>
@@ -120,8 +157,8 @@ function Security() {
             <div>Tür-/Fensterkontakt</div>
           </div>
           <div
-            onClick={() => handleClick('siren')}
-            className={`typeBox siren ${siren ? 'selected' : ''}`}
+            onClick={() => openBox('siren')}
+            className={`typeBox siren ${sirenI || sirenO ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Sirene</div>
@@ -148,12 +185,60 @@ function Security() {
             <div>Video-Türklingel</div>
           </div>
           <div
-            onClick={() => handleClick('camera')}
-            className={`typeBox camera ${camera ? 'selected' : ''}`}
+            onClick={() => openBox('camera')}
+            className={`typeBox camera ${cameraI || cameraO ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Sicherheitskamera</div>
           </div>
+          {boxMotion && (
+            <div className="boxMotion">
+              <div
+                onClick={() => handleClick('motionI')}
+                className={motionI ? 'selected' : ''}
+              >
+                innen
+              </div>
+              <div
+                onClick={() => handleClick('motionO')}
+                className={motionO ? 'selected' : ''}
+              >
+                außen
+              </div>
+            </div>
+          )}
+          {boxSiren && (
+            <div className="boxSiren">
+              <div
+                onClick={() => handleClick('sirenI')}
+                className={sirenI ? 'selected' : ''}
+              >
+                innen
+              </div>
+              <div
+                onClick={() => handleClick('sirenO')}
+                className={sirenO ? 'selected' : ''}
+              >
+                außen
+              </div>
+            </div>
+          )}
+          {boxCamera && (
+            <div className="boxCamera">
+              <div
+                onClick={() => handleClick('cameraI')}
+                className={cameraI ? 'selected' : ''}
+              >
+                Innenkamera
+              </div>
+              <div
+                onClick={() => handleClick('cameraO')}
+                className={cameraO ? 'selected' : ''}
+              >
+                Außenkamera
+              </div>
+            </div>
+          )}
         </div>
         <div className="btnContainer">
           <button onClick={back} className="btn">

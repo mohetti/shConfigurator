@@ -35,7 +35,14 @@ function Lights() {
 
   const reset = () => {
     if (!garden) {
-      let gardenList = ['pathLight', 'gardenSpot', 'wallGarden', 'gardenStrip'];
+      let gardenList = [
+        'pathLightW',
+        'pathLightM',
+        'gardenSpot',
+        'wallGardenW',
+        'wallGardenM',
+        'gardenStrip',
+      ];
       gardenList.map((x) => sessionStorage.setItem(x, false));
     }
     if (!innerLights) {
