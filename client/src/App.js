@@ -23,6 +23,7 @@ import './Components/stylesConfigurator/security.css';
 import './Components/stylesConfigurator/innerlights.css';
 import './Components/stylesConfigurator/gardenlights.css';
 import './Components/stylesConfigurator/lightbulbs.css';
+import { useEffect } from 'react';
 
 function App() {
   return (

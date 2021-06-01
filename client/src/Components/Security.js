@@ -101,7 +101,12 @@ function Security() {
     console.log('Placeholder');
   };
 
-  const handleClick = (input) => {
+  const handleClick = (input, closeBoxes) => {
+    if (closeBoxes) {
+      setBoxSiren(false);
+      setBoxMotion(false);
+      setBoxCamera(false);
+    }
     if (input === 'motionI') return setMotionI(!motionI);
     if (input === 'motionO') return setMotionO(!motionO);
     if (input === 'windowSensor') return setWindowSensor(!windowSensor);
@@ -150,7 +155,7 @@ function Security() {
             <div>Bewegungsmelder</div>
           </div>
           <div
-            onClick={() => handleClick('windowSensor')}
+            onClick={() => handleClick('windowSensor', true)}
             className={`typeBox windowSensor ${windowSensor ? 'selected' : ''}`}
           >
             <img src={placeholder} />
@@ -164,21 +169,21 @@ function Security() {
             <div>Sirene</div>
           </div>
           <div
-            onClick={() => handleClick('smoke')}
+            onClick={() => handleClick('smoke', true)}
             className={`typeBox smoke ${smoke ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Rauchwarnmelder</div>
           </div>
           <div
-            onClick={() => handleClick('lock')}
+            onClick={() => handleClick('lock', true)}
             className={`typeBox lock ${lock ? 'selected' : ''}`}
           >
             <img src={placeholder} />
             <div>Türschloss</div>
           </div>
           <div
-            onClick={() => handleClick('doorbell')}
+            onClick={() => handleClick('doorbell', true)}
             className={`typeBox doorbell ${doorbell ? 'selected' : ''}`}
           >
             <img src={placeholder} />
@@ -194,13 +199,13 @@ function Security() {
           {boxMotion && (
             <div className="boxMotion">
               <div
-                onClick={() => handleClick('motionI')}
+                onClick={() => handleClick('motionI', false)}
                 className={motionI ? 'selected' : ''}
               >
                 innen
               </div>
               <div
-                onClick={() => handleClick('motionO')}
+                onClick={() => handleClick('motionO', false)}
                 className={motionO ? 'selected' : ''}
               >
                 außen
@@ -210,13 +215,13 @@ function Security() {
           {boxSiren && (
             <div className="boxSiren">
               <div
-                onClick={() => handleClick('sirenI')}
+                onClick={() => handleClick('sirenI', false)}
                 className={sirenI ? 'selected' : ''}
               >
                 innen
               </div>
               <div
-                onClick={() => handleClick('sirenO')}
+                onClick={() => handleClick('sirenO', false)}
                 className={sirenO ? 'selected' : ''}
               >
                 außen
@@ -226,13 +231,13 @@ function Security() {
           {boxCamera && (
             <div className="boxCamera">
               <div
-                onClick={() => handleClick('cameraI')}
+                onClick={() => handleClick('cameraI', false)}
                 className={cameraI ? 'selected' : ''}
               >
                 Innenkamera
               </div>
               <div
-                onClick={() => handleClick('cameraO')}
+                onClick={() => handleClick('cameraO', false)}
                 className={cameraO ? 'selected' : ''}
               >
                 Außenkamera
