@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-var cors = require('cors');
-var { json } = require('body-parser');
+const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -12,7 +11,10 @@ var resultRouter = require('./routes/result');
 
 var app = express();
 app.use(cors());
-app.use(json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
 
 //Set up mongoose connection
 var mongoose = require('mongoose');

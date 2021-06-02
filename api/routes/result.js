@@ -3,6 +3,6 @@ var router = express.Router();
 var resultController = require('../controllers/resultController');
 
 /* GET users listing. */
-router.get('/', resultController.result_get);
+router.post('/', resultController.result_get);
 
 module.exports = router;

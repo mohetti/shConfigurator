@@ -1,6 +1,11 @@
 import placeholder from '../images/placeholder.png';
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://localhost:9000/result',
+});
 
 function Confirm() {
   // categories
@@ -169,6 +174,71 @@ function Confirm() {
   );
 
   const backendRequest = () => {
+    let categories = [
+      light && 'light',
+      heating && 'heating',
+      security && 'security',
+    ];
+    let categoriesAdjusted = categories.filter((x) => {
+      return x !== false;
+    });
+    let products = [
+      e27W && 'e27W',
+      e27A && 'e27A',
+      e27M && 'e27M',
+      e14W && 'e14W',
+      e14A && 'e14A',
+      e14M && 'e14M',
+      gu10W && 'gu10W',
+      gu10A && 'gu10A',
+      gu10M && 'gu10M',
+      tableLamp && 'tableLamp',
+      strip && 'strip',
+      plugN && 'plugN',
+      plugD && 'plugD',
+      recSpotW && 'recSpotW',
+      recSpotM && 'recSpotM',
+      recSpotA && 'recSpotA',
+      surfSpotA && 'surfSpotA',
+      surfSpotM && 'surfSpotM',
+      ceilingA && 'ceilingA',
+      ceilingM && 'ceilingM',
+      recSwitchN && 'recSwitchN',
+      recSwitchD && 'recSwitchD',
+      wallA && 'wallA',
+      wallM && 'wallM',
+      pathLightW && 'pathLightW',
+      pathLightM && 'pathLightM',
+      gardenSpot && 'gardenSpot',
+      wallGardenW && 'wallGardenW',
+      wallGardenM && 'wallGardenM',
+      gardenStrip && 'gardenStrip',
+      radiator && 'radiator',
+      thermostatWired230 && 'thermostatWired230',
+      thermostatWired24 && 'thermostatWired24',
+      thermostatWireless && 'thermostatWireless',
+      heatActor12Motorized && 'heatActor12Motorized',
+      heatActor24_06 && 'heatActor24_06',
+      heatActor24_10 && 'heatActor24_10',
+      heatActor230_06 && 'heatActor230_06',
+      heatActor230_10 && 'heatActor230_10',
+      motionI && 'motionI',
+      motionO && 'motionO',
+      windowSensor && 'windowSensor',
+      sirenI && 'sirenI',
+      sirenO && 'sirenO',
+      smoke && 'smoke',
+      lock && 'lock',
+      doorbell && 'doorbell',
+      cameraI && 'cameraI',
+      cameraO && 'cameraO',
+    ];
+
+    let productsAdjusted = products.filter((x) => {
+      return x !== false;
+    });
+
+    let transferData = { categoriesAdjusted, productsAdjusted };
     // here comes the cors request.
     // Maybe it's better to put this function in App? Let's see
     // Possible walkthrough =>
@@ -177,6 +247,15 @@ function Confirm() {
     // 3. safe response in session- or localstorage
     // 4. redirect to overview
     // 5. render data from session- or locastorage
+
+    api
+      .post('/', transferData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
