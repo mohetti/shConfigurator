@@ -65,7 +65,7 @@ var shSystemsSchema = new Schema({
 });
 
 //Export model
-module.exports = mongoose.model('shSystems', shSystemsSchema);
+module.exports = mongoose.model('shSystems', shSystemsSchema, 'shSystems');
 
 /*
 1. sessionStorage splitting

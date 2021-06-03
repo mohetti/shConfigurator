@@ -174,14 +174,12 @@ function Confirm() {
   );
 
   const backendRequest = () => {
-    let categories = [
-      light && 'light',
-      heating && 'heating',
-      security && 'security',
-    ];
-    let categoriesAdjusted = categories.filter((x) => {
-      return x !== false;
-    });
+    let categories = {
+      light: light,
+      heating: heating,
+      security: security,
+    };
+
     let products = [
       e27W && 'e27W',
       e27A && 'e27A',
@@ -238,7 +236,7 @@ function Confirm() {
       return x !== false;
     });
 
-    let transferData = { categoriesAdjusted, productsAdjusted };
+    let transferData = { categories, productsAdjusted };
     // here comes the cors request.
     // Maybe it's better to put this function in App? Let's see
     // Possible walkthrough =>

@@ -10,4 +10,4 @@ var shProductSchema = new Schema({
   partialComp: [String],
 });
 
-module.exports = mongoose.model('shProducts', shProductSchema);
+module.exports = mongoose.model('shProducts', shProductSchema, 'shProducts');
