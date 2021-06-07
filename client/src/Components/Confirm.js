@@ -234,6 +234,7 @@ function Confirm() {
       doorbell && 'doorbell',
       cameraI && 'cameraI',
       cameraO && 'cameraO',
+      motionO && 'motionOZ',
     ];
 
     let productsAdjusted = products.filter((x) => {

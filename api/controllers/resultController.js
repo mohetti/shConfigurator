@@ -4,6 +4,7 @@ var shSystems = require('../models/shSystems');
 exports.result_get = function (req, res, next) {
   let categories = req.body.categories;
   let products = req.body.productsAdjusted;
+  console.log(products);
   let subStationQuery = [];
 
   let systemRequirements = function (obj) {
@@ -67,6 +68,7 @@ exports.result_get = function (req, res, next) {
     .populate('products.wallGardenM')
     .populate('products.wallGardenW')
     .populate('products.windowSensor')
+    .populate('products.motionOZ')
     .exec((err, docs) => {
       if (err) return next(err);
 
@@ -87,6 +89,7 @@ exports.result_get = function (req, res, next) {
           products: [],
         });
       });
+      console.log(extractedDatabaseSystems);
 
       extractedDatabaseSystems.map((x, index) => {
         for (let i in x.products) {
@@ -98,6 +101,9 @@ exports.result_get = function (req, res, next) {
 
       responseSystems.map((x) => {
         x.productsTemp.map((y) => {
+          if (y[0].system === 'null') {
+            return;
+          }
           if (x.mainSystem !== y[0].system) {
             if (y[0].compatible.indexOf(x.mainSystem) !== -1) {
               x.products.push({
@@ -188,7 +194,4 @@ exports.result_get = function (req, res, next) {
               => && double check code
                 => esp for Lupusec motionO
               => general Output
-
-
-
   ******************************************************************* */

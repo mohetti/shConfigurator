@@ -33,6 +33,7 @@ var shSystemsSchema = new Schema({
     lock: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     motionI: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     motionO: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
+    motionOZ: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     pathLightW: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     pathLightM: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     plugN: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
