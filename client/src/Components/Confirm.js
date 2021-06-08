@@ -235,6 +235,7 @@ function Confirm() {
       cameraI && 'cameraI',
       cameraO && 'cameraO',
       motionO && 'motionOZ',
+      thermostatWireless && 'thermostatWirelessExt',
     ];
 
     let productsAdjusted = products.filter((x) => {

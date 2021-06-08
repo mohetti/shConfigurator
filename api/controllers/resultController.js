@@ -2,11 +2,10 @@ var shProducts = require('../models/shProducts');
 var shSystems = require('../models/shSystems');
 
 exports.result_get = function (req, res, next) {
+  // categories is an object with the keys light(s), heating and security.
+  // It is used to query suitable systems from db.collection shSystems
+  // systemRequirements() deletes the categories with a false value.
   let categories = req.body.categories;
-  let products = req.body.productsAdjusted;
-  console.log(products);
-  let subStationQuery = [];
-
   let systemRequirements = function (obj) {
     for (let i in obj) {
       if (obj[i] === false) {
@@ -15,8 +14,12 @@ exports.result_get = function (req, res, next) {
     }
     return obj;
   };
-
   systemRequirements(categories);
+
+  // products is an array of strings. The strings are used for  comparission to the key "type" in the db.collection shProducts
+  // only (from the user) selected device types made it into this array.
+  let products = req.body.productsAdjusted;
+
   shSystems
     .find(categories)
     .populate('products.cameraI')
@@ -69,13 +72,21 @@ exports.result_get = function (req, res, next) {
     .populate('products.wallGardenW')
     .populate('products.windowSensor')
     .populate('products.motionOZ')
+    .populate('products.thermostatWirelessExt')
     .exec((err, docs) => {
       if (err) return next(err);
 
+      /*
+       **** First of Two Database Queries *****
+       * The Array responseSystems will be send back to the client after second query.
+       * extractedDatabaseSystems has all suitable systems in it. It is used to modify responseSystems.
+       * 3 arr.map are executed after above query.
+       */
+
       let extractedDatabaseSystems = docs;
-      //console.log('%j', potentialSystems);
       let responseSystems = [];
 
+      // 1. map: for each suitable system out of extractedDatabaseSystems, responseSystems gets a new object.
       extractedDatabaseSystems.map((x) => {
         responseSystems.push({
           mainSystem: x.system,
@@ -89,8 +100,9 @@ exports.result_get = function (req, res, next) {
           products: [],
         });
       });
-      console.log(extractedDatabaseSystems);
 
+      // 2. map: predefined products for each system in db.shSystems' "products" key,
+      //         are looped through. If the user selected them, they get temporarly passed to responseSystems
       extractedDatabaseSystems.map((x, index) => {
         for (let i in x.products) {
           if (products.indexOf(i) !== -1) {
@@ -99,6 +111,10 @@ exports.result_get = function (req, res, next) {
         }
       });
 
+      // 3. map: the final productlist for the response to client gets populated.
+      //         each product is an object with product's name, type and compatibility.
+      //         Also system names get pushed to substationQuery. The list is used for the second query.
+      let subStationQuery = [];
       responseSystems.map((x) => {
         x.productsTemp.map((y) => {
           if (y[0].system === 'null') {
@@ -147,20 +163,31 @@ exports.result_get = function (req, res, next) {
         delete x.productsTemp;
       });
 
+      /*
+       **** Second of Two Database Queries *****
+       * the query is needed to populate substations for each main system.
+       * 3 arr.map are executed after below query.
+       */
+
       let subStationBucket = {};
       shSystems
         .find({ system: { $in: subStationQuery } })
         .select('basestation system')
         .exec((err, docs) => {
           if (err) return next(err);
+
+          // 1. map: substationBucket gets populated. It is used to populate the needed substations for each main system.
           docs.map((x) => {
             subStationBucket[x.system] = x.basestation;
           });
 
+          // 3. map: the function takes 3 arguments: one of the 3 keys for compatibility in responseSystems,
+          //         the substation key and the baseNotFrom key
+          //         if one of the entries in the compatibility keys is found in the substationBucket,
+          //         and this entry is not in the baseNotFrom, then it gets pushed to the needed substations.
           let populateSubstations = (compField, subField, baseNotFromField) => {
             compField.map((y) => {
               if (subStationBucket[y]) {
-                console.log(subStationBucket[y]);
                 if (
                   subField.indexOf(subStationBucket[y]) === -1 &&
                   subStationBucket[y] !== 'null' &&
@@ -172,6 +199,7 @@ exports.result_get = function (req, res, next) {
             });
           };
 
+          // 2. map: for each main system in responseSystem, the function populateSubstations gets executed.
           responseSystems.map((x) => {
             populateSubstations(x.compSystems, x.substations, x.baseNotFrom);
             populateSubstations(
@@ -186,12 +214,3 @@ exports.result_get = function (req, res, next) {
         });
     });
 };
-
-/* ********************************************************************
-            *****   NEXT STEPS    *****
-              => check new systems for basestation or not
-              => comment code
-              => && double check code
-                => esp for Lupusec motionO
-              => general Output
-  ******************************************************************* */

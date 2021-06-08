@@ -54,6 +54,7 @@ var shSystemsSchema = new Schema({
     thermostatWired230: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     thermostatWired24: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     thermostatWireless: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
+    thermostatWirelessExt: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     wallA: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     wallM: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
     wallGardenM: [{ type: Schema.Types.ObjectId, ref: 'shProducts' }],
