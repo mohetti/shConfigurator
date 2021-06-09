@@ -10,32 +10,38 @@ function Start() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h1>Smart Home Konfigurator</h1>
-        <h2>komwoh</h2>
-      </header>
-      <div className="startContainer mgtH center">
-        <p className="mgB">
-          Erstelle Dir jetzt Dein persönliches Smart Home, mit dem komwoh Smart
-          Home Konfigurator.
-        </p>
-        <p>
-          Der Konfigurator erstellt Dir passende Lösungen, anhand Deiner
-          persönlichen Wünsche. Du wählst dabei aus drei Kategorien: Licht,
-          Heizung und Sicherheit.
-        </p>
-        <p>
-          Beim Smart Home Konfigurator geht es darum eine passgenaue Lösung für
-          Dich zu finden. Dabei legen wir besonderen Wert darauf, dass so viele
-          Smart Home Geräte wie möglich untereinander kompatibel sind und Du
-          damit Dein Smart Home mit nur wenigen Apps steuerst.
-        </p>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Smart Home Konfigurator</h1>
+          <h2 className="mgb2">komwoh</h2>
+        </header>
+        <div>
+          <p>
+            Erstelle Dir jetzt Dein persönliches Smart Home, mit dem komwoh
+            Smart Home Konfigurator.
+          </p>
+          <p>Wähle aus den drei Kategorien: Licht, Heizung und Sicherheit.</p>
+          <h3 className="mgt1">
+            <strong>
+              Du erhältst Lösungsvorschläge, welche auf Basis Deiner Auswahl:
+            </strong>
+          </h3>
+        </div>
+        <div className="checkmarkDiv">
+          <ul className="checkmark">
+            <li>maximal komaptibel sind.</li>
+            <li>mit einem Minium an Basisstationen auskommen.</li>
+            <li>möglichst viele Geräte mit nur einer App verwalten.</li>
+          </ul>
+        </div>
+        <div className="btnPos">
+          <button onClick={start} className="btn">
+            Starte Deine Auswahl
+          </button>
+        </div>
       </div>
-      <div className="mgB">
-        <button onClick={start} className="btn">
-          Starte Deine Auswahl
-        </button>
-      </div>
+      <div className="spaceRight"></div>
     </div>
   );
 }

@@ -103,88 +103,92 @@ function Gardenlights() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle passende Gartenbeleuchtung:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="gardenlightsContainer mgGardenlights">
-          <div
-            onClick={() => openBox('pathLight')}
-            className={`typeBox pathLight ${
-              pathLightW || pathLightM ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Wegeleuchten</div>
-          </div>
-          <div
-            onClick={() => handleClick('gardenSpot')}
-            className={`typeBox gardenSpot ${gardenSpot ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Gartenspots</div>
-          </div>
-          <div
-            onClick={() => openBox('wallGarden')}
-            className={`typeBox wallGarden ${
-              wallGardenW || wallGardenM ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Wandbeleuchtung</div>
-          </div>
-          <div
-            onClick={() => handleClick('gardenStrip')}
-            className={`typeBox gardenStrip ${gardenStrip ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Leuchtstreifen</div>
-          </div>
-          {boxPathLight && (
-            <div className="boxPathLight">
-              <div
-                onClick={() => handleClick('pathLightW')}
-                className={pathLightW ? 'selected' : ''}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('pathLightM')}
-                className={pathLightM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Gartenbeleuchtung:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="gardenlightsContainer mgGardenlights">
+            <div
+              onClick={() => openBox('pathLight')}
+              className={`typeBox pathLight ${
+                pathLightW || pathLightM ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Wegeleuchten</div>
             </div>
-          )}
-          {boxWallGarden && (
-            <div className="boxWallGarden">
-              <div
-                onClick={() => handleClick('wallGardenW')}
-                className={wallGardenW ? 'selected' : ''}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('wallGardenM')}
-                className={wallGardenM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+            <div
+              onClick={() => handleClick('gardenSpot')}
+              className={`typeBox gardenSpot ${gardenSpot ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Gartenspots</div>
             </div>
-          )}
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
+            <div
+              onClick={() => openBox('wallGarden')}
+              className={`typeBox wallGarden ${
+                wallGardenW || wallGardenM ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Wandbeleuchtung</div>
+            </div>
+            <div
+              onClick={() => handleClick('gardenStrip')}
+              className={`typeBox gardenStrip ${gardenStrip ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Leuchtstreifen</div>
+            </div>
+            {boxPathLight && (
+              <div className="boxPathLight">
+                <div
+                  onClick={() => handleClick('pathLightW')}
+                  className={pathLightW ? 'selected' : ''}
+                >
+                  Dimmbar
+                </div>
+                <div
+                  onClick={() => handleClick('pathLightM')}
+                  className={pathLightM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+            {boxWallGarden && (
+              <div className="boxWallGarden">
+                <div
+                  onClick={() => handleClick('wallGardenW')}
+                  className={wallGardenW ? 'selected' : ''}
+                >
+                  Dimmbar
+                </div>
+                <div
+                  onClick={() => handleClick('wallGardenM')}
+                  className={wallGardenM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
+          </div>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

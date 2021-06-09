@@ -1,40 +1,108 @@
 .windowContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-areas: 'spaceLeft centerBox spaceRight';
+}
+
+.stripe {
+  /*background-color: #6ca4bd; #8690b6*/
+  background-color: #8492b6;
+  color: white;
 }
 
 .center {
+  grid-area: centerBox;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  width: 60vw;
+  height: 100vh;
 }
 
-.mgtH {
-  margin-top: 3%;
+.spaceLeft {
+  grid-area: spaceLeft;
+  height: 100vh;
+  width: 20vw;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(73, 191, 199, 1) 0%,
+    rgba(139, 141, 181, 1) 100%
+  );
 }
-.mgB {
-  margin-top: 2%;
+
+.spaceRight {
+  grid-area: spaceRight;
+  height: 100vh;
+  width: 20vw;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(73, 191, 199, 1) 0%,
+    rgba(139, 141, 181, 1) 100%
+  );
+}
+
+.mgb1 {
+  margin-bottom: 5%;
+}
+.mgb2 {
+  margin-bottom: 10%;
+}
+.mgt1 {
+  margin-top: 5%;
+}
+.mgt2 {
+  margin-top: 10%;
+}
+.mgt3 {
+  margin-top: 20%;
+}
+.checkmarkDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: -2%;
+}
+.checkmark {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.checkmark li:before {
+  content: '✓';
+  color: #2cba6c;
+  font-size: 30px;
+}
+
+.btnPos {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 5%;
 }
 
 .btn {
-  box-shadow: inset 0px 1px 0px 0px #bbdaf7;
-  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-  background-color: #79bbff;
-  border-radius: 6px;
-  border: 1px solid #84bbf3;
+  background: linear-gradient(to bottom, #3f7081 5%, #408c99 100%);
+  background-color: #3f7081;
+  border: none;
+  border-radius: 8px;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
-  padding: 13px 37px;
+  padding: 13px 32px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528ecc;
+  text-shadow: 0px 1px 0px #3d768a;
 }
 .btn:hover {
-  background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-  background-color: #378de5;
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
 }
 .btn:active {
   position: relative;
@@ -42,7 +110,7 @@
 }
 
 .startContainer {
-  width: 80%;
+  width: 60%;
   height: 60vh;
 }
 
@@ -51,15 +119,15 @@
   grid-template-areas:
     'contentContainer'
     'buttons';
-  width: 80%;
-  height: 80vh;
+  width: 100%;
+  height: 100%;
 }
 
 .btnContainer {
   grid-area: buttons;
   display: flex;
   justify-content: space-between;
-  margin: 0 5%;
+  margin: 2% 5%;
   align-items: flex-end;
 }
 

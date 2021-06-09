@@ -139,117 +139,121 @@ function Lightbulbs() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle die passende Beleuchtung:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="lightBulbContainer mgLightbulbs">
-          <div
-            onClick={() => openSelector('white')}
-            className={`typeBox white ${
-              e27W || e14W || gu10W ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Dimmbares Licht</div>
-          </div>
-          <div
-            onClick={() => openSelector('ambiance')}
-            className={`typeBox ambiance ${
-              e27A || e14A || gu10A ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Dimmbares Weißlicht</div>
-          </div>
-          <div
-            onClick={() => openSelector('multicolor')}
-            className={`typeBox multicolor ${
-              e27M || e14M || gu10M ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Weiß- und Farblicht</div>
-          </div>
-          {selectorBoxWhite && (
-            <div className="bulbs">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`typeBox e27 ${e27W ? 'selected' : ''}`}
-              >
-                E27
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`typeBox e14 ${e14W ? 'selected' : ''}`}
-              >
-                E14
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`typeBox gu10 ${gu10W ? 'selected' : ''}`}
-              >
-                GU10
-              </div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Spots & Glühbirnen:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="lightBulbContainer mgLightbulbs">
+            <div
+              onClick={() => openSelector('white')}
+              className={`typeBox white ${
+                e27W || e14W || gu10W ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Dimmbares Licht</div>
             </div>
-          )}
-          {selectorBoxAmbiance && (
-            <div className="bulbs">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`typeBox e27 ${e27A ? 'selected' : ''}`}
-              >
-                E27
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`typeBox e14 ${e14A ? 'selected' : ''}`}
-              >
-                E14
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`typeBox gu10 ${gu10A ? 'selected' : ''}`}
-              >
-                GU10
-              </div>
+            <div
+              onClick={() => openSelector('ambiance')}
+              className={`typeBox ambiance ${
+                e27A || e14A || gu10A ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Dimmbares Weißlicht</div>
             </div>
-          )}
-          {selectorBoxMulticolor && (
-            <div className="bulbs">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`typeBox e27 ${e27M ? 'selected' : ''}`}
-              >
-                E27
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`typeBox e14 ${e14M ? 'selected' : ''}`}
-              >
-                E14
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`typeBox gu10 ${gu10M ? 'selected' : ''}`}
-              >
-                GU10
-              </div>
+            <div
+              onClick={() => openSelector('multicolor')}
+              className={`typeBox multicolor ${
+                e27M || e14M || gu10M ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Weiß- und Farblicht</div>
             </div>
-          )}
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
+            {selectorBoxWhite && (
+              <div className="bulbs">
+                <div
+                  onClick={() => handleClick('e27')}
+                  className={`typeBox e27 ${e27W ? 'selected' : ''}`}
+                >
+                  E27
+                </div>
+                <div
+                  onClick={() => handleClick('e14')}
+                  className={`typeBox e14 ${e14W ? 'selected' : ''}`}
+                >
+                  E14
+                </div>
+                <div
+                  onClick={() => handleClick('gu10')}
+                  className={`typeBox gu10 ${gu10W ? 'selected' : ''}`}
+                >
+                  GU10
+                </div>
+              </div>
+            )}
+            {selectorBoxAmbiance && (
+              <div className="bulbs">
+                <div
+                  onClick={() => handleClick('e27')}
+                  className={`typeBox e27 ${e27A ? 'selected' : ''}`}
+                >
+                  E27
+                </div>
+                <div
+                  onClick={() => handleClick('e14')}
+                  className={`typeBox e14 ${e14A ? 'selected' : ''}`}
+                >
+                  E14
+                </div>
+                <div
+                  onClick={() => handleClick('gu10')}
+                  className={`typeBox gu10 ${gu10A ? 'selected' : ''}`}
+                >
+                  GU10
+                </div>
+              </div>
+            )}
+            {selectorBoxMulticolor && (
+              <div className="bulbs">
+                <div
+                  onClick={() => handleClick('e27')}
+                  className={`typeBox e27 ${e27M ? 'selected' : ''}`}
+                >
+                  E27
+                </div>
+                <div
+                  onClick={() => handleClick('e14')}
+                  className={`typeBox e14 ${e14M ? 'selected' : ''}`}
+                >
+                  E14
+                </div>
+                <div
+                  onClick={() => handleClick('gu10')}
+                  className={`typeBox gu10 ${gu10M ? 'selected' : ''}`}
+                >
+                  GU10
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
+          </div>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

@@ -215,190 +215,194 @@ function Innerlights() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle passende Innenbeleuchtung:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="innerlightsContainer mgInnerlights">
-          <div
-            onClick={() => handleClick('strip')}
-            className={`typeBox strip ${strip ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Leuchtstreifen</div>
-          </div>
-          <div
-            onClick={() => handleClick('tableLamp')}
-            className={`typeBox tableLamp ${tableLamp ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Tischlampe</div>
-          </div>
-          <div
-            onClick={() => openBox('recSpot')}
-            className={`typeBox recSpot ${
-              recSpotW || recSpotA || recSpotM ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Einbauspot</div>
-          </div>
-          <div
-            onClick={() => openBox('wall')}
-            className={`typeBox wall ${wallA || wallM ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Wandleuchte</div>
-          </div>
-          <div
-            onClick={() => openBox('plug')}
-            className={`typeBox plug ${plugN || plugD ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Zwischenstecker</div>
-          </div>
-          <div
-            onClick={() => openBox('surfSpot')}
-            className={`typeBox surfSpot ${
-              surfSpotA || surfSpotM ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Aufbauspot</div>
-          </div>
-          <div
-            onClick={() => openBox('recSwitch')}
-            className={`typeBox recSwitch ${
-              recSwitchN || recSwitchD ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Unterputzaktor</div>
-          </div>
-          <div
-            onClick={() => openBox('ceiling')}
-            className={`typeBox ceiling ${
-              ceilingA || ceilingM ? 'selected' : ''
-            }`}
-          >
-            <img src={placeholder} />
-            <div>Deckenlampe</div>
-          </div>
-          {boxRecSpot && (
-            <div className="boxRecSpot">
-              <div
-                onClick={() => handleClick('recSpotW')}
-                className={recSpotW ? 'selected' : ''}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('recSpotA')}
-                className={recSpotA ? 'selected' : ''}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('recSpotM')}
-                className={recSpotM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">weitere Innenbeleuchtung:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="innerlightsContainer mgInnerlights">
+            <div
+              onClick={() => handleClick('strip')}
+              className={`typeBox strip ${strip ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Leuchtstreifen</div>
             </div>
-          )}
-          {boxWall && (
-            <div className="boxWall">
-              <div
-                onClick={() => handleClick('wallA')}
-                className={wallA ? 'selected' : ''}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('wallM')}
-                className={wallM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+            <div
+              onClick={() => handleClick('tableLamp')}
+              className={`typeBox tableLamp ${tableLamp ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Tischlampe</div>
             </div>
-          )}
-          {boxPlug && (
-            <div className="boxPlug">
-              <div
-                onClick={() => handleClick('plugN')}
-                className={plugN ? 'selected' : ''}
-              >
-                Einfach
-              </div>
-              <div
-                onClick={() => handleClick('plugD')}
-                className={plugD ? 'selected' : ''}
-              >
-                mit Dimmfunktion
-              </div>
+            <div
+              onClick={() => openBox('recSpot')}
+              className={`typeBox recSpot ${
+                recSpotW || recSpotA || recSpotM ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Einbauspot</div>
             </div>
-          )}
-          {boxSurfSpot && (
-            <div className="boxSurfSpot">
-              <div
-                onClick={() => handleClick('surfSpotA')}
-                className={surfSpotA ? 'selected' : ''}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('surfSpotM')}
-                className={surfSpotM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+            <div
+              onClick={() => openBox('wall')}
+              className={`typeBox wall ${wallA || wallM ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Wandleuchte</div>
             </div>
-          )}
-          {boxRecSwitch && (
-            <div className="boxRecSwitch">
-              <div
-                onClick={() => handleClick('recSwitchN')}
-                className={recSwitchN ? 'selected' : ''}
-              >
-                Einfach
-              </div>
-              <div
-                onClick={() => handleClick('recSwitchD')}
-                className={recSwitchD ? 'selected' : ''}
-              >
-                mit Dimmfunktion
-              </div>
+            <div
+              onClick={() => openBox('plug')}
+              className={`typeBox plug ${plugN || plugD ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Zwischenstecker</div>
             </div>
-          )}
-          {boxCeiling && (
-            <div className="boxCeiling">
-              <div
-                onClick={() => handleClick('ceilingA')}
-                className={ceilingA ? 'selected' : ''}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('ceilingM')}
-                className={ceilingM ? 'selected' : ''}
-              >
-                Weiß- und Farblicht
-              </div>
+            <div
+              onClick={() => openBox('surfSpot')}
+              className={`typeBox surfSpot ${
+                surfSpotA || surfSpotM ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Aufbauspot</div>
             </div>
-          )}
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
+            <div
+              onClick={() => openBox('recSwitch')}
+              className={`typeBox recSwitch ${
+                recSwitchN || recSwitchD ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Unterputzaktor</div>
+            </div>
+            <div
+              onClick={() => openBox('ceiling')}
+              className={`typeBox ceiling ${
+                ceilingA || ceilingM ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Deckenlampe</div>
+            </div>
+            {boxRecSpot && (
+              <div className="boxRecSpot">
+                <div
+                  onClick={() => handleClick('recSpotW')}
+                  className={recSpotW ? 'selected' : ''}
+                >
+                  Dimmbar
+                </div>
+                <div
+                  onClick={() => handleClick('recSpotA')}
+                  className={recSpotA ? 'selected' : ''}
+                >
+                  dimmbares Weißlicht
+                </div>
+                <div
+                  onClick={() => handleClick('recSpotM')}
+                  className={recSpotM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+            {boxWall && (
+              <div className="boxWall">
+                <div
+                  onClick={() => handleClick('wallA')}
+                  className={wallA ? 'selected' : ''}
+                >
+                  dimmbares Weißlicht
+                </div>
+                <div
+                  onClick={() => handleClick('wallM')}
+                  className={wallM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+            {boxPlug && (
+              <div className="boxPlug">
+                <div
+                  onClick={() => handleClick('plugN')}
+                  className={plugN ? 'selected' : ''}
+                >
+                  Einfach
+                </div>
+                <div
+                  onClick={() => handleClick('plugD')}
+                  className={plugD ? 'selected' : ''}
+                >
+                  mit Dimmfunktion
+                </div>
+              </div>
+            )}
+            {boxSurfSpot && (
+              <div className="boxSurfSpot">
+                <div
+                  onClick={() => handleClick('surfSpotA')}
+                  className={surfSpotA ? 'selected' : ''}
+                >
+                  dimmbares Weißlicht
+                </div>
+                <div
+                  onClick={() => handleClick('surfSpotM')}
+                  className={surfSpotM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+            {boxRecSwitch && (
+              <div className="boxRecSwitch">
+                <div
+                  onClick={() => handleClick('recSwitchN')}
+                  className={recSwitchN ? 'selected' : ''}
+                >
+                  Einfach
+                </div>
+                <div
+                  onClick={() => handleClick('recSwitchD')}
+                  className={recSwitchD ? 'selected' : ''}
+                >
+                  mit Dimmfunktion
+                </div>
+              </div>
+            )}
+            {boxCeiling && (
+              <div className="boxCeiling">
+                <div
+                  onClick={() => handleClick('ceilingA')}
+                  className={ceilingA ? 'selected' : ''}
+                >
+                  dimmbares Weißlicht
+                </div>
+                <div
+                  onClick={() => handleClick('ceilingM')}
+                  className={ceilingM ? 'selected' : ''}
+                >
+                  Weiß- und Farblicht
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
+          </div>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

@@ -108,45 +108,49 @@ function Lights() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle die passende Beleuchtung:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="lightContainer mgLights">
-          <div
-            onClick={() => handleClick('lightbulbs')}
-            className={`typeBox lightbulbs ${lightbulbs ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Glühbirnen und Spots</div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Beleuchtungsoptionen:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="lightContainer mgLights">
+            <div
+              onClick={() => handleClick('lightbulbs')}
+              className={`typeBox lightbulbs ${lightbulbs ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Glühbirnen und Spots</div>
+            </div>
+            <div
+              onClick={() => handleClick('innerLights')}
+              className={`typeBox innerLights ${innerLights ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>weitere Innenbeleuchtung</div>
+            </div>
+            <div
+              onClick={() => handleClick('garden')}
+              className={`typeBox garden ${garden ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Gartenbeleuchtung</div>
+            </div>
           </div>
-          <div
-            onClick={() => handleClick('innerLights')}
-            className={`typeBox innerLights ${innerLights ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>weitere Innenbeleuchtung</div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
           </div>
-          <div
-            onClick={() => handleClick('garden')}
-            className={`typeBox garden ${garden ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Gartenbeleuchtung</div>
-          </div>
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

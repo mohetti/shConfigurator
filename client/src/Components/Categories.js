@@ -118,45 +118,49 @@ function Categories() {
   };
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle Deine Kategorien:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="typeContainer mgCtg">
-          <div
-            onClick={() => handleClick('lights')}
-            className={`typeBox ${light ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Beleuchtung</div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Kategorien:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="typeContainer mgCtg">
+            <div
+              onClick={() => handleClick('lights')}
+              className={`typeBox ${light ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Beleuchtung</div>
+            </div>
+            <div
+              onClick={() => handleClick('heating')}
+              className={`typeBox ${heating ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Heizung</div>
+            </div>
+            <div
+              onClick={() => handleClick('security')}
+              className={`typeBox ${security ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Sicherheit</div>
+            </div>
           </div>
-          <div
-            onClick={() => handleClick('heating')}
-            className={`typeBox ${heating ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Heizung</div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
           </div>
-          <div
-            onClick={() => handleClick('security')}
-            className={`typeBox ${security ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Sicherheit</div>
-          </div>
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

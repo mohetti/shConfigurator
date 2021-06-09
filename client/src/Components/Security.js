@@ -142,121 +142,131 @@ function Security() {
 
   return (
     <div className="windowContainer">
-      <header className="center">
-        <h2>Wähle passende Sicherheitselemente:</h2>
-      </header>
-      <div className="configContainer mgtH">
-        <div className="securityContainer mgSecurity">
-          <div
-            onClick={() => openBox('motion')}
-            className={`typeBox motion ${motionI || motionO ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Bewegungsmelder</div>
-          </div>
-          <div
-            onClick={() => handleClick('windowSensor', true)}
-            className={`typeBox windowSensor ${windowSensor ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Tür-/Fensterkontakt</div>
-          </div>
-          <div
-            onClick={() => openBox('siren')}
-            className={`typeBox siren ${sirenI || sirenO ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Sirene</div>
-          </div>
-          <div
-            onClick={() => handleClick('smoke', true)}
-            className={`typeBox smoke ${smoke ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Rauchwarnmelder</div>
-          </div>
-          <div
-            onClick={() => handleClick('lock', true)}
-            className={`typeBox lock ${lock ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Türschloss</div>
-          </div>
-          <div
-            onClick={() => handleClick('doorbell', true)}
-            className={`typeBox doorbell ${doorbell ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Video-Türklingel</div>
-          </div>
-          <div
-            onClick={() => openBox('camera')}
-            className={`typeBox camera ${cameraI || cameraO ? 'selected' : ''}`}
-          >
-            <img src={placeholder} />
-            <div>Sicherheitskamera</div>
-          </div>
-          {boxMotion && (
-            <div className="boxMotion">
-              <div
-                onClick={() => handleClick('motionI', false)}
-                className={motionI ? 'selected' : ''}
-              >
-                innen
-              </div>
-              <div
-                onClick={() => handleClick('motionO', false)}
-                className={motionO ? 'selected' : ''}
-              >
-                außen
-              </div>
+      <div className="spaceLeft"></div>
+      <div className="center">
+        <header>
+          <h1 className="stripe mgt1">Sicherheitstechnik:</h1>
+        </header>
+        <div className="configContainer">
+          <div className="securityContainer mgSecurity">
+            <div
+              onClick={() => openBox('motion')}
+              className={`typeBox motion ${
+                motionI || motionO ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Bewegungsmelder</div>
             </div>
-          )}
-          {boxSiren && (
-            <div className="boxSiren">
-              <div
-                onClick={() => handleClick('sirenI', false)}
-                className={sirenI ? 'selected' : ''}
-              >
-                innen
-              </div>
-              <div
-                onClick={() => handleClick('sirenO', false)}
-                className={sirenO ? 'selected' : ''}
-              >
-                außen
-              </div>
+            <div
+              onClick={() => handleClick('windowSensor', true)}
+              className={`typeBox windowSensor ${
+                windowSensor ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Tür-/Fensterkontakt</div>
             </div>
-          )}
-          {boxCamera && (
-            <div className="boxCamera">
-              <div
-                onClick={() => handleClick('cameraI', false)}
-                className={cameraI ? 'selected' : ''}
-              >
-                Innenkamera
-              </div>
-              <div
-                onClick={() => handleClick('cameraO', false)}
-                className={cameraO ? 'selected' : ''}
-              >
-                Außenkamera
-              </div>
+            <div
+              onClick={() => openBox('siren')}
+              className={`typeBox siren ${sirenI || sirenO ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Sirene</div>
             </div>
-          )}
-        </div>
-        <div className="btnContainer">
-          <button onClick={back} className="btn">
-            Zurück
-          </button>
-          <button onClick={infos} className="btn">
-            Mehr Infos
-          </button>
-          <button onClick={next} className="btn">
-            Weiter
-          </button>
+            <div
+              onClick={() => handleClick('smoke', true)}
+              className={`typeBox smoke ${smoke ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Rauchwarnmelder</div>
+            </div>
+            <div
+              onClick={() => handleClick('lock', true)}
+              className={`typeBox lock ${lock ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Türschloss</div>
+            </div>
+            <div
+              onClick={() => handleClick('doorbell', true)}
+              className={`typeBox doorbell ${doorbell ? 'selected' : ''}`}
+            >
+              <img src={placeholder} />
+              <div>Video-Türklingel</div>
+            </div>
+            <div
+              onClick={() => openBox('camera')}
+              className={`typeBox camera ${
+                cameraI || cameraO ? 'selected' : ''
+              }`}
+            >
+              <img src={placeholder} />
+              <div>Sicherheitskamera</div>
+            </div>
+            {boxMotion && (
+              <div className="boxMotion">
+                <div
+                  onClick={() => handleClick('motionI', false)}
+                  className={motionI ? 'selected' : ''}
+                >
+                  innen
+                </div>
+                <div
+                  onClick={() => handleClick('motionO', false)}
+                  className={motionO ? 'selected' : ''}
+                >
+                  außen
+                </div>
+              </div>
+            )}
+            {boxSiren && (
+              <div className="boxSiren">
+                <div
+                  onClick={() => handleClick('sirenI', false)}
+                  className={sirenI ? 'selected' : ''}
+                >
+                  innen
+                </div>
+                <div
+                  onClick={() => handleClick('sirenO', false)}
+                  className={sirenO ? 'selected' : ''}
+                >
+                  außen
+                </div>
+              </div>
+            )}
+            {boxCamera && (
+              <div className="boxCamera">
+                <div
+                  onClick={() => handleClick('cameraI', false)}
+                  className={cameraI ? 'selected' : ''}
+                >
+                  Innenkamera
+                </div>
+                <div
+                  onClick={() => handleClick('cameraO', false)}
+                  className={cameraO ? 'selected' : ''}
+                >
+                  Außenkamera
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="btnContainer">
+            <button onClick={back} className="btn">
+              Zurück
+            </button>
+            <button onClick={infos} className="btn">
+              Mehr Infos
+            </button>
+            <button onClick={next} className="btn">
+              Weiter
+            </button>
+          </div>
         </div>
       </div>
+      <div className="spaceRight  "></div>
     </div>
   );
 }

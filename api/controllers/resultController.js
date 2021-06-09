@@ -114,6 +114,7 @@ exports.result_get = function (req, res, next) {
       // 3. map: the final productlist for the response to client gets populated.
       //         each product is an object with product's name, type and compatibility.
       //         Also system names get pushed to substationQuery. The list is used for the second query.
+
       let subStationQuery = [];
       responseSystems.map((x) => {
         x.productsTemp.map((y) => {
