@@ -4,7 +4,6 @@
 }
 
 .stripe {
-  /*background-color: #6ca4bd; #8690b6*/
   background-color: #8492b6;
   color: white;
 }
@@ -13,15 +12,18 @@
   grid-area: centerBox;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  width: 60vw;
+  width: 70vw;
   height: 100vh;
+}
+
+.textCenter {
+  text-align: center;
 }
 
 .spaceLeft {
   grid-area: spaceLeft;
   height: 100vh;
-  width: 20vw;
+  width: 15vw;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     0deg,
@@ -34,7 +36,7 @@
 .spaceRight {
   grid-area: spaceRight;
   height: 100vh;
-  width: 20vw;
+  width: 15vw;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     0deg,

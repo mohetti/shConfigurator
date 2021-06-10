@@ -11,7 +11,7 @@ function Start() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Smart Home Konfigurator</h1>
           <h2 className="mgb2">komwoh</h2>

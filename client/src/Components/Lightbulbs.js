@@ -86,6 +86,10 @@ function Lightbulbs() {
     sessionStorage.setItem('gu10A', gu10A);
     sessionStorage.setItem('gu10M', gu10M);
 
+    e27W || e27A || e27M || e14W || e14A || e14M || gu10W || gu10A || gu10M
+      ? sessionStorage.setItem('lightbulbsTemp', true)
+      : sessionStorage.setItem('lightbulbsTemp', false);
+
     if (innerLights) return history.push('/innenbeleuchtung');
     if (garden) return history.push('/gartenbeleuchtung');
     if (heating) return history.push('/heizung');
@@ -140,7 +144,7 @@ function Lightbulbs() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Spots & Glühbirnen:</h1>
         </header>

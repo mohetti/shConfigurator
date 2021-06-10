@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import uniqid from 'uniqid';
 
 function Overview() {
   const [results, setResults] = useState(null);
@@ -10,12 +11,10 @@ function Overview() {
   useEffect(() => {
     let querySessionStorage = sessionStorage.getItem('overview');
     setResults(JSON.parse(querySessionStorage));
-    console.log(JSON.parse(querySessionStorage));
     setLoading(false);
   }, []);
 
   const details = (system) => {
-    console.log(system);
     sessionStorage.setItem('system', system);
     return history.push('/details');
   };
@@ -31,13 +30,21 @@ function Overview() {
     system.notCompSystems.map((x) => {
       subSystemsArr.push({ name: x, comp: null });
     });
+    if (
+      system.notCompSystems.length < 1 &&
+      system.compSystems.length < 1 &&
+      system.partialCompSystems.length < 1
+    ) {
+      subSystemsArr.push({ comp: 'main' });
+    }
     return subSystemsArr.map((x) => {
       return (
-        <div>
+        <div key={uniqid()}>
           <div>{x.name}</div>
-          {x.comp && <div className="dotComp"></div>}
+          {x.comp === true && <div className="dotComp"></div>}
           {x.comp === false && <div className="dotPartialComp"></div>}
           {x.comp === null && <div className="dotNotComp"></div>}
+          {x.comp === 'main' && <div className="dotMain"></div>}
         </div>
       );
     });
@@ -46,7 +53,7 @@ function Overview() {
   const populateResults = () => {
     return results.map((x) => {
       return (
-        <div className="overviewBox">
+        <div className="overviewBox" key={uniqid()}>
           <h2 className="stripe border">{x.mainSystem}</h2>
           <h3 className="inConnection border">in Verbindung mit:</h3>
           <div className="connectedSystemsContainer">
@@ -56,7 +63,9 @@ function Overview() {
             <div className="base">
               <h3>Basisstationen: </h3>
               <div className="circle">
-                {x.mainBase !== null ? x.substations.length + 1 : x.substations}
+                {x.mainBase !== 'null'
+                  ? x.substations.length + 1
+                  : x.substations.length}
               </div>
             </div>
             <div>
@@ -71,12 +80,14 @@ function Overview() {
   };
 
   return (
-    <div>
+    <div className="windowContainer">
+      <div className="spaceLeft"></div>
       {loading ? (
-        <div>Loading</div>
+        <div className="center textCenter">Loading</div>
       ) : (
-        <div className="overviewContainer">{populateResults()}</div>
+        <div className="center overviewContainer">{populateResults()}</div>
       )}
+      <div className="spaceRight"></div>
     </div>
   );
 }

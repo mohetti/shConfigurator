@@ -1,0 +1,41 @@
+.lightbulbs {
+  text-align: left;
+}
+.line {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  margin: 0 2%;
+}
+
+.productContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.productBox {
+  margin: 2% 2%;
+  border: 2px solid #8a8db5;
+  border-radius: 10px;
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  height: 30vh;
+  width: 30vh;
+  border-radius: 15%;
+}
+
+.productBox > img {
+  height: 15vh;
+  width: 15vh;
+}
+.productName {
+  margin-top: 5%;
+}
+.dotPos {
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
+}

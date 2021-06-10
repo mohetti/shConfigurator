@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
+import placeholder from '../images/placeholder.png';
 
 function Details() {
   const [system, setSystem] = useState(null);
@@ -111,12 +112,17 @@ function Details() {
   const populateProducts = (category) => {
     return category.map((x) => {
       return (
-        <div key={uniqid()}>
-          <div>{x.name}</div>
-          {x.comp === true && <div>green</div>}
-          {x.comp === false && <div>yellow</div>}
-          {x.comp === null && <div>red</div>}
-          {x.comp === 'main' && <div>blue</div>}
+        <div key={uniqid()} className="productBox">
+          <img src={placeholder} />
+          <div className="productName">{x.name}</div>
+          <div className="dotPos">
+            <div>{x.comp === true && <div className="dotComp"></div>}</div>
+            <div>
+              {x.comp === false && <div className="dotPartialComp"></div>}
+            </div>
+            <div>{x.comp === null && <div className="dotNotComp"></div>}</div>
+            <div>{x.comp === 'main' && <div className="dotMain"></div>}</div>
+          </div>
         </div>
       );
     });
@@ -124,48 +130,62 @@ function Details() {
 
   const populateResult = () => {
     return (
-      <div>
-        <div>{system}</div>
-        <div>
-          {lightbulbs.length > 0 && (
-            <div>
-              <div>Glühbirnen and Spots: </div>
-              <div>{populateProducts(lightbulbs)}</div>
-            </div>
-          )}
+      <div className="windowContainer">
+        <div className="spaceLeft"></div>
+        <div className="center">
+          <h1 className="stripe mgt1 textCenter">{system}</h1>
+          <div className="lightbulbs">
+            {lightbulbs.length > 0 && (
+              <div>
+                <h3 className="line">Glühbirnen and Spots</h3>
+                <div className="productContainer">
+                  {populateProducts(lightbulbs)}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="lightbulbs">
+            {innerLights.length > 0 && (
+              <div>
+                <h3 className="line">Innenbeleuchtung: </h3>
+                <div className="productContainer">
+                  {populateProducts(innerLights)}
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            {gardenLights.length > 0 && (
+              <div className="lightbulbs">
+                <h3 className="line">Gartenbeleuchtung: </h3>
+                <div className="productContainer">
+                  {populateProducts(gardenLights)}
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            {heating.length > 0 && (
+              <div className="lightbulbs">
+                <h3 className="line">Heizungssteuerung: </h3>
+                <div className="productContainer">
+                  {populateProducts(heating)}
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            {security.length > 0 && (
+              <div className="lightbulbs">
+                <h3 className="line">Sicherheitstechnik: </h3>
+                <div className="productContainer">
+                  {populateProducts(security)}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-        <div>
-          {innerLights.length > 0 && (
-            <div>
-              <div>Innenbeleuchtung: </div>
-              <div>{populateProducts(innerLights)}</div>
-            </div>
-          )}
-        </div>
-        <div>
-          {gardenLights.length > 0 && (
-            <div>
-              <div>Gartenbeleuchtung: </div>
-              <div>{populateProducts(gardenLights)}</div>
-            </div>
-          )}
-        </div>
-        <div>
-          {heating.length > 0 && (
-            <div>
-              <div>Heizungssteuerung: </div>
-              <div>{populateProducts(heating)}</div>
-            </div>
-          )}
-        </div>
-        <div>
-          {security.length > 0 && (
-            <div>
-              <div>Sicherheitstechnik: </div>
-              <div>{populateProducts(security)}</div>
-            </div>
-          )}
-        </div>
+        <div className="spaceRight"></div>
       </div>
     );
   };

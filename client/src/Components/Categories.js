@@ -119,7 +119,7 @@ function Categories() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Kategorien:</h1>
         </header>

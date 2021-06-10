@@ -33,6 +33,23 @@ function Confirm() {
     sessionStorage.getItem('garden') === 'true'
   );
 
+  // temps
+  const [innerLightsTemp, setInnerLightsTemp] = useState(
+    sessionStorage.getItem('innerLightsTemp') === 'true'
+  );
+  const [lightbulbsTemp, setLightbulbsTemp] = useState(
+    sessionStorage.getItem('lightbulbsTemp') === 'true'
+  );
+  const [gardenTemp, setGardenTemp] = useState(
+    sessionStorage.getItem('gardenTemp') === 'true'
+  );
+  const [heatingTemp, setHeatingTemp] = useState(
+    sessionStorage.getItem('heatingTemp') === 'true'
+  );
+  const [securityTemp, setSecurityTemp] = useState(
+    sessionStorage.getItem('securityTemp') === 'true'
+  );
+
   // lightbulbs
   const [e27W, setE27W] = useState(sessionStorage.getItem('e27W') === 'true');
   const [e27A, setE27A] = useState(sessionStorage.getItem('e27A') === 'true');
@@ -247,7 +264,6 @@ function Confirm() {
     api
       .post('/', transferData)
       .then((res) => {
-        console.log(res.data);
         sessionStorage.setItem('overview', JSON.stringify(res.data));
         history.push('/overview');
       })
@@ -261,134 +277,369 @@ function Confirm() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="confirmCategoryContainer">
-          <h1>Bestätige Deine Auswahl</h1>
-          {light && (
-            <div>
+        <div className="windowContainer">
+          <div className="spaceLeft"></div>
+          <div className="center">
+            <h1 className="stripe mgt1 textCenter">Bestätige Deine Auswahl</h1>
+            {(lightbulbsTemp || gardenTemp || innerLightsTemp) && (
               <div>
-                <h2>Beleuchtung:</h2>
+                <div>
+                  <h2>Beleuchtung:</h2>
+                </div>
+                {lightbulbsTemp && (
+                  <div>
+                    <div>
+                      <h3 className="line">Glühbirnen: </h3>
+                    </div>
+                    <div className="productContainer">
+                      {e27W && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Glühbirne E27, dimmbar</div>
+                        </div>
+                      )}
+
+                      {e27A && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Glühbirne E27, dimmbares Weißlicht</div>
+                        </div>
+                      )}
+
+                      <div>
+                        {e27M && (
+                          <div className="productBox">
+                            <img src={placeholder} />
+                            <div>Glühbirne E27, Weiß- und Farblicht</div>
+                          </div>
+                        )}
+                      </div>
+                      {e14W && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Glühbirne E14, dimmbar</div>
+                        </div>
+                      )}
+                      {e14A && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Glühbirne E14, dimmbar</div>
+                        </div>
+                      )}
+                      {e14M && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Glühbirne E14, dimmbar</div>
+                        </div>
+                      )}
+                      {gu10W && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>GU10 Spot, dimmbar</div>
+                        </div>
+                      )}
+                      {gu10A && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>GU10 Spot, dimmbar</div>
+                        </div>
+                      )}
+                      {gu10M && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>GU10 Spot, dimmbar</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {innerLightsTemp && (
+                  <div>
+                    <div>
+                      <h3 className="line">Innenbeleuchtung:</h3>
+                    </div>
+                    <div className="productContainer">
+                      {strip && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Leuchtstreifen</div>
+                        </div>
+                      )}
+                      {tableLamp && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Tischlampe</div>
+                        </div>
+                      )}
+                      {plugN && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Zwischenstecker</div>
+                        </div>
+                      )}
+                      {plugD && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Zwischenstecker mit Dimmfunktion</div>
+                        </div>
+                      )}
+                      {recSpotW && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Einbauspot, dimmbar</div>
+                        </div>
+                      )}
+                      {recSpotA && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Einbauspot, dimmbares Weißlicht</div>
+                        </div>
+                      )}
+                      {recSpotM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Einbauspot, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                      {surfSpotA && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Spotlampe, dimmbares Weißlicht</div>
+                        </div>
+                      )}
+                      {surfSpotM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Spotlampe, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                      {ceilingA && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Deckenleuchte, dimmbares Weißlicht</div>
+                        </div>
+                      )}
+                      {ceilingM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Deckenleuchte, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                      {recSwitchN && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Unterputzaktor</div>
+                        </div>
+                      )}
+                      {recSwitchD && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Unterputzaktor mit Dimmfunktion</div>
+                        </div>
+                      )}
+                      {wallA && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wandleuchte, dimmbares Weißlicht</div>
+                        </div>
+                      )}
+                      {wallM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wandleuchte, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {gardenTemp && (
+                  <div>
+                    <div>
+                      <h3 className="line">Gartenbeleuchtung:</h3>
+                    </div>
+                    <div className="productContainer">
+                      {pathLightW && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wegeleuchte, dimmbar</div>
+                        </div>
+                      )}
+                      {pathLightM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wegeleuchte, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                      {gardenSpot && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Gartenspot</div>
+                        </div>
+                      )}
+                      {gardenStrip && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Leuchtsteifen für den Garten</div>
+                        </div>
+                      )}
+                      {wallGardenW && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wandleuchte, dimmbar</div>
+                        </div>
+                      )}
+                      {wallGardenM && (
+                        <div className="productBox">
+                          <img src={placeholder} />
+                          <div>Wandleuchte, Weiß- und Farblicht</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
-              {lightbulbs && (
-                <div>
-                  <div>
-                    <h3>Glühbirnen: </h3>
-                  </div>
-                  <div>
-                    <ul>
-                      {e27W && <li>Glühbirne E27, dimmbar</li>}
-                      {e27A && <li>Glühbirne E27, dimmbares Weißlicht</li>}
-                      {e27M && <li>Glühbirne E27, Weiß- und Farblicht</li>}
-                      {e14W && <li>Glühbirne E14, dimmbar</li>}
-                      {e14A && <li>Glühbirne E14, dimmbar</li>}
-                      {e14M && <li>Glühbirne E14, dimmbar</li>}
-                      {gu10W && <li>GU10 Spot, dimmbar</li>}
-                      {gu10A && <li>GU10 Spot, dimmbar</li>}
-                      {gu10M && <li>GU10 Spot, dimmbar</li>}
-                    </ul>
-                  </div>
-                </div>
-              )}
-              {innerLights && (
-                <div>
-                  <div>
-                    <h3>Innenbeleuchtung:</h3>
-                  </div>
-                  <div>
-                    <ul>
-                      {strip && <li>Leuchtstreifen</li>}
-                      {tableLamp && <li>Tischlampe</li>}
-                      {plugN && <li>Zwischenstecker</li>}
-                      {plugD && <li>Zwischenstecker mit Dimmfunktion</li>}
-                      {recSpotW && <li>Einbauspot, dimmbar</li>}
-                      {recSpotA && <li>Einbauspot, dimmbares Weißlicht</li>}
-                      {recSpotM && <li>Einbauspot, Weiß- und Farblicht</li>}
-                      {surfSpotA && <li>Spotlampe, dimmbares Weißlicht</li>}
-                      {surfSpotM && <li>Spotlampe, Weiß- und Farblicht</li>}
-                      {ceilingA && <li>Deckenleuchte, dimmbares Weißlicht</li>}
-                      {ceilingM && <li>Deckenleuchte, Weiß- und Farblicht</li>}
-                      {recSwitchN && <li>Unterputzaktor</li>}
-                      {recSwitchD && <li>Unterputzaktor mit Dimmfunktion</li>}
-                      {wallA && <li>Wandleuchte, dimmbares Weißlicht</li>}
-                      {wallM && <li>Wandleuchte, Weiß- und Farblicht</li>}
-                    </ul>
-                  </div>
-                </div>
-              )}
-              {garden && (
-                <div>
-                  <div>
-                    <h3>Gartenbeleuchtung:</h3>
-                  </div>
-                  <div>
-                    <ul>
-                      {pathLightW && <li>Wegeleuchte, dimmbar</li>}
-                      {pathLightM && <li>Wegeleuchte, Weiß- und Farblicht</li>}
-                      {gardenSpot && <li>Gartenspot</li>}
-                      {gardenStrip && <li>Leuchtsteifen für den Garten</li>}
-                      {wallGardenW && <li>Wandleuchte, dimmbar</li>}
-                      {wallGardenM && <li>Wandleuchte, Weiß- und Farblicht</li>}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-          {heating && (
-            <div>
+            )}
+            {heatingTemp && (
               <div>
-                <h2>Heizung: </h2>
-              </div>
-              <div>
-                <ul>
-                  {radiator && <li>Heizkörperthermostat</li>}
-                  {thermostatWired230 && <li>Wandthermostat, 230V</li>}
-                  {thermostatWired24 && <li>Wandthermostat, 24V</li>}
-                  {thermostatWireless && <li>Wandthermostat, Funk</li>}
+                <div>
+                  <h2 className="line">Heizung: </h2>
+                </div>
+                <div className="productContainer">
+                  {radiator && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Heizkörperthermostat</div>
+                    </div>
+                  )}
+                  {thermostatWired230 && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Wandthermostat, 230V</div>
+                    </div>
+                  )}
+                  {thermostatWired24 && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Wandthermostat, 24V</div>
+                    </div>
+                  )}
+                  {thermostatWireless && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Wandthermostat, Funk</div>
+                    </div>
+                  )}
                   {heatActor230_06 && (
-                    <li>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</li>
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</div>
+                    </div>
                   )}
                   {heatActor230_10 && (
-                    <li>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</li>
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</div>
+                    </div>
                   )}
                   {heatActor24_06 && (
-                    <li>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</li>
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</div>
+                    </div>
                   )}
                   {heatActor24_10 && (
-                    <li>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</li>
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</div>
+                    </div>
                   )}
                   {heatActor12Motorized && (
-                    <li>
-                      Fußbodenheizungsaktor, motorisiert | 12 Stellantriebe
-                    </li>
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>
+                        Fußbodenheizungsaktor, motorisiert | 12 Stellantriebe
+                      </div>
+                    </div>
                   )}
-                </ul>
+                </div>
               </div>
-            </div>
-          )}
-          {security && (
-            <div>
+            )}
+            {securityTemp && (
               <div>
-                <h2>Sicherheit: </h2>
+                <div>
+                  <h2 className="line">Sicherheit: </h2>
+                </div>
+                <div className="productContainer">
+                  {motionI && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Bewegungsmelder, innen</div>
+                    </div>
+                  )}
+                  {windowSensor && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Tür- und Fensterkontakt</div>
+                    </div>
+                  )}
+                  {sirenI && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Alarmsirene, innen</div>
+                    </div>
+                  )}
+                  {smoke && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Rauchwarnmelder</div>
+                    </div>
+                  )}
+                  {cameraI && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Sicherheitskamera, innen</div>
+                    </div>
+                  )}
+                  {lock && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Türschloss</div>
+                    </div>
+                  )}
+                  {motionO && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Bewegungsmelder, außen</div>
+                    </div>
+                  )}
+                  {sirenO && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Alarmsirene, außen</div>
+                    </div>
+                  )}
+                  {cameraO && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Sicherheitskamera, außen</div>
+                    </div>
+                  )}
+                  {doorbell && (
+                    <div className="productBox">
+                      <img src={placeholder} />
+                      <div>Video-Türklingel</div>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div>
-                <ul>
-                  {motionI && <li>Bewegungsmelder, innen</li>}
-                  {windowSensor && <li>Tür- und Fensterkontakt</li>}
-                  {sirenI && <li>Alarmsirene, innen</li>}
-                  {smoke && <li>Rauchwarnmelder</li>}
-                  {cameraI && <li>Sicherheitskamera, innen</li>}
-                  {lock && <li>Türschloss</li>}
-                  {motionO && <li>Bewegungsmelder, außen</li>}
-                  {sirenO && <li>Alarmsirene, außen</li>}
-                  {cameraO && <li>Sicherheitskamera, außen</li>}
-                  {doorbell && <li>Video-Türklingel</li>}
-                </ul>
-              </div>
+            )}
+            <div className="confirmBtnPos">
+              <button className="btn" onClick={backendRequest}>
+                Confirm
+              </button>
             </div>
-          )}
-          <div>
-            <button onClick={backendRequest}>Confirm</button>
           </div>
+          <div className="spaceRight"></div>
         </div>
       )}
     </div>

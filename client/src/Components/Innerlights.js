@@ -114,6 +114,24 @@ function Innerlights() {
     sessionStorage.setItem('recSwitchN', recSwitchN);
     sessionStorage.setItem('recSwitchD', recSwitchD);
 
+    tableLamp ||
+    strip ||
+    plugN ||
+    plugD ||
+    recSpotW ||
+    recSpotA ||
+    recSpotM ||
+    surfSpotA ||
+    surfSpotM ||
+    ceilingA ||
+    ceilingM ||
+    wallA ||
+    wallM ||
+    recSwitchN ||
+    recSwitchD
+      ? sessionStorage.setItem('innerLightsTemp', true)
+      : sessionStorage.setItem('innerLightsTemp', false);
+
     if (garden) return history.push('/gartenbeleuchtung');
     if (heating) return history.push('/heizung');
     if (security) return history.push('/sicherheit');
@@ -216,7 +234,7 @@ function Innerlights() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">weitere Innenbeleuchtung:</h1>
         </header>

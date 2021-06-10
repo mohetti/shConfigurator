@@ -23,7 +23,9 @@ import './Components/stylesConfigurator/security.css';
 import './Components/stylesConfigurator/innerlights.css';
 import './Components/stylesConfigurator/gardenlights.css';
 import './Components/stylesConfigurator/lightbulbs.css';
+import './Components/stylesConfigurator/overview.css';
 import './Components/stylesConfigurator/confirm.css';
+import './Components/stylesConfigurator/details.css';
 
 function App() {
   return (

@@ -64,6 +64,15 @@ function Gardenlights() {
     sessionStorage.setItem('wallGardenM', wallGardenM);
     sessionStorage.setItem('gardenStrip', gardenStrip);
 
+    pathLightW ||
+    pathLightM ||
+    gardenSpot ||
+    wallGardenW ||
+    wallGardenM ||
+    gardenStrip
+      ? sessionStorage.setItem('gardenTemp', true)
+      : sessionStorage.setItem('gardenTemp', false);
+
     if (heating) return history.push('/heizung');
     if (security) return history.push('/sicherheit');
     return history.push('/confirm');
@@ -104,7 +113,7 @@ function Gardenlights() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Gartenbeleuchtung:</h1>
         </header>

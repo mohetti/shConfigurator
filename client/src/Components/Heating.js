@@ -96,6 +96,18 @@ function Heating() {
     sessionStorage.setItem('heatActor230_06', heatActor230_06);
     sessionStorage.setItem('heatActor230_10', heatActor230_10);
 
+    radiator ||
+    thermostatWired230 ||
+    thermostatWired24 ||
+    thermostatWireless ||
+    heatActor12Motorized ||
+    heatActor24_06 ||
+    heatActor24_10 ||
+    heatActor230_06 ||
+    heatActor230_10
+      ? sessionStorage.setItem('heatingTemp', true)
+      : sessionStorage.setItem('heatingTemp', false);
+
     if (security) return history.push('/sicherheit');
     return history.push('/confirm');
   };
@@ -190,7 +202,7 @@ function Heating() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Heizungssteuerung:</h1>
         </header>

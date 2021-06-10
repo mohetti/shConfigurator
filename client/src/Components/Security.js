@@ -94,6 +94,19 @@ function Security() {
     sessionStorage.setItem('cameraI', cameraI);
     sessionStorage.setItem('cameraO', cameraO);
 
+    motionI ||
+    motionO ||
+    windowSensor ||
+    sirenI ||
+    sirenO ||
+    smoke ||
+    lock ||
+    doorbell ||
+    cameraI ||
+    cameraO
+      ? sessionStorage.setItem('securityTemp', true)
+      : sessionStorage.setItem('securityTemp', false);
+
     return history.push('/confirm');
   };
 
@@ -143,7 +156,7 @@ function Security() {
   return (
     <div className="windowContainer">
       <div className="spaceLeft"></div>
-      <div className="center">
+      <div className="center textCenter">
         <header>
           <h1 className="stripe mgt1">Sicherheitstechnik:</h1>
         </header>
