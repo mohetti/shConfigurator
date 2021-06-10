@@ -1,11 +1,11 @@
 .mgHeating {
-  margin: 5% 15% 0 15%;
+  margin: 12% 15% 0 15%;
 }
 
 .heatingContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-around;
+  justify-content: space-between;
   grid-template-areas:
     'radiator thermostat heatActors'
     'boxThermostat boxThermostat boxThermostat'

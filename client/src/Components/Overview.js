@@ -35,9 +35,9 @@ function Overview() {
       return (
         <div>
           <div>{x.name}</div>
-          {x.comp && <div>green</div>}
-          {x.comp === false && <div>yellow</div>}
-          {x.comp === null && <div>red</div>}
+          {x.comp && <div className="dotComp"></div>}
+          {x.comp === false && <div className="dotPartialComp"></div>}
+          {x.comp === null && <div className="dotNotComp"></div>}
         </div>
       );
     });
@@ -46,22 +46,24 @@ function Overview() {
   const populateResults = () => {
     return results.map((x) => {
       return (
-        <div>
-          <div>{x.mainSystem}</div>
-          <div>
-            <div>in Verbindung mit:</div>
-            <div>{populateSubsystems(x)}</div>
+        <div className="overviewBox">
+          <h2 className="stripe border">{x.mainSystem}</h2>
+          <h3 className="inConnection border">in Verbindung mit:</h3>
+          <div className="connectedSystemsContainer">
+            {populateSubsystems(x)}
           </div>
-          <div>
-            <div>Basisstationen:</div>
-            <div>
-              {x.mainBase !== null ? x.substations.length + 1 : x.substations}
+          <div className="bottomOfContainer">
+            <div className="base">
+              <h3>Basisstationen: </h3>
+              <div className="circle">
+                {x.mainBase !== null ? x.substations.length + 1 : x.substations}
+              </div>
             </div>
-          </div>
-          <div>
-            <button onClick={() => details(x.mainSystem)}>
-              zur Auflistung:{' '}
-            </button>
+            <div>
+              <button className="btn" onClick={() => details(x.mainSystem)}>
+                zur Auflistung{' '}
+              </button>
+            </div>
           </div>
         </div>
       );
@@ -69,7 +71,13 @@ function Overview() {
   };
 
   return (
-    <div>{loading ? <div>Loading</div> : <div>{populateResults()}</div>}</div>
+    <div>
+      {loading ? (
+        <div>Loading</div>
+      ) : (
+        <div className="overviewContainer">{populateResults()}</div>
+      )}
+    </div>
   );
 }
 

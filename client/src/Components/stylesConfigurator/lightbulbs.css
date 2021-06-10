@@ -1,11 +1,11 @@
 .mgLightbulbs {
-  margin: 5% 15% 0 15%;
+  margin: 12% 15% 0 15%;
 }
 
 .lightBulbContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-around;
+  justify-content: space-between;
   grid-template-areas:
     'white ambiance multicolor'
     'bulbs bulbs bulbs';

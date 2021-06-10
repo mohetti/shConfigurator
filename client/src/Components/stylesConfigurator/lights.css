@@ -1,11 +1,11 @@
 .mgLights {
-  margin: 5% 15% 0 15%;
+  margin: 12% 15% 0 15%;
 }
 
 .lightContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-around;
+  justify-content: space-between;
   grid-template-areas: 'lightbulbs innerLights garden';
 }
 

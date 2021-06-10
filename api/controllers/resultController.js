@@ -39,10 +39,10 @@ exports.result_get = function (req, res, next) {
     .populate('products.gardenSpot')
     .populate('products.gardenStrip')
     .populate('products.heatActor12Motorized')
-    .populate('products.HeatActor230_06')
-    .populate('products.HeatActor230_10')
-    .populate('products.HeatActor24_06')
-    .populate('products.HeatActor24_10')
+    .populate('products.heatActor230_06')
+    .populate('products.heatActor230_10')
+    .populate('products.heatActor24_06')
+    .populate('products.heatActor24_10')
     .populate('products.lock')
     .populate('products.motionI')
     .populate('products.motionO')
@@ -52,7 +52,7 @@ exports.result_get = function (req, res, next) {
     .populate('products.plugD')
     .populate('products.radiator')
     .populate('products.recSpotA')
-    .populate('products.recSptM')
+    .populate('products.recSpotM')
     .populate('products.recSpotW')
     .populate('products.recSwitchD')
     .populate('products.recSwitchN')
@@ -148,6 +148,9 @@ exports.result_get = function (req, res, next) {
                 type: y[0].type[0],
                 comp: null,
               });
+              /*
+Bug with Philips Hue not compatible with Magenta (just use Glühbirnen to reproduce)
+*/
               if (x.notCompSystems.indexOf(y[0].system) === -1) {
                 x.notCompSystems.push(y[0].system);
                 subStationQuery.push(y[0].system);
@@ -163,7 +166,6 @@ exports.result_get = function (req, res, next) {
         });
         delete x.productsTemp;
       });
-
       /*
        **** Second of Two Database Queries *****
        * the query is needed to populate substations for each main system.
@@ -211,7 +213,35 @@ exports.result_get = function (req, res, next) {
             populateSubstations(x.notCompSystems, x.substations, x.baseNotFrom);
             delete x.baseNotFrom;
           });
-          res.send(responseSystems);
+          let heatactors = [
+            'heatActor24_06',
+            'heatActor24_10',
+            'heatActor230_06',
+            'heatActor230_10',
+            'heatActor12Motorized',
+          ];
+          responseSystems.map((x) => {
+            if (x.mainSystem === 'Magenta SmartHome') {
+              x.products.map((y) => {
+                if (heatactors.indexOf(y.type) !== -1) {
+                  return x.substations.push('Homematic IP WLAN Access Point');
+                }
+              });
+            }
+          });
+
+          let singleSystem = false;
+          let responseWithSingleSystem = [];
+          responseSystems.map((x) => {
+            if (x.substations < 1) {
+              singleSystem = true;
+              responseWithSingleSystem.push(x);
+              return;
+            }
+          });
+          singleSystem === true
+            ? res.send(responseWithSingleSystem)
+            : res.send(responseSystems);
         });
     });
 };

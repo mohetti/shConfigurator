@@ -1,11 +1,11 @@
 .mgSecurity {
-  margin: 5% 15% 0 15%;
+  margin: 12% 0 0 0;
 }
 
 .securityContainer {
   grid-area: contentContainer;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-around;
   grid-template-areas:
     '. motion windowSensor siren .'
     '. boxMotion . . .'

@@ -261,104 +261,129 @@ function Confirm() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <div className="confirmCategoryContainer">
+          <h1>Bestätige Deine Auswahl</h1>
           {light && (
             <div>
-              <div>Beleuchtung: </div>
+              <div>
+                <h2>Beleuchtung:</h2>
+              </div>
               {lightbulbs && (
                 <div>
-                  <div>Glühbirnen: </div>
-                  <ul>
-                    {e27W && <li>Glühbirne E27, dimmbar</li>}
-                    {e27A && <li>Glühbirne E27, dimmbares Weißlicht</li>}
-                    {e27M && <li>Glühbirne E27, Weiß- und Farblicht</li>}
-                    {e14W && <li>Glühbirne E14, dimmbar</li>}
-                    {e14A && <li>Glühbirne E14, dimmbar</li>}
-                    {e14M && <li>Glühbirne E14, dimmbar</li>}
-                    {gu10W && <li>GU10 Spot, dimmbar</li>}
-                    {gu10A && <li>GU10 Spot, dimmbar</li>}
-                    {gu10M && <li>GU10 Spot, dimmbar</li>}
-                  </ul>
+                  <div>
+                    <h3>Glühbirnen: </h3>
+                  </div>
+                  <div>
+                    <ul>
+                      {e27W && <li>Glühbirne E27, dimmbar</li>}
+                      {e27A && <li>Glühbirne E27, dimmbares Weißlicht</li>}
+                      {e27M && <li>Glühbirne E27, Weiß- und Farblicht</li>}
+                      {e14W && <li>Glühbirne E14, dimmbar</li>}
+                      {e14A && <li>Glühbirne E14, dimmbar</li>}
+                      {e14M && <li>Glühbirne E14, dimmbar</li>}
+                      {gu10W && <li>GU10 Spot, dimmbar</li>}
+                      {gu10A && <li>GU10 Spot, dimmbar</li>}
+                      {gu10M && <li>GU10 Spot, dimmbar</li>}
+                    </ul>
+                  </div>
                 </div>
               )}
               {innerLights && (
                 <div>
-                  <div>Innenbeleuchtung: </div>
-                  <ul>
-                    {strip && <li>Leuchtstreifen</li>}
-                    {tableLamp && <li>Tischlampe</li>}
-                    {plugN && <li>Zwischenstecker</li>}
-                    {plugD && <li>Zwischenstecker mit Dimmfunktion</li>}
-                    {recSpotW && <li>Einbauspot, dimmbar</li>}
-                    {recSpotA && <li>Einbauspot, dimmbares Weißlicht</li>}
-                    {recSpotM && <li>Einbauspot, Weiß- und Farblicht</li>}
-                    {surfSpotA && <li>Spotlampe, dimmbares Weißlicht</li>}
-                    {surfSpotM && <li>Spotlampe, Weiß- und Farblicht</li>}
-                    {ceilingA && <li>Deckenleuchte, dimmbares Weißlicht</li>}
-                    {ceilingM && <li>Deckenleuchte, Weiß- und Farblicht</li>}
-                    {recSwitchN && <li>Unterputzaktor</li>}
-                    {recSwitchD && <li>Unterputzaktor mit Dimmfunktion</li>}
-                    {wallA && <li>Wandleuchte, dimmbares Weißlicht</li>}
-                    {wallM && <li>Wandleuchte, Weiß- und Farblicht</li>}
-                  </ul>
+                  <div>
+                    <h3>Innenbeleuchtung:</h3>
+                  </div>
+                  <div>
+                    <ul>
+                      {strip && <li>Leuchtstreifen</li>}
+                      {tableLamp && <li>Tischlampe</li>}
+                      {plugN && <li>Zwischenstecker</li>}
+                      {plugD && <li>Zwischenstecker mit Dimmfunktion</li>}
+                      {recSpotW && <li>Einbauspot, dimmbar</li>}
+                      {recSpotA && <li>Einbauspot, dimmbares Weißlicht</li>}
+                      {recSpotM && <li>Einbauspot, Weiß- und Farblicht</li>}
+                      {surfSpotA && <li>Spotlampe, dimmbares Weißlicht</li>}
+                      {surfSpotM && <li>Spotlampe, Weiß- und Farblicht</li>}
+                      {ceilingA && <li>Deckenleuchte, dimmbares Weißlicht</li>}
+                      {ceilingM && <li>Deckenleuchte, Weiß- und Farblicht</li>}
+                      {recSwitchN && <li>Unterputzaktor</li>}
+                      {recSwitchD && <li>Unterputzaktor mit Dimmfunktion</li>}
+                      {wallA && <li>Wandleuchte, dimmbares Weißlicht</li>}
+                      {wallM && <li>Wandleuchte, Weiß- und Farblicht</li>}
+                    </ul>
+                  </div>
                 </div>
               )}
               {garden && (
                 <div>
-                  <div>Gartenbeleuchtung: </div>
-                  <ul>
-                    {pathLightW && <li>Wegeleuchte, dimmbar</li>}
-                    {pathLightM && <li>Wegeleuchte, Weiß- und Farblicht</li>}
-                    {gardenSpot && <li>Gartenspot</li>}
-                    {gardenStrip && <li>Leuchtsteifen für den Garten</li>}
-                    {wallGardenW && <li>Wandleuchte, dimmbar</li>}
-                    {wallGardenM && <li>Wandleuchte, Weiß- und Farblicht</li>}
-                  </ul>
+                  <div>
+                    <h3>Gartenbeleuchtung:</h3>
+                  </div>
+                  <div>
+                    <ul>
+                      {pathLightW && <li>Wegeleuchte, dimmbar</li>}
+                      {pathLightM && <li>Wegeleuchte, Weiß- und Farblicht</li>}
+                      {gardenSpot && <li>Gartenspot</li>}
+                      {gardenStrip && <li>Leuchtsteifen für den Garten</li>}
+                      {wallGardenW && <li>Wandleuchte, dimmbar</li>}
+                      {wallGardenM && <li>Wandleuchte, Weiß- und Farblicht</li>}
+                    </ul>
+                  </div>
                 </div>
               )}
             </div>
           )}
           {heating && (
             <div>
-              <div>Heizung: </div>
-              <ul>
-                {radiator && <li>Heizkörperthermostat</li>}
-                {thermostatWired230 && <li>Wandthermostat, 230V</li>}
-                {thermostatWired24 && <li>Wandthermostat, 24V</li>}
-                {thermostatWireless && <li>Wandthermostat, Funk</li>}
-                {heatActor230_06 && (
-                  <li>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</li>
-                )}
-                {heatActor230_10 && (
-                  <li>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</li>
-                )}
-                {heatActor24_06 && (
-                  <li>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</li>
-                )}
-                {heatActor24_10 && (
-                  <li>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</li>
-                )}
-                {heatActor12Motorized && (
-                  <li>Fußbodenheizungsaktor, motorisiert | 12 Stellantriebe</li>
-                )}
-              </ul>
+              <div>
+                <h2>Heizung: </h2>
+              </div>
+              <div>
+                <ul>
+                  {radiator && <li>Heizkörperthermostat</li>}
+                  {thermostatWired230 && <li>Wandthermostat, 230V</li>}
+                  {thermostatWired24 && <li>Wandthermostat, 24V</li>}
+                  {thermostatWireless && <li>Wandthermostat, Funk</li>}
+                  {heatActor230_06 && (
+                    <li>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</li>
+                  )}
+                  {heatActor230_10 && (
+                    <li>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</li>
+                  )}
+                  {heatActor24_06 && (
+                    <li>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</li>
+                  )}
+                  {heatActor24_10 && (
+                    <li>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</li>
+                  )}
+                  {heatActor12Motorized && (
+                    <li>
+                      Fußbodenheizungsaktor, motorisiert | 12 Stellantriebe
+                    </li>
+                  )}
+                </ul>
+              </div>
             </div>
           )}
           {security && (
             <div>
-              <div>Sicherheit: </div>
-              <ul>
-                {motionI && <li>Bewegungsmelder, innen</li>}
-                {windowSensor && <li>Tür- und Fensterkontakt</li>}
-                {sirenI && <li>Alarmsirene, innen</li>}
-                {smoke && <li>Rauchwarnmelder</li>}
-                {cameraI && <li>Sicherheitskamera, innen</li>}
-                {lock && <li>Türschloss</li>}
-                {motionO && <li>Bewegungsmelder, außen</li>}
-                {sirenO && <li>Alarmsirene, außen</li>}
-                {cameraO && <li>Sicherheitskamera, außen</li>}
-                {doorbell && <li>Video-Türklingel</li>}
-              </ul>
+              <div>
+                <h2>Sicherheit: </h2>
+              </div>
+              <div>
+                <ul>
+                  {motionI && <li>Bewegungsmelder, innen</li>}
+                  {windowSensor && <li>Tür- und Fensterkontakt</li>}
+                  {sirenI && <li>Alarmsirene, innen</li>}
+                  {smoke && <li>Rauchwarnmelder</li>}
+                  {cameraI && <li>Sicherheitskamera, innen</li>}
+                  {lock && <li>Türschloss</li>}
+                  {motionO && <li>Bewegungsmelder, außen</li>}
+                  {sirenO && <li>Alarmsirene, außen</li>}
+                  {cameraO && <li>Sicherheitskamera, außen</li>}
+                  {doorbell && <li>Video-Türklingel</li>}
+                </ul>
+              </div>
             </div>
           )}
           <div>

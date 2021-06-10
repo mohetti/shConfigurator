@@ -22,6 +22,7 @@ function Start() {
             Smart Home Konfigurator.
           </p>
           <p>Wähle aus den drei Kategorien: Licht, Heizung und Sicherheit.</p>
+
           <h3 className="mgt1">
             <strong>
               Du erhältst Lösungsvorschläge, welche auf Basis Deiner Auswahl:
@@ -32,6 +33,7 @@ function Start() {
           <ul className="checkmark">
             <li>maximal komaptibel sind.</li>
             <li>mit einem Minium an Basisstationen auskommen.</li>
+            <li>möglichst keine Drittanbieter-Software nutzen.</li>
             <li>möglichst viele Geräte mit nur einer App verwalten.</li>
           </ul>
         </div>
