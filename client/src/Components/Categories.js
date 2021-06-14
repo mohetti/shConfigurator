@@ -1,4 +1,11 @@
-import placeholder from '../images/placeholder.png';
+import lightImg from '../images/categories/light.png';
+import heatingImg from '../images/categories/heating.png';
+import securityImg from '../images/categories/security.png';
+
+import lightImgW from '../images/categories/lightW.png';
+import heatingImgW from '../images/categories/heatingW.png';
+import securityImgW from '../images/categories/securityW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -117,34 +124,43 @@ function Categories() {
     if (input === 'security') return setSecurity(!security);
   };
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
-      <div className="center textCenter">
+    <div className="background">
+      <div className="content1">
         <header>
-          <h1 className="stripe mgt1">Kategorien:</h1>
+          <h1 className="stripe mgt1 textCenter">Kategorien:</h1>
         </header>
         <div className="configContainer">
-          <div className="typeContainer mgCtg">
+          <div className="confirmContainer mgCtg">
             <div
               onClick={() => handleClick('lights')}
               className={`typeBox ${light ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Beleuchtung</div>
+              {light ? <img src={lightImgW} /> : <img src={lightImg} />}
+              <div className={`${light ? 'higlightedText' : ''}`}>
+                Beleuchtung
+              </div>
             </div>
             <div
               onClick={() => handleClick('heating')}
               className={`typeBox ${heating ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Heizung</div>
+              {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
+              <div className={`${heating ? 'higlightedText' : ''}`}>
+                Heizung
+              </div>
             </div>
             <div
               onClick={() => handleClick('security')}
               className={`typeBox ${security ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Sicherheit</div>
+              {security ? (
+                <img src={securityImgW} />
+              ) : (
+                <img src={securityImg} />
+              )}
+              <div className={`${security ? 'higlightedText' : ''}`}>
+                Sicherheit
+              </div>
             </div>
           </div>
           <div className="btnContainer">
@@ -160,7 +176,6 @@ function Categories() {
           </div>
         </div>
       </div>
-      <div className="spaceRight  "></div>
     </div>
   );
 }

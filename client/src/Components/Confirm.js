@@ -1,4 +1,33 @@
-import placeholder from '../images/placeholder.png';
+import e27Img from '../images/lights/e27.png';
+import e14Img from '../images//lights/e14.png';
+import gu10Img from '../images/lights/gu10.png';
+
+import stripImg from '../images/lights/strip.png';
+import tableLampImg from '../images/lights/tableLamp.png';
+import recSpotImg from '../images/lights/recSpot.png';
+import wallLightImg from '../images/lights/wallLight.png';
+import plugImg from '../images/lights/plug.png';
+import surfSpotImg from '../images/lights/surfSpot.png';
+import recSwitchImg from '../images/lights/recSwitch.png';
+import ceilingLightImg from '../images/lights/ceilingLight.png';
+
+import gardenSpotImg from '../images/lights/gardenSpot.png';
+import gardenStripImg from '../images/lights/gardenStrip.png';
+import pathLightImg from '../images/lights/pathLight.png';
+import wallGardenLightImg from '../images/lights/wallGardenLight.png';
+
+import radiatorImg from '../images/heating/radiator.png';
+import thermostatImg from '../images/heating/thermostat.png';
+import underfloorHeatingImg from '../images/heating/underfloorHeating.png';
+
+import motionSensorImg from '../images/security/motionSensor.png';
+import windowSensorImg from '../images/security/windowSensor.png';
+import sirenImg from '../images/security/siren.png';
+import smokeDetectorImg from '../images/security/smokeDetector.png';
+import doorLockImg from '../images/security/doorLock.png';
+import videoDoorbellImg from '../images/security/videoDoorbell.png';
+import cameraImg from '../images/security/camera.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -277,77 +306,74 @@ function Confirm() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="windowContainer">
-          <div className="spaceLeft"></div>
-          <div className="center">
+        <div className="background">
+          <div className="content1">
             <h1 className="stripe mgt1 textCenter">Bestätige Deine Auswahl</h1>
             {(lightbulbsTemp || gardenTemp || innerLightsTemp) && (
               <div>
                 <div>
-                  <h2>Beleuchtung:</h2>
+                  <h2 className="mgl1">Beleuchtung:</h2>
                 </div>
                 {lightbulbsTemp && (
                   <div>
                     <div>
-                      <h3 className="line">Glühbirnen: </h3>
+                      <h3 className="line">Glühbirnen & Spots: </h3>
                     </div>
-                    <div className="productContainer">
+                    <div className="confirmContainer">
                       {e27W && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>Glühbirne E27, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={e27Img} />
+                          <div>E27, dimmbar</div>
                         </div>
                       )}
 
                       {e27A && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>Glühbirne E27, dimmbares Weißlicht</div>
+                        <div className="confirmBox">
+                          <img src={e27Img} />
+                          <div>E27, dimmbares Weißlicht</div>
                         </div>
                       )}
 
-                      <div>
-                        {e27M && (
-                          <div className="productBox">
-                            <img src={placeholder} />
-                            <div>Glühbirne E27, Weiß- und Farblicht</div>
-                          </div>
-                        )}
-                      </div>
+                      {e27M && (
+                        <div className="confirmBox">
+                          <img src={e27Img} />
+                          <div>E27, Weiß- und Farblicht</div>
+                        </div>
+                      )}
                       {e14W && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>Glühbirne E14, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={e14Img} />
+                          <div>E14, dimmbar</div>
                         </div>
                       )}
                       {e14A && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>Glühbirne E14, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={e14Img} />
+                          <div>E14, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {e14M && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>Glühbirne E14, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={e14Img} />
+                          <div>E14, Weiß- und Farblicht</div>
                         </div>
                       )}
                       {gu10W && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={gu10Img} />
                           <div>GU10 Spot, dimmbar</div>
                         </div>
                       )}
                       {gu10A && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>GU10 Spot, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={gu10Img} />
+                          <div>GU10 Spot, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {gu10M && (
-                        <div className="productBox">
-                          <img src={placeholder} />
-                          <div>GU10 Spot, dimmbar</div>
+                        <div className="confirmBox">
+                          <img src={gu10Img} />
+                          <div>GU10 Spot, Weiß- und Farblicht</div>
                         </div>
                       )}
                     </div>
@@ -358,94 +384,94 @@ function Confirm() {
                     <div>
                       <h3 className="line">Innenbeleuchtung:</h3>
                     </div>
-                    <div className="productContainer">
+                    <div className="confirmContainer">
                       {strip && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={stripImg} />
                           <div>Leuchtstreifen</div>
                         </div>
                       )}
                       {tableLamp && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={tableLampImg} />
                           <div>Tischlampe</div>
                         </div>
                       )}
                       {plugN && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={plugImg} />
                           <div>Zwischenstecker</div>
                         </div>
                       )}
                       {plugD && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={plugImg} />
                           <div>Zwischenstecker mit Dimmfunktion</div>
                         </div>
                       )}
                       {recSpotW && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={recSpotImg} />
                           <div>Einbauspot, dimmbar</div>
                         </div>
                       )}
                       {recSpotA && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={recSpotImg} />
                           <div>Einbauspot, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {recSpotM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={recSpotImg} />
                           <div>Einbauspot, Weiß- und Farblicht</div>
                         </div>
                       )}
                       {surfSpotA && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={surfSpotImg} />
                           <div>Spotlampe, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {surfSpotM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={surfSpotImg} />
                           <div>Spotlampe, Weiß- und Farblicht</div>
                         </div>
                       )}
                       {ceilingA && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={ceilingLightImg} />
                           <div>Deckenleuchte, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {ceilingM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={ceilingLightImg} />
                           <div>Deckenleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
                       {recSwitchN && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={recSwitchImg} />
                           <div>Unterputzaktor</div>
                         </div>
                       )}
                       {recSwitchD && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={recSwitchImg} />
                           <div>Unterputzaktor mit Dimmfunktion</div>
                         </div>
                       )}
                       {wallA && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={wallLightImg} />
                           <div>Wandleuchte, dimmbares Weißlicht</div>
                         </div>
                       )}
                       {wallM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={wallLightImg} />
                           <div>Wandleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
@@ -457,40 +483,40 @@ function Confirm() {
                     <div>
                       <h3 className="line">Gartenbeleuchtung:</h3>
                     </div>
-                    <div className="productContainer">
+                    <div className="confirmContainer">
                       {pathLightW && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={pathLightImg} />
                           <div>Wegeleuchte, dimmbar</div>
                         </div>
                       )}
                       {pathLightM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={pathLightImg} />
                           <div>Wegeleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
                       {gardenSpot && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={gardenSpotImg} />
                           <div>Gartenspot</div>
                         </div>
                       )}
                       {gardenStrip && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={gardenStripImg} />
                           <div>Leuchtsteifen für den Garten</div>
                         </div>
                       )}
                       {wallGardenW && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={wallGardenLightImg} />
                           <div>Wandleuchte, dimmbar</div>
                         </div>
                       )}
                       {wallGardenM && (
-                        <div className="productBox">
-                          <img src={placeholder} />
+                        <div className="confirmBox">
+                          <img src={wallGardenLightImg} />
                           <div>Wandleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
@@ -502,61 +528,62 @@ function Confirm() {
             {heatingTemp && (
               <div>
                 <div>
-                  <h2 className="line">Heizung: </h2>
+                  <h2 className="mgl1">Heizung: </h2>
+                  <div className="line"></div>
                 </div>
-                <div className="productContainer">
+                <div className="confirmContainer">
                   {radiator && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={radiatorImg} />
                       <div>Heizkörperthermostat</div>
                     </div>
                   )}
                   {thermostatWired230 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={thermostatImg} />
                       <div>Wandthermostat, 230V</div>
                     </div>
                   )}
                   {thermostatWired24 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={thermostatImg} />
                       <div>Wandthermostat, 24V</div>
                     </div>
                   )}
                   {thermostatWireless && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={thermostatImg} />
                       <div>Wandthermostat, Funk</div>
                     </div>
                   )}
                   {heatActor230_06 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</div>
                     </div>
                   )}
                   {heatActor230_10 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</div>
                     </div>
                   )}
                   {heatActor24_06 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</div>
                     </div>
                   )}
                   {heatActor24_10 && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</div>
                     </div>
                   )}
                   {heatActor12Motorized && (
-                    <div className="productBox">
-                      <img src={placeholder} />
-                      <div>
+                    <div className="confirmBox">
+                      <img src={underfloorHeatingImg} />
+                      <div className="smallText">
                         Fußbodenheizungsaktor, motorisiert | 12 Stellantriebe
                       </div>
                     </div>
@@ -567,66 +594,67 @@ function Confirm() {
             {securityTemp && (
               <div>
                 <div>
-                  <h2 className="line">Sicherheit: </h2>
+                  <h2 className="mgl1">Sicherheit: </h2>
+                  <div className="line"></div>
                 </div>
-                <div className="productContainer">
+                <div className="confirmContainer">
                   {motionI && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={motionSensorImg} />
                       <div>Bewegungsmelder, innen</div>
                     </div>
                   )}
                   {windowSensor && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={windowSensorImg} />
                       <div>Tür- und Fensterkontakt</div>
                     </div>
                   )}
                   {sirenI && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={sirenImg} />
                       <div>Alarmsirene, innen</div>
                     </div>
                   )}
                   {smoke && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={smokeDetectorImg} />
                       <div>Rauchwarnmelder</div>
                     </div>
                   )}
                   {cameraI && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={cameraImg} />
                       <div>Sicherheitskamera, innen</div>
                     </div>
                   )}
                   {lock && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={doorLockImg} />
                       <div>Türschloss</div>
                     </div>
                   )}
                   {motionO && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={motionSensorImg} />
                       <div>Bewegungsmelder, außen</div>
                     </div>
                   )}
                   {sirenO && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={sirenImg} />
                       <div>Alarmsirene, außen</div>
                     </div>
                   )}
                   {cameraO && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={cameraImg} />
                       <div>Sicherheitskamera, außen</div>
                     </div>
                   )}
                   {doorbell && (
-                    <div className="productBox">
-                      <img src={placeholder} />
+                    <div className="confirmBox">
+                      <img src={videoDoorbellImg} />
                       <div>Video-Türklingel</div>
                     </div>
                   )}
@@ -639,7 +667,6 @@ function Confirm() {
               </button>
             </div>
           </div>
-          <div className="spaceRight"></div>
         </div>
       )}
     </div>

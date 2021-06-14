@@ -1,4 +1,19 @@
-import placeholder from '../images/placeholder.png';
+import motionSensorImg from '../images/security/motionSensor.png';
+import windowSensorImg from '../images/security/windowSensor.png';
+import sirenImg from '../images/security/siren.png';
+import smokeDetectorImg from '../images/security/smokeDetector.png';
+import doorLockImg from '../images/security/doorLock.png';
+import videoDoorbellImg from '../images/security/videoDoorbell.png';
+import cameraImg from '../images/security/camera.png';
+
+import motionSensorImgW from '../images/security/motionSensorW.png';
+import windowSensorImgW from '../images/security/windowSensorW.png';
+import sirenImgW from '../images/security/sirenW.png';
+import smokeDetectorImgW from '../images/security/smokeDetectorW.png';
+import doorLockImgW from '../images/security/doorLockW.png';
+import videoDoorbellImgW from '../images/security/videoDoorbellW.png';
+import cameraImgW from '../images/security/cameraW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -168,8 +183,14 @@ function Security() {
                 motionI || motionO ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Bewegungsmelder</div>
+              {motionI || motionO ? (
+                <img src={motionSensorImgW} />
+              ) : (
+                <img src={motionSensorImg} />
+              )}
+              <div className={`${motionI || motionO ? 'higlightedText' : ''}`}>
+                Bewegungsmelder
+              </div>
             </div>
             <div
               onClick={() => handleClick('windowSensor', true)}
@@ -177,36 +198,62 @@ function Security() {
                 windowSensor ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Tür-/Fensterkontakt</div>
+              {windowSensor ? (
+                <img src={windowSensorImgW} />
+              ) : (
+                <img src={windowSensorImg} />
+              )}
+              <div className={`${windowSensor ? 'higlightedText' : ''}`}>
+                Tür-/Fensterkontakt
+              </div>
             </div>
             <div
               onClick={() => openBox('siren')}
               className={`typeBox siren ${sirenI || sirenO ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Sirene</div>
+              {sirenI || sirenO ? (
+                <img src={sirenImgW} />
+              ) : (
+                <img src={sirenImg} />
+              )}
+              <div className={`${sirenI || sirenO ? 'higlightedText' : ''}`}>
+                Sirene
+              </div>
             </div>
             <div
               onClick={() => handleClick('smoke', true)}
               className={`typeBox smoke ${smoke ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Rauchwarnmelder</div>
+              {smoke ? (
+                <img src={smokeDetectorImgW} />
+              ) : (
+                <img src={smokeDetectorImg} />
+              )}
+              <div className={`${smoke ? 'higlightedText' : ''}`}>
+                Rauchwarnmelder
+              </div>
             </div>
             <div
               onClick={() => handleClick('lock', true)}
               className={`typeBox lock ${lock ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Türschloss</div>
+              {lock ? <img src={doorLockImgW} /> : <img src={doorLockImg} />}
+              <div className={`${lock ? 'higlightedText' : ''}`}>
+                Türschloss
+              </div>
             </div>
             <div
               onClick={() => handleClick('doorbell', true)}
               className={`typeBox doorbell ${doorbell ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Video-Türklingel</div>
+              {doorbell ? (
+                <img src={videoDoorbellImgW} />
+              ) : (
+                <img src={videoDoorbellImg} />
+              )}
+              <div className={`${doorbell ? 'higlightedText' : ''}`}>
+                Video-Türklingel
+              </div>
             </div>
             <div
               onClick={() => openBox('camera')}
@@ -214,20 +261,30 @@ function Security() {
                 cameraI || cameraO ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Sicherheitskamera</div>
+              {cameraI || cameraO ? (
+                <img src={cameraImgW} />
+              ) : (
+                <img src={cameraImg} />
+              )}
+              <div className={`${cameraI || cameraO ? 'higlightedText' : ''}`}>
+                Sicherheitskamera
+              </div>
             </div>
             {boxMotion && (
               <div className="boxMotion">
                 <div
                   onClick={() => handleClick('motionI', false)}
-                  className={motionI ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    motionI ? 'selected higlightedText' : ''
+                  }`}
                 >
                   innen
                 </div>
                 <div
                   onClick={() => handleClick('motionO', false)}
-                  className={motionO ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    motionO ? 'selected higlightedText' : ''
+                  }`}
                 >
                   außen
                 </div>
@@ -237,13 +294,17 @@ function Security() {
               <div className="boxSiren">
                 <div
                   onClick={() => handleClick('sirenI', false)}
-                  className={sirenI ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    sirenI ? 'selected higlightedText' : ''
+                  }`}
                 >
                   innen
                 </div>
                 <div
                   onClick={() => handleClick('sirenO', false)}
-                  className={sirenO ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    sirenO ? 'selected higlightedText' : ''
+                  }`}
                 >
                   außen
                 </div>
@@ -253,13 +314,17 @@ function Security() {
               <div className="boxCamera">
                 <div
                   onClick={() => handleClick('cameraI', false)}
-                  className={cameraI ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    cameraI ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Innenkamera
                 </div>
                 <div
                   onClick={() => handleClick('cameraO', false)}
-                  className={cameraO ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    cameraO ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Außenkamera
                 </div>

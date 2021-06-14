@@ -1,5 +1,5 @@
 .mgLightbulbs {
-  margin: 12% 15% 0 15%;
+  margin: 8% 15% 0 15%;
 }
 
 .lightBulbContainer {
@@ -9,6 +9,11 @@
   grid-template-areas:
     'white ambiance multicolor'
     'bulbs bulbs bulbs';
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .white {
@@ -25,8 +30,9 @@
 
 .bulbs {
   grid-area: bulbs;
-  border: 2px solid red;
   height: 30vh;
+  margin-top: 5%;
+  margin-bottom: -5%;
   display: grid;
   justify-content: space-around;
   grid-template-areas: 'e27 e14 gu10';

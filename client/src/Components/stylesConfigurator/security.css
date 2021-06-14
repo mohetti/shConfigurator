@@ -1,5 +1,5 @@
 .mgSecurity {
-  margin: 12% 0 0 0;
+  margin: 8% 0 0 0;
 }
 
 .securityContainer {
@@ -12,32 +12,34 @@
     '. . . boxSiren .'
     'smoke lock . doorbell camera'
     '. . . . boxCamera';
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 .boxMotion {
   grid-area: boxMotion;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  cursor: pointer;
 }
 
 .boxSiren {
   grid-area: boxSiren;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  cursor: pointer;
 }
 
 .boxCamera {
   grid-area: boxCamera;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  cursor: pointer;
 }
 
 .motion {

@@ -1,4 +1,21 @@
-import placeholder from '../images/placeholder.png';
+import stripImg from '../images/lights/strip.png';
+import tableLampImg from '../images/lights/tableLamp.png';
+import recSpotImg from '../images/lights/recSpot.png';
+import wallLightImg from '../images/lights/wallLight.png';
+import plugImg from '../images/lights/plug.png';
+import surfSpotImg from '../images/lights/surfSpot.png';
+import recSwitchImg from '../images/lights/recSwitch.png';
+import ceilingLightImg from '../images/lights/ceilingLight.png';
+
+import stripImgW from '../images/lights/stripW.png';
+import tableLampImgW from '../images/lights/tableLampW.png';
+import recSpotImgW from '../images/lights/recSpotW.png';
+import wallLightImgW from '../images/lights/wallLightW.png';
+import plugImgW from '../images/lights/plugW.png';
+import surfSpotImgW from '../images/lights/surfSpotW.png';
+import recSwitchImgW from '../images/lights/recSwitchW.png';
+import ceilingLightImgW from '../images/lights/ceilingLightW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -232,27 +249,34 @@ function Innerlights() {
   };
 
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
-      <div className="center textCenter">
+    <div className="background">
+      <div className="content1">
         <header>
-          <h1 className="stripe mgt1">weitere Innenbeleuchtung:</h1>
+          <h1 className="stripe mgt1 textCenter">weitere Innenbeleuchtung:</h1>
         </header>
         <div className="configContainer">
-          <div className="innerlightsContainer mgInnerlights">
+          <div className="confirmContainer mgInnerlights">
             <div
               onClick={() => handleClick('strip')}
               className={`typeBox strip ${strip ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Leuchtstreifen</div>
+              {strip ? <img src={stripImgW} /> : <img src={stripImg} />}
+              <div className={`${strip ? 'higlightedText' : ''}`}>
+                Leuchtstreifen
+              </div>
             </div>
             <div
               onClick={() => handleClick('tableLamp')}
               className={`typeBox tableLamp ${tableLamp ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Tischlampe</div>
+              {tableLamp ? (
+                <img src={tableLampImgW} />
+              ) : (
+                <img src={tableLampImg} />
+              )}
+              <div className={`${tableLamp ? 'higlightedText' : ''}`}>
+                Tischlampe
+              </div>
             </div>
             <div
               onClick={() => openBox('recSpot')}
@@ -260,22 +284,40 @@ function Innerlights() {
                 recSpotW || recSpotA || recSpotM ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Einbauspot</div>
+              {recSpotW || recSpotA || recSpotM ? (
+                <img src={recSpotImgW} />
+              ) : (
+                <img src={recSpotImg} />
+              )}
+              <div
+                className={`${
+                  recSpotW || recSpotA || recSpotM ? 'higlightedText' : ''
+                }`}
+              >
+                Einbauspot
+              </div>
             </div>
             <div
               onClick={() => openBox('wall')}
               className={`typeBox wall ${wallA || wallM ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Wandleuchte</div>
+              {wallA || wallM ? (
+                <img src={wallLightImgW} />
+              ) : (
+                <img src={wallLightImg} />
+              )}
+              <div className={`${wallA || wallM ? 'higlightedText' : ''}`}>
+                Wandleuchte
+              </div>
             </div>
             <div
               onClick={() => openBox('plug')}
               className={`typeBox plug ${plugN || plugD ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Zwischenstecker</div>
+              {plugN || plugD ? <img src={plugImgW} /> : <img src={plugImg} />}
+              <div className={`${plugN || plugD ? 'higlightedText' : ''}`}>
+                Zwischenstecker
+              </div>
             </div>
             <div
               onClick={() => openBox('surfSpot')}
@@ -283,8 +325,16 @@ function Innerlights() {
                 surfSpotA || surfSpotM ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Aufbauspot</div>
+              {surfSpotA || surfSpotM ? (
+                <img src={surfSpotImgW} />
+              ) : (
+                <img src={surfSpotImg} />
+              )}
+              <div
+                className={`${surfSpotA || surfSpotM ? 'higlightedText' : ''}`}
+              >
+                Aufbauspot
+              </div>
             </div>
             <div
               onClick={() => openBox('recSwitch')}
@@ -292,8 +342,18 @@ function Innerlights() {
                 recSwitchN || recSwitchD ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Unterputzaktor</div>
+              {recSwitchN || recSwitchD ? (
+                <img src={recSwitchImgW} />
+              ) : (
+                <img src={recSwitchImg} />
+              )}
+              <div
+                className={`${
+                  recSwitchN || recSwitchD ? 'higlightedText' : ''
+                }`}
+              >
+                Unterputzaktor
+              </div>
             </div>
             <div
               onClick={() => openBox('ceiling')}
@@ -301,26 +361,40 @@ function Innerlights() {
                 ceilingA || ceilingM ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Deckenlampe</div>
+              {ceilingA || ceilingM ? (
+                <img src={ceilingLightImgW} />
+              ) : (
+                <img src={ceilingLightImg} />
+              )}
+              <div
+                className={`${ceilingA || ceilingM ? 'higlightedText' : ''}`}
+              >
+                Deckenlampe
+              </div>
             </div>
             {boxRecSpot && (
-              <div className="boxRecSpot">
+              <div className={`boxRecSpot mgb3`}>
                 <div
                   onClick={() => handleClick('recSpotW')}
-                  className={recSpotW ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    recSpotW ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Dimmbar
                 </div>
                 <div
                   onClick={() => handleClick('recSpotA')}
-                  className={recSpotA ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    recSpotA ? 'selected higlightedText' : ''
+                  }`}
                 >
                   dimmbares Weißlicht
                 </div>
                 <div
                   onClick={() => handleClick('recSpotM')}
-                  className={recSpotM ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    recSpotM ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Weiß- und Farblicht
                 </div>
@@ -330,13 +404,17 @@ function Innerlights() {
               <div className="boxWall">
                 <div
                   onClick={() => handleClick('wallA')}
-                  className={wallA ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    wallA ? 'selected higlightedText' : ''
+                  }`}
                 >
                   dimmbares Weißlicht
                 </div>
                 <div
                   onClick={() => handleClick('wallM')}
-                  className={wallM ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    wallM ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Weiß- und Farblicht
                 </div>
@@ -346,13 +424,17 @@ function Innerlights() {
               <div className="boxPlug">
                 <div
                   onClick={() => handleClick('plugN')}
-                  className={plugN ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    plugN ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Einfach
                 </div>
                 <div
                   onClick={() => handleClick('plugD')}
-                  className={plugD ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    plugD ? 'selected higlightedText' : ''
+                  }`}
                 >
                   mit Dimmfunktion
                 </div>
@@ -362,13 +444,17 @@ function Innerlights() {
               <div className="boxSurfSpot">
                 <div
                   onClick={() => handleClick('surfSpotA')}
-                  className={surfSpotA ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    surfSpotA ? 'selected higlightedText' : ''
+                  }`}
                 >
                   dimmbares Weißlicht
                 </div>
                 <div
                   onClick={() => handleClick('surfSpotM')}
-                  className={surfSpotM ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    surfSpotM ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Weiß- und Farblicht
                 </div>
@@ -378,13 +464,17 @@ function Innerlights() {
               <div className="boxRecSwitch">
                 <div
                   onClick={() => handleClick('recSwitchN')}
-                  className={recSwitchN ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    recSwitchN ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Einfach
                 </div>
                 <div
                   onClick={() => handleClick('recSwitchD')}
-                  className={recSwitchD ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    recSwitchD ? 'selected higlightedText' : ''
+                  }`}
                 >
                   mit Dimmfunktion
                 </div>
@@ -394,13 +484,17 @@ function Innerlights() {
               <div className="boxCeiling">
                 <div
                   onClick={() => handleClick('ceilingA')}
-                  className={ceilingA ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    ceilingA ? 'selected higlightedText' : ''
+                  }`}
                 >
                   dimmbares Weißlicht
                 </div>
                 <div
                   onClick={() => handleClick('ceilingM')}
-                  className={ceilingM ? 'selected' : ''}
+                  className={`mgt1 bradius fontSize1 ${
+                    ceilingM ? 'selected higlightedText' : ''
+                  }`}
                 >
                   Weiß- und Farblicht
                 </div>
@@ -420,7 +514,6 @@ function Innerlights() {
           </div>
         </div>
       </div>
-      <div className="spaceRight  "></div>
     </div>
   );
 }

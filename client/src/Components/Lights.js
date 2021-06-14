@@ -1,4 +1,11 @@
-import placeholder from '../images/placeholder.png';
+import lightbulbImg from '../images/categories/lightbulbs.png';
+import innerLightsImg from '../images/categories/innerLights.png';
+import gardenLightImg from '../images/categories/gardenLight.png';
+
+import lightbulbImgW from '../images/categories/lightbulbsW.png';
+import innerLightsImgW from '../images/categories/innerLightsW.png';
+import gardenLightImgW from '../images/categories/gardenLightW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -107,34 +114,51 @@ function Lights() {
   };
 
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
-      <div className="center textCenter">
+    <div className="background">
+      <div className="content1">
         <header>
-          <h1 className="stripe mgt1">Beleuchtungsoptionen:</h1>
+          <h1 className="stripe mgt1 textCenter">Beleuchtungsoptionen:</h1>
         </header>
         <div className="configContainer">
-          <div className="lightContainer mgLights">
+          <div className="confirmContainer mgLights">
             <div
               onClick={() => handleClick('lightbulbs')}
               className={`typeBox lightbulbs ${lightbulbs ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Glühbirnen und Spots</div>
+              {lightbulbs ? (
+                <img src={lightbulbImgW} />
+              ) : (
+                <img src={lightbulbImg} />
+              )}
+              <div className={`${lightbulbs ? 'higlightedText' : ''}`}>
+                Glühbirnen und Spots
+              </div>
             </div>
             <div
               onClick={() => handleClick('innerLights')}
               className={`typeBox innerLights ${innerLights ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>weitere Innenbeleuchtung</div>
+              {innerLights ? (
+                <img src={innerLightsImgW} />
+              ) : (
+                <img src={innerLightsImg} />
+              )}
+              <div className={`${innerLights ? 'higlightedText' : ''}`}>
+                Innenbeleuchtung
+              </div>
             </div>
             <div
               onClick={() => handleClick('garden')}
               className={`typeBox garden ${garden ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Gartenbeleuchtung</div>
+              {garden ? (
+                <img src={gardenLightImgW} />
+              ) : (
+                <img src={gardenLightImg} />
+              )}
+              <div className={`${garden ? 'higlightedText' : ''}`}>
+                Gartenbeleuchtung
+              </div>
             </div>
           </div>
           <div className="btnContainer">
@@ -150,7 +174,6 @@ function Lights() {
           </div>
         </div>
       </div>
-      <div className="spaceRight  "></div>
     </div>
   );
 }

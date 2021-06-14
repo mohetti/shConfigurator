@@ -1,11 +1,16 @@
 .mgInnerlights {
-  margin: 12% 15% 0 15%;
+  margin: 8% 15% 0 15%;
 }
 /*
 make grids for each of the 5 detailed choices and make for each individual clickhandlers
 */
 .innerlightsContainer {
   grid-area: contentContainer;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   display: grid;
   justify-content: space-between;
   grid-template-areas:
@@ -23,44 +28,48 @@ make grids for each of the 5 detailed choices and make for each individual click
   grid-area: boxRecSpot;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  cursor: pointer;
 }
 
 .boxWall {
   grid-area: boxWall;
-  border: 2px solid red;
   height: 10vh;
-  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .boxPlug {
   grid-area: boxPlug;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .boxSurfSpot {
   grid-area: boxSurfSpot;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .boxRecSwitch {
   grid-area: boxRecSwitch;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .boxCeiling {
   grid-area: boxCeiling;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .tableLamp {

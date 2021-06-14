@@ -112,17 +112,19 @@ function Details() {
   const populateProducts = (category) => {
     return category.map((x) => {
       return (
-        <div key={uniqid()} className="productBox">
-          <img src={placeholder} />
-          <div className="productName">{x.name}</div>
-          <div className="dotPos">
-            <div>{x.comp === true && <div className="dotComp"></div>}</div>
-            <div>
-              {x.comp === false && <div className="dotPartialComp"></div>}
-            </div>
-            <div>{x.comp === null && <div className="dotNotComp"></div>}</div>
-            <div>{x.comp === 'main' && <div className="dotMain"></div>}</div>
-          </div>
+        <div
+          key={uniqid()}
+          className={`detailBox ${
+            x.comp === 'main'
+              ? 'blueFiller'
+              : x.comp === null
+              ? 'redFiller'
+              : x.comp === false
+              ? 'yellowFiller'
+              : 'greenFiller'
+          }`}
+        >
+          <div>{x.name}</div>
         </div>
       );
     });
@@ -130,15 +132,14 @@ function Details() {
 
   const populateResult = () => {
     return (
-      <div className="windowContainer">
-        <div className="spaceLeft"></div>
-        <div className="center">
+      <div className="background">
+        <div className="content1">
           <h1 className="stripe mgt1 textCenter">{system}</h1>
           <div className="lightbulbs">
             {lightbulbs.length > 0 && (
               <div>
-                <h3 className="line">Glühbirnen and Spots</h3>
-                <div className="productContainer">
+                <h3 className="line">Glühbirnen & Spots</h3>
+                <div className="detailContainer">
                   {populateProducts(lightbulbs)}
                 </div>
               </div>
@@ -148,7 +149,7 @@ function Details() {
             {innerLights.length > 0 && (
               <div>
                 <h3 className="line">Innenbeleuchtung: </h3>
-                <div className="productContainer">
+                <div className="detailContainer">
                   {populateProducts(innerLights)}
                 </div>
               </div>
@@ -158,7 +159,7 @@ function Details() {
             {gardenLights.length > 0 && (
               <div className="lightbulbs">
                 <h3 className="line">Gartenbeleuchtung: </h3>
-                <div className="productContainer">
+                <div className="detailContainer">
                   {populateProducts(gardenLights)}
                 </div>
               </div>
@@ -168,7 +169,7 @@ function Details() {
             {heating.length > 0 && (
               <div className="lightbulbs">
                 <h3 className="line">Heizungssteuerung: </h3>
-                <div className="productContainer">
+                <div className="detailContainer">
                   {populateProducts(heating)}
                 </div>
               </div>
@@ -178,14 +179,13 @@ function Details() {
             {security.length > 0 && (
               <div className="lightbulbs">
                 <h3 className="line">Sicherheitstechnik: </h3>
-                <div className="productContainer">
+                <div className="detailContainer">
                   {populateProducts(security)}
                 </div>
               </div>
             )}
           </div>
         </div>
-        <div className="spaceRight"></div>
       </div>
     );
   };

@@ -1,5 +1,5 @@
 .mgHeating {
-  margin: 12% 15% 0 15%;
+  margin: 8% 15% 0 15%;
 }
 
 .heatingContainer {
@@ -10,12 +10,18 @@
     'radiator thermostat heatActors'
     'boxThermostat boxThermostat boxThermostat'
     'boxHeatActors boxHeatActors boxHeatActors';
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .boxThermostat {
   grid-area: boxThermostat;
-  border: 2px solid red;
   height: 30vh;
+  margin-top: 5%;
+  margin-bottom: -5%;
   display: grid;
   justify-content: space-around;
   grid-template-areas: 'thermostatWired230 thermostatWired24 thermostatWireless';
@@ -23,10 +29,11 @@
 
 .boxHeatActors {
   grid-area: boxHeatActors;
-  border: 2px solid red;
   height: 30vh;
+  margin-top: 5%;
+  margin-bottom: -5%;
   display: grid;
-  justify-content: space-around;
+  justify-content: space-between;
   grid-template-areas: 'heatActor24_06 heatActor24_10 heatActor230_06 heatActor230_10 heatActor12Motorized';
 }
 

@@ -1,4 +1,20 @@
-import placeholder from '../images/placeholder.png';
+import radiatorImg from '../images/heating/radiator.png';
+import thermostatImg from '../images/heating/thermostat.png';
+import underfloorHeatingImg from '../images/heating/underfloorHeating.png';
+
+import radiatorImgW from '../images/heating/radiatorW.png';
+import thermostatImgW from '../images/heating/thermostatW.png';
+import underfloorHeatingImgW from '../images/heating/underfloorHeatingW.png';
+
+import thermostatWiredImg from '../images/heating/thermostatWired.png';
+import thermostatWirelessImg from '../images/heating/thermostatWireless.png';
+
+import thermostatWiredImgW from '../images/heating/thermostatWiredW.png';
+import thermostatWirelessImgW from '../images/heating/thermostatWirelessW.png';
+
+import heatingActorImg from '../images/heating/heatingActor.png';
+import heatingActorImgW from '../images/heating/heatingActorW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -212,8 +228,10 @@ function Heating() {
               onClick={() => handleClick('radiator', 'none')}
               className={`typeBox radiator ${radiator ? 'selected' : ''}`}
             >
-              <img src={placeholder} />
-              <div>Heizkörperthermostat</div>
+              {radiator ? <img src={radiatorImg} /> : <img src={radiatorImg} />}
+              <div className={`${radiator ? 'higlightedText' : ''}`}>
+                Heizkörperthermostat
+              </div>
             </div>
             <div
               onClick={() => openBox('thermostat')}
@@ -223,8 +241,20 @@ function Heating() {
                   : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Wandthermostat</div>
+              {thermostatWired230 || thermostatWired24 || thermostatWireless ? (
+                <img src={thermostatImgW} />
+              ) : (
+                <img src={thermostatImg} />
+              )}
+              <div
+                className={`${
+                  thermostatWired230 || thermostatWired24 || thermostatWireless
+                    ? 'higlightedText'
+                    : ''
+                }`}
+              >
+                Wandthermostat
+              </div>
             </div>
             <div
               onClick={() => openBox('heatActors')}
@@ -238,8 +268,28 @@ function Heating() {
                   : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Fußbodenheizungsaktor</div>
+              {heatActor12Motorized ||
+              heatActor24_06 ||
+              heatActor24_10 ||
+              heatActor230_06 ||
+              heatActor230_10 ? (
+                <img src={underfloorHeatingImgW} />
+              ) : (
+                <img src={underfloorHeatingImg} />
+              )}
+              <div
+                className={`${
+                  heatActor12Motorized ||
+                  heatActor24_06 ||
+                  heatActor24_10 ||
+                  heatActor230_06 ||
+                  heatActor230_10
+                    ? 'higlightedText'
+                    : ''
+                }`}
+              >
+                Fußbodenheizungsaktor
+              </div>
             </div>
             {boxThermostat && (
               <div className="boxThermostat">
@@ -251,8 +301,16 @@ function Heating() {
                     thermostatWired230 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>Thermostat 230V (verkabelt)</div>
+                  {thermostatWired230 ? (
+                    <img src={thermostatWiredImgW} />
+                  ) : (
+                    <img src={thermostatWiredImg} />
+                  )}
+                  <div
+                    className={`${thermostatWired230 ? 'higlightedText' : ''}`}
+                  >
+                    Thermostat 230V (verkabelt)
+                  </div>
                 </div>
                 <div
                   onClick={() => handleClick('thermostatWired24', 'thermostat')}
@@ -260,8 +318,16 @@ function Heating() {
                     thermostatWired24 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>Thermostat 24V (verkabelt)</div>
+                  {thermostatWired24 ? (
+                    <img src={thermostatWiredImgW} />
+                  ) : (
+                    <img src={thermostatWiredImg} />
+                  )}
+                  <div
+                    className={`${thermostatWired24 ? 'higlightedText' : ''}`}
+                  >
+                    Thermostat 24V (verkabelt)
+                  </div>
                 </div>
                 <div
                   onClick={() =>
@@ -271,8 +337,16 @@ function Heating() {
                     thermostatWireless ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>Thermostat (kabellos)</div>
+                  {thermostatWireless ? (
+                    <img src={thermostatWirelessImgW} />
+                  ) : (
+                    <img src={thermostatWirelessImg} />
+                  )}
+                  <div
+                    className={`${thermostatWireless ? 'higlightedText' : ''}`}
+                  >
+                    Thermostat (kabellos)
+                  </div>
                 </div>
               </div>
             )}
@@ -284,8 +358,14 @@ function Heating() {
                     heatActor24_06 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>6 Stellantriebe, 24V</div>
+                  {heatActor24_06 ? (
+                    <img src={heatingActorImgW} />
+                  ) : (
+                    <img src={heatingActorImg} />
+                  )}
+                  <div className={`${heatActor24_06 ? 'higlightedText' : ''}`}>
+                    6 Stellantriebe, 24V
+                  </div>
                 </div>
                 <div
                   onClick={() => handleClick('heatActor24_10', 'actor')}
@@ -293,8 +373,14 @@ function Heating() {
                     heatActor24_10 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>10 Stellantriebe, 24V</div>
+                  {heatActor24_10 ? (
+                    <img src={heatingActorImgW} />
+                  ) : (
+                    <img src={heatingActorImg} />
+                  )}
+                  <div className={`${heatActor24_10 ? 'higlightedText' : ''}`}>
+                    10 Stellantriebe, 24V
+                  </div>
                 </div>
                 <div
                   onClick={() => handleClick('heatActor230_06', 'actor')}
@@ -302,8 +388,14 @@ function Heating() {
                     heatActor230_06 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>6 Stellantriebe, 230V</div>
+                  {heatActor230_06 ? (
+                    <img src={heatingActorImgW} />
+                  ) : (
+                    <img src={heatingActorImg} />
+                  )}
+                  <div className={`${heatActor230_06 ? 'higlightedText' : ''}`}>
+                    6 Stellantriebe, 230V
+                  </div>
                 </div>
                 <div
                   onClick={() => handleClick('heatActor230_10', 'actor')}
@@ -311,8 +403,14 @@ function Heating() {
                     heatActor230_10 ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>10 Stellantriebe, 230V</div>
+                  {heatActor230_10 ? (
+                    <img src={heatingActorImgW} />
+                  ) : (
+                    <img src={heatingActorImg} />
+                  )}
+                  <div className={`${heatActor230_10 ? 'higlightedText' : ''}`}>
+                    10 Stellantriebe, 230V
+                  </div>
                 </div>
                 <div
                   onClick={() => handleClick('heatActor12Motorized', 'actor')}
@@ -320,8 +418,18 @@ function Heating() {
                     heatActor12Motorized ? 'selected' : ''
                   }`}
                 >
-                  <img src={placeholder} />
-                  <div>12 Stellantriebe, motorisiert</div>
+                  {heatActor12Motorized ? (
+                    <img src={heatingActorImgW} />
+                  ) : (
+                    <img src={heatingActorImg} />
+                  )}
+                  <div
+                    className={`${
+                      heatActor12Motorized ? 'higlightedText' : ''
+                    }`}
+                  >
+                    12 Stellantriebe, motorisiert
+                  </div>
                 </div>
               </div>
             )}

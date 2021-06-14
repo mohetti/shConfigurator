@@ -1,5 +1,5 @@
 .mgGardenlights {
-  margin: 12% 15% 0 15%;
+  margin: 8% 15% 0 15%;
 }
 
 .gardenlightsContainer {
@@ -11,24 +11,27 @@
     'pathLight wallGarden'
     'boxPathLight .'
     '. boxWallGarden';
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .boxPathLight {
   grid-area: boxPathLight;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  cursor: pointer;
 }
 
 .boxWallGarden {
   grid-area: boxWallGarden;
   display: flex;
   flex-direction: column;
-  border: 2px solid red;
   height: 10vh;
-  margin-top: 2%;
+  cursor: pointer;
 }
 
 .pathLight {
@@ -37,6 +40,11 @@
 
 .gardenSpot {
   grid-area: gardenSpot;
+}
+
+.mgOpenBox {
+  margin-top: 6%;
+  margin-left: 5%;
 }
 
 .wallGarden {

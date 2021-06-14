@@ -9,12 +9,11 @@ function Start() {
   };
 
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
-      <div className="center textCenter">
+    <div className="background">
+      <div className="center content1 textCenter">
         <header>
           <h1 className="stripe mgt1">Smart Home Konfigurator</h1>
-          <h2 className="mgb2">komwoh</h2>
+          <h2 className="mgt1 mgb2">komwoh</h2>
         </header>
         <div>
           <p>
@@ -43,7 +42,6 @@ function Start() {
           </button>
         </div>
       </div>
-      <div className="spaceRight"></div>
     </div>
   );
 }

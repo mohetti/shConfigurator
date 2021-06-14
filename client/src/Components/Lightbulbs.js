@@ -1,4 +1,19 @@
-import placeholder from '../images/placeholder.png';
+import e27Img from '../images/lights/e27.png';
+import e14Img from '../images//lights/e14.png';
+import gu10Img from '../images/lights/gu10.png';
+
+import e27ImgW from '../images/lights/e27W.png';
+import e14ImgW from '../images/lights/e14W.png';
+import gu10ImgW from '../images/lights/gu10W.png';
+
+import lightWhiteImg from '../images/lights/lightWhite.png';
+import lightAmbianceImg from '../images/lights/lightAmbiance.png';
+import lightColorImg from '../images/lights/lightColor.png';
+
+import lightWhiteImgW from '../images/lights/lightWhiteW.png';
+import lightAmbianceImgW from '../images//lights/lightAmbianceW.png';
+import lightColorImgW from '../images/lights/lightColorW.png';
+
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
@@ -22,6 +37,10 @@ function Lightbulbs() {
   const [selectorBoxAmbiance, setSelectorBoxAmbiance] = useState(false);
   const [selectorBoxMulticolor, setSelectorBoxMulticolor] = useState(false);
   const [selectedColor, setSelectedColor] = useState('');
+
+  const [borderW, setBorderW] = useState(false);
+  const [borderA, setBorderA] = useState(false);
+  const [borderM, setBorderM] = useState(false);
 
   let history = useHistory();
 
@@ -107,18 +126,27 @@ function Lightbulbs() {
       setSelectorBoxWhite(!selectorBoxWhite);
       setSelectorBoxAmbiance(false);
       setSelectorBoxMulticolor(false);
+      setBorderW(!borderW);
+      setBorderA(false);
+      setBorderM(false);
       return;
     }
     if (color === 'ambiance') {
       setSelectorBoxWhite(false);
       setSelectorBoxAmbiance(!selectorBoxAmbiance);
       setSelectorBoxMulticolor(false);
+      setBorderW(false);
+      setBorderA(!borderA);
+      setBorderM(false);
       return;
     }
     if (color === 'multicolor') {
       setSelectorBoxWhite(false);
       setSelectorBoxAmbiance(false);
       setSelectorBoxMulticolor(!selectorBoxMulticolor);
+      setBorderW(false);
+      setBorderA(false);
+      setBorderM(!borderM);
       return;
     }
   };
@@ -142,40 +170,63 @@ function Lightbulbs() {
   };
 
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
-      <div className="center textCenter">
+    <div className="background">
+      <div className="center content1">
         <header>
-          <h1 className="stripe mgt1">Spots & Glühbirnen:</h1>
+          <h1 className="stripe mgt1 textCenter">Spots & Glühbirnen:</h1>
         </header>
         <div className="configContainer">
-          <div className="lightBulbContainer mgLightbulbs">
+          <div className="confirmContainer mgLightbulbs">
             <div
               onClick={() => openSelector('white')}
-              className={`typeBox white ${
+              className={`typeBox white ${borderW && 'borderHghl'} ${
                 e27W || e14W || gu10W ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Dimmbares Licht</div>
+              {e27W || e14W || gu10W ? (
+                <img src={lightWhiteImgW} />
+              ) : (
+                <img src={lightWhiteImg} />
+              )}
+              <div
+                className={`${e27W || e14W || gu10W ? 'higlightedText' : ''}`}
+              >
+                Dimmbares Licht
+              </div>
             </div>
             <div
               onClick={() => openSelector('ambiance')}
-              className={`typeBox ambiance ${
+              className={`typeBox ambiance ${borderA && 'borderHghl'} ${
                 e27A || e14A || gu10A ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Dimmbares Weißlicht</div>
+              {e27A || e14A || gu10A ? (
+                <img src={lightAmbianceImgW} />
+              ) : (
+                <img src={lightAmbianceImg} />
+              )}
+              <div
+                className={`${e27A || e14A || gu10A ? 'higlightedText' : ''}`}
+              >
+                Dimmbares Weißlicht
+              </div>
             </div>
             <div
               onClick={() => openSelector('multicolor')}
-              className={`typeBox multicolor ${
+              className={`typeBox multicolor ${borderM && 'borderHghl'} ${
                 e27M || e14M || gu10M ? 'selected' : ''
               }`}
             >
-              <img src={placeholder} />
-              <div>Weiß- und Farblicht</div>
+              {e27M || e14M || gu10M ? (
+                <img src={lightColorImgW} />
+              ) : (
+                <img src={lightColorImg} />
+              )}
+              <div
+                className={`${e27M || e14M || gu10M ? 'higlightedText' : ''}`}
+              >
+                Weiß- und Farblicht
+              </div>
             </div>
             {selectorBoxWhite && (
               <div className="bulbs">
@@ -183,19 +234,24 @@ function Lightbulbs() {
                   onClick={() => handleClick('e27')}
                   className={`typeBox e27 ${e27W ? 'selected' : ''}`}
                 >
-                  E27
+                  {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                  <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
                 </div>
                 <div
                   onClick={() => handleClick('e14')}
                   className={`typeBox e14 ${e14W ? 'selected' : ''}`}
                 >
-                  E14
+                  {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                  <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
                 </div>
                 <div
                   onClick={() => handleClick('gu10')}
                   className={`typeBox gu10 ${gu10W ? 'selected' : ''}`}
                 >
-                  GU10
+                  {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                  <div className={`${gu10W ? 'highlightedText' : ''}`}>
+                    GU10
+                  </div>
                 </div>
               </div>
             )}
@@ -205,19 +261,24 @@ function Lightbulbs() {
                   onClick={() => handleClick('e27')}
                   className={`typeBox e27 ${e27A ? 'selected' : ''}`}
                 >
-                  E27
+                  {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                  <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
                 </div>
                 <div
                   onClick={() => handleClick('e14')}
                   className={`typeBox e14 ${e14A ? 'selected' : ''}`}
                 >
-                  E14
+                  {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                  <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
                 </div>
                 <div
                   onClick={() => handleClick('gu10')}
                   className={`typeBox gu10 ${gu10A ? 'selected' : ''}`}
                 >
-                  GU10
+                  {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                  <div className={`${gu10A ? 'highlightedText' : ''}`}>
+                    GU10
+                  </div>
                 </div>
               </div>
             )}
@@ -227,19 +288,24 @@ function Lightbulbs() {
                   onClick={() => handleClick('e27')}
                   className={`typeBox e27 ${e27M ? 'selected' : ''}`}
                 >
-                  E27
+                  {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                  <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
                 </div>
                 <div
                   onClick={() => handleClick('e14')}
                   className={`typeBox e14 ${e14M ? 'selected' : ''}`}
                 >
-                  E14
+                  {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                  <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
                 </div>
                 <div
                   onClick={() => handleClick('gu10')}
                   className={`typeBox gu10 ${gu10M ? 'selected' : ''}`}
                 >
-                  GU10
+                  {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                  <div className={`${gu10M ? 'highlightedText' : ''}`}>
+                    GU10
+                  </div>
                 </div>
               </div>
             )}
@@ -257,7 +323,6 @@ function Lightbulbs() {
           </div>
         </div>
       </div>
-      <div className="spaceRight  "></div>
     </div>
   );
 }
