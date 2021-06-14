@@ -139,17 +139,30 @@
   flex-direction: column;
   height: 20vh;
   width: 20vh;
-  border-radius: 15%;
+  border-radius: 10%;
+  font-size: 12px;
+  box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
   cursor: pointer;
 }
 
 .typeBox > img {
-  height: 17vh;
-  width: 20vh;
+  margin-top: 5%;
+  height: 15vh;
+  width: 15vh;
+}
+
+.typeBox > div {
+  margin-top: 5%;
 }
 
 .selected {
   outline: none;
   border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 100%) 0%,
+    rgba(73, 191, 199, 100%) 0%,
+    rgba(139, 141, 181, 100%) 100%
+  );
 }
