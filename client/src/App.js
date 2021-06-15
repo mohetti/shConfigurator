@@ -16,16 +16,9 @@ import Details from './Components/Details';
 
 // import css
 import './Components/stylesConfigurator/styles.css';
-import './Components/stylesConfigurator/lights.css';
-import './Components/stylesConfigurator/categories.css';
-import './Components/stylesConfigurator/heating.css';
-import './Components/stylesConfigurator/security.css';
-import './Components/stylesConfigurator/innerlights.css';
-import './Components/stylesConfigurator/gardenlights.css';
-import './Components/stylesConfigurator/lightbulbs.css';
 import './Components/stylesConfigurator/overview.css';
-import './Components/stylesConfigurator/confirm.css';
 import './Components/stylesConfigurator/details.css';
+import './Components/stylesConfigurator/helpers.css';
 
 function App() {
   return (

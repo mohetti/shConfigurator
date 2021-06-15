@@ -1,90 +1,152 @@
-.windowContainer {
-  display: grid;
-  grid-template-areas: 'spaceLeft centerBox spaceRight';
+/* ******************* START OF GENERAL CSS ******************* */
+/* background for all pages. */
+.background {
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(73, 191, 199, 1) 0%,
+    rgba(139, 141, 181, 1) 100%
+  );
+  overflow: auto;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+}
+/* container for all pages' white background. */
+.whiteBackground {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: white;
+  text-align: center;
+  width: 70vw;
+}
+/* container for all pages' content. Not including buttons. */
+.contentContainer {
+  display: flex;
+  flex-grow: 1;
+  padding: 2% 5%;
+  margin: 10% 0 0 0;
+  text-align: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.borderHghl {
-  border: 2px solid rgba(0, 128, 0, 50%);
+/* container for all boxes with icons on all pages. */
+.contentBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2%;
+  height: 20vh;
+  width: 20vh;
+  border-radius: 10%;
+  font-size: calc(1vmin + 0.2rem);
+  box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
 }
 
-.fontSize1 {
-  font-size: 12px;
+.contentBox > img {
+  margin-top: 10%;
+  height: 10vh;
+  width: 10vh;
 }
 
-.higlightedText {
+.contentBox > div {
+  margin-top: 10%;
+  padding: 0 10px;
+}
+
+/* background style of contentBoxes, when selected. */
+.selected {
+  outline: none;
+  border-color: #9ecaed;
   color: white;
   font-weight: bold;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 100%) 0%,
+    rgba(73, 191, 199, 100%) 0%,
+    rgba(139, 141, 181, 100%) 100%
+  );
 }
+
+/* Cursor type for all boxes, that are selectable. */
+.cursor {
+  cursor: pointer;
+}
+
+/* background stripe for h1s in the color of background-class on all pages */
 .stripe {
   background-color: #8492b6;
   color: white;
 }
 
-.center {
-  grid-area: centerBox;
+/* additional selection boxes */
+.addSelectContainer {
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  height: 100vh;
+  cursor: pointer;
 }
 
-.textCenter {
-  text-align: center;
-}
-
-.spaceLeft {
-  grid-area: spaceLeft;
-  width: 15vw;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(73, 191, 199, 1) 0%,
-    rgba(139, 141, 181, 1) 100%
-  );
-}
-
-.spaceRight {
-  grid-area: spaceRight;
-  width: 15vw;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(73, 191, 199, 1) 0%,
-    rgba(139, 141, 181, 1) 100%
-  );
-}
-
-.mgb1 {
-  margin-bottom: 5%;
-}
-.mgb2 {
-  margin-bottom: 10%;
-}
-
-.mgb3 {
-  margin-bottom: 15%;
-}
-.mgt1 {
-  margin-top: 5%;
-}
-.mgt2 {
-  margin-top: 10%;
-}
-.mgt3 {
-  margin-top: 20%;
-}
-
-.mgl1 {
-  margin-left: 2%;
-}
-
-.bradius {
+/* radius of additional selection options. Eg: Motionsensor => indoor / outdoor. */
+.addSelectRadius {
   border-radius: 5px;
   padding: 2px 5px;
 }
+/* ******************* END OF GENERAL CSS ******************* */
 
+/* ******************* START OF BUTTON CSS ******************* */
+
+/* button-container for single button on page - eg Start, Confirm.*/
+.btnSingle {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 3%;
+}
+
+/* button-container for multiple buttons on page - eg Lights, Heating.*/
+.btnMultiple {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 3% 5%;
+}
+
+/* button general style */
+.btn {
+  background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
+  background-color: #8a8db5;
+  border: none;
+  border-radius: 0.6rem;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 0.9rem 1.8rem;
+  text-decoration: none;
+}
+.btn:hover {
+  background: linear-gradient(to bottom, #69a6be 5%, #4dbbc5 100%);
+  background-color: #69a6be;
+}
+.btn:active {
+  position: relative;
+  top: 0.1rem;
+}
+/* ******************* END OF BUTTON CSS ******************* */
+
+/* ******************* START OF CHECKMARK CSS ON START PAGE ******************* */
 .checkmarkDiv {
   display: flex;
   justify-content: center;
@@ -100,93 +162,8 @@
 .checkmark li:before {
   content: '✓';
   color: #2cba6c;
-  font-size: 30px;
+  font-size: 2.5rem;
 }
+/* ******************* END OF CHECKMARK CSS ON START PAGE ******************* */
 
-.btnPos {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-bottom: 5%;
-}
-
-.btn {
-  background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
-  background-color: #8a8db5;
-  border: none;
-  border-radius: 8px;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 13px 32px;
-  text-decoration: none;
-}
-.btn:hover {
-  background: linear-gradient(to bottom, #69a6be 5%, #4dbbc5 100%);
-  background-color: #69a6be;
-}
-.btn:active {
-  position: relative;
-  top: 1px;
-}
-
-.startContainer {
-  width: 60%;
-  height: 60vh;
-}
-
-.configContainer {
-  display: grid;
-  grid-template-areas:
-    'contentContainer'
-    'buttons';
-  width: 100%;
-  height: 100%;
-}
-
-.btnContainer {
-  grid-area: buttons;
-  display: flex;
-  justify-content: space-between;
-  margin: 2% 5%;
-  align-items: flex-end;
-}
-
-.typeBox {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 2%;
-  height: 20vh;
-  width: 20vh;
-  border-radius: 10%;
-  font-size: 12px;
-  box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
-  cursor: pointer;
-}
-
-.typeBox > img {
-  margin-top: 10%;
-  height: 10vh;
-  width: 10vh;
-}
-
-.typeBox > div {
-  margin-top: 10%;
-}
-
-.selected {
-  outline: none;
-  border-color: #9ecaed;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 100%) 0%,
-    rgba(73, 191, 199, 100%) 0%,
-    rgba(139, 141, 181, 100%) 100%
-  );
-}
+/***** UNORDERED ****/

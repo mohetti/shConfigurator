@@ -41,10 +41,10 @@ function Overview() {
       return (
         <div key={uniqid()}>
           <div>{x.name}</div>
-          {x.comp === true && <div className="dotComp"></div>}
-          {x.comp === false && <div className="dotPartialComp"></div>}
-          {x.comp === null && <div className="dotNotComp"></div>}
-          {x.comp === 'main' && <div className="dotMain"></div>}
+          {x.comp === true && <div className="dot comp"></div>}
+          {x.comp === false && <div className="dot partialComp"></div>}
+          {x.comp === null && <div className="dot notComp"></div>}
+          {x.comp === 'main' && <div className="dot dotMain"></div>}
         </div>
       );
     });
@@ -54,24 +54,26 @@ function Overview() {
     return results.map((x) => {
       return (
         <div className="overviewBox" key={uniqid()}>
-          <h2 className="stripe border">{x.mainSystem}</h2>
-          <h3 className="inConnection border">in Verbindung mit:</h3>
+          <h2 className="stripe border1">{x.mainSystem}</h2>
+          <h3 className="inConnection border1">in Verbindung mit:</h3>
           <div className="connectedSystemsContainer">
             {populateSubsystems(x)}
           </div>
           <div className="bottomOfContainer">
-            <div className="base">
-              <h3>Basisstationen: </h3>
-              <div className="circle">
-                {x.mainBase !== 'null'
-                  ? x.substations.length + 1
-                  : x.substations.length}
-              </div>
-            </div>
             <div>
-              <button className="btn" onClick={() => details(x.mainSystem)}>
-                zur Auflistung{' '}
-              </button>
+              <div className="baseContainer">
+                <h3>Basisstationen: </h3>
+                <div className="numberOfBases">
+                  {x.mainBase !== 'null'
+                    ? x.substations.length + 1
+                    : x.substations.length}
+                </div>
+              </div>
+              <div className="btnSingle">
+                <button className="btn" onClick={() => details(x.mainSystem)}>
+                  zur Auflistung{' '}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -80,14 +82,14 @@ function Overview() {
   };
 
   return (
-    <div className="windowContainer">
-      <div className="spaceLeft"></div>
+    <div className="background">
       {loading ? (
-        <div className="center textCenter">Loading</div>
+        <div>Loading</div>
       ) : (
-        <div className="center overviewContainer">{populateResults()}</div>
+        <div className="whiteBackground">
+          <div className="contentContainer mgZero">{populateResults()}</div>
+        </div>
       )}
-      <div className="spaceRight"></div>
     </div>
   );
 }

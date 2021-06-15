@@ -1,0 +1,65 @@
+/* ********** MARGINS ********** */
+.mgZero {
+  margin: 0 0 0 0;
+}
+
+.mgt1 {
+  margin-top: 2.5%;
+}
+.mgt2 {
+  margin-top: 5%;
+}
+
+.mgt3 {
+  margin-top: 10%;
+}
+
+.mgb1 {
+  margin-bottom: 2.5%;
+}
+
+.mgb2 {
+  margin-bottom: 5%;
+}
+
+.mgl1 {
+  margin-left: 2%;
+}
+
+/* ********** BORDER PROPERTIES ********** */
+.borderHghl {
+  border: 2px solid rgba(0, 128, 0, 50%);
+}
+
+.border1 {
+  border-radius: 5px;
+}
+
+/* ********** TEXT ALIGNEMENTS ********** */
+.textLeft {
+  text-align: left;
+}
+
+/* ********** SEPARATION LINES ********** */
+.line {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  margin: 0 2%;
+}
+
+/* ********** SPECIAL FLEX PROPERTIES ********** */
+
+.forceFlexWrap {
+  flex-basis: 100%;
+}
+
+.flexStartLeft {
+  justify-content: flex-start;
+}
+
+/* ********** SPECIAL contentBox and contentContainer PROPERTIES ********** */
+
+.boxSizeAdj {
+  height: 18vh;
+  width: 14vh;
+}

@@ -125,55 +125,43 @@ function Categories() {
   };
   return (
     <div className="background">
-      <div className="content1">
+      <div className="whiteBackground">
         <header>
-          <h1 className="stripe mgt1 textCenter">Kategorien:</h1>
+          <h1 className="stripe">Kategorien:</h1>
         </header>
-        <div className="configContainer">
-          <div className="confirmContainer mgCtg">
-            <div
-              onClick={() => handleClick('lights')}
-              className={`typeBox ${light ? 'selected' : ''}`}
-            >
-              {light ? <img src={lightImgW} /> : <img src={lightImg} />}
-              <div className={`${light ? 'higlightedText' : ''}`}>
-                Beleuchtung
-              </div>
-            </div>
-            <div
-              onClick={() => handleClick('heating')}
-              className={`typeBox ${heating ? 'selected' : ''}`}
-            >
-              {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
-              <div className={`${heating ? 'higlightedText' : ''}`}>
-                Heizung
-              </div>
-            </div>
-            <div
-              onClick={() => handleClick('security')}
-              className={`typeBox ${security ? 'selected' : ''}`}
-            >
-              {security ? (
-                <img src={securityImgW} />
-              ) : (
-                <img src={securityImg} />
-              )}
-              <div className={`${security ? 'higlightedText' : ''}`}>
-                Sicherheit
-              </div>
-            </div>
+        <div className="contentContainer">
+          <div
+            onClick={() => handleClick('lights')}
+            className={`contentBox cursor ${light ? 'selected' : ''}`}
+          >
+            {light ? <img src={lightImgW} /> : <img src={lightImg} />}
+            <div>Beleuchtung</div>
           </div>
-          <div className="btnContainer">
-            <button onClick={back} className="btn">
-              Zurück
-            </button>
-            <button onClick={infos} className="btn">
-              Mehr Infos
-            </button>
-            <button onClick={next} className="btn">
-              Weiter
-            </button>
+          <div
+            onClick={() => handleClick('heating')}
+            className={`contentBox cursor ${heating ? 'selected' : ''}`}
+          >
+            {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
+            <div>Heizung</div>
           </div>
+          <div
+            onClick={() => handleClick('security')}
+            className={`contentBox cursor ${security ? 'selected' : ''}`}
+          >
+            {security ? <img src={securityImgW} /> : <img src={securityImg} />}
+            <div>Sicherheit</div>
+          </div>
+        </div>
+        <div className="btnMultiple">
+          <button onClick={back} className="btn">
+            Zurück
+          </button>
+          <button onClick={infos} className="btn">
+            Mehr Infos
+          </button>
+          <button onClick={next} className="btn">
+            Weiter
+          </button>
         </div>
       </div>
     </div>

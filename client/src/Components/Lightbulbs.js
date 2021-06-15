@@ -16,6 +16,7 @@ import lightColorImgW from '../images/lights/lightColorW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 function Lightbulbs() {
   const [e27W, setE27W] = useState(false);
@@ -171,156 +172,138 @@ function Lightbulbs() {
 
   return (
     <div className="background">
-      <div className="center content1">
+      <div className="whiteBackground">
         <header>
-          <h1 className="stripe mgt1 textCenter">Spots & Glühbirnen:</h1>
+          <h1 className="stripe">Spots & Glühbirnen:</h1>
         </header>
-        <div className="configContainer">
-          <div className="confirmContainer mgLightbulbs">
-            <div
-              onClick={() => openSelector('white')}
-              className={`typeBox white ${borderW && 'borderHghl'} ${
-                e27W || e14W || gu10W ? 'selected' : ''
-              }`}
-            >
-              {e27W || e14W || gu10W ? (
-                <img src={lightWhiteImgW} />
-              ) : (
-                <img src={lightWhiteImg} />
-              )}
-              <div
-                className={`${e27W || e14W || gu10W ? 'higlightedText' : ''}`}
-              >
-                Dimmbares Licht
-              </div>
-            </div>
-            <div
-              onClick={() => openSelector('ambiance')}
-              className={`typeBox ambiance ${borderA && 'borderHghl'} ${
-                e27A || e14A || gu10A ? 'selected' : ''
-              }`}
-            >
-              {e27A || e14A || gu10A ? (
-                <img src={lightAmbianceImgW} />
-              ) : (
-                <img src={lightAmbianceImg} />
-              )}
-              <div
-                className={`${e27A || e14A || gu10A ? 'higlightedText' : ''}`}
-              >
-                Dimmbares Weißlicht
-              </div>
-            </div>
-            <div
-              onClick={() => openSelector('multicolor')}
-              className={`typeBox multicolor ${borderM && 'borderHghl'} ${
-                e27M || e14M || gu10M ? 'selected' : ''
-              }`}
-            >
-              {e27M || e14M || gu10M ? (
-                <img src={lightColorImgW} />
-              ) : (
-                <img src={lightColorImg} />
-              )}
-              <div
-                className={`${e27M || e14M || gu10M ? 'higlightedText' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-            {selectorBoxWhite && (
-              <div className="bulbs">
-                <div
-                  onClick={() => handleClick('e27')}
-                  className={`typeBox e27 ${e27W ? 'selected' : ''}`}
-                >
-                  {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                  <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
-                </div>
-                <div
-                  onClick={() => handleClick('e14')}
-                  className={`typeBox e14 ${e14W ? 'selected' : ''}`}
-                >
-                  {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                  <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
-                </div>
-                <div
-                  onClick={() => handleClick('gu10')}
-                  className={`typeBox gu10 ${gu10W ? 'selected' : ''}`}
-                >
-                  {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                  <div className={`${gu10W ? 'highlightedText' : ''}`}>
-                    GU10
-                  </div>
-                </div>
-              </div>
+        <div className="contentContainer">
+          <div
+            onClick={() => openSelector('white')}
+            className={`contentBox cursor white ${borderW && 'borderHghl'} ${
+              e27W || e14W || gu10W ? 'selected' : ''
+            }`}
+          >
+            {e27W || e14W || gu10W ? (
+              <img src={lightWhiteImgW} />
+            ) : (
+              <img src={lightWhiteImg} />
             )}
-            {selectorBoxAmbiance && (
-              <div className="bulbs">
-                <div
-                  onClick={() => handleClick('e27')}
-                  className={`typeBox e27 ${e27A ? 'selected' : ''}`}
-                >
-                  {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                  <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
-                </div>
-                <div
-                  onClick={() => handleClick('e14')}
-                  className={`typeBox e14 ${e14A ? 'selected' : ''}`}
-                >
-                  {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                  <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
-                </div>
-                <div
-                  onClick={() => handleClick('gu10')}
-                  className={`typeBox gu10 ${gu10A ? 'selected' : ''}`}
-                >
-                  {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                  <div className={`${gu10A ? 'highlightedText' : ''}`}>
-                    GU10
-                  </div>
-                </div>
-              </div>
-            )}
-            {selectorBoxMulticolor && (
-              <div className="bulbs">
-                <div
-                  onClick={() => handleClick('e27')}
-                  className={`typeBox e27 ${e27M ? 'selected' : ''}`}
-                >
-                  {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                  <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
-                </div>
-                <div
-                  onClick={() => handleClick('e14')}
-                  className={`typeBox e14 ${e14M ? 'selected' : ''}`}
-                >
-                  {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                  <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
-                </div>
-                <div
-                  onClick={() => handleClick('gu10')}
-                  className={`typeBox gu10 ${gu10M ? 'selected' : ''}`}
-                >
-                  {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                  <div className={`${gu10M ? 'highlightedText' : ''}`}>
-                    GU10
-                  </div>
-                </div>
-              </div>
-            )}
+            <div>Dimmbares Licht</div>
           </div>
-          <div className="btnContainer">
-            <button onClick={back} className="btn">
-              Zurück
-            </button>
-            <button onClick={infos} className="btn">
-              Mehr Infos
-            </button>
-            <button onClick={next} className="btn">
-              Weiter
-            </button>
+
+          <div
+            onClick={() => openSelector('ambiance')}
+            className={`contentBox cursor ambiance ${borderA && 'borderHghl'} ${
+              e27A || e14A || gu10A ? 'selected' : ''
+            }`}
+          >
+            {e27A || e14A || gu10A ? (
+              <img src={lightAmbianceImgW} />
+            ) : (
+              <img src={lightAmbianceImg} />
+            )}
+            <div>Dimmbares Weißlicht</div>
           </div>
+          <div
+            onClick={() => openSelector('multicolor')}
+            className={`contentBox cursor multicolor ${
+              borderM && 'borderHghl'
+            } ${e27M || e14M || gu10M ? 'selected' : ''}`}
+          >
+            {e27M || e14M || gu10M ? (
+              <img src={lightColorImgW} />
+            ) : (
+              <img src={lightColorImg} />
+            )}
+            <div>Weiß- und Farblicht</div>
+          </div>
+          <div className="forceFlexWrap"></div>
+          {selectorBoxWhite && (
+            <div className="contentContainer mgZero">
+              <div
+                onClick={() => handleClick('e27')}
+                className={`contentBox cursor ${e27W ? 'selected' : ''}`}
+              >
+                {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
+              </div>
+              <div
+                onClick={() => handleClick('e14')}
+                className={`contentBox cursor ${e14W ? 'selected' : ''}`}
+              >
+                {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
+              </div>
+              <div
+                onClick={() => handleClick('gu10')}
+                className={`contentBox cursor ${gu10W ? 'selected' : ''}`}
+              >
+                {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                <div className={`${gu10W ? 'highlightedText' : ''}`}>GU10</div>
+              </div>
+            </div>
+          )}
+          {selectorBoxAmbiance && (
+            <div className="contentContainer mgZero">
+              <div
+                onClick={() => handleClick('e27')}
+                className={`contentBox cursor ${e27A ? 'selected' : ''}`}
+              >
+                {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
+              </div>
+              <div
+                onClick={() => handleClick('e14')}
+                className={`contentBox cursor ${e14A ? 'selected' : ''}`}
+              >
+                {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
+              </div>
+              <div
+                onClick={() => handleClick('gu10')}
+                className={`contentBox cursor ${gu10A ? 'selected' : ''}`}
+              >
+                {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                <div className={`${gu10A ? 'highlightedText' : ''}`}>GU10</div>
+              </div>
+            </div>
+          )}
+          {selectorBoxMulticolor && (
+            <div className="contentContainer mgZero">
+              <div
+                onClick={() => handleClick('e27')}
+                className={`contentBox cursor ${e27M ? 'selected' : ''}`}
+              >
+                {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
+                <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
+              </div>
+              <div
+                onClick={() => handleClick('e14')}
+                className={`contentBox cursor ${e14M ? 'selected' : ''}`}
+              >
+                {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
+                <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
+              </div>
+              <div
+                onClick={() => handleClick('gu10')}
+                className={`contentBox cursor ${gu10M ? 'selected' : ''}`}
+              >
+                {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+                <div className={`${gu10M ? 'highlightedText' : ''}`}>GU10</div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="btnMultiple">
+          <button onClick={back} className="btn">
+            Zurück
+          </button>
+          <button onClick={infos} className="btn">
+            Mehr Infos
+          </button>
+          <button onClick={next} className="btn">
+            Weiter
+          </button>
         </div>
       </div>
     </div>

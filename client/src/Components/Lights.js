@@ -115,63 +115,59 @@ function Lights() {
 
   return (
     <div className="background">
-      <div className="content1">
+      <div className="whiteBackground">
         <header>
-          <h1 className="stripe mgt1 textCenter">Beleuchtungsoptionen:</h1>
+          <h1 className="stripe">Beleuchtungsoptionen:</h1>
         </header>
-        <div className="configContainer">
-          <div className="confirmContainer mgLights">
-            <div
-              onClick={() => handleClick('lightbulbs')}
-              className={`typeBox lightbulbs ${lightbulbs ? 'selected' : ''}`}
-            >
-              {lightbulbs ? (
-                <img src={lightbulbImgW} />
-              ) : (
-                <img src={lightbulbImg} />
-              )}
-              <div className={`${lightbulbs ? 'higlightedText' : ''}`}>
-                Glühbirnen und Spots
-              </div>
-            </div>
-            <div
-              onClick={() => handleClick('innerLights')}
-              className={`typeBox innerLights ${innerLights ? 'selected' : ''}`}
-            >
-              {innerLights ? (
-                <img src={innerLightsImgW} />
-              ) : (
-                <img src={innerLightsImg} />
-              )}
-              <div className={`${innerLights ? 'higlightedText' : ''}`}>
-                Innenbeleuchtung
-              </div>
-            </div>
-            <div
-              onClick={() => handleClick('garden')}
-              className={`typeBox garden ${garden ? 'selected' : ''}`}
-            >
-              {garden ? (
-                <img src={gardenLightImgW} />
-              ) : (
-                <img src={gardenLightImg} />
-              )}
-              <div className={`${garden ? 'higlightedText' : ''}`}>
-                Gartenbeleuchtung
-              </div>
-            </div>
+        <div className="contentContainer">
+          <div
+            onClick={() => handleClick('lightbulbs')}
+            className={`contentBox cursor lightbulbs ${
+              lightbulbs ? 'selected' : ''
+            }`}
+          >
+            {lightbulbs ? (
+              <img src={lightbulbImgW} />
+            ) : (
+              <img src={lightbulbImg} />
+            )}
+            <div>Glühbirnen und Spots</div>
           </div>
-          <div className="btnContainer">
-            <button onClick={back} className="btn">
-              Zurück
-            </button>
-            <button onClick={infos} className="btn">
-              Mehr Infos
-            </button>
-            <button onClick={next} className="btn">
-              Weiter
-            </button>
+          <div
+            onClick={() => handleClick('innerLights')}
+            className={`contentBox cursor innerLights ${
+              innerLights ? 'selected' : ''
+            }`}
+          >
+            {innerLights ? (
+              <img src={innerLightsImgW} />
+            ) : (
+              <img src={innerLightsImg} />
+            )}
+            <div>Innenbeleuchtung</div>
           </div>
+          <div
+            onClick={() => handleClick('garden')}
+            className={`contentBox cursor garden ${garden ? 'selected' : ''}`}
+          >
+            {garden ? (
+              <img src={gardenLightImgW} />
+            ) : (
+              <img src={gardenLightImg} />
+            )}
+            <div>Gartenbeleuchtung</div>
+          </div>
+        </div>
+        <div className="btnMultiple">
+          <button onClick={back} className="btn">
+            Zurück
+          </button>
+          <button onClick={infos} className="btn">
+            Mehr Infos
+          </button>
+          <button onClick={next} className="btn">
+            Weiter
+          </button>
         </div>
       </div>
     </div>

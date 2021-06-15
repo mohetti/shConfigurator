@@ -10,19 +10,19 @@ function Start() {
 
   return (
     <div className="background">
-      <div className="center content1 textCenter">
+      <div className="whiteBackground">
         <header>
-          <h1 className="stripe mgt1">Smart Home Konfigurator</h1>
-          <h2 className="mgt1 mgb2">komwoh</h2>
+          <h1 className="stripe mgt2">Smart Home Konfigurator</h1>
+          <h2>komwoh</h2>
         </header>
-        <div>
+        <div className="mgt1">
           <p>
             Erstelle Dir jetzt Dein persönliches Smart Home, mit dem komwoh
             Smart Home Konfigurator.
           </p>
           <p>Wähle aus den drei Kategorien: Licht, Heizung und Sicherheit.</p>
 
-          <h3 className="mgt1">
+          <h3 className="mgt2">
             <strong>
               Du erhältst Lösungsvorschläge, welche auf Basis Deiner Auswahl:
             </strong>
@@ -36,7 +36,7 @@ function Start() {
             <li>möglichst viele Geräte mit nur einer App verwalten.</li>
           </ul>
         </div>
-        <div className="btnPos">
+        <div className="btnSingle">
           <button onClick={start} className="btn">
             Starte Deine Auswahl
           </button>

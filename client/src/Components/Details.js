@@ -114,7 +114,7 @@ function Details() {
       return (
         <div
           key={uniqid()}
-          className={`detailBox ${
+          className={`mgl1 contentBox ${
             x.comp === 'main'
               ? 'blueFiller'
               : x.comp === null
@@ -133,23 +133,23 @@ function Details() {
   const populateResult = () => {
     return (
       <div className="background">
-        <div className="content1">
-          <h1 className="stripe mgt1 textCenter">{system}</h1>
-          <div className="lightbulbs">
+        <div className="whiteBackground">
+          <h1 className="stripe">{system}</h1>
+          <div className="textLeft">
             {lightbulbs.length > 0 && (
               <div>
                 <h3 className="line">Glühbirnen & Spots</h3>
-                <div className="detailContainer">
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
                   {populateProducts(lightbulbs)}
                 </div>
               </div>
             )}
           </div>
-          <div className="lightbulbs">
+          <div className="textLeft">
             {innerLights.length > 0 && (
               <div>
                 <h3 className="line">Innenbeleuchtung: </h3>
-                <div className="detailContainer">
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
                   {populateProducts(innerLights)}
                 </div>
               </div>
@@ -157,9 +157,9 @@ function Details() {
           </div>
           <div>
             {gardenLights.length > 0 && (
-              <div className="lightbulbs">
+              <div className="textLeft">
                 <h3 className="line">Gartenbeleuchtung: </h3>
-                <div className="detailContainer">
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
                   {populateProducts(gardenLights)}
                 </div>
               </div>
@@ -167,9 +167,9 @@ function Details() {
           </div>
           <div>
             {heating.length > 0 && (
-              <div className="lightbulbs">
+              <div className="textLeft">
                 <h3 className="line">Heizungssteuerung: </h3>
-                <div className="detailContainer">
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
                   {populateProducts(heating)}
                 </div>
               </div>
@@ -177,9 +177,9 @@ function Details() {
           </div>
           <div>
             {security.length > 0 && (
-              <div className="lightbulbs">
+              <div className="textLeft">
                 <h3 className="line">Sicherheitstechnik: </h3>
-                <div className="detailContainer">
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
                   {populateProducts(security)}
                 </div>
               </div>

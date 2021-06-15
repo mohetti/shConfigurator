@@ -1,10 +1,4 @@
-.overviewContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
+/* style for the system's boxes. Parent => contentContainer.*/
 .overviewBox {
   display: flex;
   margin: 5% 5%;
@@ -13,48 +7,43 @@
   margin-left: 2.5%;
   margin-right: 2.5%;
   text-align: center;
-  padding: 10px;
+  padding: 1rem;
   border: 2px solid #8a8db5;
   border-radius: 10px;
 }
 
+/* style of "in Verbindung mit */
 .inConnection {
   margin-top: -3%;
   background-color: #7a99b9;
   color: white;
 }
 
-.dotComp {
+/* dotstyle general and colors for compatibility */
+.dot {
   height: 25px;
   width: 25px;
-  background-color: green;
   border-radius: 50%;
   display: inline-block;
 }
 
-.dotPartialComp {
-  height: 25px;
-  width: 25px;
-  background-color: yellow;
-  border-radius: 50%;
-  display: inline-block;
+.comp {
+  background-color: green;
 }
-.dotNotComp {
-  height: 25px;
-  width: 25px;
+
+.partialComp {
+  background-color: yellow;
+}
+
+.notComp {
   background-color: red;
-  border-radius: 50%;
-  display: inline-block;
 }
 
 .dotMain {
-  height: 25px;
-  width: 25px;
   background-color: blue;
-  border-radius: 50%;
-  display: inline-block;
 }
 
+/* container for the list of all subsystems. */
 .connectedSystemsContainer {
   display: flex;
   flex-direction: column;
@@ -62,18 +51,28 @@
   justify-content: space-around;
 }
 
-.base {
+/* container to put basestation and button on bottom of contentContainer. */
+.bottomOfContainer {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2%;
+}
+
+/* container for basestation content */
+.baseContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.base div {
+.baseContainer div {
   margin-bottom: 20%;
   margin-top: -10%;
 }
 
-.circle {
+/* circle style for number of bases */
+.numberOfBases {
   height: 25px;
   width: 25px;
   background-color: #7a99b9;
@@ -81,17 +80,4 @@
   color: white;
   border-radius: 50%;
   padding: 5px;
-}
-
-.border {
-  border-radius: 5px;
-}
-
-.bottomOfContainer {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 2%;
 }
