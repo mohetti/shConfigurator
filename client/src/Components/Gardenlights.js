@@ -10,6 +10,7 @@ import wallLightGardenImgW from '../images/lights/wallGardenLightW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Gardenlights() {
   const [pathLightW, setPathLightW] = useState(false);
@@ -119,6 +120,44 @@ function Gardenlights() {
     }
   };
 
+  const selectPathLight = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('pathLightW')}
+          className={`addSelectRadius ${pathLightW ? 'selected' : ''}`}
+        >
+          Dimmbar
+        </div>
+        <div
+          onClick={() => handleClick('pathLightM')}
+          className={`addSelectRadius ${pathLightM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
+
+  const selectWalLGarden = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('wallGardenW')}
+          className={`addSelectRadius ${wallGardenW ? 'selected' : ''}`}
+        >
+          Dimmbar
+        </div>
+        <div
+          onClick={() => handleClick('wallGardenM')}
+          className={`addSelectRadius ${wallGardenM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="background">
       <div className="whiteBackground">
@@ -128,7 +167,7 @@ function Gardenlights() {
         <div className="contentContainer">
           <div
             onClick={() => openBox('pathLight')}
-            className={`contentBox cursor pathLight ${
+            className={`contentBox cursor ${
               pathLightW || pathLightM ? 'selected' : ''
             }`}
           >
@@ -141,9 +180,7 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenSpot')}
-            className={`contentBox cursor gardenSpot ${
-              gardenSpot ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${gardenSpot ? 'selected' : ''}`}
           >
             {gardenSpot ? (
               <img src={gardenSpotImgW} />
@@ -152,9 +189,14 @@ function Gardenlights() {
             )}
             <div>Gartenspots</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxPathLight && selectPathLight()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
           <div
             onClick={() => openBox('wallGarden')}
-            className={`contentBox cursor wallGarden ${
+            className={`contentBox cursor ${
               wallGardenW || wallGardenM ? 'selected' : ''
             } `}
           >
@@ -167,9 +209,7 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenStrip')}
-            className={`contentBox cursor gardenStrip ${
-              gardenStrip ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${gardenStrip ? 'selected' : ''}`}
           >
             {gardenStrip ? (
               <img src={gardenStripImgW} />
@@ -178,40 +218,17 @@ function Gardenlights() {
             )}
             <div>Leuchtstreifen</div>
           </div>
-          <div className="forceFlexWrap"></div>
-          {boxPathLight && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('pathLightW')}
-                className={`addSelectRadius ${pathLightW ? 'selected' : ''}`}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('pathLightM')}
-                className={`addSelectRadius ${pathLightM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
-
-          {boxWallGarden && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('wallGardenW')}
-                className={`addSelectRadius ${wallGardenW ? 'selected' : ''}`}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('wallGardenM')}
-                className={`addSelectRadius ${wallGardenM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxWallGarden && selectWalLGarden()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <div className="forceFlexWrap"></div>
+            {boxPathLight && selectPathLight()}
+            {boxWallGarden && selectWalLGarden()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
         </div>
         <div className="btnMultiple">
           <button onClick={back} className="btn">

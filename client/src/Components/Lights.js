@@ -8,6 +8,7 @@ import gardenLightImgW from '../images/categories/gardenLightW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Lights() {
   const [lightbulbs, setLightbulbs] = useState(false);
@@ -122,9 +123,7 @@ function Lights() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('lightbulbs')}
-            className={`contentBox cursor lightbulbs ${
-              lightbulbs ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${lightbulbs ? 'selected' : ''}`}
           >
             {lightbulbs ? (
               <img src={lightbulbImgW} />
@@ -133,11 +132,17 @@ function Lights() {
             )}
             <div>Glühbirnen und Spots</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => handleClick('innerLights')}
-            className={`contentBox cursor innerLights ${
-              innerLights ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${innerLights ? 'selected' : ''}`}
           >
             {innerLights ? (
               <img src={innerLightsImgW} />
@@ -146,9 +151,17 @@ function Lights() {
             )}
             <div>Innenbeleuchtung</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => handleClick('garden')}
-            className={`contentBox cursor garden ${garden ? 'selected' : ''}`}
+            className={`contentBox cursor ${garden ? 'selected' : ''}`}
           >
             {garden ? (
               <img src={gardenLightImgW} />

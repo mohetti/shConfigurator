@@ -18,6 +18,7 @@ import ceilingLightImgW from '../images/lights/ceilingLightW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Innerlights() {
   const [tableLamp, setTableLamp] = useState(false);
@@ -248,6 +249,125 @@ function Innerlights() {
     }
   };
 
+  const selectRecSpot = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('recSpotW')}
+          className={`addSelectRadius ${recSpotW ? 'selected' : ''}`}
+        >
+          Dimmbar
+        </div>
+        <div
+          onClick={() => handleClick('recSpotA')}
+          className={`addSelectRadius ${recSpotA ? 'selected' : ''}`}
+        >
+          dimmbares Weißlicht
+        </div>
+        <div
+          onClick={() => handleClick('recSpotM')}
+          className={`addSelectRadius ${recSpotM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
+
+  const selectWall = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('wallA')}
+          className={`addSelectRadius ${wallA ? 'selected' : ''}`}
+        >
+          dimmbares Weißlicht
+        </div>
+        <div
+          onClick={() => handleClick('wallM')}
+          className={`addSelectRadius ${wallM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
+
+  const selectPlug = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('plugN')}
+          className={`addSelectRadius ${plugN ? 'selected' : ''}`}
+        >
+          Einfach
+        </div>
+        <div
+          onClick={() => handleClick('plugD')}
+          className={`addSelectRadius ${plugD ? 'selected' : ''}`}
+        >
+          mit Dimmfunktion
+        </div>
+      </div>
+    );
+  };
+
+  const selectSurfSpot = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('surfSpotA')}
+          className={`addSelectRadius ${surfSpotA ? 'selected' : ''}`}
+        >
+          dimmbares Weißlicht
+        </div>
+        <div
+          onClick={() => handleClick('surfSpotM')}
+          className={`addSelectRadius ${surfSpotM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
+
+  const selectRecSwitch = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('recSwitchN')}
+          className={`addSelectRadius ${recSwitchN ? 'selected' : ''}`}
+        >
+          Einfach
+        </div>
+        <div
+          onClick={() => handleClick('recSwitchD')}
+          className={`addSelectRadius ${recSwitchD ? 'selected' : ''}`}
+        >
+          mit Dimmfunktion
+        </div>
+      </div>
+    );
+  };
+
+  const selectCeiling = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('ceilingA')}
+          className={`addSelectRadius ${ceilingA ? 'selected' : ''}`}
+        >
+          dimmbares Weißlicht
+        </div>
+        <div
+          onClick={() => handleClick('ceilingM')}
+          className={`addSelectRadius ${ceilingM ? 'selected' : ''}`}
+        >
+          Weiß- und Farblicht
+        </div>
+      </div>
+    );
+  };
   return (
     <div className="background">
       <div className="whiteBackground">
@@ -257,16 +377,14 @@ function Innerlights() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('strip')}
-            className={`contentBox cursor strip ${strip ? 'selected' : ''}`}
+            className={`contentBox cursor ${strip ? 'selected' : ''}`}
           >
             {strip ? <img src={stripImgW} /> : <img src={stripImg} />}
             <div>Leuchtstreifen</div>
           </div>
           <div
             onClick={() => handleClick('tableLamp')}
-            className={`contentBox cursor tableLamp ${
-              tableLamp ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${tableLamp ? 'selected' : ''}`}
           >
             {tableLamp ? (
               <img src={tableLampImgW} />
@@ -275,9 +393,12 @@ function Innerlights() {
             )}
             <div>Tischlampe</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
           <div
             onClick={() => openBox('recSpot')}
-            className={`contentBox cursor recSpot ${
+            className={`contentBox cursor ${
               recSpotW || recSpotA || recSpotM ? 'selected' : ''
             }`}
           >
@@ -290,9 +411,7 @@ function Innerlights() {
           </div>
           <div
             onClick={() => openBox('wall')}
-            className={`contentBox cursor wall ${
-              wallA || wallM ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${wallA || wallM ? 'selected' : ''}`}
           >
             {wallA || wallM ? (
               <img src={wallLightImgW} />
@@ -301,130 +420,29 @@ function Innerlights() {
             )}
             <div>Wandleuchte</div>
           </div>
-          <div className="forceFlexWrap"></div>
-          {boxRecSpot && (
-            <div className={`addSelectContainer`}>
-              <div
-                onClick={() => handleClick('recSpotW')}
-                className={`addSelectRadius ${recSpotW ? 'selected' : ''}`}
-              >
-                Dimmbar
-              </div>
-              <div
-                onClick={() => handleClick('recSpotA')}
-                className={`addSelectRadius ${recSpotA ? 'selected' : ''}`}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('recSpotM')}
-                className={`addSelectRadius ${recSpotM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
-          {boxWall && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('wallA')}
-                className={`addSelectRadius ${wallA ? 'selected' : ''}`}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('wallM')}
-                className={`addSelectRadius ${wallM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
-          {boxPlug && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('plugN')}
-                className={`addSelectRadius ${plugN ? 'selected' : ''}`}
-              >
-                Einfach
-              </div>
-              <div
-                onClick={() => handleClick('plugD')}
-                className={`addSelectRadius ${plugD ? 'selected' : ''}`}
-              >
-                mit Dimmfunktion
-              </div>
-            </div>
-          )}
-          {boxSurfSpot && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('surfSpotA')}
-                className={`addSelectRadius ${surfSpotA ? 'selected' : ''}`}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('surfSpotM')}
-                className={`addSelectRadius ${surfSpotM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
-          {boxRecSwitch && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('recSwitchN')}
-                className={`addSelectRadius ${recSwitchN ? 'selected' : ''}`}
-              >
-                Einfach
-              </div>
-              <div
-                onClick={() => handleClick('recSwitchD')}
-                className={`addSelectRadius ${recSwitchD ? 'selected' : ''}`}
-              >
-                mit Dimmfunktion
-              </div>
-            </div>
-          )}
-          {boxCeiling && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('ceilingA')}
-                className={`addSelectRadius ${ceilingA ? 'selected' : ''}`}
-              >
-                dimmbares Weißlicht
-              </div>
-              <div
-                onClick={() => handleClick('ceilingM')}
-                className={`addSelectRadius ${ceilingM ? 'selected' : ''}`}
-              >
-                Weiß- und Farblicht
-              </div>
-            </div>
-          )}
-
-          {boxRecSpot && <div className="forceFlexWrap"></div>}
-          {boxWall && <div className="forceFlexWrap"></div>}
-          {boxPlug && <div className="forceFlexWrap"></div>}
-          {boxSurfSpot && <div className="forceFlexWrap"></div>}
-          {boxSurfSpot && <div className="forceFlexWrap"></div>}
-          {boxRecSwitch && <div className="forceFlexWrap"></div>}
-          {boxCeiling && <div className="forceFlexWrap"></div>}
-
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxRecSpot && selectRecSpot()}
+            {boxWall && selectWall()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <div className="forceFlexWrap"></div>
+            {boxRecSpot && selectRecSpot()}
+            {boxWall && selectWall()}
+            {boxRecSpot && <div className="forceFlexWrap"></div>}
+            {boxWall && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
           <div
             onClick={() => openBox('plug')}
-            className={`contentBox cursor plug ${
-              plugN || plugD ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${plugN || plugD ? 'selected' : ''}`}
           >
             {plugN || plugD ? <img src={plugImgW} /> : <img src={plugImg} />}
             <div>Zwischenstecker</div>
           </div>
           <div
             onClick={() => openBox('surfSpot')}
-            className={`contentBox cursor surfSpot ${
+            className={`contentBox cursor ${
               surfSpotA || surfSpotM ? 'selected' : ''
             }`}
           >
@@ -435,9 +453,15 @@ function Innerlights() {
             )}
             <div>Aufbauspot</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxPlug && selectPlug()}
+            {boxSurfSpot && selectSurfSpot()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
           <div
             onClick={() => openBox('recSwitch')}
-            className={`contentBox cursor recSwitch ${
+            className={`contentBox cursor ${
               recSwitchN || recSwitchD ? 'selected' : ''
             }`}
           >
@@ -450,7 +474,7 @@ function Innerlights() {
           </div>
           <div
             onClick={() => openBox('ceiling')}
-            className={`contentBox cursor ceiling ${
+            className={`contentBox cursor ${
               ceilingA || ceilingM ? 'selected' : ''
             }`}
           >
@@ -461,6 +485,24 @@ function Innerlights() {
             )}
             <div>Deckenlampe</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxRecSwitch && selectRecSwitch()}
+            {boxCeiling && selectCeiling()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <div className="forceFlexWrap"></div>
+            {boxPlug && selectPlug()}
+            {boxSurfSpot && selectSurfSpot()}
+            {boxRecSwitch && selectRecSwitch()}
+            {boxCeiling && selectCeiling()}
+            {boxPlug && <div className="forceFlexWrap"></div>}
+            {boxSurfSpot && <div className="forceFlexWrap"></div>}
+            {boxSurfSpot && <div className="forceFlexWrap"></div>}
+            {boxRecSwitch && <div className="forceFlexWrap"></div>}
+            {boxCeiling && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
         </div>
         <div className="btnMultiple">
           <button onClick={back} className="btn">

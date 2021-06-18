@@ -17,6 +17,7 @@ import heatingActorImgW from '../images/heating/heatingActorW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Heating() {
   const [radiator, setRadiator] = useState(false);
@@ -215,6 +216,186 @@ function Heating() {
     }
   };
 
+  const selectThermostatBigWidth = () => {
+    return (
+      <div className="contentContainer mgZero">
+        <div
+          onClick={() => handleClick('thermostatWired230', 'thermostat')}
+          className={`contentBox cursor ${
+            thermostatWired230 ? 'selected' : ''
+          }`}
+        >
+          {thermostatWired230 ? (
+            <img src={thermostatWiredImgW} />
+          ) : (
+            <img src={thermostatWiredImg} />
+          )}
+          <div>Thermostat 230V (verkabelt)</div>
+        </div>
+        <div
+          onClick={() => handleClick('thermostatWired24', 'thermostat')}
+          className={`contentBox cursor ${thermostatWired24 ? 'selected' : ''}`}
+        >
+          {thermostatWired24 ? (
+            <img src={thermostatWiredImgW} />
+          ) : (
+            <img src={thermostatWiredImg} />
+          )}
+          <div>Thermostat 24V (verkabelt)</div>
+        </div>
+        <div
+          onClick={() => handleClick('thermostatWireless', 'thermostat')}
+          className={`contentBox cursor ${
+            thermostatWireless ? 'selected' : ''
+          }`}
+        >
+          {thermostatWireless ? (
+            <img src={thermostatWirelessImgW} />
+          ) : (
+            <img src={thermostatWirelessImg} />
+          )}
+          <div>Thermostat (kabellos)</div>
+        </div>
+      </div>
+    );
+  };
+
+  const selectHeatActorBigWidth = () => {
+    return (
+      <div className="contentContainer mgZero">
+        <div
+          onClick={() => handleClick('heatActor24_06', 'actor')}
+          className={`boxSizeAdj contentBox cursor ${
+            heatActor24_06 ? 'selected' : ''
+          }`}
+        >
+          {heatActor24_06 ? (
+            <img src={heatingActorImgW} />
+          ) : (
+            <img src={heatingActorImg} />
+          )}
+          <div>6 Stellantriebe, 24V</div>
+        </div>
+        <div
+          onClick={() => handleClick('heatActor24_10', 'actor')}
+          className={`boxSizeAdj contentBox cursor ${
+            heatActor24_10 ? 'selected' : ''
+          }`}
+        >
+          {heatActor24_10 ? (
+            <img src={heatingActorImgW} />
+          ) : (
+            <img src={heatingActorImg} />
+          )}
+          <div>10 Stellantriebe, 24V</div>
+        </div>
+        <div
+          onClick={() => handleClick('heatActor230_06', 'actor')}
+          className={`boxSizeAdj contentBox cursor ${
+            heatActor230_06 ? 'selected' : ''
+          }`}
+        >
+          {heatActor230_06 ? (
+            <img src={heatingActorImgW} />
+          ) : (
+            <img src={heatingActorImg} />
+          )}
+          <div>6 Stellantriebe, 230V</div>
+        </div>
+        <div
+          onClick={() => handleClick('heatActor230_10', 'actor')}
+          className={`boxSizeAdj contentBox cursor ${
+            heatActor230_10 ? 'selected' : ''
+          }`}
+        >
+          {heatActor230_10 ? (
+            <img src={heatingActorImgW} />
+          ) : (
+            <img src={heatingActorImg} />
+          )}
+          <div>10 Stellantriebe, 230V</div>
+        </div>
+        <div
+          onClick={() => handleClick('heatActor12Motorized', 'actor')}
+          className={`boxSizeAdj contentBox cursor ${
+            heatActor12Motorized ? 'selected' : ''
+          }`}
+        >
+          {heatActor12Motorized ? (
+            <img src={heatingActorImgW} />
+          ) : (
+            <img src={heatingActorImg} />
+          )}
+          <div>12 Stellantriebe, motorisiert</div>
+        </div>
+      </div>
+    );
+  };
+
+  const selectThermostatSmallWidth = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('thermostatWired230', 'thermostat')}
+          className={`addSelectRadius ${thermostatWired230 ? 'selected' : ''}`}
+        >
+          230V, verkabelt
+        </div>
+        <div
+          onClick={() => handleClick('thermostatWired24', 'thermostat')}
+          className={`addSelectRadius ${thermostatWired24 ? 'selected' : ''}`}
+        >
+          24V, verkabelt
+        </div>
+        <div
+          onClick={() => handleClick('thermostatWireless', 'thermostat')}
+          className={`addSelectRadius ${thermostatWireless ? 'selected' : ''}`}
+        >
+          Thermostat kabellos
+        </div>
+      </div>
+    );
+  };
+
+  const selectHeatActorSmallWidth = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('heatActor24_06', 'actor')}
+          className={`addSelectRadius ${heatActor24_06 ? 'selected' : ''}`}
+        >
+          6 Stellantriebe, 24V
+        </div>
+        <div
+          onClick={() => handleClick('heatActor24_10', 'actor')}
+          className={`addSelectRadius ${heatActor24_10 ? 'selected' : ''}`}
+        >
+          10 Stellantriebe, 24V
+        </div>
+        <div
+          onClick={() => handleClick('heatActor230_06', 'actor')}
+          className={`addSelectRadius ${heatActor230_06 ? 'selected' : ''}`}
+        >
+          6 Stellantriebe, 230V
+        </div>
+        <div
+          onClick={() => handleClick('heatActor230_10', 'actor')}
+          className={`addSelectRadius ${heatActor230_06 ? 'selected' : ''}`}
+        >
+          10 Stellantriebe, 230V
+        </div>
+        <div
+          onClick={() => handleClick('heatActor12Motorized', 'actor')}
+          className={`addSelectRadius ${
+            heatActor12Motorized ? 'selected' : ''
+          }`}
+        >
+          12 Stellantriebe, motorisiert
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="background">
       <div className="whiteBackground">
@@ -224,16 +405,22 @@ function Heating() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('radiator', 'none')}
-            className={`contentBox cursor radiator ${
-              radiator ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${radiator ? 'selected' : ''}`}
           >
             {radiator ? <img src={radiatorImg} /> : <img src={radiatorImg} />}
             <div>Heizkörperthermostat</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => openBox('thermostat')}
-            className={`contentBox cursor thermostat ${
+            className={`contentBox cursor ${
               thermostatWired230 || thermostatWired24 || thermostatWireless
                 ? 'selected'
                 : ''
@@ -246,9 +433,21 @@ function Heating() {
             )}
             <div>Wandthermostat</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxThermostat && selectThermostatSmallWidth()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {boxThermostat && selectThermostatSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => openBox('heatActors')}
-            className={`contentBox cursor heatActors ${
+            className={`contentBox cursor ${
               heatActor12Motorized ||
               heatActor24_06 ||
               heatActor24_10 ||
@@ -269,119 +468,39 @@ function Heating() {
             )}
             <div>Fußbodenheizungsaktor</div>
           </div>
-          <div className="forceFlexWrap"></div>
-          {boxThermostat && (
-            <div className="contentContainer mgZero">
-              <div
-                onClick={() => handleClick('thermostatWired230', 'thermostat')}
-                className={`contentBox cursor thermostatWired230 ${
-                  thermostatWired230 ? 'selected' : ''
-                }`}
-              >
-                {thermostatWired230 ? (
-                  <img src={thermostatWiredImgW} />
-                ) : (
-                  <img src={thermostatWiredImg} />
-                )}
-                <div>Thermostat 230V (verkabelt)</div>
-              </div>
-              <div
-                onClick={() => handleClick('thermostatWired24', 'thermostat')}
-                className={`contentBox cursor thermostatWired24 ${
-                  thermostatWired24 ? 'selected' : ''
-                }`}
-              >
-                {thermostatWired24 ? (
-                  <img src={thermostatWiredImgW} />
-                ) : (
-                  <img src={thermostatWiredImg} />
-                )}
-                <div>Thermostat 24V (verkabelt)</div>
-              </div>
-              <div
-                onClick={() => handleClick('thermostatWireless', 'thermostat')}
-                className={`contentBox cursor thermostatWireless ${
-                  thermostatWireless ? 'selected' : ''
-                }`}
-              >
-                {thermostatWireless ? (
-                  <img src={thermostatWirelessImgW} />
-                ) : (
-                  <img src={thermostatWirelessImg} />
-                )}
-                <div>Thermostat (kabellos)</div>
-              </div>
-            </div>
-          )}
-          {boxHeatActors && (
-            <div className="contentContainer mgZero">
-              <div
-                onClick={() => handleClick('heatActor24_06', 'actor')}
-                className={`boxSizeAdj contentBox cursor heatActor24_06 ${
-                  heatActor24_06 ? 'selected' : ''
-                }`}
-              >
-                {heatActor24_06 ? (
-                  <img src={heatingActorImgW} />
-                ) : (
-                  <img src={heatingActorImg} />
-                )}
-                <div>6 Stellantriebe, 24V</div>
-              </div>
-              <div
-                onClick={() => handleClick('heatActor24_10', 'actor')}
-                className={`boxSizeAdj contentBox cursor heatActor24_10 ${
-                  heatActor24_10 ? 'selected' : ''
-                }`}
-              >
-                {heatActor24_10 ? (
-                  <img src={heatingActorImgW} />
-                ) : (
-                  <img src={heatingActorImg} />
-                )}
-                <div>10 Stellantriebe, 24V</div>
-              </div>
-              <div
-                onClick={() => handleClick('heatActor230_06', 'actor')}
-                className={`boxSizeAdj contentBox cursor heatActor230_06 ${
-                  heatActor230_06 ? 'selected' : ''
-                }`}
-              >
-                {heatActor230_06 ? (
-                  <img src={heatingActorImgW} />
-                ) : (
-                  <img src={heatingActorImg} />
-                )}
-                <div>6 Stellantriebe, 230V</div>
-              </div>
-              <div
-                onClick={() => handleClick('heatActor230_10', 'actor')}
-                className={`boxSizeAdj contentBox cursor heatActor230_10 ${
-                  heatActor230_10 ? 'selected' : ''
-                }`}
-              >
-                {heatActor230_10 ? (
-                  <img src={heatingActorImgW} />
-                ) : (
-                  <img src={heatingActorImg} />
-                )}
-                <div>10 Stellantriebe, 230V</div>
-              </div>
-              <div
-                onClick={() => handleClick('heatActor12Motorized', 'actor')}
-                className={`boxSizeAdj contentBox cursor heatActor12Motorized ${
-                  heatActor12Motorized ? 'selected' : ''
-                }`}
-              >
-                {heatActor12Motorized ? (
-                  <img src={heatingActorImgW} />
-                ) : (
-                  <img src={heatingActorImg} />
-                )}
-                <div>12 Stellantriebe, motorisiert</div>
-              </div>
-            </div>
-          )}
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxHeatActors && selectHeatActorSmallWidth()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {boxHeatActors && selectHeatActorSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <MediaQuery maxWidth={767}>
+              <div className="forceFlexWrap"></div>
+              {boxHeatActors && selectHeatActorSmallWidth()}
+              {boxThermostat && selectThermostatSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={769}>
+            <MediaQuery maxWidth={1023}>
+              <div className="forceFlexWrap"></div>
+              {boxHeatActors && selectHeatActorSmallWidth()}
+              {boxThermostat && selectThermostatSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={1024}>
+            <div className="forceFlexWrap"></div>
+            {boxThermostat && selectThermostatBigWidth()}
+            {boxHeatActors && selectHeatActorBigWidth()}
+          </MediaQuery>
         </div>
         <div className="btnMultiple">
           <button onClick={back} className="btn">

@@ -16,6 +16,7 @@ import cameraImgW from '../images/security/cameraW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Security() {
   const [motionI, setMotionI] = useState(false);
@@ -168,6 +169,63 @@ function Security() {
     }
   };
 
+  const selectMotion = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('motionI', false)}
+          className={`addSelectRadius ${motionI ? 'selected' : ''}`}
+        >
+          innen
+        </div>
+        <div
+          onClick={() => handleClick('motionO', false)}
+          className={`addSelectRadius ${motionO ? 'selected' : ''}`}
+        >
+          außen
+        </div>
+      </div>
+    );
+  };
+
+  const selectSiren = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('sirenI', false)}
+          className={`addSelectRadius ${sirenI ? 'selected' : ''}`}
+        >
+          innen
+        </div>
+        <div
+          onClick={() => handleClick('sirenO', false)}
+          className={`addSelectRadius ${sirenO ? 'selected' : ''}`}
+        >
+          außen
+        </div>
+      </div>
+    );
+  };
+
+  const selectCamera = () => {
+    return (
+      <div className="addSelectContainer">
+        <div
+          onClick={() => handleClick('cameraI', false)}
+          className={`addSelectRadius ${cameraI ? 'selected' : ''}`}
+        >
+          Innenkamera
+        </div>
+        <div
+          onClick={() => handleClick('cameraO', false)}
+          className={`addSelectRadius ${cameraO ? 'selected' : ''}`}
+        >
+          Außenkamera
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="background">
       <div className="whiteBackground">
@@ -177,7 +235,7 @@ function Security() {
         <div className="contentContainer">
           <div
             onClick={() => openBox('motion')}
-            className={`contentBox cursor motion ${
+            className={`contentBox cursor ${
               motionI || motionO ? 'selected' : ''
             }`}
           >
@@ -190,9 +248,7 @@ function Security() {
           </div>
           <div
             onClick={() => handleClick('windowSensor', true)}
-            className={`contentBox cursor windowSensor ${
-              windowSensor ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${windowSensor ? 'selected' : ''}`}
           >
             {windowSensor ? (
               <img src={windowSensorImgW} />
@@ -201,9 +257,14 @@ function Security() {
             )}
             <div>Tür-/Fensterkontakt</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxMotion && selectMotion()}
+            {boxMotion && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
           <div
             onClick={() => openBox('siren')}
-            className={`contentBox cursor siren ${
+            className={`contentBox cursor ${
               sirenI || sirenO ? 'selected' : ''
             }`}
           >
@@ -216,7 +277,7 @@ function Security() {
           </div>
           <div
             onClick={() => handleClick('smoke', true)}
-            className={`contentBox cursor smoke ${smoke ? 'selected' : ''}`}
+            className={`contentBox cursor ${smoke ? 'selected' : ''}`}
           >
             {smoke ? (
               <img src={smokeDetectorImgW} />
@@ -225,70 +286,28 @@ function Security() {
             )}
             <div>Rauchwarnmelder</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxSiren && selectSiren()}
+            {boxSiren && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <div className="forceFlexWrap"></div>
+            {boxMotion && selectMotion()}
+            {boxSiren && selectSiren()}
+            {boxMotion && <div className="forceFlexWrap"></div>}
+            {boxSiren && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
           <div
             onClick={() => handleClick('lock', true)}
-            className={`contentBox cursor lock ${lock ? 'selected' : ''}`}
+            className={`contentBox cursor ${lock ? 'selected' : ''}`}
           >
             {lock ? <img src={doorLockImgW} /> : <img src={doorLockImg} />}
             <div>Türschloss</div>
           </div>
-          <div className="forceFlexWrap"></div>
-          {boxMotion && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('motionI', false)}
-                className={`addSelectRadius ${motionI ? 'selected' : ''}`}
-              >
-                innen
-              </div>
-              <div
-                onClick={() => handleClick('motionO', false)}
-                className={`addSelectRadius ${motionO ? 'selected' : ''}`}
-              >
-                außen
-              </div>
-            </div>
-          )}
-          {boxSiren && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('sirenI', false)}
-                className={`addSelectRadius ${sirenI ? 'selected' : ''}`}
-              >
-                innen
-              </div>
-              <div
-                onClick={() => handleClick('sirenO', false)}
-                className={`addSelectRadius ${sirenO ? 'selected' : ''}`}
-              >
-                außen
-              </div>
-            </div>
-          )}
-          {boxCamera && (
-            <div className="addSelectContainer">
-              <div
-                onClick={() => handleClick('cameraI', false)}
-                className={`addSelectRadius ${cameraI ? 'selected' : ''}`}
-              >
-                Innenkamera
-              </div>
-              <div
-                onClick={() => handleClick('cameraO', false)}
-                className={`addSelectRadius ${cameraO ? 'selected' : ''}`}
-              >
-                Außenkamera
-              </div>
-            </div>
-          )}
-          {boxMotion && <div className="forceFlexWrap"></div>}
-          {boxSiren && <div className="forceFlexWrap"></div>}
-          {boxCamera && <div className="forceFlexWrap"></div>}
           <div
             onClick={() => handleClick('doorbell', true)}
-            className={`contentBox cursor doorbell ${
-              doorbell ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${doorbell ? 'selected' : ''}`}
           >
             {doorbell ? (
               <img src={videoDoorbellImgW} />
@@ -299,7 +318,7 @@ function Security() {
           </div>
           <div
             onClick={() => openBox('camera')}
-            className={`contentBox cursor camera ${
+            className={`contentBox cursor ${
               cameraI || cameraO ? 'selected' : ''
             }`}
           >
@@ -310,6 +329,16 @@ function Security() {
             )}
             <div>Sicherheitskamera</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {boxCamera && selectCamera()}
+            {boxCamera && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
+          <MediaQuery minWidth={501}>
+            <div className="forceFlexWrap"></div>
+            {boxCamera && selectCamera()}
+            {boxCamera && <div className="forceFlexWrap"></div>}
+          </MediaQuery>
         </div>
         <div className="btnMultiple">
           <button onClick={back} className="btn">

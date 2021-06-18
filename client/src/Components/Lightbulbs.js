@@ -16,7 +16,7 @@ import lightColorImgW from '../images/lights/lightColorW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import MediaQuery from 'react-responsive';
 
 function Lightbulbs() {
   const [e27W, setE27W] = useState(false);
@@ -170,6 +170,165 @@ function Lightbulbs() {
     }
   };
 
+  const selectWhiteBigWidth = () => {
+    return (
+      <div className="contentContainer mgZero">
+        <div
+          onClick={() => handleClick('e27')}
+          className={`contentBox cursor ${e27W ? 'selected' : ''}`}
+        >
+          {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
+          <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`contentBox cursor ${e14W ? 'selected' : ''}`}
+        >
+          {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
+          <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`contentBox cursor ${gu10W ? 'selected' : ''}`}
+        >
+          {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+          <div className={`${gu10W ? 'highlightedText' : ''}`}>GU10</div>
+        </div>
+      </div>
+    );
+  };
+
+  const selectAmbianceBigWidth = () => {
+    return (
+      <div className="contentContainer mgZero">
+        <div
+          onClick={() => handleClick('e27')}
+          className={`contentBox cursor ${e27A ? 'selected' : ''}`}
+        >
+          {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
+          <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`contentBox cursor ${e14A ? 'selected' : ''}`}
+        >
+          {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
+          <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`contentBox cursor ${gu10A ? 'selected' : ''}`}
+        >
+          {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+          <div className={`${gu10A ? 'highlightedText' : ''}`}>GU10</div>
+        </div>
+      </div>
+    );
+  };
+
+  const selectMulticolorBigWidth = () => {
+    return (
+      <div className="contentContainer mgZero">
+        <div
+          onClick={() => handleClick('e27')}
+          className={`contentBox cursor ${e27M ? 'selected' : ''}`}
+        >
+          {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
+          <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`contentBox cursor ${e14M ? 'selected' : ''}`}
+        >
+          {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
+          <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`contentBox cursor ${gu10M ? 'selected' : ''}`}
+        >
+          {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
+          <div className={`${gu10M ? 'highlightedText' : ''}`}>GU10</div>
+        </div>
+      </div>
+    );
+  };
+
+  const selectWhiteSmallWidth = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('e27')}
+          className={`addSelectRadius ${e27W ? 'selected' : ''}`}
+        >
+          E27 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`addSelectRadius ${e14W ? 'selected' : ''}`}
+        >
+          E14 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`addSelectRadius ${gu10W ? 'selected' : ''}`}
+        >
+          GU10 Spot
+        </div>
+      </div>
+    );
+  };
+
+  const selectAmbianceSmallWidth = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('e27')}
+          className={`addSelectRadius ${e27A ? 'selected' : ''}`}
+        >
+          E27 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`addSelectRadius ${e14A ? 'selected' : ''}`}
+        >
+          E14 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`addSelectRadius ${gu10A ? 'selected' : ''}`}
+        >
+          GU10 Spot
+        </div>
+      </div>
+    );
+  };
+
+  const selectMulticolorSmallWidth = () => {
+    return (
+      <div className={`addSelectContainer`}>
+        <div
+          onClick={() => handleClick('e27')}
+          className={`addSelectRadius ${e27M ? 'selected' : ''}`}
+        >
+          E27 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('e14')}
+          className={`addSelectRadius ${e14M ? 'selected' : ''}`}
+        >
+          E14 Fassung
+        </div>
+        <div
+          onClick={() => handleClick('gu10')}
+          className={`addSelectRadius ${gu10M ? 'selected' : ''}`}
+        >
+          GU10 Spot
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="background">
       <div className="whiteBackground">
@@ -179,7 +338,7 @@ function Lightbulbs() {
         <div className="contentContainer">
           <div
             onClick={() => openSelector('white')}
-            className={`contentBox cursor white ${borderW && 'borderHghl'} ${
+            className={`contentBox cursor ${borderW && 'borderHghl'} ${
               e27W || e14W || gu10W ? 'selected' : ''
             }`}
           >
@@ -190,10 +349,21 @@ function Lightbulbs() {
             )}
             <div>Dimmbares Licht</div>
           </div>
-
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {selectorBoxWhite && selectWhiteSmallWidth()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {selectorBoxWhite && selectWhiteSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => openSelector('ambiance')}
-            className={`contentBox cursor ambiance ${borderA && 'borderHghl'} ${
+            className={`contentBox cursor ${borderA && 'borderHghl'} ${
               e27A || e14A || gu10A ? 'selected' : ''
             }`}
           >
@@ -204,11 +374,23 @@ function Lightbulbs() {
             )}
             <div>Dimmbares Weißlicht</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {selectorBoxAmbiance && selectAmbianceSmallWidth()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {selectorBoxAmbiance && selectAmbianceSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => openSelector('multicolor')}
-            className={`contentBox cursor multicolor ${
-              borderM && 'borderHghl'
-            } ${e27M || e14M || gu10M ? 'selected' : ''}`}
+            className={`contentBox cursor ${borderM && 'borderHghl'} ${
+              e27M || e14M || gu10M ? 'selected' : ''
+            }`}
           >
             {e27M || e14M || gu10M ? (
               <img src={lightColorImgW} />
@@ -218,81 +400,42 @@ function Lightbulbs() {
             <div>Weiß- und Farblicht</div>
           </div>
           <div className="forceFlexWrap"></div>
-          {selectorBoxWhite && (
-            <div className="contentContainer mgZero">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`contentBox cursor ${e27W ? 'selected' : ''}`}
-              >
-                {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`contentBox cursor ${e14W ? 'selected' : ''}`}
-              >
-                {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`contentBox cursor ${gu10W ? 'selected' : ''}`}
-              >
-                {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                <div className={`${gu10W ? 'highlightedText' : ''}`}>GU10</div>
-              </div>
-            </div>
-          )}
-          {selectorBoxAmbiance && (
-            <div className="contentContainer mgZero">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`contentBox cursor ${e27A ? 'selected' : ''}`}
-              >
-                {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`contentBox cursor ${e14A ? 'selected' : ''}`}
-              >
-                {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`contentBox cursor ${gu10A ? 'selected' : ''}`}
-              >
-                {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                <div className={`${gu10A ? 'highlightedText' : ''}`}>GU10</div>
-              </div>
-            </div>
-          )}
-          {selectorBoxMulticolor && (
-            <div className="contentContainer mgZero">
-              <div
-                onClick={() => handleClick('e27')}
-                className={`contentBox cursor ${e27M ? 'selected' : ''}`}
-              >
-                {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
-                <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
-              </div>
-              <div
-                onClick={() => handleClick('e14')}
-                className={`contentBox cursor ${e14M ? 'selected' : ''}`}
-              >
-                {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
-                <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
-              </div>
-              <div
-                onClick={() => handleClick('gu10')}
-                className={`contentBox cursor ${gu10M ? 'selected' : ''}`}
-              >
-                {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-                <div className={`${gu10M ? 'highlightedText' : ''}`}>GU10</div>
-              </div>
-            </div>
-          )}
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+            {selectorBoxMulticolor && selectMulticolorSmallWidth()}
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {selectorBoxMulticolor && selectMulticolorSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+
+          <MediaQuery minWidth={501}>
+            <MediaQuery maxWidth={767}>
+              <div className="forceFlexWrap"></div>
+              {selectorBoxAmbiance && selectAmbianceSmallWidth()}
+              {selectorBoxWhite && selectWhiteSmallWidth()}
+              {selectorBoxMulticolor && selectMulticolorSmallWidth()}
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={769}>
+            <MediaQuery maxWidth={1023}>
+              <div className="forceFlexWrap"></div>
+              {selectorBoxAmbiance && selectAmbianceSmallWidth()}
+              {selectorBoxWhite && selectWhiteSmallWidth()}
+              {selectorBoxMulticolor && selectMulticolorSmallWidth()}
+            </MediaQuery>
+          </MediaQuery>
+
+          <MediaQuery minWidth={1024}>
+            {selectorBoxWhite && selectWhiteBigWidth()}
+            {selectorBoxAmbiance && selectAmbianceBigWidth()}
+            {selectorBoxMulticolor && selectMulticolorBigWidth()}
+          </MediaQuery>
         </div>
         <div className="btnMultiple">
           <button onClick={back} className="btn">

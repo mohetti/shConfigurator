@@ -8,6 +8,7 @@ import securityImgW from '../images/categories/securityW.png';
 
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import MediaQuery from 'react-responsive';
 
 function Categories() {
   const [light, setLight] = useState(false);
@@ -137,6 +138,15 @@ function Categories() {
             {light ? <img src={lightImgW} /> : <img src={lightImg} />}
             <div>Beleuchtung</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
+
           <div
             onClick={() => handleClick('heating')}
             className={`contentBox cursor ${heating ? 'selected' : ''}`}
@@ -144,6 +154,14 @@ function Categories() {
             {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
             <div>Heizung</div>
           </div>
+          <MediaQuery maxWidth={500}>
+            <div className="forceFlexWrap"></div>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => handleClick('security')}
             className={`contentBox cursor ${security ? 'selected' : ''}`}

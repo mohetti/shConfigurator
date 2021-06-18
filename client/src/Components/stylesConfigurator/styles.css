@@ -43,17 +43,17 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 2%;
-  height: 20vh;
-  width: 20vh;
+  height: 20vmin;
+  width: 20vmin;
   border-radius: 10%;
-  font-size: calc(1vmin + 0.2rem);
+  font-size: 1.5vmin;
   box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
 }
 
 .contentBox > img {
   margin-top: 10%;
-  height: 10vh;
-  width: 10vh;
+  height: 10vmin;
+  width: 10vmin;
 }
 
 .contentBox > div {
@@ -167,3 +167,102 @@
 /* ******************* END OF CHECKMARK CSS ON START PAGE ******************* */
 
 /***** UNORDERED ****/
+@media (max-width: 500px) {
+  .contentBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2%;
+    height: 30vmin;
+    width: 30vmin;
+    border-radius: 10%;
+    font-size: 2.5vmin;
+    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
+  }
+
+  .contentBox > img {
+    margin-top: 10%;
+    height: 15vmin;
+    width: 15vmin;
+  }
+
+  .contentBox > div {
+    margin-top: 10%;
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 739px) {
+  .contentBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2%;
+    height: 20vmin;
+    width: 20vmin;
+    border-radius: 10%;
+    font-size: 1.5vmin;
+    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
+  }
+
+  .contentBox > img {
+    margin-top: 10%;
+    height: 10vmin;
+    width: 10vmin;
+  }
+
+  .contentBox > div {
+    margin-top: 10%;
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 740px) and (max-width: 850px) {
+  .contentBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2%;
+    height: 30vmin;
+    width: 30vmin;
+    border-radius: 10%;
+    font-size: 2.5vmin;
+    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
+  }
+
+  .contentBox > img {
+    margin-top: 10%;
+    height: 15vmin;
+    width: 15vmin;
+  }
+
+  .contentBox > div {
+    margin-top: 10%;
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 851px) {
+  .contentBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2%;
+    height: 20vmin;
+    width: 20vmin;
+    border-radius: 10%;
+    font-size: 1.5vmin;
+    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
+  }
+
+  .contentBox > img {
+    margin-top: 10%;
+    height: 10vmin;
+    width: 10vmin;
+  }
+
+  .contentBox > div {
+    margin-top: 10%;
+    padding: 0 10px;
+  }
+}
