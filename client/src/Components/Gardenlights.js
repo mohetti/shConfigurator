@@ -192,7 +192,7 @@ function Gardenlights() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {boxPathLight && selectPathLight()}
-            <div className="forceFlexWrap"></div>
+            {boxPathLight && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <div
             onClick={() => openBox('wallGarden')}
@@ -221,13 +221,14 @@ function Gardenlights() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {boxWallGarden && selectWalLGarden()}
-            <div className="forceFlexWrap"></div>
+            {boxWallGarden && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={501}>
             <div className="forceFlexWrap"></div>
             {boxPathLight && selectPathLight()}
             {boxWallGarden && selectWalLGarden()}
-            <div className="forceFlexWrap"></div>
+            {boxPathLight && <div className="forceFlexWrap"></div>}
+            {boxWallGarden && <div className="forceFlexWrap"></div>}
           </MediaQuery>
         </div>
         <div className="btnMultiple">

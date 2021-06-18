@@ -352,13 +352,13 @@ function Lightbulbs() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {selectorBoxWhite && selectWhiteSmallWidth()}
-            <div className="forceFlexWrap"></div>
+            {selectorBoxWhite && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={768}>
             <MediaQuery maxWidth={768}>
               <div className="forceFlexWrap"></div>
               {selectorBoxWhite && selectWhiteSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {selectorBoxWhite && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <div
@@ -377,13 +377,13 @@ function Lightbulbs() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {selectorBoxAmbiance && selectAmbianceSmallWidth()}
-            <div className="forceFlexWrap"></div>
+            {selectorBoxAmbiance && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={768}>
             <MediaQuery maxWidth={768}>
               <div className="forceFlexWrap"></div>
               {selectorBoxAmbiance && selectAmbianceSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {selectorBoxAmbiance && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <div
@@ -399,17 +399,16 @@ function Lightbulbs() {
             )}
             <div>Weiß- und Farblicht</div>
           </div>
-          <div className="forceFlexWrap"></div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {selectorBoxMulticolor && selectMulticolorSmallWidth()}
-            <div className="forceFlexWrap"></div>
+            {selectorBoxMulticolor && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={768}>
             <MediaQuery maxWidth={768}>
               <div className="forceFlexWrap"></div>
               {selectorBoxMulticolor && selectMulticolorSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {selectorBoxMulticolor && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
 
@@ -419,7 +418,9 @@ function Lightbulbs() {
               {selectorBoxAmbiance && selectAmbianceSmallWidth()}
               {selectorBoxWhite && selectWhiteSmallWidth()}
               {selectorBoxMulticolor && selectMulticolorSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {selectorBoxAmbiance && <div className="forceFlexWrap"></div>}
+              {selectorBoxWhite && <div className="forceFlexWrap"></div>}
+              {selectorBoxMulticolor && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <MediaQuery minWidth={769}>
@@ -432,6 +433,7 @@ function Lightbulbs() {
           </MediaQuery>
 
           <MediaQuery minWidth={1024}>
+            <div className="forceFlexWrap"></div>
             {selectorBoxWhite && selectWhiteBigWidth()}
             {selectorBoxAmbiance && selectAmbianceBigWidth()}
             {selectorBoxMulticolor && selectMulticolorBigWidth()}

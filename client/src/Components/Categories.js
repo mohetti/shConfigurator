@@ -120,9 +120,15 @@ function Categories() {
   };
 
   const handleClick = (input) => {
-    if (input === 'lights') return setLight(!light);
-    if (input === 'heating') return setHeating(!heating);
-    if (input === 'security') return setSecurity(!security);
+    if (input === 'lights') {
+      return setLight(!light);
+    }
+    if (input === 'heating') {
+      return setHeating(!heating);
+    }
+    if (input === 'security') {
+      return setSecurity(!security);
+    }
   };
   return (
     <div className="background">

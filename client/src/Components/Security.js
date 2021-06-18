@@ -176,13 +176,13 @@ function Security() {
           onClick={() => handleClick('motionI', false)}
           className={`addSelectRadius ${motionI ? 'selected' : ''}`}
         >
-          innen
+          Bewegungsmelder innen
         </div>
         <div
           onClick={() => handleClick('motionO', false)}
           className={`addSelectRadius ${motionO ? 'selected' : ''}`}
         >
-          außen
+          Bewegungsmelder außen
         </div>
       </div>
     );
@@ -195,13 +195,13 @@ function Security() {
           onClick={() => handleClick('sirenI', false)}
           className={`addSelectRadius ${sirenI ? 'selected' : ''}`}
         >
-          innen
+          Innensirene
         </div>
         <div
           onClick={() => handleClick('sirenO', false)}
           className={`addSelectRadius ${sirenO ? 'selected' : ''}`}
         >
-          außen
+          Außensirene
         </div>
       </div>
     );

@@ -19,7 +19,7 @@
   flex-direction: column;
   background-color: white;
   text-align: center;
-  width: 70vw;
+  width: 80vw;
 }
 /* container for all pages' content. Not including buttons. */
 .contentContainer {
@@ -35,30 +35,6 @@
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-}
-
-/* container for all boxes with icons on all pages. */
-.contentBox {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 2%;
-  height: 20vmin;
-  width: 20vmin;
-  border-radius: 10%;
-  font-size: 1.5vmin;
-  box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
-}
-
-.contentBox > img {
-  margin-top: 10%;
-  height: 10vmin;
-  width: 10vmin;
-}
-
-.contentBox > div {
-  margin-top: 10%;
-  padding: 0 10px;
 }
 
 /* background style of contentBoxes, when selected. */
@@ -87,17 +63,11 @@
   color: white;
 }
 
-/* additional selection boxes */
-.addSelectContainer {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
 /* radius of additional selection options. Eg: Motionsensor => indoor / outdoor. */
 .addSelectRadius {
   border-radius: 5px;
-  padding: 2px 5px;
+  padding: 1vmin 2vmin;
+  margin-bottom: 5%;
 }
 /* ******************* END OF GENERAL CSS ******************* */
 
@@ -122,20 +92,6 @@
 }
 
 /* button general style */
-.btn {
-  background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
-  background-color: #8a8db5;
-  border: none;
-  border-radius: 0.6rem;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 0.9rem 1.8rem;
-  text-decoration: none;
-}
 .btn:hover {
   background: linear-gradient(to bottom, #69a6be 5%, #4dbbc5 100%);
   background-color: #69a6be;
@@ -167,7 +123,7 @@
 /* ******************* END OF CHECKMARK CSS ON START PAGE ******************* */
 
 /***** UNORDERED ****/
-@media (max-width: 500px) {
+@media (max-width: 850px) {
   .contentBox {
     display: flex;
     align-items: center;
@@ -190,55 +146,27 @@
     margin-top: 10%;
     padding: 0 10px;
   }
-}
 
-@media (min-width: 501px) and (max-width: 739px) {
-  .contentBox {
+  .btn {
+    background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
+    background-color: #8a8db5;
+    border: none;
+    border-radius: 0.6rem;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 4vmin;
+    font-weight: bold;
+    padding: 3vmin 4vmin;
+    text-decoration: none;
+  }
+
+  .addSelectContainer {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin-bottom: 2%;
-    height: 20vmin;
-    width: 20vmin;
-    border-radius: 10%;
-    font-size: 1.5vmin;
-    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
-  }
-
-  .contentBox > img {
-    margin-top: 10%;
-    height: 10vmin;
-    width: 10vmin;
-  }
-
-  .contentBox > div {
-    margin-top: 10%;
-    padding: 0 10px;
-  }
-}
-
-@media (min-width: 740px) and (max-width: 850px) {
-  .contentBox {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 2%;
-    height: 30vmin;
-    width: 30vmin;
-    border-radius: 10%;
-    font-size: 2.5vmin;
-    box-shadow: 2px 5px 10px 5px rgba(2, 0, 36, 30%);
-  }
-
-  .contentBox > img {
-    margin-top: 10%;
-    height: 15vmin;
-    width: 15vmin;
-  }
-
-  .contentBox > div {
-    margin-top: 10%;
-    padding: 0 10px;
+    font-size: 3vmin;
+    cursor: pointer;
   }
 }
 
@@ -264,5 +192,27 @@
   .contentBox > div {
     margin-top: 10%;
     padding: 0 10px;
+  }
+
+  .btn {
+    background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
+    background-color: #8a8db5;
+    border: none;
+    border-radius: 0.6rem;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+  }
+
+  .addSelectContainer {
+    display: flex;
+    flex-direction: column;
+    font-size: 2vmin;
+    cursor: pointer;
   }
 }

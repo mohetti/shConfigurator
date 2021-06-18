@@ -3,6 +3,7 @@
   display: flex;
   margin: 5% 5%;
   flex: 1 1 0px;
+  flex-grow: 0;
   flex-direction: column;
   margin-left: 2.5%;
   margin-right: 2.5%;
@@ -56,6 +57,7 @@
   flex-grow: 1;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   margin-bottom: 2%;
 }
 

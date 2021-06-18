@@ -436,13 +436,13 @@ function Heating() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {boxThermostat && selectThermostatSmallWidth()}
-            <div className="forceFlexWrap"></div>
+            {boxThermostat && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={768}>
             <MediaQuery maxWidth={768}>
               <div className="forceFlexWrap"></div>
               {boxThermostat && selectThermostatSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {boxThermostat && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <div
@@ -471,13 +471,13 @@ function Heating() {
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
             {boxHeatActors && selectHeatActorSmallWidth()}
-            <div className="forceFlexWrap"></div>
+            {boxHeatActors && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={768}>
             <MediaQuery maxWidth={768}>
               <div className="forceFlexWrap"></div>
               {boxHeatActors && selectHeatActorSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {boxHeatActors && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <MediaQuery minWidth={501}>
@@ -485,7 +485,8 @@ function Heating() {
               <div className="forceFlexWrap"></div>
               {boxHeatActors && selectHeatActorSmallWidth()}
               {boxThermostat && selectThermostatSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {boxHeatActors && <div className="forceFlexWrap"></div>}
+              {boxThermostat && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <MediaQuery minWidth={769}>
@@ -493,7 +494,8 @@ function Heating() {
               <div className="forceFlexWrap"></div>
               {boxHeatActors && selectHeatActorSmallWidth()}
               {boxThermostat && selectThermostatSmallWidth()}
-              <div className="forceFlexWrap"></div>
+              {boxHeatActors && <div className="forceFlexWrap"></div>}
+              {boxThermostat && <div className="forceFlexWrap"></div>}
             </MediaQuery>
           </MediaQuery>
           <MediaQuery minWidth={1024}>

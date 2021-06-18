@@ -457,7 +457,8 @@ function Innerlights() {
             <div className="forceFlexWrap"></div>
             {boxPlug && selectPlug()}
             {boxSurfSpot && selectSurfSpot()}
-            <div className="forceFlexWrap"></div>
+            {boxPlug && <div className="forceFlexWrap"></div>}
+            {boxSurfSpot && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <div
             onClick={() => openBox('recSwitch')}
@@ -489,7 +490,8 @@ function Innerlights() {
             <div className="forceFlexWrap"></div>
             {boxRecSwitch && selectRecSwitch()}
             {boxCeiling && selectCeiling()}
-            <div className="forceFlexWrap"></div>
+            {boxRecSwitch && <div className="forceFlexWrap"></div>}
+            {boxCeiling && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={501}>
             <div className="forceFlexWrap"></div>
