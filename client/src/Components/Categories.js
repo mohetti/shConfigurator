@@ -139,7 +139,7 @@ function Categories() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('lights')}
-            className={`contentBox cursor ${light ? 'selected' : ''}`}
+            className={`contentBox cursor ${light && 'selected'}`}
           >
             {light ? <img src={lightImgW} /> : <img src={lightImg} />}
             <div>Beleuchtung</div>
@@ -155,7 +155,7 @@ function Categories() {
 
           <div
             onClick={() => handleClick('heating')}
-            className={`contentBox cursor ${heating ? 'selected' : ''}`}
+            className={`contentBox cursor ${heating && 'selected'}`}
           >
             {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
             <div>Heizung</div>
@@ -170,7 +170,7 @@ function Categories() {
           </MediaQuery>
           <div
             onClick={() => handleClick('security')}
-            className={`contentBox cursor ${security ? 'selected' : ''}`}
+            className={`contentBox cursor ${security && 'selected'}`}
           >
             {security ? <img src={securityImgW} /> : <img src={securityImg} />}
             <div>Sicherheit</div>

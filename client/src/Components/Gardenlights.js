@@ -125,13 +125,13 @@ function Gardenlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('pathLightW')}
-          className={`addSelectRadius ${pathLightW ? 'selected' : ''}`}
+          className={`addSelectRadius ${pathLightW && 'selected'}`}
         >
           Dimmbar
         </div>
         <div
           onClick={() => handleClick('pathLightM')}
-          className={`addSelectRadius ${pathLightM ? 'selected' : ''}`}
+          className={`addSelectRadius ${pathLightM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -144,13 +144,13 @@ function Gardenlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('wallGardenW')}
-          className={`addSelectRadius ${wallGardenW ? 'selected' : ''}`}
+          className={`addSelectRadius ${wallGardenW && 'selected'}`}
         >
           Dimmbar
         </div>
         <div
           onClick={() => handleClick('wallGardenM')}
-          className={`addSelectRadius ${wallGardenM ? 'selected' : ''}`}
+          className={`addSelectRadius ${wallGardenM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -167,7 +167,7 @@ function Gardenlights() {
         <div className="contentContainer">
           <div
             onClick={() => openBox('pathLight')}
-            className={`contentBox cursor ${
+            className={`contentBox cursor ${boxPathLight && 'borderHghl'} ${
               pathLightW || pathLightM ? 'selected' : ''
             }`}
           >
@@ -180,7 +180,7 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenSpot')}
-            className={`contentBox cursor ${gardenSpot ? 'selected' : ''}`}
+            className={`contentBox cursor ${gardenSpot && 'selected'}`}
           >
             {gardenSpot ? (
               <img src={gardenSpotImgW} />
@@ -194,9 +194,16 @@ function Gardenlights() {
             {boxPathLight && selectPathLight()}
             {boxPathLight && <div className="forceFlexWrap"></div>}
           </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {boxPathLight && selectPathLight()}
+              {boxPathLight && <div className="forceFlexWrap"></div>}
+            </MediaQuery>
+          </MediaQuery>
           <div
             onClick={() => openBox('wallGarden')}
-            className={`contentBox cursor ${
+            className={`contentBox cursor ${boxWallGarden && 'borderHghl'} ${
               wallGardenW || wallGardenM ? 'selected' : ''
             } `}
           >
@@ -209,7 +216,7 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenStrip')}
-            className={`contentBox cursor ${gardenStrip ? 'selected' : ''}`}
+            className={`contentBox cursor ${gardenStrip && 'selected'}`}
           >
             {gardenStrip ? (
               <img src={gardenStripImgW} />
@@ -224,6 +231,22 @@ function Gardenlights() {
             {boxWallGarden && <div className="forceFlexWrap"></div>}
           </MediaQuery>
           <MediaQuery minWidth={501}>
+            <MediaQuery maxWidth={767}>
+              <div className="forceFlexWrap"></div>
+              {boxPathLight && selectPathLight()}
+              {boxWallGarden && selectWalLGarden()}
+              {boxPathLight && <div className="forceFlexWrap"></div>}
+              {boxWallGarden && <div className="forceFlexWrap"></div>}
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <MediaQuery maxWidth={768}>
+              <div className="forceFlexWrap"></div>
+              {boxWallGarden && selectWalLGarden()}
+              {boxWallGarden && <div className="forceFlexWrap"></div>}
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery minWidth={769}>
             <div className="forceFlexWrap"></div>
             {boxPathLight && selectPathLight()}
             {boxWallGarden && selectWalLGarden()}

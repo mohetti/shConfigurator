@@ -123,7 +123,7 @@ function Lights() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('lightbulbs')}
-            className={`contentBox cursor ${lightbulbs ? 'selected' : ''}`}
+            className={`contentBox cursor ${lightbulbs && 'selected'}`}
           >
             {lightbulbs ? (
               <img src={lightbulbImgW} />
@@ -142,7 +142,7 @@ function Lights() {
           </MediaQuery>
           <div
             onClick={() => handleClick('innerLights')}
-            className={`contentBox cursor ${innerLights ? 'selected' : ''}`}
+            className={`contentBox cursor ${innerLights && 'selected'}`}
           >
             {innerLights ? (
               <img src={innerLightsImgW} />
@@ -161,7 +161,7 @@ function Lights() {
           </MediaQuery>
           <div
             onClick={() => handleClick('garden')}
-            className={`contentBox cursor ${garden ? 'selected' : ''}`}
+            className={`contentBox cursor ${garden && 'selected'}`}
           >
             {garden ? (
               <img src={gardenLightImgW} />

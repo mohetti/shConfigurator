@@ -221,9 +221,7 @@ function Heating() {
       <div className="contentContainer mgZero">
         <div
           onClick={() => handleClick('thermostatWired230', 'thermostat')}
-          className={`contentBox cursor ${
-            thermostatWired230 ? 'selected' : ''
-          }`}
+          className={`contentBox cursor ${thermostatWired230 && 'selected'}`}
         >
           {thermostatWired230 ? (
             <img src={thermostatWiredImgW} />
@@ -234,7 +232,7 @@ function Heating() {
         </div>
         <div
           onClick={() => handleClick('thermostatWired24', 'thermostat')}
-          className={`contentBox cursor ${thermostatWired24 ? 'selected' : ''}`}
+          className={`contentBox cursor ${thermostatWired24 && 'selected'}`}
         >
           {thermostatWired24 ? (
             <img src={thermostatWiredImgW} />
@@ -245,9 +243,7 @@ function Heating() {
         </div>
         <div
           onClick={() => handleClick('thermostatWireless', 'thermostat')}
-          className={`contentBox cursor ${
-            thermostatWireless ? 'selected' : ''
-          }`}
+          className={`contentBox cursor ${thermostatWireless && 'selected'}`}
         >
           {thermostatWireless ? (
             <img src={thermostatWirelessImgW} />
@@ -266,7 +262,7 @@ function Heating() {
         <div
           onClick={() => handleClick('heatActor24_06', 'actor')}
           className={`boxSizeAdj contentBox cursor ${
-            heatActor24_06 ? 'selected' : ''
+            heatActor24_06 && 'selected'
           }`}
         >
           {heatActor24_06 ? (
@@ -279,7 +275,7 @@ function Heating() {
         <div
           onClick={() => handleClick('heatActor24_10', 'actor')}
           className={`boxSizeAdj contentBox cursor ${
-            heatActor24_10 ? 'selected' : ''
+            heatActor24_10 && 'selected'
           }`}
         >
           {heatActor24_10 ? (
@@ -292,7 +288,7 @@ function Heating() {
         <div
           onClick={() => handleClick('heatActor230_06', 'actor')}
           className={`boxSizeAdj contentBox cursor ${
-            heatActor230_06 ? 'selected' : ''
+            heatActor230_06 && 'selected'
           }`}
         >
           {heatActor230_06 ? (
@@ -305,7 +301,7 @@ function Heating() {
         <div
           onClick={() => handleClick('heatActor230_10', 'actor')}
           className={`boxSizeAdj contentBox cursor ${
-            heatActor230_10 ? 'selected' : ''
+            heatActor230_10 && 'selected'
           }`}
         >
           {heatActor230_10 ? (
@@ -318,7 +314,7 @@ function Heating() {
         <div
           onClick={() => handleClick('heatActor12Motorized', 'actor')}
           className={`boxSizeAdj contentBox cursor ${
-            heatActor12Motorized ? 'selected' : ''
+            heatActor12Motorized && 'selected'
           }`}
         >
           {heatActor12Motorized ? (
@@ -337,19 +333,19 @@ function Heating() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('thermostatWired230', 'thermostat')}
-          className={`addSelectRadius ${thermostatWired230 ? 'selected' : ''}`}
+          className={`addSelectRadius ${thermostatWired230 && 'selected'}`}
         >
           230V, verkabelt
         </div>
         <div
           onClick={() => handleClick('thermostatWired24', 'thermostat')}
-          className={`addSelectRadius ${thermostatWired24 ? 'selected' : ''}`}
+          className={`addSelectRadius ${thermostatWired24 && 'selected'}`}
         >
           24V, verkabelt
         </div>
         <div
           onClick={() => handleClick('thermostatWireless', 'thermostat')}
-          className={`addSelectRadius ${thermostatWireless ? 'selected' : ''}`}
+          className={`addSelectRadius ${thermostatWireless && 'selected'}`}
         >
           Thermostat kabellos
         </div>
@@ -362,33 +358,31 @@ function Heating() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('heatActor24_06', 'actor')}
-          className={`addSelectRadius ${heatActor24_06 ? 'selected' : ''}`}
+          className={`addSelectRadius ${heatActor24_06 && 'selected'}`}
         >
           6 Stellantriebe, 24V
         </div>
         <div
           onClick={() => handleClick('heatActor24_10', 'actor')}
-          className={`addSelectRadius ${heatActor24_10 ? 'selected' : ''}`}
+          className={`addSelectRadius ${heatActor24_10 && 'selected'}`}
         >
           10 Stellantriebe, 24V
         </div>
         <div
           onClick={() => handleClick('heatActor230_06', 'actor')}
-          className={`addSelectRadius ${heatActor230_06 ? 'selected' : ''}`}
+          className={`addSelectRadius ${heatActor230_06 && 'selected'}`}
         >
           6 Stellantriebe, 230V
         </div>
         <div
           onClick={() => handleClick('heatActor230_10', 'actor')}
-          className={`addSelectRadius ${heatActor230_06 ? 'selected' : ''}`}
+          className={`addSelectRadius ${heatActor230_06 && 'selected'}`}
         >
           10 Stellantriebe, 230V
         </div>
         <div
           onClick={() => handleClick('heatActor12Motorized', 'actor')}
-          className={`addSelectRadius ${
-            heatActor12Motorized ? 'selected' : ''
-          }`}
+          className={`addSelectRadius ${heatActor12Motorized && 'selected'}`}
         >
           12 Stellantriebe, motorisiert
         </div>
@@ -405,7 +399,7 @@ function Heating() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('radiator', 'none')}
-            className={`contentBox cursor ${radiator ? 'selected' : ''}`}
+            className={`contentBox cursor ${radiator && 'selected'}`}
           >
             {radiator ? <img src={radiatorImg} /> : <img src={radiatorImg} />}
             <div>Heizkörperthermostat</div>
@@ -420,7 +414,7 @@ function Heating() {
           </MediaQuery>
           <div
             onClick={() => openBox('thermostat')}
-            className={`contentBox cursor ${
+            className={`contentBox cursor ${boxThermostat && 'borderHghl'} ${
               thermostatWired230 || thermostatWired24 || thermostatWireless
                 ? 'selected'
                 : ''
@@ -447,7 +441,7 @@ function Heating() {
           </MediaQuery>
           <div
             onClick={() => openBox('heatActors')}
-            className={`contentBox cursor ${
+            className={`contentBox cursor ${boxHeatActors && 'borderHghl'} ${
               heatActor12Motorized ||
               heatActor24_06 ||
               heatActor24_10 ||

@@ -39,10 +39,6 @@ function Lightbulbs() {
   const [selectorBoxMulticolor, setSelectorBoxMulticolor] = useState(false);
   const [selectedColor, setSelectedColor] = useState('');
 
-  const [borderW, setBorderW] = useState(false);
-  const [borderA, setBorderA] = useState(false);
-  const [borderM, setBorderM] = useState(false);
-
   let history = useHistory();
 
   useEffect(() => {
@@ -127,27 +123,18 @@ function Lightbulbs() {
       setSelectorBoxWhite(!selectorBoxWhite);
       setSelectorBoxAmbiance(false);
       setSelectorBoxMulticolor(false);
-      setBorderW(!borderW);
-      setBorderA(false);
-      setBorderM(false);
       return;
     }
     if (color === 'ambiance') {
       setSelectorBoxWhite(false);
       setSelectorBoxAmbiance(!selectorBoxAmbiance);
       setSelectorBoxMulticolor(false);
-      setBorderW(false);
-      setBorderA(!borderA);
-      setBorderM(false);
       return;
     }
     if (color === 'multicolor') {
       setSelectorBoxWhite(false);
       setSelectorBoxAmbiance(false);
       setSelectorBoxMulticolor(!selectorBoxMulticolor);
-      setBorderW(false);
-      setBorderA(false);
-      setBorderM(!borderM);
       return;
     }
   };
@@ -175,24 +162,24 @@ function Lightbulbs() {
       <div className="contentContainer mgZero">
         <div
           onClick={() => handleClick('e27')}
-          className={`contentBox cursor ${e27W ? 'selected' : ''}`}
+          className={`contentBox cursor ${e27W && 'selected'}`}
         >
           {e27W ? <img src={e27ImgW} /> : <img src={e27Img} />}
-          <div className={`${e27W ? 'highlightedText' : ''}`}>E27</div>
+          <div className={`${e27W && 'highlightedText'}`}>E27</div>
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`contentBox cursor ${e14W ? 'selected' : ''}`}
+          className={`contentBox cursor ${e14W && 'selected'}`}
         >
           {e14W ? <img src={e14ImgW} /> : <img src={e14Img} />}
-          <div className={`${e14W ? 'highlightedText' : ''}`}>E14</div>
+          <div className={`${e14W && 'highlightedText'}`}>E14</div>
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`contentBox cursor ${gu10W ? 'selected' : ''}`}
+          className={`contentBox cursor ${gu10W && 'selected'}`}
         >
           {gu10W ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-          <div className={`${gu10W ? 'highlightedText' : ''}`}>GU10</div>
+          <div className={`${gu10W && 'highlightedText'}`}>GU10</div>
         </div>
       </div>
     );
@@ -203,24 +190,24 @@ function Lightbulbs() {
       <div className="contentContainer mgZero">
         <div
           onClick={() => handleClick('e27')}
-          className={`contentBox cursor ${e27A ? 'selected' : ''}`}
+          className={`contentBox cursor ${e27A && 'selected'}`}
         >
           {e27A ? <img src={e27ImgW} /> : <img src={e27Img} />}
-          <div className={`${e27A ? 'highlightedText' : ''}`}>E27</div>
+          <div className={`${e27A && 'highlightedText'}`}>E27</div>
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`contentBox cursor ${e14A ? 'selected' : ''}`}
+          className={`contentBox cursor ${e14A && 'selected'}`}
         >
           {e14A ? <img src={e14ImgW} /> : <img src={e14Img} />}
-          <div className={`${e14A ? 'highlightedText' : ''}`}>E14</div>
+          <div className={`${e14A && 'highlightedText'}`}>E14</div>
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`contentBox cursor ${gu10A ? 'selected' : ''}`}
+          className={`contentBox cursor ${gu10A && 'selected'}`}
         >
           {gu10A ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-          <div className={`${gu10A ? 'highlightedText' : ''}`}>GU10</div>
+          <div className={`${gu10A && 'highlightedText'}`}>GU10</div>
         </div>
       </div>
     );
@@ -231,24 +218,24 @@ function Lightbulbs() {
       <div className="contentContainer mgZero">
         <div
           onClick={() => handleClick('e27')}
-          className={`contentBox cursor ${e27M ? 'selected' : ''}`}
+          className={`contentBox cursor ${e27M && 'selected'}`}
         >
           {e27M ? <img src={e27ImgW} /> : <img src={e27Img} />}
-          <div className={`${e27M ? 'highlightedText' : ''}`}>E27</div>
+          <div className={`${e27M && 'highlightedText'}`}>E27</div>
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`contentBox cursor ${e14M ? 'selected' : ''}`}
+          className={`contentBox cursor ${e14M && 'selected'}`}
         >
           {e14M ? <img src={e14ImgW} /> : <img src={e14Img} />}
-          <div className={`${e14M ? 'highlightedText' : ''}`}>E14</div>
+          <div className={`${e14M && 'highlightedText'}`}>E14</div>
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`contentBox cursor ${gu10M ? 'selected' : ''}`}
+          className={`contentBox cursor ${gu10M && 'selected'}`}
         >
           {gu10M ? <img src={gu10ImgW} /> : <img src={gu10Img} />}
-          <div className={`${gu10M ? 'highlightedText' : ''}`}>GU10</div>
+          <div className={`${gu10M && 'highlightedText'}`}>GU10</div>
         </div>
       </div>
     );
@@ -259,19 +246,19 @@ function Lightbulbs() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('e27')}
-          className={`addSelectRadius ${e27W ? 'selected' : ''}`}
+          className={`addSelectRadius ${e27W && 'selected'}`}
         >
           E27 Fassung
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`addSelectRadius ${e14W ? 'selected' : ''}`}
+          className={`addSelectRadius ${e14W && 'selected'}`}
         >
           E14 Fassung
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`addSelectRadius ${gu10W ? 'selected' : ''}`}
+          className={`addSelectRadius ${gu10W && 'selected'}`}
         >
           GU10 Spot
         </div>
@@ -284,19 +271,19 @@ function Lightbulbs() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('e27')}
-          className={`addSelectRadius ${e27A ? 'selected' : ''}`}
+          className={`addSelectRadius ${e27A && 'selected'}`}
         >
           E27 Fassung
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`addSelectRadius ${e14A ? 'selected' : ''}`}
+          className={`addSelectRadius ${e14A && 'selected'}`}
         >
           E14 Fassung
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`addSelectRadius ${gu10A ? 'selected' : ''}`}
+          className={`addSelectRadius ${gu10A && 'selected'}`}
         >
           GU10 Spot
         </div>
@@ -309,19 +296,19 @@ function Lightbulbs() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('e27')}
-          className={`addSelectRadius ${e27M ? 'selected' : ''}`}
+          className={`addSelectRadius ${e27M && 'selected'}`}
         >
           E27 Fassung
         </div>
         <div
           onClick={() => handleClick('e14')}
-          className={`addSelectRadius ${e14M ? 'selected' : ''}`}
+          className={`addSelectRadius ${e14M && 'selected'}`}
         >
           E14 Fassung
         </div>
         <div
           onClick={() => handleClick('gu10')}
-          className={`addSelectRadius ${gu10M ? 'selected' : ''}`}
+          className={`addSelectRadius ${gu10M && 'selected'}`}
         >
           GU10 Spot
         </div>
@@ -338,7 +325,7 @@ function Lightbulbs() {
         <div className="contentContainer">
           <div
             onClick={() => openSelector('white')}
-            className={`contentBox cursor ${borderW && 'borderHghl'} ${
+            className={`contentBox cursor ${selectorBoxWhite && 'borderHghl'} ${
               e27W || e14W || gu10W ? 'selected' : ''
             }`}
           >
@@ -363,9 +350,9 @@ function Lightbulbs() {
           </MediaQuery>
           <div
             onClick={() => openSelector('ambiance')}
-            className={`contentBox cursor ${borderA && 'borderHghl'} ${
-              e27A || e14A || gu10A ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${
+              selectorBoxAmbiance && 'borderHghl'
+            } ${e27A || e14A || gu10A ? 'selected' : ''}`}
           >
             {e27A || e14A || gu10A ? (
               <img src={lightAmbianceImgW} />
@@ -388,9 +375,9 @@ function Lightbulbs() {
           </MediaQuery>
           <div
             onClick={() => openSelector('multicolor')}
-            className={`contentBox cursor ${borderM && 'borderHghl'} ${
-              e27M || e14M || gu10M ? 'selected' : ''
-            }`}
+            className={`contentBox cursor ${
+              selectorBoxMulticolor && 'borderHghl'
+            } ${e27M || e14M || gu10M ? 'selected' : ''}`}
           >
             {e27M || e14M || gu10M ? (
               <img src={lightColorImgW} />
