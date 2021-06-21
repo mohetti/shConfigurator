@@ -1,10 +1,15 @@
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import selectionActionsContainer from '../actions';
 
 function Start() {
   let history = useHistory();
 
+  const test = useSelector((state) => state.selectionState);
+  const selectionState = useDispatch();
+
   let start = () => {
-    sessionStorage.clear();
+    selectionState(selectionActionsContainer.resetAll());
     return history.push('/kategorien');
   };
 
@@ -42,6 +47,11 @@ function Start() {
           </button>
         </div>
       </div>
+      <div>{test.motionI.toString()}</div>
+      <div onClick={() => selectionState(selectionActionsContainer.motionI())}>
+        +
+      </div>
+      <div>-</div>
     </div>
   );
 }

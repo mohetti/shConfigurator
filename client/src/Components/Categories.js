@@ -10,12 +10,19 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 
+import { useSelector, useDispatch } from 'react-redux';
+import selectionActionsContainer from '../actions';
+
 function Categories() {
   const [light, setLight] = useState(false);
   const [heating, setHeating] = useState(false);
   const [security, setSecurity] = useState(false);
 
   let history = useHistory();
+
+  // selSD stands for selectionStateDisplay
+  const selSD = useSelector((state) => state.selectionState);
+  const selectionStateChange = useDispatch();
 
   useEffect(() => {
     let lightSession = sessionStorage.getItem('light') === 'true';
@@ -34,7 +41,7 @@ function Categories() {
     return history.push('/start');
   };
   const reset = () => {
-    if (!light) {
+    if (!selSD.light) {
       let lightsList = [
         'e27W',
         'e27A',
@@ -69,9 +76,11 @@ function Categories() {
         'wallGardenM',
         'gardenStrip',
       ];
-      lightsList.map((x) => sessionStorage.setItem(x, false));
+      lightsList.map((x) =>
+        selectionStateChange(selectionActionsContainer.resetSome(x))
+      );
     }
-    if (!heating) {
+    if (!selSD.heating) {
       let heatingList = [
         'radiator',
         'thermostatWired230',
@@ -83,9 +92,11 @@ function Categories() {
         'heatActor230_06',
         'heatActor230_10',
       ];
-      heatingList.map((x) => sessionStorage.setItem(x, false));
+      heatingList.map((x) =>
+        selectionStateChange(selectionActionsContainer.resetSome(x))
+      );
     }
-    if (!security) {
+    if (!selSD.security) {
       let securityList = [
         'motionI',
         'motionO',
@@ -98,7 +109,10 @@ function Categories() {
         'cameraI',
         'cameraO',
       ];
-      securityList.map((x) => sessionStorage.setItem(x, false));
+      securityList.map((x) =>
+        selectionStateChange(selectionActionsContainer.resetSome(x))
+      );
+      // securityList.map((x) => sessionStorage.setItem(x, false));
     }
   };
 
@@ -107,12 +121,19 @@ function Categories() {
     sessionStorage.setItem('heating', heating);
     sessionStorage.setItem('security', security);
 
-    reset();
-
-    if (light) return history.push('/beleuchtung');
-    if (heating) return history.push('/heizung');
-    if (security) return history.push('/sicherheit');
-    else return alert('Bitte mindestens eine Kategorie auswählen.');
+    if (selSD.light) {
+      reset();
+      return history.push('/beleuchtung');
+    }
+    if (selSD.heating) {
+      reset();
+      return history.push('/heizung');
+    }
+    if (selSD.security) {
+      reset();
+      return history.push('/sicherheit');
+    }
+    return alert('Bitte mindestens eine Kategorie auswählen.');
   };
 
   const infos = () => {
@@ -120,15 +141,7 @@ function Categories() {
   };
 
   const handleClick = (input) => {
-    if (input === 'lights') {
-      return setLight(!light);
-    }
-    if (input === 'heating') {
-      return setHeating(!heating);
-    }
-    if (input === 'security') {
-      return setSecurity(!security);
-    }
+    return selectionStateChange(selectionActionsContainer[input]());
   };
   return (
     <div className="background">
@@ -138,10 +151,10 @@ function Categories() {
         </header>
         <div className="contentContainer">
           <div
-            onClick={() => handleClick('lights')}
-            className={`contentBox cursor ${light && 'selected'}`}
+            onClick={() => handleClick('light')}
+            className={`contentBox cursor ${selSD.light && 'selected'}`}
           >
-            {light ? <img src={lightImgW} /> : <img src={lightImg} />}
+            {selSD.light ? <img src={lightImgW} /> : <img src={lightImg} />}
             <div>Beleuchtung</div>
           </div>
           <MediaQuery maxWidth={500}>
@@ -155,9 +168,13 @@ function Categories() {
 
           <div
             onClick={() => handleClick('heating')}
-            className={`contentBox cursor ${heating && 'selected'}`}
+            className={`contentBox cursor ${selSD.heating && 'selected'}`}
           >
-            {heating ? <img src={heatingImgW} /> : <img src={heatingImg} />}
+            {selSD.heating ? (
+              <img src={heatingImgW} />
+            ) : (
+              <img src={heatingImg} />
+            )}
             <div>Heizung</div>
           </div>
           <MediaQuery maxWidth={500}>
@@ -170,9 +187,13 @@ function Categories() {
           </MediaQuery>
           <div
             onClick={() => handleClick('security')}
-            className={`contentBox cursor ${security && 'selected'}`}
+            className={`contentBox cursor ${selSD.security && 'selected'}`}
           >
-            {security ? <img src={securityImgW} /> : <img src={securityImg} />}
+            {selSD.security ? (
+              <img src={securityImgW} />
+            ) : (
+              <img src={securityImg} />
+            )}
             <div>Sicherheit</div>
           </div>
         </div>
