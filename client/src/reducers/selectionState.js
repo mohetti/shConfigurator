@@ -1,5 +1,3 @@
-import selectionActionsContainer from '../actions';
-
 const initialState = {
   garden: false,
   heating: false,
@@ -25,7 +23,7 @@ const initialState = {
   ceilingM: false,
   ceilingA: false,
   plugD: false,
-  plugM: false,
+  plugN: false,
   recSpotA: false,
   recSpotM: false,
   recSpotW: false,
@@ -55,6 +53,7 @@ const initialState = {
   sirenI: false,
   sirenO: false,
   smoke: false,
+  windowSensor: false,
   gardenTemp: false,
   heatingTemp: false,
   innerLightsTemp: false,
@@ -70,6 +69,12 @@ const selectionStateReducer = (state = initialState, action) => {
     return {
       ...state,
       [action.payload]: false,
+    };
+  }
+  if (action.type === 'forceTrue') {
+    return {
+      ...state,
+      [action.payload]: true,
     };
   }
   return {

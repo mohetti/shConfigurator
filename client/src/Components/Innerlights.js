@@ -20,26 +20,14 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 
+import { useSelector, useDispatch } from 'react-redux';
+import selectionActionsContainer from '../actions';
+
 function Innerlights() {
-  const [tableLamp, setTableLamp] = useState(false);
-  const [strip, setStrip] = useState(false);
-  const [plugN, setPlugN] = useState(false);
-  const [plugD, setPlugD] = useState(false);
-  const [recSpotW, setRecSpotW] = useState(false);
-  const [recSpotA, setRecSpotA] = useState(false);
-  const [recSpotM, setRecSpotM] = useState(false);
-  const [surfSpotA, setSurfSpotA] = useState(false);
-  const [surfSpotM, setSurfSpotM] = useState(false);
-  const [ceilingA, setCeilingA] = useState(false);
-  const [ceilingM, setCeilingM] = useState(false);
-  const [recSwitchN, setRecSwitchN] = useState(false);
-  const [recSwitchD, setRecSwitchD] = useState(false);
-  const [wallA, setWallA] = useState(false);
-  const [wallM, setWallM] = useState(false);
-  const [garden, setGarden] = useState(false);
-  const [heating, setHeating] = useState(false);
-  const [security, setSecurity] = useState(false);
-  const [lightbulbs, setLightbulbs] = useState(false);
+  let history = useHistory();
+  // selSD stands for selectionStateDisplay
+  const selSD = useSelector((state) => state.selectionState);
+  const selectionStateChange = useDispatch();
 
   const [boxRecSpot, setBoxRecSpot] = useState(false);
   const [boxWall, setBoxWall] = useState(false);
@@ -48,111 +36,37 @@ function Innerlights() {
   const [boxRecSwitch, setBoxRecSwitch] = useState(false);
   const [boxCeiling, setBoxCeiling] = useState(false);
 
-  let history = useHistory();
-
-  useEffect(() => {
-    let tableSession = sessionStorage.getItem('tableLamp') === 'true';
-    let stripSession = sessionStorage.getItem('strip') === 'true';
-    let plugSessionN = sessionStorage.getItem('plugN') === 'true';
-    let plugSessionD = sessionStorage.getItem('plugD') === 'true';
-    let recSpotWSession = sessionStorage.getItem('recSpotW') === 'true';
-    let recSpotASession = sessionStorage.getItem('recSpotA') === 'true';
-    let recSpotMSession = sessionStorage.getItem('recSpotM') === 'true';
-    let surfSpotSessionA = sessionStorage.getItem('surfSpotA') === 'true';
-    let surfSpotSessionM = sessionStorage.getItem('surfSpotM') === 'true';
-    let ceilingSessionA = sessionStorage.getItem('ceilingA') === 'true';
-    let ceilingSessionM = sessionStorage.getItem('ceilingM') === 'true';
-    let wallSessionA = sessionStorage.getItem('wallA') === 'true';
-    let wallSessionM = sessionStorage.getItem('wallM') === 'true';
-    let recSwitchSessionN = sessionStorage.getItem('recSwitchN') === 'true';
-    let recSwitchSessionD = sessionStorage.getItem('recSwitchD') === 'true';
-
-    let gardenSession = sessionStorage.getItem('garden') === 'true';
-    let heatingSession = sessionStorage.getItem('heating') === 'true';
-    let securitySession = sessionStorage.getItem('security') === 'true';
-    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
-
-    setTableLamp(tableSession);
-    setStrip(stripSession);
-    setPlugN(plugSessionN);
-    setPlugD(plugSessionD);
-    setRecSpotW(recSpotWSession);
-    setRecSpotA(recSpotASession);
-    setRecSpotM(recSpotMSession);
-    setSurfSpotA(surfSpotSessionA);
-    setSurfSpotM(surfSpotSessionM);
-    setCeilingA(ceilingSessionA);
-    setCeilingM(ceilingSessionM);
-    setWallA(wallSessionA);
-    setWallM(wallSessionM);
-    setRecSwitchN(recSwitchSessionN);
-    setRecSwitchD(recSwitchSessionD);
-
-    setGarden(gardenSession);
-    setHeating(heatingSession);
-    setSecurity(securitySession);
-    setLightbulbs(lightbulbsSession);
-  }, []);
-
   const back = () => {
-    sessionStorage.setItem('tableLamp', tableLamp);
-    sessionStorage.setItem('strip', strip);
-    sessionStorage.setItem('plugN', plugN);
-    sessionStorage.setItem('plugD', plugD);
-    sessionStorage.setItem('recSpotW', recSpotW);
-    sessionStorage.setItem('recSpotA', recSpotA);
-    sessionStorage.setItem('recSpotM', recSpotM);
-    sessionStorage.setItem('surfSpotA', surfSpotA);
-    sessionStorage.setItem('surfSpotM', surfSpotM);
-    sessionStorage.setItem('ceilingA', ceilingA);
-    sessionStorage.setItem('ceilingM', ceilingM);
-    sessionStorage.setItem('wallA', wallA);
-    sessionStorage.setItem('wallM', wallM);
-    sessionStorage.setItem('recSwitchN', recSwitchN);
-    sessionStorage.setItem('recSwitchD', recSwitchD);
-
-    if (lightbulbs) return history.push('/gluehbirnen');
+    if (selSD.lightbulbs) return history.push('/gluehbirnen');
     return history.push('/beleuchtung');
   };
 
   const next = () => {
-    sessionStorage.setItem('tableLamp', tableLamp);
-    sessionStorage.setItem('strip', strip);
-    sessionStorage.setItem('plugN', plugN);
-    sessionStorage.setItem('plugD', plugD);
-    sessionStorage.setItem('recSpotW', recSpotW);
-    sessionStorage.setItem('recSpotA', recSpotA);
-    sessionStorage.setItem('recSpotM', recSpotM);
-    sessionStorage.setItem('surfSpotA', surfSpotA);
-    sessionStorage.setItem('surfSpotM', surfSpotM);
-    sessionStorage.setItem('ceilingA', ceilingA);
-    sessionStorage.setItem('ceilingM', ceilingM);
-    sessionStorage.setItem('wallA', wallA);
-    sessionStorage.setItem('wallM', wallM);
-    sessionStorage.setItem('recSwitchN', recSwitchN);
-    sessionStorage.setItem('recSwitchD', recSwitchD);
+    selSD.tableLamp ||
+    selSD.strip ||
+    selSD.plugN ||
+    selSD.plugD ||
+    selSD.recSpotW ||
+    selSD.recSpotA ||
+    selSD.recSpotM ||
+    selSD.surfSpotA ||
+    selSD.surfSpotM ||
+    selSD.ceilingA ||
+    selSD.ceilingM ||
+    selSD.wallA ||
+    selSD.wallM ||
+    selSD.recSwitchN ||
+    selSD.recSwitchD
+      ? selectionStateChange(
+          selectionActionsContainer.forceTrue('innerLightsTemp')
+        )
+      : selectionStateChange(
+          selectionActionsContainer.resetSome('innerLightsTemp')
+        );
 
-    tableLamp ||
-    strip ||
-    plugN ||
-    plugD ||
-    recSpotW ||
-    recSpotA ||
-    recSpotM ||
-    surfSpotA ||
-    surfSpotM ||
-    ceilingA ||
-    ceilingM ||
-    wallA ||
-    wallM ||
-    recSwitchN ||
-    recSwitchD
-      ? sessionStorage.setItem('innerLightsTemp', true)
-      : sessionStorage.setItem('innerLightsTemp', false);
-
-    if (garden) return history.push('/gartenbeleuchtung');
-    if (heating) return history.push('/heizung');
-    if (security) return history.push('/sicherheit');
+    if (selSD.garden) return history.push('/gartenbeleuchtung');
+    if (selSD.heating) return history.push('/heizung');
+    if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
   };
 
@@ -170,23 +84,7 @@ function Innerlights() {
   };
 
   const handleClick = (input) => {
-    if (input === 'tableLamp' || input === 'strip') reset();
-    if (input === 'tableLamp') return setTableLamp(!tableLamp);
-    if (input === 'strip') return setStrip(!strip);
-    if (input === 'recSpotW') return setRecSpotW(!recSpotW);
-    if (input === 'recSpotA') return setRecSpotA(!recSpotA);
-    if (input === 'recSpotM') return setRecSpotM(!recSpotM);
-    if (input === 'wallA') return setWallA(!wallA);
-    if (input === 'wallM') return setWallM(!wallM);
-
-    if (input === 'plugN') return setPlugN(!plugN);
-    if (input === 'plugD') return setPlugD(!plugD);
-    if (input === 'surfSpotA') return setSurfSpotA(!surfSpotA);
-    if (input === 'surfSpotM') return setSurfSpotM(!surfSpotM);
-    if (input === 'recSwitchN') return setRecSwitchN(!recSwitchN);
-    if (input === 'recSwitchD') return setRecSwitchD(!recSwitchD);
-    if (input === 'ceilingA') return setCeilingA(!ceilingA);
-    if (input === 'ceilingM') return setCeilingM(!ceilingM);
+    return selectionStateChange(selectionActionsContainer[input]());
   };
 
   const openBox = (location) => {
@@ -258,19 +156,19 @@ function Innerlights() {
       <div className={`addSelectContainer`}>
         <div
           onClick={() => handleClick('recSpotW')}
-          className={`addSelectRadius ${recSpotW && 'selected'}`}
+          className={`addSelectRadius ${selSD.recSpotW && 'selected'}`}
         >
           Dimmbar
         </div>
         <div
           onClick={() => handleClick('recSpotA')}
-          className={`addSelectRadius ${recSpotA && 'selected'}`}
+          className={`addSelectRadius ${selSD.recSpotA && 'selected'}`}
         >
           dimmbares Weißlicht
         </div>
         <div
           onClick={() => handleClick('recSpotM')}
-          className={`addSelectRadius ${recSpotM && 'selected'}`}
+          className={`addSelectRadius ${selSD.recSpotM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -283,13 +181,13 @@ function Innerlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('wallA')}
-          className={`addSelectRadius ${wallA && 'selected'}`}
+          className={`addSelectRadius ${selSD.wallA && 'selected'}`}
         >
           dimmbares Weißlicht
         </div>
         <div
           onClick={() => handleClick('wallM')}
-          className={`addSelectRadius ${wallM && 'selected'}`}
+          className={`addSelectRadius ${selSD.wallM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -302,13 +200,13 @@ function Innerlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('plugN')}
-          className={`addSelectRadius ${plugN && 'selected'}`}
+          className={`addSelectRadius ${selSD.plugN && 'selected'}`}
         >
           Einfach
         </div>
         <div
           onClick={() => handleClick('plugD')}
-          className={`addSelectRadius ${plugD && 'selected'}`}
+          className={`addSelectRadius ${selSD.plugD && 'selected'}`}
         >
           mit Dimmfunktion
         </div>
@@ -321,13 +219,13 @@ function Innerlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('surfSpotA')}
-          className={`addSelectRadius ${surfSpotA && 'selected'}`}
+          className={`addSelectRadius ${selSD.surfSpotA && 'selected'}`}
         >
           dimmbares Weißlicht
         </div>
         <div
           onClick={() => handleClick('surfSpotM')}
-          className={`addSelectRadius ${surfSpotM && 'selected'}`}
+          className={`addSelectRadius ${selSD.surfSpotM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -340,13 +238,13 @@ function Innerlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('recSwitchN')}
-          className={`addSelectRadius ${recSwitchN && 'selected'}`}
+          className={`addSelectRadius ${selSD.recSwitchN && 'selected'}`}
         >
           Einfach
         </div>
         <div
           onClick={() => handleClick('recSwitchD')}
-          className={`addSelectRadius ${recSwitchD && 'selected'}`}
+          className={`addSelectRadius ${selSD.recSwitchD && 'selected'}`}
         >
           mit Dimmfunktion
         </div>
@@ -359,13 +257,13 @@ function Innerlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('ceilingA')}
-          className={`addSelectRadius ${ceilingA && 'selected'}`}
+          className={`addSelectRadius ${selSD.ceilingA && 'selected'}`}
         >
           dimmbares Weißlicht
         </div>
         <div
           onClick={() => handleClick('ceilingM')}
-          className={`addSelectRadius ${ceilingM && 'selected'}`}
+          className={`addSelectRadius ${selSD.ceilingM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -381,16 +279,16 @@ function Innerlights() {
         <div className="contentContainer">
           <div
             onClick={() => handleClick('strip')}
-            className={`contentBox cursor ${strip && 'selected'}`}
+            className={`contentBox cursor ${selSD.strip && 'selected'}`}
           >
-            {strip ? <img src={stripImgW} /> : <img src={stripImg} />}
+            {selSD.strip ? <img src={stripImgW} /> : <img src={stripImg} />}
             <div>Leuchtstreifen</div>
           </div>
           <div
             onClick={() => handleClick('tableLamp')}
-            className={`contentBox cursor ${tableLamp && 'selected'}`}
+            className={`contentBox cursor ${selSD.tableLamp && 'selected'}`}
           >
-            {tableLamp ? (
+            {selSD.tableLamp ? (
               <img src={tableLampImgW} />
             ) : (
               <img src={tableLampImg} />
@@ -403,10 +301,12 @@ function Innerlights() {
           <div
             onClick={() => openBox('recSpot')}
             className={`contentBox cursor ${boxRecSpot && 'borderHghl'} ${
-              recSpotW || recSpotA || recSpotM ? 'selected' : ''
+              selSD.recSpotW || selSD.recSpotA || selSD.recSpotM
+                ? 'selected'
+                : ''
             }`}
           >
-            {recSpotW || recSpotA || recSpotM ? (
+            {selSD.recSpotW || selSD.recSpotA || selSD.recSpotM ? (
               <img src={recSpotImgW} />
             ) : (
               <img src={recSpotImg} />
@@ -416,10 +316,10 @@ function Innerlights() {
           <div
             onClick={() => openBox('wall')}
             className={`contentBox cursor ${boxWall && 'borderHghl'} ${
-              wallA || wallM ? 'selected' : ''
+              selSD.wallA || selSD.wallM ? 'selected' : ''
             }`}
           >
-            {wallA || wallM ? (
+            {selSD.wallA || selSD.wallM ? (
               <img src={wallLightImgW} />
             ) : (
               <img src={wallLightImg} />
@@ -443,19 +343,23 @@ function Innerlights() {
           <div
             onClick={() => openBox('plug')}
             className={`contentBox cursor ${boxPlug && 'borderHghl'} ${
-              plugN || plugD ? 'selected' : ''
+              selSD.plugN || selSD.plugD ? 'selected' : ''
             }`}
           >
-            {plugN || plugD ? <img src={plugImgW} /> : <img src={plugImg} />}
+            {selSD.plugN || selSD.plugD ? (
+              <img src={plugImgW} />
+            ) : (
+              <img src={plugImg} />
+            )}
             <div>Zwischenstecker</div>
           </div>
           <div
             onClick={() => openBox('surfSpot')}
             className={`contentBox cursor ${boxSurfSpot && 'borderHghl'} ${
-              surfSpotA || surfSpotM ? 'selected' : ''
+              selSD.surfSpotA || selSD.surfSpotM ? 'selected' : ''
             }`}
           >
-            {surfSpotA || surfSpotM ? (
+            {selSD.surfSpotA || selSD.surfSpotM ? (
               <img src={surfSpotImgW} />
             ) : (
               <img src={surfSpotImg} />
@@ -481,10 +385,10 @@ function Innerlights() {
           <div
             onClick={() => openBox('recSwitch')}
             className={`contentBox cursor ${boxRecSwitch && 'borderHghl'} ${
-              recSwitchN || recSwitchD ? 'selected' : ''
+              selSD.recSwitchN || selSD.recSwitchD ? 'selected' : ''
             }`}
           >
-            {recSwitchN || recSwitchD ? (
+            {selSD.recSwitchN || selSD.recSwitchD ? (
               <img src={recSwitchImgW} />
             ) : (
               <img src={recSwitchImg} />
@@ -494,10 +398,10 @@ function Innerlights() {
           <div
             onClick={() => openBox('ceiling')}
             className={`contentBox cursor ${boxCeiling && 'borderHghl'} ${
-              ceilingA || ceilingM ? 'selected' : ''
+              selSD.ceilingA || selSD.ceilingM ? 'selected' : ''
             }`}
           >
-            {ceilingA || ceilingM ? (
+            {selSD.ceilingA || selSD.ceilingM ? (
               <img src={ceilingLightImgW} />
             ) : (
               <img src={ceilingLightImg} />

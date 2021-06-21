@@ -2,19 +2,16 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
 
+import { useSelector, useDispatch } from 'react-redux';
+import detailedSystem from '../actions/detailedSystem';
+
 function Overview() {
-  const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(true);
-
   let history = useHistory();
-
-  useEffect(() => {
-    let querySessionStorage = sessionStorage.getItem('overview');
-    setResults(JSON.parse(querySessionStorage));
-    setLoading(false);
-  }, []);
+  const results = useSelector((state) => state.backendResponse);
+  const storeDetailedSystem = useDispatch();
 
   const details = (system) => {
+    storeDetailedSystem(detailedSystem(system));
     sessionStorage.setItem('system', system);
     return history.push('/details');
   };
@@ -70,7 +67,7 @@ function Overview() {
                 </div>
               </div>
               <div className="btnSingle">
-                <button className="btn" onClick={() => details(x.mainSystem)}>
+                <button className="btn" onClick={() => details(x)}>
                   zur Auflistung{' '}
                 </button>
               </div>
@@ -83,13 +80,9 @@ function Overview() {
 
   return (
     <div className="background">
-      {loading ? (
-        <div>Loading</div>
-      ) : (
-        <div className="whiteBackground">
-          <div className="contentContainer mgZero">{populateResults()}</div>
-        </div>
-      )}
+      <div className="whiteBackground">
+        <div className="contentContainer mgZero">{populateResults()}</div>
+      </div>
     </div>
   );
 }

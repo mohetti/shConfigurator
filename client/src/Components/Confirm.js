@@ -32,256 +32,81 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { useSelector, useDispatch } from 'react-redux';
+import backendResponseAction from '../actions/backendResponse';
+
 const api = axios.create({
   baseURL: 'http://localhost:9000/result',
 });
 
 function Confirm() {
-  const [loading, setLoading] = useState(false);
   let history = useHistory();
+  const [loading, setLoading] = useState(false);
 
-  // categories
-  const [light, setLight] = useState(
-    sessionStorage.getItem('light') === 'true'
-  );
-  const [heating, setHeating] = useState(
-    sessionStorage.getItem('heating') === 'true'
-  );
-  const [security, setSecurity] = useState(
-    sessionStorage.getItem('security') === 'true'
-  );
-
-  // lights
-  const [lightbulbs, setLightbulbs] = useState(
-    sessionStorage.getItem('lightbulbs') === 'true'
-  );
-  const [innerLights, setInnerLights] = useState(
-    sessionStorage.getItem('innerLights') === 'true'
-  );
-  const [garden, setGarden] = useState(
-    sessionStorage.getItem('garden') === 'true'
-  );
-
-  // temps
-  const [innerLightsTemp, setInnerLightsTemp] = useState(
-    sessionStorage.getItem('innerLightsTemp') === 'true'
-  );
-  const [lightbulbsTemp, setLightbulbsTemp] = useState(
-    sessionStorage.getItem('lightbulbsTemp') === 'true'
-  );
-  const [gardenTemp, setGardenTemp] = useState(
-    sessionStorage.getItem('gardenTemp') === 'true'
-  );
-  const [heatingTemp, setHeatingTemp] = useState(
-    sessionStorage.getItem('heatingTemp') === 'true'
-  );
-  const [securityTemp, setSecurityTemp] = useState(
-    sessionStorage.getItem('securityTemp') === 'true'
-  );
-
-  // lightbulbs
-  const [e27W, setE27W] = useState(sessionStorage.getItem('e27W') === 'true');
-  const [e27A, setE27A] = useState(sessionStorage.getItem('e27A') === 'true');
-  const [e27M, setE27M] = useState(sessionStorage.getItem('e27M') === 'true');
-  const [e14W, setE14W] = useState(sessionStorage.getItem('e14W') === 'true');
-  const [e14A, setE14A] = useState(sessionStorage.getItem('e14A') === 'true');
-  const [e14M, setE14M] = useState(sessionStorage.getItem('e14M') === 'true');
-  const [gu10W, setGu10W] = useState(
-    sessionStorage.getItem('gu10W') === 'true'
-  );
-  const [gu10A, setGu10A] = useState(
-    sessionStorage.getItem('gu10A') === 'true'
-  );
-  const [gu10M, setGu10M] = useState(
-    sessionStorage.getItem('gu10M') === 'true'
-  );
-
-  // innerlights
-  const [tableLamp, setTableLamp] = useState(
-    sessionStorage.getItem('tableLamp') === 'true'
-  );
-  const [strip, setStrip] = useState(
-    sessionStorage.getItem('strip') === 'true'
-  );
-  const [plugN, setPlugN] = useState(
-    sessionStorage.getItem('plugN') === 'true'
-  );
-  const [plugD, setPlugD] = useState(
-    sessionStorage.getItem('plugD') === 'true'
-  );
-  const [recSpotW, setRecSpotW] = useState(
-    sessionStorage.getItem('recSpotW') === 'true'
-  );
-  const [recSpotA, setRecSpotA] = useState(
-    sessionStorage.getItem('recSpotA') === 'true'
-  );
-  const [recSpotM, setRecSpotM] = useState(
-    sessionStorage.getItem('recSpotM') === 'true'
-  );
-  const [surfSpotA, setSurfSpotA] = useState(
-    sessionStorage.getItem('surfSpotA') === 'true'
-  );
-  const [surfSpotM, setSurfSpotM] = useState(
-    sessionStorage.getItem('surfSpotM') === 'true'
-  );
-  const [ceilingA, setCeilingA] = useState(
-    sessionStorage.getItem('ceilingA') === 'true'
-  );
-  const [ceilingM, setCeilingM] = useState(
-    sessionStorage.getItem('ceilingM') === 'true'
-  );
-  const [recSwitchN, setRecSwitchN] = useState(
-    sessionStorage.getItem('recSwitchN') === 'true'
-  );
-  const [recSwitchD, setRecSwitchD] = useState(
-    sessionStorage.getItem('recSwitchD') === 'true'
-  );
-  const [wallA, setWallA] = useState(
-    sessionStorage.getItem('wallA') === 'true'
-  );
-  const [wallM, setWallM] = useState(
-    sessionStorage.getItem('wallM') === 'true'
-  );
-
-  // gardenlights
-  const [pathLightW, setPathLightW] = useState(
-    sessionStorage.getItem('pathLightW') === 'true'
-  );
-  const [pathLightM, setPathLightM] = useState(
-    sessionStorage.getItem('pathLightM') === 'true'
-  );
-  const [gardenSpot, setGardenSpot] = useState(
-    sessionStorage.getItem('gardenSpot') === 'true'
-  );
-  const [wallGardenW, setWallGardenW] = useState(
-    sessionStorage.getItem('wallGardenW') === 'true'
-  );
-  const [wallGardenM, setWallGardenM] = useState(
-    sessionStorage.getItem('wallGardenM') === 'true'
-  );
-  const [gardenStrip, setGardenStrip] = useState(
-    sessionStorage.getItem('gardenStrip') === 'true'
-  );
-
-  // heating
-  const [radiator, setRadiator] = useState(
-    sessionStorage.getItem('radiator') === 'true'
-  );
-  const [thermostatWired230, setThermostatWired230] = useState(
-    sessionStorage.getItem('thermostatWired230') === 'true'
-  );
-  const [thermostatWired24, setThermostatWired24] = useState(
-    sessionStorage.getItem('thermostatWired24') === 'true'
-  );
-  const [thermostatWireless, setThermostatWireless] = useState(
-    sessionStorage.getItem('thermostatWireless') === 'true'
-  );
-  const [heatActor12Motorized, setHeatActor12Motorized] = useState(
-    sessionStorage.getItem('heatActor12Motorized') === 'true'
-  );
-  const [heatActor24_06, setHeatActor24_06] = useState(
-    sessionStorage.getItem('heatActor24_06') === 'true'
-  );
-  const [heatActor24_10, setHeatActor24_10] = useState(
-    sessionStorage.getItem('heatActor24_10') === 'true'
-  );
-  const [heatActor230_06, setHeatActor230_06] = useState(
-    sessionStorage.getItem('heatActor230_06') === 'true'
-  );
-  const [heatActor230_10, setHeatActor230_10] = useState(
-    sessionStorage.getItem('heatActor230_10') === 'true'
-  );
-
-  // security
-  const [motionI, setMotionI] = useState(
-    sessionStorage.getItem('motionI') === 'true'
-  );
-  const [motionO, setMotionO] = useState(
-    sessionStorage.getItem('motionO') === 'true'
-  );
-  const [windowSensor, setWindowSensor] = useState(
-    sessionStorage.getItem('windowSensor') === 'true'
-  );
-  const [sirenI, setSirenI] = useState(
-    sessionStorage.getItem('sirenI') === 'true'
-  );
-  const [sirenO, setSirenO] = useState(
-    sessionStorage.getItem('sirenO') === 'true'
-  );
-  const [smoke, setSmoke] = useState(
-    sessionStorage.getItem('smoke') === 'true'
-  );
-  const [lock, setLock] = useState(sessionStorage.getItem('lock') === 'true');
-  const [doorbell, setDoorbell] = useState(
-    sessionStorage.getItem('doorbell') === 'true'
-  );
-  const [cameraI, setCameraI] = useState(
-    sessionStorage.getItem('cameraI') === 'true'
-  );
-  const [cameraO, setCameraO] = useState(
-    sessionStorage.getItem('cameraO') === 'true'
-  );
+  // selSD stands for selectionStateDisplay
+  const selSD = useSelector((state) => state.selectionState);
+  const selectionStateChange = useDispatch();
 
   const backendRequest = () => {
     setLoading(true);
     let categories = {
-      light: light,
-      heating: heating,
-      security: security,
+      light: selSD.light,
+      heating: selSD.heating,
+      security: selSD.security,
     };
 
     let products = [
-      e27W && 'e27W',
-      e27A && 'e27A',
-      e27M && 'e27M',
-      e14W && 'e14W',
-      e14A && 'e14A',
-      e14M && 'e14M',
-      gu10W && 'gu10W',
-      gu10A && 'gu10A',
-      gu10M && 'gu10M',
-      tableLamp && 'tableLamp',
-      strip && 'strip',
-      plugN && 'plugN',
-      plugD && 'plugD',
-      recSpotW && 'recSpotW',
-      recSpotM && 'recSpotM',
-      recSpotA && 'recSpotA',
-      surfSpotA && 'surfSpotA',
-      surfSpotM && 'surfSpotM',
-      ceilingA && 'ceilingA',
-      ceilingM && 'ceilingM',
-      recSwitchN && 'recSwitchN',
-      recSwitchD && 'recSwitchD',
-      wallA && 'wallA',
-      wallM && 'wallM',
-      pathLightW && 'pathLightW',
-      pathLightM && 'pathLightM',
-      gardenSpot && 'gardenSpot',
-      wallGardenW && 'wallGardenW',
-      wallGardenM && 'wallGardenM',
-      gardenStrip && 'gardenStrip',
-      radiator && 'radiator',
-      thermostatWired230 && 'thermostatWired230',
-      thermostatWired24 && 'thermostatWired24',
-      thermostatWireless && 'thermostatWireless',
-      heatActor12Motorized && 'heatActor12Motorized',
-      heatActor24_06 && 'heatActor24_06',
-      heatActor24_10 && 'heatActor24_10',
-      heatActor230_06 && 'heatActor230_06',
-      heatActor230_10 && 'heatActor230_10',
-      motionI && 'motionI',
-      motionO && 'motionO',
-      windowSensor && 'windowSensor',
-      sirenI && 'sirenI',
-      sirenO && 'sirenO',
-      smoke && 'smoke',
-      lock && 'lock',
-      doorbell && 'doorbell',
-      cameraI && 'cameraI',
-      cameraO && 'cameraO',
-      motionO && 'motionOZ',
-      thermostatWireless && 'thermostatWirelessExt',
+      selSD.e27W && 'e27W',
+      selSD.e27A && 'e27A',
+      selSD.e27M && 'e27M',
+      selSD.e14W && 'e14W',
+      selSD.e14A && 'e14A',
+      selSD.e14M && 'e14M',
+      selSD.gu10W && 'gu10W',
+      selSD.gu10A && 'gu10A',
+      selSD.gu10M && 'gu10M',
+      selSD.tableLamp && 'tableLamp',
+      selSD.strip && 'strip',
+      selSD.plugN && 'plugN',
+      selSD.plugD && 'plugD',
+      selSD.recSpotW && 'recSpotW',
+      selSD.recSpotM && 'recSpotM',
+      selSD.recSpotA && 'recSpotA',
+      selSD.surfSpotA && 'surfSpotA',
+      selSD.surfSpotM && 'surfSpotM',
+      selSD.ceilingA && 'ceilingA',
+      selSD.ceilingM && 'ceilingM',
+      selSD.recSwitchN && 'recSwitchN',
+      selSD.recSwitchD && 'recSwitchD',
+      selSD.wallA && 'wallA',
+      selSD.wallM && 'wallM',
+      selSD.pathLightW && 'pathLightW',
+      selSD.pathLightM && 'pathLightM',
+      selSD.gardenSpot && 'gardenSpot',
+      selSD.wallGardenW && 'wallGardenW',
+      selSD.wallGardenM && 'wallGardenM',
+      selSD.gardenStrip && 'gardenStrip',
+      selSD.radiator && 'radiator',
+      selSD.thermostatWired230 && 'thermostatWired230',
+      selSD.thermostatWired24 && 'thermostatWired24',
+      selSD.thermostatWireless && 'thermostatWireless',
+      selSD.heatActor12Motorized && 'heatActor12Motorized',
+      selSD.heatActor24_06 && 'heatActor24_06',
+      selSD.heatActor24_10 && 'heatActor24_10',
+      selSD.heatActor230_06 && 'heatActor230_06',
+      selSD.heatActor230_10 && 'heatActor230_10',
+      selSD.motionI && 'motionI',
+      selSD.motionO && 'motionO',
+      selSD.windowSensor && 'windowSensor',
+      selSD.sirenI && 'sirenI',
+      selSD.sirenO && 'sirenO',
+      selSD.smoke && 'smoke',
+      selSD.lock && 'lock',
+      selSD.doorbell && 'doorbell',
+      selSD.cameraI && 'cameraI',
+      selSD.cameraO && 'cameraO',
+      selSD.motionO && 'motionOZ',
+      selSD.thermostatWireless && 'thermostatWirelessExt',
     ];
 
     let productsAdjusted = products.filter((x) => {
@@ -293,7 +118,9 @@ function Confirm() {
     api
       .post('/', transferData)
       .then((res) => {
-        sessionStorage.setItem('overview', JSON.stringify(res.data));
+        selectionStateChange(backendResponseAction(res.data));
+
+        /*sessionStorage.setItem('overview', JSON.stringify(res.data));*/
         history.push('/overview');
       })
       .catch((err) => {
@@ -309,68 +136,70 @@ function Confirm() {
         <div className="background">
           <div className="whiteBackground">
             <h1 className="stripe">Bestätige Deine Auswahl</h1>
-            {(lightbulbsTemp || gardenTemp || innerLightsTemp) && (
+            {(selSD.lightbulbsTemp ||
+              selSD.gardenTemp ||
+              selSD.innerLightsTemp) && (
               <div>
                 <div>
                   <h2 className="textLeft mgl1">Beleuchtung:</h2>
                 </div>
-                {lightbulbsTemp && (
+                {selSD.lightbulbsTemp && (
                   <div>
                     <div>
                       <h3 className="line textLeft">Glühbirnen & Spots: </h3>
                     </div>
                     <div className="flexStartLeft contentContainer mgt1 mgb2">
-                      {e27W && (
+                      {selSD.e27W && (
                         <div className="mgl1 contentBox">
                           <img src={e27Img} />
                           <div>E27, dimmbar</div>
                         </div>
                       )}
 
-                      {e27A && (
+                      {selSD.e27A && (
                         <div className="mgl1 contentBox">
                           <img src={e27Img} />
                           <div>E27, dimmbares Weißlicht</div>
                         </div>
                       )}
 
-                      {e27M && (
+                      {selSD.e27M && (
                         <div className="mgl1 contentBox">
                           <img src={e27Img} />
                           <div>E27, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {e14W && (
+                      {selSD.e14W && (
                         <div className="mgl1 contentBox">
                           <img src={e14Img} />
                           <div>E14, dimmbar</div>
                         </div>
                       )}
-                      {e14A && (
+                      {selSD.e14A && (
                         <div className="mgl1 contentBox">
                           <img src={e14Img} />
                           <div>E14, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {e14M && (
+                      {selSD.e14M && (
                         <div className="mgl1 contentBox">
                           <img src={e14Img} />
                           <div>E14, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {gu10W && (
+                      {selSD.gu10W && (
                         <div className="mgl1 contentBox">
                           <img src={gu10Img} />
                           <div>GU10 Spot, dimmbar</div>
                         </div>
                       )}
-                      {gu10A && (
+                      {selSD.gu10A && (
                         <div className="mgl1 contentBox">
                           <img src={gu10Img} />
                           <div>GU10 Spot, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {gu10M && (
+                      {selSD.gu10M && (
                         <div className="mgl1 contentBox">
                           <img src={gu10Img} />
                           <div>GU10 Spot, Weiß- und Farblicht</div>
@@ -379,97 +208,97 @@ function Confirm() {
                     </div>
                   </div>
                 )}
-                {innerLightsTemp && (
+                {selSD.innerLightsTemp && (
                   <div>
                     <div>
                       <h3 className="line textLeft">Innenbeleuchtung:</h3>
                     </div>
                     <div className="flexStartLeft contentContainer mgt1 mgb2">
-                      {strip && (
+                      {selSD.strip && (
                         <div className="mgl1 contentBox">
                           <img src={stripImg} />
                           <div>Leuchtstreifen</div>
                         </div>
                       )}
-                      {tableLamp && (
+                      {selSD.tableLamp && (
                         <div className="mgl1 contentBox">
                           <img src={tableLampImg} />
                           <div>Tischlampe</div>
                         </div>
                       )}
-                      {plugN && (
+                      {selSD.plugN && (
                         <div className="mgl1 contentBox">
                           <img src={plugImg} />
                           <div>Zwischenstecker</div>
                         </div>
                       )}
-                      {plugD && (
+                      {selSD.plugD && (
                         <div className="mgl1 contentBox">
                           <img src={plugImg} />
                           <div>Zwischenstecker mit Dimmfunktion</div>
                         </div>
                       )}
-                      {recSpotW && (
+                      {selSD.recSpotW && (
                         <div className="mgl1 contentBox">
                           <img src={recSpotImg} />
                           <div>Einbauspot, dimmbar</div>
                         </div>
                       )}
-                      {recSpotA && (
+                      {selSD.recSpotA && (
                         <div className="mgl1 contentBox">
                           <img src={recSpotImg} />
                           <div>Einbauspot, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {recSpotM && (
+                      {selSD.recSpotM && (
                         <div className="mgl1 contentBox">
                           <img src={recSpotImg} />
                           <div>Einbauspot, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {surfSpotA && (
+                      {selSD.surfSpotA && (
                         <div className="mgl1 contentBox">
                           <img src={surfSpotImg} />
                           <div>Spotlampe, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {surfSpotM && (
+                      {selSD.surfSpotM && (
                         <div className="mgl1 contentBox">
                           <img src={surfSpotImg} />
                           <div>Spotlampe, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {ceilingA && (
+                      {selSD.ceilingA && (
                         <div className="mgl1 contentBox">
                           <img src={ceilingLightImg} />
                           <div>Deckenleuchte, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {ceilingM && (
+                      {selSD.ceilingM && (
                         <div className="mgl1 contentBox">
                           <img src={ceilingLightImg} />
                           <div>Deckenleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {recSwitchN && (
+                      {selSD.recSwitchN && (
                         <div className="mgl1 contentBox">
                           <img src={recSwitchImg} />
                           <div>Unterputzaktor</div>
                         </div>
                       )}
-                      {recSwitchD && (
+                      {selSD.recSwitchD && (
                         <div className="mgl1 contentBox">
                           <img src={recSwitchImg} />
                           <div>Unterputzaktor mit Dimmfunktion</div>
                         </div>
                       )}
-                      {wallA && (
+                      {selSD.wallA && (
                         <div className="mgl1 contentBox">
                           <img src={wallLightImg} />
                           <div>Wandleuchte, dimmbares Weißlicht</div>
                         </div>
                       )}
-                      {wallM && (
+                      {selSD.wallM && (
                         <div className="mgl1 contentBox">
                           <img src={wallLightImg} />
                           <div>Wandleuchte, Weiß- und Farblicht</div>
@@ -478,43 +307,43 @@ function Confirm() {
                     </div>
                   </div>
                 )}
-                {gardenTemp && (
+                {selSD.gardenTemp && (
                   <div>
                     <div>
                       <h3 className="line textLeft">Gartenbeleuchtung:</h3>
                     </div>
                     <div className="flexStartLeft contentContainer mgt1 mgb2">
-                      {pathLightW && (
+                      {selSD.pathLightW && (
                         <div className="mgl1 contentBox">
                           <img src={pathLightImg} />
                           <div>Wegeleuchte, dimmbar</div>
                         </div>
                       )}
-                      {pathLightM && (
+                      {selSD.pathLightM && (
                         <div className="mgl1 contentBox">
                           <img src={pathLightImg} />
                           <div>Wegeleuchte, Weiß- und Farblicht</div>
                         </div>
                       )}
-                      {gardenSpot && (
+                      {selSD.gardenSpot && (
                         <div className="mgl1 contentBox">
                           <img src={gardenSpotImg} />
                           <div>Gartenspot</div>
                         </div>
                       )}
-                      {gardenStrip && (
+                      {selSD.gardenStrip && (
                         <div className="mgl1 contentBox">
                           <img src={gardenStripImg} />
                           <div>Leuchtsteifen für den Garten</div>
                         </div>
                       )}
-                      {wallGardenW && (
+                      {selSD.wallGardenW && (
                         <div className="mgl1 contentBox">
                           <img src={wallGardenLightImg} />
                           <div>Wandleuchte, dimmbar</div>
                         </div>
                       )}
-                      {wallGardenM && (
+                      {selSD.wallGardenM && (
                         <div className="mgl1 contentBox">
                           <img src={wallGardenLightImg} />
                           <div>Wandleuchte, Weiß- und Farblicht</div>
@@ -525,62 +354,62 @@ function Confirm() {
                 )}
               </div>
             )}
-            {heatingTemp && (
+            {selSD.heatingTemp && (
               <div>
                 <div>
                   <h2 className="textLeft mgl1">Heizung: </h2>
                   <div className="line"></div>
                 </div>
                 <div className="flexStartLeft contentContainer mgt1 mgb2">
-                  {radiator && (
+                  {selSD.radiator && (
                     <div className="mgl1 contentBox">
                       <img src={radiatorImg} />
                       <div>Heizkörperthermostat</div>
                     </div>
                   )}
-                  {thermostatWired230 && (
+                  {selSD.thermostatWired230 && (
                     <div className="mgl1 contentBox">
                       <img src={thermostatImg} />
                       <div>Wandthermostat, 230V</div>
                     </div>
                   )}
-                  {thermostatWired24 && (
+                  {selSD.thermostatWired24 && (
                     <div className="mgl1 contentBox">
                       <img src={thermostatImg} />
                       <div>Wandthermostat, 24V</div>
                     </div>
                   )}
-                  {thermostatWireless && (
+                  {selSD.thermostatWireless && (
                     <div className="mgl1 contentBox">
                       <img src={thermostatImg} />
                       <div>Wandthermostat, Funk</div>
                     </div>
                   )}
-                  {heatActor230_06 && (
+                  {selSD.heatActor230_06 && (
                     <div className="mgl1 contentBox">
                       <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 230V | 6 Stellantriebe</div>
                     </div>
                   )}
-                  {heatActor230_10 && (
+                  {selSD.heatActor230_10 && (
                     <div className="mgl1 contentBox">
                       <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 230V | 10 Stellantriebe</div>
                     </div>
                   )}
-                  {heatActor24_06 && (
+                  {selSD.heatActor24_06 && (
                     <div className="mgl1 contentBox">
                       <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 24V | 6 Stellantriebe</div>
                     </div>
                   )}
-                  {heatActor24_10 && (
+                  {selSD.heatActor24_10 && (
                     <div className="mgl1 contentBox">
                       <img src={underfloorHeatingImg} />
                       <div>Fußbodenheizungsaktor, 24V | 10 Stellantriebe</div>
                     </div>
                   )}
-                  {heatActor12Motorized && (
+                  {selSD.heatActor12Motorized && (
                     <div className="mgl1 contentBox">
                       <img src={underfloorHeatingImg} />
                       <div>
@@ -591,68 +420,68 @@ function Confirm() {
                 </div>
               </div>
             )}
-            {securityTemp && (
+            {selSD.securityTemp && (
               <div>
                 <div>
                   <h2 className="textLeft mgl1">Sicherheit: </h2>
                   <div className="line"></div>
                 </div>
                 <div className="flexStartLeft contentContainer mgt1 mgb2">
-                  {motionI && (
+                  {selSD.motionI && (
                     <div className="mgl1 contentBox">
                       <img src={motionSensorImg} />
                       <div>Bewegungsmelder, innen</div>
                     </div>
                   )}
-                  {windowSensor && (
+                  {selSD.windowSensor && (
                     <div className="mgl1 contentBox">
                       <img src={windowSensorImg} />
                       <div>Tür- und Fensterkontakt</div>
                     </div>
                   )}
-                  {sirenI && (
+                  {selSD.sirenI && (
                     <div className="mgl1 contentBox">
                       <img src={sirenImg} />
                       <div>Alarmsirene, innen</div>
                     </div>
                   )}
-                  {smoke && (
+                  {selSD.smoke && (
                     <div className="mgl1 contentBox">
                       <img src={smokeDetectorImg} />
                       <div>Rauchwarnmelder</div>
                     </div>
                   )}
-                  {cameraI && (
+                  {selSD.cameraI && (
                     <div className="mgl1 contentBox">
                       <img src={cameraImg} />
                       <div>Sicherheitskamera, innen</div>
                     </div>
                   )}
-                  {lock && (
+                  {selSD.lock && (
                     <div className="mgl1 contentBox">
                       <img src={doorLockImg} />
                       <div>Türschloss</div>
                     </div>
                   )}
-                  {motionO && (
+                  {selSD.motionO && (
                     <div className="mgl1 contentBox">
                       <img src={motionSensorImg} />
                       <div>Bewegungsmelder, außen</div>
                     </div>
                   )}
-                  {sirenO && (
+                  {selSD.sirenO && (
                     <div className="mgl1 contentBox">
                       <img src={sirenImg} />
                       <div>Alarmsirene, außen</div>
                     </div>
                   )}
-                  {cameraO && (
+                  {selSD.cameraO && (
                     <div className="mgl1 contentBox">
                       <img src={cameraImg} />
                       <div>Sicherheitskamera, außen</div>
                     </div>
                   )}
-                  {doorbell && (
+                  {selSD.doorbell && (
                     <div className="mgl1 contentBox">
                       <img src={videoDoorbellImg} />
                       <div>Video-Türklingel</div>

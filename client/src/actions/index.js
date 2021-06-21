@@ -139,7 +139,7 @@ const plugD = () => {
   };
 };
 
-const plugM = () => {
+const plugN = () => {
   return {
     type: 'plugN',
   };
@@ -319,6 +319,12 @@ const smoke = () => {
   };
 };
 
+const windowSensor = () => {
+  return {
+    type: 'windowSensor',
+  };
+};
+
 const gardenTemp = () => {
   return {
     type: 'gardenTemp',
@@ -362,6 +368,13 @@ const resetSome = (input) => {
   };
 };
 
+const forceTrue = (input) => {
+  return {
+    type: 'forceTrue',
+    payload: input,
+  };
+};
+
 const selectionActionsContainer = {
   garden,
   heating,
@@ -387,7 +400,7 @@ const selectionActionsContainer = {
   ceilingM,
   ceilingA,
   plugD,
-  plugM,
+  plugN,
   recSpotA,
   recSpotM,
   recSpotW,
@@ -417,6 +430,7 @@ const selectionActionsContainer = {
   sirenI,
   sirenO,
   smoke,
+  windowSensor,
   gardenTemp,
   heatingTemp,
   innerLightsTemp,
@@ -424,6 +438,7 @@ const selectionActionsContainer = {
   securityTemp,
   resetAll,
   resetSome,
+  forceTrue,
 };
 
 export default selectionActionsContainer;

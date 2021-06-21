@@ -1,16 +1,18 @@
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
-import placeholder from '../images/placeholder.png';
+
+import { useSelector } from 'react-redux';
 
 function Details() {
-  const [system, setSystem] = useState(null);
+  const system = useSelector((state) => state.detailedSystem);
   const [loading, setLoading] = useState(true);
   const [lightbulbs, setLightbulbs] = useState([]);
   const [gardenLights, setGardenLights] = useState([]);
   const [innerLights, setInnerLights] = useState([]);
   const [heating, setHeating] = useState([]);
   const [security, setSecurity] = useState([]);
+  let history = useHistory();
 
   let lightbulbList = [
     'e27W',
@@ -78,16 +80,8 @@ function Details() {
     'cameraO',
   ];
 
-  let history = useHistory();
-
   useEffect(() => {
-    let querySessionStorage = sessionStorage.getItem('overview');
-    let querySystem = sessionStorage.getItem('system');
-    let focusedSystem = JSON.parse(querySessionStorage).filter(
-      (x) => x.mainSystem === querySystem
-    );
-
-    focusedSystem[0].products.map((x) => {
+    system.products.map((x) => {
       if (lightbulbList.indexOf(x.type) !== -1) {
         return setLightbulbs((oldArr) => [...oldArr, x]);
       }
@@ -104,8 +98,6 @@ function Details() {
         return setSecurity((oldArr) => [...oldArr, x]);
       }
     });
-
-    setSystem(focusedSystem[0].mainSystem);
     setLoading(false);
   }, []);
 
@@ -134,7 +126,7 @@ function Details() {
     return (
       <div className="background">
         <div className="whiteBackground">
-          <h1 className="stripe">{system}</h1>
+          <h1 className="stripe">{system.mainSystem}</h1>
           <div className="textLeft">
             {lightbulbs.length > 0 && (
               <div>

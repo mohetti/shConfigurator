@@ -18,111 +18,45 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 
+import { useSelector, useDispatch } from 'react-redux';
+import selectionActionsContainer from '../actions';
+
 function Security() {
-  const [motionI, setMotionI] = useState(false);
-  const [motionO, setMotionO] = useState(false);
-  const [windowSensor, setWindowSensor] = useState(false);
-  const [sirenI, setSirenI] = useState(false);
-  const [sirenO, setSirenO] = useState(false);
-  const [smoke, setSmoke] = useState(false);
-  const [lock, setLock] = useState(false);
-  const [doorbell, setDoorbell] = useState(false);
-  const [cameraI, setCameraI] = useState(false);
-  const [cameraO, setCameraO] = useState(false);
+  let history = useHistory();
+  // selSD stands for selectionStateDisplay
+  const selSD = useSelector((state) => state.selectionState);
+  const selectionStateChange = useDispatch();
 
   const [boxMotion, setBoxMotion] = useState(false);
   const [boxSiren, setBoxSiren] = useState(false);
   const [boxCamera, setBoxCamera] = useState(false);
 
-  const [innerLights, setInnerLights] = useState(false);
-  const [garden, setGarden] = useState(false);
-  const [light, setLight] = useState(false);
-  const [heating, setHeating] = useState(false);
-  const [lightbulbs, setLightbulbs] = useState(false);
-
-  let history = useHistory();
-
-  useEffect(() => {
-    let motionSessionI = sessionStorage.getItem('motionI') === 'true';
-    let motionSessionO = sessionStorage.getItem('motionO') === 'true';
-    let windowSensorSession = sessionStorage.getItem('windowSensor') === 'true';
-    let sirenSessionI = sessionStorage.getItem('sirenI') === 'true';
-    let sirenSessionO = sessionStorage.getItem('sirenO') === 'true';
-    let smokeSession = sessionStorage.getItem('smoke') === 'true';
-    let lockSession = sessionStorage.getItem('lock') === 'true';
-    let doorbellSession = sessionStorage.getItem('doorbell') === 'true';
-    let cameraSessionI = sessionStorage.getItem('cameraI') === 'true';
-    let cameraSessionO = sessionStorage.getItem('cameraO') === 'true';
-
-    let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
-    let gardenSession = sessionStorage.getItem('garden') === 'true';
-    let lightSession = sessionStorage.getItem('light') === 'true';
-    let heatingSession = sessionStorage.getItem('heating') === 'true';
-    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
-
-    setMotionI(motionSessionI);
-    setMotionO(motionSessionO);
-    setWindowSensor(windowSensorSession);
-    setSirenI(sirenSessionI);
-    setSirenO(sirenSessionO);
-    setSmoke(smokeSession);
-    setLock(lockSession);
-    setDoorbell(doorbellSession);
-    setCameraI(cameraSessionI);
-    setCameraO(cameraSessionO);
-
-    setInnerLights(innerLightsSession);
-    setGarden(gardenSession);
-    setLight(lightSession);
-    setHeating(heatingSession);
-    setLightbulbs(lightbulbsSession);
-  }, []);
-
   const back = () => {
-    sessionStorage.setItem('motionI', motionI);
-    sessionStorage.setItem('motionO', motionO);
-    sessionStorage.setItem('windowSensor', windowSensor);
-    sessionStorage.setItem('sirenI', sirenI);
-    sessionStorage.setItem('sirenO', sirenO);
-    sessionStorage.setItem('smoke', smoke);
-    sessionStorage.setItem('lock', lock);
-    sessionStorage.setItem('doorbell', doorbell);
-    sessionStorage.setItem('cameraI', cameraI);
-    sessionStorage.setItem('cameraO', cameraO);
-
-    if (heating) return history.push('/heizung');
-    if (garden) return history.push('/gartenbeleuchtung');
-    if (innerLights) return history.push('/innenbeleuchtung');
-    if (lightbulbs) return history.push('/gluehbirnen');
-    if (light) return history.push('/beleuchtung');
+    if (selSD.heating) return history.push('/heizung');
+    if (selSD.garden) return history.push('/gartenbeleuchtung');
+    if (selSD.innerLights) return history.push('/innenbeleuchtung');
+    if (selSD.lightbulbs) return history.push('/gluehbirnen');
+    if (selSD.light) return history.push('/beleuchtung');
     return history.push('/kategorien');
   };
 
   const next = () => {
-    sessionStorage.setItem('motionI', motionI);
-    sessionStorage.setItem('motionO', motionO);
-    sessionStorage.setItem('windowSensor', windowSensor);
-    sessionStorage.setItem('sirenI', sirenI);
-    sessionStorage.setItem('sirenO', sirenO);
-    sessionStorage.setItem('smoke', smoke);
-    sessionStorage.setItem('lock', lock);
-    sessionStorage.setItem('doorbell', doorbell);
-    sessionStorage.setItem('cameraI', cameraI);
-    sessionStorage.setItem('cameraO', cameraO);
-
-    motionI ||
-    motionO ||
-    windowSensor ||
-    sirenI ||
-    sirenO ||
-    smoke ||
-    lock ||
-    doorbell ||
-    cameraI ||
-    cameraO
-      ? sessionStorage.setItem('securityTemp', true)
-      : sessionStorage.setItem('securityTemp', false);
-
+    selSD.motionI ||
+    selSD.motionO ||
+    selSD.windowSensor ||
+    selSD.sirenI ||
+    selSD.sirenO ||
+    selSD.smoke ||
+    selSD.lock ||
+    selSD.doorbell ||
+    selSD.cameraI ||
+    selSD.cameraO
+      ? selectionStateChange(
+          selectionActionsContainer.forceTrue('securityTemp')
+        )
+      : selectionStateChange(
+          selectionActionsContainer.resetSome('securityTemp')
+        );
     return history.push('/confirm');
   };
 
@@ -136,16 +70,7 @@ function Security() {
       setBoxMotion(false);
       setBoxCamera(false);
     }
-    if (input === 'motionI') return setMotionI(!motionI);
-    if (input === 'motionO') return setMotionO(!motionO);
-    if (input === 'windowSensor') return setWindowSensor(!windowSensor);
-    if (input === 'sirenI') return setSirenI(!sirenI);
-    if (input === 'sirenO') return setSirenO(!sirenO);
-    if (input === 'smoke') return setSmoke(!smoke);
-    if (input === 'lock') return setLock(!lock);
-    if (input === 'doorbell') return setDoorbell(!doorbell);
-    if (input === 'cameraI') return setCameraI(!cameraI);
-    if (input === 'cameraO') return setCameraO(!cameraO);
+    return selectionStateChange(selectionActionsContainer[input]());
   };
 
   const openBox = (location) => {
@@ -174,13 +99,13 @@ function Security() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('motionI', false)}
-          className={`addSelectRadius ${motionI && 'selected'}`}
+          className={`addSelectRadius ${selSD.motionI && 'selected'}`}
         >
           Bewegungsmelder innen
         </div>
         <div
           onClick={() => handleClick('motionO', false)}
-          className={`addSelectRadius ${motionO && 'selected'}`}
+          className={`addSelectRadius ${selSD.motionO && 'selected'}`}
         >
           Bewegungsmelder außen
         </div>
@@ -193,13 +118,13 @@ function Security() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('sirenI', false)}
-          className={`addSelectRadius ${sirenI && 'selected'}`}
+          className={`addSelectRadius ${selSD.sirenI && 'selected'}`}
         >
           Innensirene
         </div>
         <div
           onClick={() => handleClick('sirenO', false)}
-          className={`addSelectRadius ${sirenO && 'selected'}`}
+          className={`addSelectRadius ${selSD.sirenO && 'selected'}`}
         >
           Außensirene
         </div>
@@ -212,13 +137,13 @@ function Security() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('cameraI', false)}
-          className={`addSelectRadius ${cameraI && 'selected'}`}
+          className={`addSelectRadius ${selSD.cameraI && 'selected'}`}
         >
           Innenkamera
         </div>
         <div
           onClick={() => handleClick('cameraO', false)}
-          className={`addSelectRadius ${cameraO && 'selected'}`}
+          className={`addSelectRadius ${selSD.cameraO && 'selected'}`}
         >
           Außenkamera
         </div>
@@ -236,10 +161,10 @@ function Security() {
           <div
             onClick={() => openBox('motion')}
             className={`contentBox cursor ${boxMotion && 'borderHghl'} ${
-              motionI || motionO ? 'selected' : ''
+              selSD.motionI || selSD.motionO ? 'selected' : ''
             }`}
           >
-            {motionI || motionO ? (
+            {selSD.motionI || selSD.motionO ? (
               <img src={motionSensorImgW} />
             ) : (
               <img src={motionSensorImg} />
@@ -248,9 +173,9 @@ function Security() {
           </div>
           <div
             onClick={() => handleClick('windowSensor', true)}
-            className={`contentBox cursor ${windowSensor && 'selected'}`}
+            className={`contentBox cursor ${selSD.windowSensor && 'selected'}`}
           >
-            {windowSensor ? (
+            {selSD.windowSensor ? (
               <img src={windowSensorImgW} />
             ) : (
               <img src={windowSensorImg} />
@@ -271,10 +196,10 @@ function Security() {
           <div
             onClick={() => openBox('siren')}
             className={`contentBox cursor ${boxSiren && 'borderHghl'} ${
-              sirenI || sirenO ? 'selected' : ''
+              selSD.sirenI || selSD.sirenO ? 'selected' : ''
             }`}
           >
-            {sirenI || sirenO ? (
+            {selSD.sirenI || selSD.sirenO ? (
               <img src={sirenImgW} />
             ) : (
               <img src={sirenImg} />
@@ -283,9 +208,9 @@ function Security() {
           </div>
           <div
             onClick={() => handleClick('smoke', true)}
-            className={`contentBox cursor ${smoke && 'selected'}`}
+            className={`contentBox cursor ${selSD.smoke && 'selected'}`}
           >
-            {smoke ? (
+            {selSD.smoke ? (
               <img src={smokeDetectorImgW} />
             ) : (
               <img src={smokeDetectorImg} />
@@ -322,16 +247,20 @@ function Security() {
           </MediaQuery>
           <div
             onClick={() => handleClick('lock', true)}
-            className={`contentBox cursor ${lock && 'selected'}`}
+            className={`contentBox cursor ${selSD.lock && 'selected'}`}
           >
-            {lock ? <img src={doorLockImgW} /> : <img src={doorLockImg} />}
+            {selSD.lock ? (
+              <img src={doorLockImgW} />
+            ) : (
+              <img src={doorLockImg} />
+            )}
             <div>Türschloss</div>
           </div>
           <div
             onClick={() => handleClick('doorbell', true)}
-            className={`contentBox cursor ${doorbell && 'selected'}`}
+            className={`contentBox cursor ${selSD.doorbell && 'selected'}`}
           >
-            {doorbell ? (
+            {selSD.doorbell ? (
               <img src={videoDoorbellImgW} />
             ) : (
               <img src={videoDoorbellImg} />
@@ -341,10 +270,10 @@ function Security() {
           <div
             onClick={() => openBox('camera')}
             className={`contentBox cursor ${boxCamera && 'borderHghl'} ${
-              cameraI || cameraO ? 'selected' : ''
+              selSD.cameraI || selSD.cameraO ? 'selected' : ''
             }`}
           >
-            {cameraI || cameraO ? (
+            {selSD.cameraI || selSD.cameraO ? (
               <img src={cameraImgW} />
             ) : (
               <img src={cameraImg} />

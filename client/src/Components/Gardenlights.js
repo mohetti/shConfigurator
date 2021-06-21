@@ -12,79 +12,36 @@ import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 
+import { useSelector, useDispatch } from 'react-redux';
+import selectionActionsContainer from '../actions';
+
 function Gardenlights() {
-  const [pathLightW, setPathLightW] = useState(false);
-  const [pathLightM, setPathLightM] = useState(false);
-  const [gardenSpot, setGardenSpot] = useState(false);
-  const [wallGardenW, setWallGardenW] = useState(false);
-  const [wallGardenM, setWallGardenM] = useState(false);
-  const [gardenStrip, setGardenStrip] = useState(false);
-  const [innerLights, setInnerLights] = useState(false);
-  const [heating, setHeating] = useState(false);
-  const [security, setSecurity] = useState(false);
-  const [lightbulbs, setLightbulbs] = useState(false);
+  let history = useHistory();
+  // selSD stands for selectionStateDisplay
+  const selSD = useSelector((state) => state.selectionState);
+  const selectionStateChange = useDispatch();
 
   const [boxPathLight, setBoxPathLight] = useState(false);
   const [boxWallGarden, setBoxWallGarden] = useState(false);
 
-  let history = useHistory();
-
-  useEffect(() => {
-    let pathLightSessionW = sessionStorage.getItem('pathLightW') === 'true';
-    let pathLightSessionM = sessionStorage.getItem('pathLightM') === 'true';
-    let gardenSpotSession = sessionStorage.getItem('gardenSpot') === 'true';
-    let wallGardenSessionW = sessionStorage.getItem('wallGardenW') === 'true';
-    let wallGardenSessionM = sessionStorage.getItem('wallGardenM') === 'true';
-    let gardenStripSession = sessionStorage.getItem('gardenStrip') === 'true';
-    let innerLightsSession = sessionStorage.getItem('innerLights') === 'true';
-    let heatingSession = sessionStorage.getItem('heating') === 'true';
-    let securitySession = sessionStorage.getItem('security') === 'true';
-    let lightbulbsSession = sessionStorage.getItem('lightbulbs') === 'true';
-
-    setPathLightW(pathLightSessionW);
-    setPathLightM(pathLightSessionM);
-    setGardenSpot(gardenSpotSession);
-    setWallGardenW(wallGardenSessionW);
-    setWallGardenM(wallGardenSessionM);
-    setGardenStrip(gardenStripSession);
-    setInnerLights(innerLightsSession);
-    setHeating(heatingSession);
-    setSecurity(securitySession);
-    setLightbulbs(lightbulbsSession);
-  }, []);
-
   const back = () => {
-    sessionStorage.setItem('pathLightW', pathLightW);
-    sessionStorage.setItem('pathLightM', pathLightM);
-    sessionStorage.setItem('gardenSpot', gardenSpot);
-    sessionStorage.setItem('wallGardenW', wallGardenW);
-    sessionStorage.setItem('wallGardenM', wallGardenM);
-    sessionStorage.setItem('gardenStrip', gardenStrip);
-
-    if (innerLights) return history.push('/innenbeleuchtung');
-    if (lightbulbs) return history.push('/gluehbirnen');
+    if (selSD.innerLights) return history.push('/innenbeleuchtung');
+    if (selSD.lightbulbs) return history.push('/gluehbirnen');
     return history.push('/beleuchtung');
   };
 
   const next = () => {
-    sessionStorage.setItem('pathLightW', pathLightW);
-    sessionStorage.setItem('pathLightM', pathLightM);
-    sessionStorage.setItem('gardenSpot', gardenSpot);
-    sessionStorage.setItem('wallGardenW', wallGardenW);
-    sessionStorage.setItem('wallGardenM', wallGardenM);
-    sessionStorage.setItem('gardenStrip', gardenStrip);
+    selSD.pathLightW ||
+    selSD.pathLightM ||
+    selSD.gardenSpot ||
+    selSD.wallGardenW ||
+    selSD.wallGardenM ||
+    selSD.gardenStrip
+      ? selectionStateChange(selectionActionsContainer.forceTrue('gardenTemp'))
+      : selectionStateChange(selectionActionsContainer.resetSome('gardenTemp'));
 
-    pathLightW ||
-    pathLightM ||
-    gardenSpot ||
-    wallGardenW ||
-    wallGardenM ||
-    gardenStrip
-      ? sessionStorage.setItem('gardenTemp', true)
-      : sessionStorage.setItem('gardenTemp', false);
-
-    if (heating) return history.push('/heizung');
-    if (security) return history.push('/sicherheit');
+    if (selSD.heating) return history.push('/heizung');
+    if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
   };
 
@@ -99,12 +56,7 @@ function Gardenlights() {
 
   const handleClick = (input) => {
     if (input === 'gardenSpot' || input === 'gardenStrip') reset();
-    if (input === 'pathLightW') return setPathLightW(!pathLightW);
-    if (input === 'pathLightM') return setPathLightM(!pathLightM);
-    if (input === 'gardenSpot') return setGardenSpot(!gardenSpot);
-    if (input === 'wallGardenW') return setWallGardenW(!wallGardenW);
-    if (input === 'wallGardenM') return setWallGardenM(!wallGardenM);
-    if (input === 'gardenStrip') return setGardenStrip(!gardenStrip);
+    return selectionStateChange(selectionActionsContainer[input]());
   };
 
   const openBox = (location) => {
@@ -125,13 +77,13 @@ function Gardenlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('pathLightW')}
-          className={`addSelectRadius ${pathLightW && 'selected'}`}
+          className={`addSelectRadius ${selSD.pathLightW && 'selected'}`}
         >
           Dimmbar
         </div>
         <div
           onClick={() => handleClick('pathLightM')}
-          className={`addSelectRadius ${pathLightM && 'selected'}`}
+          className={`addSelectRadius ${selSD.pathLightM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -144,13 +96,13 @@ function Gardenlights() {
       <div className="addSelectContainer">
         <div
           onClick={() => handleClick('wallGardenW')}
-          className={`addSelectRadius ${wallGardenW && 'selected'}`}
+          className={`addSelectRadius ${selSD.wallGardenW && 'selected'}`}
         >
           Dimmbar
         </div>
         <div
           onClick={() => handleClick('wallGardenM')}
-          className={`addSelectRadius ${wallGardenM && 'selected'}`}
+          className={`addSelectRadius ${selSD.wallGardenM && 'selected'}`}
         >
           Weiß- und Farblicht
         </div>
@@ -168,10 +120,10 @@ function Gardenlights() {
           <div
             onClick={() => openBox('pathLight')}
             className={`contentBox cursor ${boxPathLight && 'borderHghl'} ${
-              pathLightW || pathLightM ? 'selected' : ''
+              selSD.pathLightW || selSD.pathLightM ? 'selected' : ''
             }`}
           >
-            {pathLightW || pathLightM ? (
+            {selSD.pathLightW || selSD.pathLightM ? (
               <img src={pathLightImgW} />
             ) : (
               <img src={pathLightImg} />
@@ -180,9 +132,9 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenSpot')}
-            className={`contentBox cursor ${gardenSpot && 'selected'}`}
+            className={`contentBox cursor ${selSD.gardenSpot && 'selected'}`}
           >
-            {gardenSpot ? (
+            {selSD.gardenSpot ? (
               <img src={gardenSpotImgW} />
             ) : (
               <img src={gardenSpotImg} />
@@ -204,10 +156,10 @@ function Gardenlights() {
           <div
             onClick={() => openBox('wallGarden')}
             className={`contentBox cursor ${boxWallGarden && 'borderHghl'} ${
-              wallGardenW || wallGardenM ? 'selected' : ''
+              selSD.wallGardenW || selSD.wallGardenM ? 'selected' : ''
             } `}
           >
-            {wallGardenW || wallGardenM ? (
+            {selSD.wallGardenW || selSD.wallGardenM ? (
               <img src={wallLightGardenImgW} />
             ) : (
               <img src={wallLightGardenImg} />
@@ -216,9 +168,9 @@ function Gardenlights() {
           </div>
           <div
             onClick={() => handleClick('gardenStrip')}
-            className={`contentBox cursor ${gardenStrip && 'selected'}`}
+            className={`contentBox cursor ${selSD.gardenStrip && 'selected'}`}
           >
-            {gardenStrip ? (
+            {selSD.gardenStrip ? (
               <img src={gardenStripImgW} />
             ) : (
               <img src={gardenStripImg} />

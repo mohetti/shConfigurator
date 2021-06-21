@@ -14,30 +14,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import selectionActionsContainer from '../actions';
 
 function Categories() {
-  const [light, setLight] = useState(false);
-  const [heating, setHeating] = useState(false);
-  const [security, setSecurity] = useState(false);
-
   let history = useHistory();
-
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
 
-  useEffect(() => {
-    let lightSession = sessionStorage.getItem('light') === 'true';
-    let heatingSession = sessionStorage.getItem('heating') === 'true';
-    let securitySession = sessionStorage.getItem('security') === 'true';
-    setLight(lightSession);
-    setHeating(heatingSession);
-    setSecurity(securitySession);
-  }, []);
-
   const back = () => {
-    sessionStorage.setItem('light', light);
-    sessionStorage.setItem('heating', heating);
-    sessionStorage.setItem('security', security);
-
     return history.push('/start');
   };
   const reset = () => {
@@ -75,6 +57,9 @@ function Categories() {
         'wallGardenW',
         'wallGardenM',
         'gardenStrip',
+        'gardenTemp',
+        'innerLightsTemp',
+        'lightbulbsTemp',
       ];
       lightsList.map((x) =>
         selectionStateChange(selectionActionsContainer.resetSome(x))
@@ -91,6 +76,7 @@ function Categories() {
         'heatActor24_10',
         'heatActor230_06',
         'heatActor230_10',
+        'heatingTemp',
       ];
       heatingList.map((x) =>
         selectionStateChange(selectionActionsContainer.resetSome(x))
@@ -108,6 +94,7 @@ function Categories() {
         'doorbell',
         'cameraI',
         'cameraO',
+        'securityTemp',
       ];
       securityList.map((x) =>
         selectionStateChange(selectionActionsContainer.resetSome(x))
@@ -117,10 +104,6 @@ function Categories() {
   };
 
   const next = () => {
-    sessionStorage.setItem('light', light);
-    sessionStorage.setItem('heating', heating);
-    sessionStorage.setItem('security', security);
-
     if (selSD.light) {
       reset();
       return history.push('/beleuchtung');
