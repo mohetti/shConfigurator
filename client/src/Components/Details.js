@@ -1,8 +1,10 @@
 import { useHistory } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
+import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
+import { amzLinks } from './AmzLinks';
 
 function Details() {
   const system = useSelector((state) => state.detailedSystem);
@@ -106,17 +108,118 @@ function Details() {
       return (
         <div
           key={uniqid()}
-          className={`mgl1 contentBox ${
-            x.comp === 'main'
-              ? 'blueFiller'
-              : x.comp === null
-              ? 'redFiller'
+          className={`productBox mgl1 ${
+            x.comp === true
+              ? 'borderGreen'
               : x.comp === false
-              ? 'yellowFiller'
-              : 'greenFiller'
+              ? 'borderYellow'
+              : x.comp === null
+              ? 'borderRed'
+              : 'borderBlue'
           }`}
         >
-          <div>{x.name}</div>
+          <div
+            className={`${
+              x.comp === true
+                ? 'cCGreen'
+                : x.comp === false
+                ? 'cCYellow'
+                : x.comp === null
+                ? 'cCRed'
+                : 'cCBlue'
+            }`}
+          ></div>
+          <div className="productImg mgt3">
+            <a href={amzLinks[`${x.name}`].href} target="_blank">
+              <img border="0" src={amzLinks[`${x.name}`].src1} />
+            </a>
+            <img
+              src={amzLinks[`${x.name}`].src2}
+              width="1"
+              height="1"
+              border="0"
+              alt=""
+              border="none !important"
+              margin="0px !important"
+            />
+          </div>
+          <div
+            className={`productLink font1 mgt3 pdt2 ${
+              x.comp === true
+                ? 'pBoxBGGreen'
+                : x.comp === false
+                ? 'pBoxBGYellow'
+                : x.comp === null
+                ? 'pBoxBGRed'
+                : 'pBoxBGBlue'
+            }`}
+          >
+            {x.name}
+          </div>
+          <div
+            className={`btnContainerDetails ${
+              x.comp === true
+                ? 'pBoxBGGreen'
+                : x.comp === false
+                ? 'pBoxBGYellow'
+                : x.comp === null
+                ? 'pBoxBGRed'
+                : 'pBoxBGBlue'
+            }`}
+          >
+            <Link
+              to={{
+                pathname: `${amzLinks[`${x.name}`].link}`,
+              }}
+              target="_blank"
+              className="btnDetails"
+            >
+              zum Angebot
+            </Link>
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const populateStations = () => {
+    let stationsArray = [];
+    if (system.mainBase !== '') {
+      stationsArray.push(system.mainBase);
+    }
+    system.substations.map((x) => stationsArray.push(x));
+    return stationsArray.map((x) => {
+      return (
+        <div key={uniqid()} className="borderBases productBox mgl1">
+          <div className="compatibilityColor"></div>
+          <div className="productImg mgt3">
+            <a href={amzLinks[`${x}`].href} target="_blank">
+              <img border="0" src={amzLinks[`${x}`].src1} />
+            </a>
+            <img
+              src={amzLinks[`${x}`].src2}
+              width="1"
+              height="1"
+              border="0"
+              alt=""
+              border="none !important"
+              margin="0px !important"
+            />
+          </div>
+          <div className={'productLink font1 producBoxBackground mgt3 pdt2'}>
+            {x}
+          </div>
+          <div className="btnContainerDetails producBoxBackground">
+            <Link
+              to={{
+                pathname: `${amzLinks[`${x}`].link}`,
+              }}
+              target="_blank"
+              className="btnDetails"
+            >
+              zum Angebot
+            </Link>
+          </div>
         </div>
       );
     });
@@ -127,6 +230,16 @@ function Details() {
       <div className="background">
         <div className="whiteBackground">
           <h1 className="stripe">{system.mainSystem}</h1>
+          <div className="textLeft">
+            {system.mainBase !== '' || system.substations.length > 0 ? (
+              <div>
+                <h3 className="line">Basisstationen</h3>
+                <div className="flexStartLeft contentContainer mgt1 mgb2">
+                  {populateStations()}
+                </div>
+              </div>
+            ) : null}
+          </div>
           <div className="textLeft">
             {lightbulbs.length > 0 && (
               <div>

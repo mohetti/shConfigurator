@@ -37,3 +37,128 @@
     rgba(141, 186, 255, 0.7945378835127801) 100%
   );
 }
+/* everything below is for amazon affiliate styling */
+.btnContainerDetails {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 3%;
+}
+
+.btnDetails {
+  background: linear-gradient(to bottom, #8a8db5 5%, #7a99b9 100%);
+  background-color: #8a8db5;
+  border: none;
+  border-radius: 0.6rem;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 2vmin;
+  font-weight: bold;
+  padding: 2vmin 4vmin;
+  text-decoration: none;
+}
+
+.btnDetails:hover {
+  background: linear-gradient(to bottom, #69a6be 5%, #4dbbc5 100%);
+  background-color: #69a6be;
+}
+.btnDetails:active {
+  position: relative;
+  top: 0.1rem;
+}
+
+.productBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2%;
+  height: 50vmin;
+  width: 30vmin;
+  font-size: 2.5vmin;
+}
+
+.font1 {
+  font-size: 1.8vmin;
+  color: rgb(6, 23, 49);
+}
+
+.cCGreen {
+  height: 20vmin;
+  width: 100%;
+  background-color: #3cc392;
+}
+
+.cCRed {
+  height: 20vmin;
+  width: 100%;
+  background-color: #cc232a;
+}
+
+.cCYellow {
+  height: 20vmin;
+  width: 100%;
+  background-color: #e6980a;
+}
+
+.cCBlue {
+  height: 20vmin;
+  width: 100%;
+  background-color: #0298d5;
+}
+
+.pBoxBGGreen {
+  background-color: #3cc39233;
+  height: 100%;
+  width: 100%;
+}
+
+.pBoxBGRed {
+  background-color: #cc232a33;
+  height: 100%;
+  width: 100%;
+}
+
+.pBoxBGYellow {
+  background-color: #e6980a33;
+  height: 100%;
+  width: 100%;
+}
+
+.pBoxBGBlue {
+  background-color: #0298d533;
+  height: 100%;
+  width: 100%;
+}
+
+.borderGreen {
+  border: 2px solid #3cc392;
+}
+
+.borderRed {
+  border: 2px solid #cc232a;
+}
+
+.borderYellow {
+  border: 2px solid #e6980a;
+}
+
+.borderBlue {
+  border: 2px solid #0298d5;
+}
+
+.borderBases {
+  border: 0.5px solid rgb(214, 214, 214);
+}
+
+/*
+colors
+grün #3CC392
+gelb #E698CA
+blau #0298D5
+rot #cc232a
+
+transparency: 33 at end
+*/

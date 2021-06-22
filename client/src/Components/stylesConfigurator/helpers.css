@@ -26,6 +26,18 @@
   margin-left: 2%;
 }
 
+.pdt1 {
+  padding-top: 2.5%;
+}
+
+.pdt2 {
+  padding-top: 5%;
+}
+
+.pdt3 {
+  padding-top: 10%;
+}
+
 /* ********** BORDER PROPERTIES ********** */
 .borderHghl {
   border: 2px solid rgba(0, 128, 0, 50%);

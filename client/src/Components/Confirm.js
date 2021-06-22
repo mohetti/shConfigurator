@@ -119,8 +119,8 @@ function Confirm() {
       .post('/', transferData)
       .then((res) => {
         selectionStateChange(backendResponseAction(res.data));
+        console.log(res.data);
 
-        /*sessionStorage.setItem('overview', JSON.stringify(res.data));*/
         history.push('/overview');
       })
       .catch((err) => {
