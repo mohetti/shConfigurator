@@ -131,7 +131,14 @@ function Confirm() {
   return (
     <div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="centerLoading">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       ) : (
         <div className="background">
           <div className="whiteBackground">

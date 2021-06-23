@@ -386,7 +386,20 @@ function Details() {
   };
 
   return (
-    <div>{loading ? <div>Loading...</div> : <div>{populateResult()}</div>}</div>
+    <div>
+      {loading ? (
+        <div className="centerLoading">
+          <div className="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      ) : (
+        <div>{populateResult()}</div>
+      )}
+    </div>
   );
 }
 
