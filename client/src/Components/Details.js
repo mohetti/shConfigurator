@@ -103,82 +103,146 @@ function Details() {
     setLoading(false);
   }, []);
 
+  const overview = () => {
+    return history.push('/overview');
+  };
+
   const populateProducts = (category) => {
     return category.map((x) => {
-      return (
-        <div
-          key={uniqid()}
-          className={`productBox mgl1 ${
-            x.comp === true
-              ? 'borderGreen'
-              : x.comp === false
-              ? 'borderYellow'
-              : x.comp === null
-              ? 'borderRed'
-              : 'borderBlue'
-          }`}
-        >
+      if (x.system === 'TRÅDFRI') {
+        return (
           <div
-            className={`${
+            key={uniqid()}
+            className={`productBox mgl1 ${
               x.comp === true
-                ? 'cCGreen'
+                ? 'borderGreen'
                 : x.comp === false
-                ? 'cCYellow'
+                ? 'borderYellow'
                 : x.comp === null
-                ? 'cCRed'
-                : 'cCBlue'
-            }`}
-          ></div>
-          <div className="productImg mgt3">
-            <a href={amzLinks[`${x.name}`].href} target="_blank">
-              <img border="0" src={amzLinks[`${x.name}`].src1} />
-            </a>
-            <img
-              src={amzLinks[`${x.name}`].src2}
-              width="1"
-              height="1"
-              border="0"
-              alt=""
-              border="none !important"
-              margin="0px !important"
-            />
-          </div>
-          <div
-            className={`productLink font1 mgt3 pdt2 ${
-              x.comp === true
-                ? 'pBoxBGGreen'
-                : x.comp === false
-                ? 'pBoxBGYellow'
-                : x.comp === null
-                ? 'pBoxBGRed'
-                : 'pBoxBGBlue'
+                ? 'borderRed'
+                : 'borderBlue'
             }`}
           >
-            {x.name}
-          </div>
-          <div
-            className={`btnContainerDetails ${
-              x.comp === true
-                ? 'pBoxBGGreen'
-                : x.comp === false
-                ? 'pBoxBGYellow'
-                : x.comp === null
-                ? 'pBoxBGRed'
-                : 'pBoxBGBlue'
-            }`}
-          >
-            <Link
-              to={{
-                pathname: `${amzLinks[`${x.name}`].link}`,
-              }}
-              target="_blank"
-              className="btnDetails"
+            <div
+              className={`compBar ${
+                x.comp === true
+                  ? 'green'
+                  : x.comp === false
+                  ? 'yellow'
+                  : x.comp === null
+                  ? 'red'
+                  : 'blue'
+              }`}
+            ></div>
+            <div className="productImg mgt3">
+              <div border="0" className="imgSize"></div>
+            </div>
+            <div
+              className={`productLink fontSizeProductName mgt3 pdt2 pBoxBG ${
+                x.comp === true
+                  ? 'greenTransp'
+                  : x.comp === false
+                  ? 'yellowTransp'
+                  : x.comp === null
+                  ? 'redTransp'
+                  : 'blueTransp'
+              }`}
             >
-              zum Angebot
-            </Link>
+              {x.name}
+            </div>
+            <div
+              className={`btnContainerDetails pBoxBG ${
+                x.comp === true
+                  ? 'greenTransp'
+                  : x.comp === false
+                  ? 'yellowTransp'
+                  : x.comp === null
+                  ? 'redTransp'
+                  : 'blueTransp'
+              }`}
+            ></div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div
+            key={uniqid()}
+            className={`productBox mgl1 ${
+              x.comp === true
+                ? 'borderGreen'
+                : x.comp === false
+                ? 'borderYellow'
+                : x.comp === null
+                ? 'borderRed'
+                : 'borderBlue'
+            }`}
+          >
+            <div
+              className={`compBar ${
+                x.comp === true
+                  ? 'green'
+                  : x.comp === false
+                  ? 'yellow'
+                  : x.comp === null
+                  ? 'red'
+                  : 'blue'
+              }`}
+            ></div>
+            <div className="productImg mgt3">
+              <a href={amzLinks[`${x.name}`].href} target="_blank">
+                <img
+                  border="0"
+                  className="imgSize"
+                  src={amzLinks[`${x.name}`].src1}
+                />
+              </a>
+              <img
+                src={amzLinks[`${x.name}`].src2}
+                width="1"
+                height="1"
+                border="0"
+                alt=""
+                border="none !important"
+                margin="0px !important"
+              />
+            </div>
+            <div
+              className={`productLink fontSizeProductName mgt3 pdt2 pBoxBG ${
+                x.comp === true
+                  ? 'greenTransp'
+                  : x.comp === false
+                  ? 'yellowTransp'
+                  : x.comp === null
+                  ? 'redTransp'
+                  : 'blueTransp'
+              }`}
+            >
+              {x.name}
+            </div>
+            <div
+              className={`btnContainerDetails pBoxBG ${
+                x.comp === true
+                  ? 'greenTransp'
+                  : x.comp === false
+                  ? 'yellowTransp'
+                  : x.comp === null
+                  ? 'redTransp'
+                  : 'blueTransp'
+              }`}
+            >
+              <Link
+                to={{
+                  pathname: `${amzLinks[`${x.name}`].link}`,
+                }}
+                target="_blank"
+                className="btnDetails"
+              >
+                zum Angebot
+              </Link>
+            </div>
+          </div>
+        );
+      }
     });
   };
 
@@ -189,39 +253,60 @@ function Details() {
     }
     system.substations.map((x) => stationsArray.push(x));
     return stationsArray.map((x) => {
-      return (
-        <div key={uniqid()} className="borderBases productBox mgl1">
-          <div className="compatibilityColor"></div>
-          <div className="productImg mgt3">
-            <a href={amzLinks[`${x}`].href} target="_blank">
-              <img border="0" src={amzLinks[`${x}`].src1} />
-            </a>
-            <img
-              src={amzLinks[`${x}`].src2}
-              width="1"
-              height="1"
-              border="0"
-              alt=""
-              border="none !important"
-              margin="0px !important"
-            />
-          </div>
-          <div className={'productLink font1 producBoxBackground mgt3 pdt2'}>
-            {x}
-          </div>
-          <div className="btnContainerDetails producBoxBackground">
-            <Link
-              to={{
-                pathname: `${amzLinks[`${x}`].link}`,
-              }}
-              target="_blank"
-              className="btnDetails"
+      if (x === 'TRÅDFRI Gateway') {
+        return (
+          <div key={uniqid()} className="borderGray productBox mgl1">
+            <div className="productImg mgt3">
+              <div border="0" className="imgSize"></div>
+            </div>
+            <div
+              className={'grayTransp productLink fontSizeProductName mgt3 pdt2'}
             >
-              zum Angebot
-            </Link>
+              {x}
+            </div>
+            <div className="grayTransp btnContainerDetails"></div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div key={uniqid()} className="borderGray productBox mgl1">
+            <div className="productImg mgt3">
+              <a href={amzLinks[`${x}`].href} target="_blank">
+                <img
+                  border="0"
+                  className="imgSize"
+                  src={amzLinks[`${x}`].src1}
+                />
+              </a>
+              <img
+                src={amzLinks[`${x}`].src2}
+                width="1"
+                height="1"
+                border="0"
+                alt=""
+                border="none !important"
+                margin="0px !important"
+              />
+            </div>
+            <div
+              className={'grayTransp productLink fontSizeProductName mgt3 pdt2'}
+            >
+              {x}
+            </div>
+            <div className="grayTransp btnContainerDetails">
+              <Link
+                to={{
+                  pathname: `${amzLinks[`${x}`].link}`,
+                }}
+                target="_blank"
+                className="btnDetails"
+              >
+                zum Angebot
+              </Link>
+            </div>
+          </div>
+        );
+      }
     });
   };
 
@@ -289,6 +374,11 @@ function Details() {
                 </div>
               </div>
             )}
+          </div>
+          <div className="btnSingle">
+            <button onClick={overview} className="btn">
+              Zurück zur Übersicht
+            </button>
           </div>
         </div>
       </div>

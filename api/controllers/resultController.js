@@ -126,6 +126,7 @@ exports.result_get = function (req, res, next) {
               x.products.push({
                 name: y[0].name,
                 type: y[0].type[0],
+                system: y[0].system,
                 comp: true,
               });
               if (x.compSystems.indexOf(y[0].system) === -1) {
@@ -136,6 +137,7 @@ exports.result_get = function (req, res, next) {
               x.products.push({
                 name: y[0].name,
                 type: y[0].type[0],
+                system: y[0].system,
                 comp: false,
               });
               if (x.partialCompSystems.indexOf(y[0].system) === -1) {
@@ -146,6 +148,7 @@ exports.result_get = function (req, res, next) {
               x.products.push({
                 name: y[0].name,
                 type: y[0].type[0],
+                system: y[0].system,
                 comp: null,
               });
               /*

@@ -35,19 +35,6 @@ export const amzLinks = {
     src2: 'https://ir-de.amazon-adsystem.com/e/ir?t=komwoh-21&language=de_DE&l=li2&o=3&a=B07SPHGTQY',
     link: 'https://amzn.to/3zO5uDY',
   },
-  // Tradfri needs to be adjusted
-  'TRÅDFRI Gateway': {
-    href: 'https://www.amazon.de/Hue-Starter-3x806lm-Bluetooth-SmartButton/dp/B07SPHGTQY?&linkCode=li2&tag=komwoh-21&linkId=656c317dd6c9814abb832c2ed67cb2ef&language=de_DE&ref_=as_li_ss_il',
-    src1: '//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07SPHGTQY&Format=_SL160_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=komwoh-21&language=de_DE',
-    src2: 'https://ir-de.amazon-adsystem.com/e/ir?t=komwoh-21&language=de_DE&l=li2&o=3&a=B07SPHGTQY',
-    link: 'https://amzn.to/3zO5uDY',
-  },
-  'TRÅDFRI Einbauspot MITTLED': {
-    href: 'https://www.amazon.de/Hue-Starter-3x806lm-Bluetooth-SmartButton/dp/B07SPHGTQY?&linkCode=li2&tag=komwoh-21&linkId=656c317dd6c9814abb832c2ed67cb2ef&language=de_DE&ref_=as_li_ss_il',
-    src1: '//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07SPHGTQY&Format=_SL160_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=komwoh-21&language=de_DE',
-    src2: 'https://ir-de.amazon-adsystem.com/e/ir?t=komwoh-21&language=de_DE&l=li2&o=3&a=B07SPHGTQY',
-    link: 'https://amzn.to/3zO5uDY',
-  },
   'Philips Hue E27 White': {
     href: 'https://www.amazon.de/Philips-Hue-Erweiterung-warmwei%C3%9Fes-kompatibel/dp/B0152WXI0E?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=philips+hue+e27+wei%C3%9F&qid=1624343538&sr=8-5&linkCode=li2&tag=komwoh-21&linkId=ef9e27d7f4a057a31044b71595266c79&language=de_DE&ref_=as_li_ss_il',
     src1: '//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0152WXI0E&Format=_SL160_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=komwoh-21&language=de_DE',

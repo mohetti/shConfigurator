@@ -72,6 +72,54 @@
 /* ********** SPECIAL contentBox and contentContainer PROPERTIES ********** */
 
 .boxSizeAdj {
-  height: 18vh;
+  height: 20vh;
   width: 14vh;
+}
+
+/* colors */
+.green {
+  background-color: #3cc392;
+}
+
+.red {
+  background-color: #cc232a;
+}
+
+.yellow {
+  background-color: #e6980a;
+}
+
+.blue {
+  background-color: #0298d5;
+}
+
+/* Transparent Colors */
+.greenTransp {
+  background-color: #3cc39233;
+  height: 100%;
+  width: 100%;
+}
+
+.redTransp {
+  background-color: #cc232a33;
+  height: 100%;
+  width: 100%;
+}
+
+.yellowTransp {
+  background-color: #e6980a33;
+  height: 100%;
+  width: 100%;
+}
+
+.blueTransp {
+  background-color: #0298d533;
+  height: 100%;
+  width: 100%;
+}
+
+.grayTransp {
+  background-color: #d6d6d633;
+  height: 100%;
+  width: 100%;
 }

@@ -29,19 +29,19 @@
 }
 
 .comp {
-  background-color: green;
+  background-color: #3cc392;
 }
 
 .partialComp {
-  background-color: yellow;
+  background-color: #e6980a;
 }
 
 .notComp {
-  background-color: red;
+  background-color: #cc232a;
 }
 
 .dotMain {
-  background-color: blue;
+  background-color: #0298d5;
 }
 
 /* container for the list of all subsystems. */
