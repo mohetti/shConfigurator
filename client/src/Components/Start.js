@@ -47,11 +47,6 @@ function Start() {
           </button>
         </div>
       </div>
-      <div>{test.motionI.toString()}</div>
-      <div onClick={() => selectionState(selectionActionsContainer.motionI())}>
-        +
-      </div>
-      <div>-</div>
     </div>
   );
 }

@@ -13,11 +13,21 @@ import MediaQuery from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import selectionActionsContainer from '../actions';
 
-function Categories() {
+function Categories(props) {
   let history = useHistory();
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
+
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
 
   const back = () => {
     return history.push('/start');
@@ -119,10 +129,6 @@ function Categories() {
     return alert('Bitte mindestens eine Kategorie auswählen.');
   };
 
-  const infos = () => {
-    console.log('Placeholder');
-  };
-
   const handleClick = (input) => {
     return selectionStateChange(selectionActionsContainer[input]());
   };
@@ -184,7 +190,7 @@ function Categories() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -192,6 +198,67 @@ function Categories() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Beleuchtung:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Sorgt für schöne Lichtstimmung im Heimkino und am Esstisch.
+                  </li>
+                  <li className="fontSizeModal">
+                    Simuliert durch randomisiertes Ein- und Ausschalten Deine
+                    Anwesenheit.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Heizungssteuerung:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Läuft nach Zeitplan, der automatisiert energie- und
+                      kosteneffizient heizt.
+                    </li>
+                    <li className="fontSizeModal">
+                      Sowohl Heizkörper als auch Fußbodenheizungen lassen sich
+                      smart nachrüsten.
+                    </li>
+                    <li className="fontSizeModal">
+                      Auch für Mietwohnungen geeignet.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Sicherheit:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Alarmiert im Brandfall oder bei Einbrüchen.
+                    </li>
+                    <li className="fontSizeModal">
+                      Auch für Mietwohnungen geeignet.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Geräte lösen einen Alarm aus und benachrichtigen Dich
+                      über die App.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

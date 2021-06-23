@@ -19,6 +19,16 @@ function Lights() {
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     return history.push('/kategorien');
   };
@@ -105,10 +115,6 @@ function Lights() {
     return history.push('/confirm');
   };
 
-  const infos = () => {
-    console.log('Placeholder');
-  };
-
   const handleClick = (input) => {
     return selectionStateChange(selectionActionsContainer[input]());
   };
@@ -174,7 +180,7 @@ function Lights() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -182,6 +188,54 @@ function Lights() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Glühbirnen & Spots:</strong>
+                  </div>
+                  <li className="fontSizeModal">Kostengünstige Nachrüstung.</li>
+                  <li className="fontSizeModal">Einfache Installation.</li>
+                  <li className="fontSizeModal">
+                    Verschiedene Varianten erhältlich, die entweder nur
+                    warmweißes Licht oder auch Farblicht ausstrahlen.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Innenbeleuchtung:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Hier findest Du unter anderem Tischlampen und
+                      Deckenleuchten, aber auch smarte Steckdosen und
+                      Unterputzschalter.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Gartenbeleuchtung:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Gartenbeleuchtung taucht die Nachtstunden in ein
+                      besonderes Licht.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

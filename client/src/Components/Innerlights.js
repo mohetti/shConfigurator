@@ -36,6 +36,16 @@ function Innerlights() {
   const [boxRecSwitch, setBoxRecSwitch] = useState(false);
   const [boxCeiling, setBoxCeiling] = useState(false);
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     if (selSD.lightbulbs) return history.push('/gluehbirnen');
     return history.push('/beleuchtung');
@@ -68,10 +78,6 @@ function Innerlights() {
     if (selSD.heating) return history.push('/heizung');
     if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
-  };
-
-  const infos = () => {
-    console.log('Placeholder');
   };
 
   const reset = () => {
@@ -293,7 +299,7 @@ function Innerlights() {
             ) : (
               <img src={tableLampImg} />
             )}
-            <div>Tischlampe</div>
+            <div>Tischlampen</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -311,7 +317,7 @@ function Innerlights() {
             ) : (
               <img src={recSpotImg} />
             )}
-            <div>Einbauspot</div>
+            <div>Einbauspots</div>
           </div>
           <div
             onClick={() => openBox('wall')}
@@ -324,7 +330,7 @@ function Innerlights() {
             ) : (
               <img src={wallLightImg} />
             )}
-            <div>Wandleuchte</div>
+            <div>Wandleuchten</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -364,7 +370,7 @@ function Innerlights() {
             ) : (
               <img src={surfSpotImg} />
             )}
-            <div>Aufbauspot</div>
+            <div>Aufbauspots</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -393,7 +399,7 @@ function Innerlights() {
             ) : (
               <img src={recSwitchImg} />
             )}
-            <div>Unterputzaktor</div>
+            <div>Unterputzaktoren</div>
           </div>
           <div
             onClick={() => openBox('ceiling')}
@@ -406,7 +412,7 @@ function Innerlights() {
             ) : (
               <img src={ceilingLightImg} />
             )}
-            <div>Deckenlampe</div>
+            <div>Deckenlampen</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -455,7 +461,7 @@ function Innerlights() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -463,6 +469,64 @@ function Innerlights() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Leuchtstreifen:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Sorgen für eine stilvolle Hintergrundbeleuchtung mit 16 Mio.
+                    unterschiedlichen Farboptionen.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Zwischenstecker:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Ideal, um nicht-smarte Steh- oder Tischlampen in das Smart
+                      Home einzubinden.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Unterputzaktoren:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Ideal, um nicht-smarte Deckenleuchten in das Smart Home
+                      einzubinden.
+                    </li>
+                    <li className="fontSizeModal">
+                      Unterputzaktoren werden direkt im Lichtschalter mit der
+                      Elektrik verkabelt.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Einbauspots:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Ideal, um nicht-smarte Einbau- btw. Unterputz-Spots
+                      auszutauschen, falls diese keine GU10 Fassung besitzen.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

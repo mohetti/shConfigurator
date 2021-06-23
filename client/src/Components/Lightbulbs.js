@@ -33,6 +33,16 @@ function Lightbulbs() {
   const [selectorBoxMulticolor, setSelectorBoxMulticolor] = useState(false);
   const [selectedColor, setSelectedColor] = useState('');
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     return history.push('/beleuchtung');
   };
@@ -59,10 +69,6 @@ function Lightbulbs() {
     if (selSD.heating) return history.push('/heizung');
     if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
-  };
-
-  const infos = () => {
-    console.log('Placeholder');
   };
 
   const openSelector = (color) => {
@@ -364,7 +370,7 @@ function Lightbulbs() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -372,6 +378,72 @@ function Lightbulbs() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Dimmbares Licht:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Strahlt warmweißes Licht aus.
+                  </li>
+                  <li className="fontSizeModal">
+                    Die Farbtemperatur beträgt in der Regel 2700 Kelvin.
+                  </li>
+                  <li className="fontSizeModal">
+                    Die Glühbirnen & Spots sind in ihrer Helligkeit dimmbar.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Dimmbares Weißlicht:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Strahlt warmweißes bis tageslichtweißes Licht aus.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Farbtemperatur deckt in der Regel ein Spektrum von
+                      2700 bis 6500 Kelvin ab.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Glühbirnen & Spots sind in ihrer Helligkeit und in der
+                      Intensität des Weißlichts dimmbar.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Weiß- und Farblicht:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Strahlt warmweißes bis tageslichtweißes Licht sowie
+                      Farblicht aus.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Farbtemperatur deckt in der Regel ein Spektrum von
+                      2700 bis 6500 Kelvin ab.
+                    </li>
+                    <li className="fontSizeModal">
+                      Zusätzlich zu den Funktionen des dimmbaren Weißlichts,
+                      können Farbleuchten in 16 Mio. unterschiedlichen Farben
+                      erstrahlen.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

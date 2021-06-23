@@ -31,6 +31,16 @@ function Security() {
   const [boxSiren, setBoxSiren] = useState(false);
   const [boxCamera, setBoxCamera] = useState(false);
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     if (selSD.heating) return history.push('/heizung');
     if (selSD.garden) return history.push('/gartenbeleuchtung');
@@ -58,10 +68,6 @@ function Security() {
           selectionActionsContainer.resetSome('securityTemp')
         );
     return history.push('/confirm');
-  };
-
-  const infos = () => {
-    console.log('Placeholder');
   };
 
   const handleClick = (input, closeBoxes) => {
@@ -180,7 +186,7 @@ function Security() {
             ) : (
               <img src={windowSensorImg} />
             )}
-            <div>Tür-/Fensterkontakt</div>
+            <div>Tür-/Fensterkontakte</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -204,7 +210,7 @@ function Security() {
             ) : (
               <img src={sirenImg} />
             )}
-            <div>Sirene</div>
+            <div>Sirenen</div>
           </div>
           <div
             onClick={() => handleClick('smoke', true)}
@@ -254,7 +260,7 @@ function Security() {
             ) : (
               <img src={doorLockImg} />
             )}
-            <div>Türschloss</div>
+            <div>Türschlösser</div>
           </div>
           <div
             onClick={() => handleClick('doorbell', true)}
@@ -265,7 +271,7 @@ function Security() {
             ) : (
               <img src={videoDoorbellImg} />
             )}
-            <div>Video-Türklingel</div>
+            <div>Video-Türklingeln</div>
           </div>
           <div
             onClick={() => openBox('camera')}
@@ -278,7 +284,7 @@ function Security() {
             ) : (
               <img src={cameraImg} />
             )}
-            <div>Sicherheitskamera</div>
+            <div>Sicherheitskameras</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -295,7 +301,7 @@ function Security() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -303,6 +309,45 @@ function Security() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Grundausstattung:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Zur Grundausstattung in Sachen Sicherheit benötigst Du eine
+                    Innensirene, ein bis drei Bewegungsmelder und ausreichend
+                    viele Tür-/Fensterkontakte.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Funktionsweise:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      In der App stellst Du die Alarmanlage scharf bzw.
+                      unscharf. Wenn ein Sensor auslöst (beispielsweise der
+                      Bewegungsmelder), erhältst Du eine Benachrichtigung per
+                      App und die Sirene startet zeitgleich.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

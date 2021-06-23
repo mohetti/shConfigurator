@@ -44,6 +44,16 @@ function Heating() {
     'thermostatWireless',
   ];
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     if (selSD.garden) return history.push('/gartenbeleuchtung');
     if (selSD.innerLights) return history.push('/innenbeleuchtung');
@@ -69,10 +79,6 @@ function Heating() {
 
     if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
-  };
-
-  const infos = () => {
-    console.log('Placeholder');
   };
 
   const handleClick = (input, type) => {
@@ -322,7 +328,7 @@ function Heating() {
             ) : (
               <img src={radiatorImg} />
             )}
-            <div>Heizkörperthermostat</div>
+            <div>Heizkörperthermostate</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -349,7 +355,7 @@ function Heating() {
             ) : (
               <img src={thermostatImg} />
             )}
-            <div>Wandthermostat</div>
+            <div>Wandthermostate</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -384,7 +390,7 @@ function Heating() {
             ) : (
               <img src={underfloorHeatingImg} />
             )}
-            <div>Fußbodenheizungsaktor</div>
+            <div>Fußbodenheizungsaktoren</div>
           </div>
           <MediaQuery maxWidth={500}>
             <div className="forceFlexWrap"></div>
@@ -426,7 +432,7 @@ function Heating() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -434,6 +440,78 @@ function Heating() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Heizkörperthermostate:</strong>
+                  </div>
+                  <li className="fontSizeModal">Für Mietwohnungen geeignet.</li>
+                  <li className="fontSizeModal">
+                    Durch passende Adapter, sind smarte Heizkörperthermostate
+                    mit fast allen gängigen Heizkörpern kompatibel.
+                  </li>
+                  <li className="fontSizeModal">
+                    Bei einem Auszug aus der Wohnung die alten
+                    Heizkörperthermostate einfach wieder aufgeschraubt werden.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Wandthermostate:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Zur smarten Regelung der Fußbodenheizung.
+                    </li>
+                    <li className="fontSizeModal">
+                      Teilweise auch für (Miet-)Wohnungen geeignet.
+                    </li>
+                    <li className="fontSizeModal">
+                      Wähle Thermostat (verkabelt) mit der passenden Volt
+                      Anzahl, wenn bei Dir zuhause bereits un-smarte
+                      kabelgebundene Thermostate installiert sind.
+                    </li>
+                    <li className="fontSizeModal">
+                      Wähle Thermostat (Funk), wenn Du bereits Funkthermostate
+                      oder überhaupt keine Thermostate besitzt.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Kompatibilität solltest Du vor dem Kauf nochmals
+                      prüfen, da je Hersteller unterschiedliche Heizkessel-Arten
+                      unterstützt werden.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Fußbodenheizungsaktoren:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Speziell für Fußbodenheizungen.
+                    </li>
+                    <li className="fontSizeModal">
+                      Regelt die Fußbodenheizung über Stellantriebe.
+                    </li>
+                    <li className="fontSizeModal">
+                      Nur geeignet, wenn Du bereits einen un-smarten
+                      Fußbodenheizungs-Aktor besitzt.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

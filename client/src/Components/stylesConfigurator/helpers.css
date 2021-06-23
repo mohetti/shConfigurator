@@ -26,6 +26,10 @@
   margin-left: 2%;
 }
 
+.mgl2 {
+  margin-left: 5%;
+}
+
 .pdt1 {
   padding-top: 2.5%;
 }
@@ -36,6 +40,26 @@
 
 .pdt3 {
   padding-top: 10%;
+}
+
+.pdb1 {
+  padding-top: 2.5%;
+}
+
+.pdb2 {
+  padding-top: 5%;
+}
+
+.pdb3 {
+  padding-top: 10%;
+}
+
+.pdr2 {
+  padding-right: 2.5%;
+}
+
+.pdr2 {
+  padding-right: 5%;
 }
 
 /* ********** BORDER PROPERTIES ********** */

@@ -1,0 +1,100 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBorder {
+  border-top: 1px solid #eee;
+}
+@media (max-width: 500px) {
+  .fontSizeModal {
+    font-size: 2.5vmin;
+  }
+  .fontSizeModal1 {
+    font-size: 3.5vmin;
+  }
+  .modal-content {
+    width: 70vmin;
+    height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
+@media (min-width: 501px) and (max-width: 767px) {
+  .fontSizeModal {
+    font-size: 2.5vmin;
+  }
+  .fontSizeModal1 {
+    font-size: 3.5vmin;
+  }
+  .modal-content {
+    width: 500px;
+    height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
+@media (min-width: 768px) and (max-width: 768px) {
+  .fontSizeModal {
+    font-size: 1.5vmin;
+  }
+  .fontSizeModal1 {
+    font-size: 2.5vmin;
+  }
+  .modal-content {
+    width: 70vmin;
+    height: 600px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+  .fontSizeModal {
+    font-size: 2.5vmin;
+  }
+  .fontSizeModal1 {
+    font-size: 3.5vmin;
+  }
+  .modal-content {
+    width: 500px;
+    height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
+@media (min-width: 1024px) {
+  .fontSizeModal {
+    font-size: 1.7vmin;
+  }
+
+  .modal-content {
+    width: 70vmin;
+    height: 600px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+}
+.checkmarkModalDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: -2%;
+}
+.checkmarkModal {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.checkmarkModal li:before {
+  content: '✓';
+  color: #2cba6c;
+  font-size: 1.5rem;
+}

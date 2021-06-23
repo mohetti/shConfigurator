@@ -24,6 +24,16 @@ function Gardenlights() {
   const [boxPathLight, setBoxPathLight] = useState(false);
   const [boxWallGarden, setBoxWallGarden] = useState(false);
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
+  const openModal = () => {
+    return setModal(true);
+  };
+
   const back = () => {
     if (selSD.innerLights) return history.push('/innenbeleuchtung');
     if (selSD.lightbulbs) return history.push('/gluehbirnen');
@@ -43,10 +53,6 @@ function Gardenlights() {
     if (selSD.heating) return history.push('/heizung');
     if (selSD.security) return history.push('/sicherheit');
     return history.push('/confirm');
-  };
-
-  const infos = () => {
-    console.log('Placeholder');
   };
 
   const reset = () => {
@@ -210,7 +216,7 @@ function Gardenlights() {
           <button onClick={back} className="btn">
             Zurück
           </button>
-          <button onClick={infos} className="btn">
+          <button onClick={openModal} className="btn">
             Mehr Infos
           </button>
           <button onClick={next} className="btn">
@@ -218,6 +224,60 @@ function Gardenlights() {
           </button>
         </div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Kategorien</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Wegeleuchten:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Wegeleuchten lassen den Gartenpfad in weißem oder in
+                    Farblicht erstrahlen.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Gartenspots:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Ideal, um Bäume oder Büsche mit spekatkulärem Farblicht in
+                      Szene zu setzen.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Wandbeleuchtung:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Kann mit Bewegungsmeldern für den Außenbereich aus der
+                      Kategorie Sicherheit kombiniert werden.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Leuchtstreifen:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Sorgen für farbenfrohe Hintergrundbeleuchtung auf der
+                      Terrasse oder Veranda.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

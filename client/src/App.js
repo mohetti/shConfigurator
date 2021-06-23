@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 // import Components
 import Default from './Components/Default';
@@ -19,6 +20,7 @@ import './Components/stylesConfigurator/styles.css';
 import './Components/stylesConfigurator/overview.css';
 import './Components/stylesConfigurator/details.css';
 import './Components/stylesConfigurator/helpers.css';
+import './Components/stylesConfigurator/modal.css';
 
 function App() {
   return (
