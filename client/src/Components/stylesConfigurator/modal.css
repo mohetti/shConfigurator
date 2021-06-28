@@ -98,3 +98,8 @@
   color: #2cba6c;
   font-size: 1.5rem;
 }
+
+.checkmarkColorDiv {
+  display: flex;
+  justify-content: center;
+}

@@ -4,25 +4,27 @@ import uniqid from 'uniqid';
 
 import { useSelector, useDispatch } from 'react-redux';
 import detailedSystem from '../actions/detailedSystem';
+import helpers from '../actions/helpers';
 
 function Overview() {
   let history = useHistory();
+  const showModal = useSelector((state) => state.helpers);
+  const results = useSelector((state) => state.backendResponse);
+  const setReduxState = useDispatch();
+
   useEffect(() => {
     if (history.location.state === undefined) {
       return history.push('/start');
     }
   }, []);
-  const results = useSelector((state) => state.backendResponse);
-  const storeDetailedSystem = useDispatch();
-
-  const [modal, setModal] = useState(true);
 
   const closeModal = () => {
+    setReduxState(helpers());
     return setModal(false);
   };
 
   const details = (system) => {
-    storeDetailedSystem(detailedSystem(system));
+    setReduxState(detailedSystem(system));
     sessionStorage.setItem('system', system);
     return history.push('/details', { from: 'valid' });
   };
@@ -94,7 +96,7 @@ function Overview() {
       <div className="whiteBackground">
         <div className="contentContainer mgZero">{populateResults()}</div>
       </div>
-      {modal && (
+      {showModal && (
         <div className="modal">
           <div className="modal-content">
             <div className="mgl2">
@@ -125,6 +127,12 @@ function Overview() {
                     </li>
                     <li className="fontSizeModal">
                       Die Subsysteme werden mit einem Ampelsystem visualisiert.
+                    </li>
+                    <li>
+                      Subsysteme können mehr als einmal aufgelistet sein. In
+                      diesen Fällen sind manche Geräte des Subsystems mit dem
+                      Hauptsystem kompatibel und andere nicht. In den Details
+                      wird das dann genauer aufgelistet.
                     </li>
                   </div>
                   <div className="pdt2">
