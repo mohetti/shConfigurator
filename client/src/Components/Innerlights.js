@@ -25,6 +25,11 @@ import selectionActionsContainer from '../actions';
 
 function Innerlights() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
@@ -47,8 +52,9 @@ function Innerlights() {
   };
 
   const back = () => {
-    if (selSD.lightbulbs) return history.push('/gluehbirnen');
-    return history.push('/beleuchtung');
+    if (selSD.lightbulbs)
+      return history.push('/gluehbirnen', { from: 'valid' });
+    return history.push('/beleuchtung', { from: 'valid' });
   };
 
   const next = () => {
@@ -74,10 +80,11 @@ function Innerlights() {
           selectionActionsContainer.resetSome('innerLightsTemp')
         );
 
-    if (selSD.garden) return history.push('/gartenbeleuchtung');
-    if (selSD.heating) return history.push('/heizung');
-    if (selSD.security) return history.push('/sicherheit');
-    return history.push('/confirm');
+    if (selSD.garden)
+      return history.push('/gartenbeleuchtung', { from: 'valid' });
+    if (selSD.heating) return history.push('/heizung', { from: 'valid' });
+    if (selSD.security) return history.push('/sicherheit', { from: 'valid' });
+    return history.push('/confirm', { from: 'valid' });
   };
 
   const reset = () => {

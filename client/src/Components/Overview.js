@@ -7,6 +7,11 @@ import detailedSystem from '../actions/detailedSystem';
 
 function Overview() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
   const results = useSelector((state) => state.backendResponse);
   const storeDetailedSystem = useDispatch();
 
@@ -19,7 +24,7 @@ function Overview() {
   const details = (system) => {
     storeDetailedSystem(detailedSystem(system));
     sessionStorage.setItem('system', system);
-    return history.push('/details');
+    return history.push('/details', { from: 'valid' });
   };
 
   const populateSubsystems = (system) => {

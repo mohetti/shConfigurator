@@ -23,6 +23,11 @@ import selectionActionsContainer from '../actions';
 
 function Lightbulbs() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
 
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
@@ -44,7 +49,7 @@ function Lightbulbs() {
   };
 
   const back = () => {
-    return history.push('/beleuchtung');
+    return history.push('/beleuchtung', { from: 'valid' });
   };
 
   const next = () => {
@@ -64,11 +69,13 @@ function Lightbulbs() {
           selectionActionsContainer.resetSome('lightbulbsTemp')
         );
 
-    if (selSD.innerLights) return history.push('/innenbeleuchtung');
-    if (selSD.garden) return history.push('/gartenbeleuchtung');
-    if (selSD.heating) return history.push('/heizung');
-    if (selSD.security) return history.push('/sicherheit');
-    return history.push('/confirm');
+    if (selSD.innerLights)
+      return history.push('/innenbeleuchtung', { from: 'valid' });
+    if (selSD.garden)
+      return history.push('/gartenbeleuchtung', { from: 'valid' });
+    if (selSD.heating) return history.push('/heizung', { from: 'valid' });
+    if (selSD.security) return history.push('/sicherheit', { from: 'valid' });
+    return history.push('/confirm', { from: 'valid' });
   };
 
   const openSelector = (color) => {

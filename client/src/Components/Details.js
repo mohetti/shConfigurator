@@ -83,6 +83,9 @@ function Details() {
   ];
 
   useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
     system.products.map((x) => {
       if (lightbulbList.indexOf(x.type) !== -1) {
         return setLightbulbs((oldArr) => [...oldArr, x]);
@@ -104,7 +107,7 @@ function Details() {
   }, []);
 
   const overview = () => {
-    return history.push('/overview');
+    return history.push('/overview', { from: 'valid' });
   };
 
   const populateProducts = (category) => {

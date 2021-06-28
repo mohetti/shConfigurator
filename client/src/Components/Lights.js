@@ -15,6 +15,12 @@ import selectionActionsContainer from '../actions';
 
 function Lights() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
+
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
@@ -94,25 +100,25 @@ function Lights() {
   const next = () => {
     if (selSD.lightbulbs) {
       reset();
-      return history.push('/gluehbirnen');
+      return history.push('/gluehbirnen', { from: 'valid' });
     }
     if (selSD.innerLights) {
       reset();
-      return history.push('/innenbeleuchtung');
+      return history.push('/innenbeleuchtung', { from: 'valid' });
     }
     if (selSD.garden) {
       reset();
-      return history.push('/gartenbeleuchtung');
+      return history.push('/gartenbeleuchtung', { from: 'valid' });
     }
     if (selSD.heating) {
       reset();
-      return history.push('/heizung');
+      return history.push('/heizung', { from: 'valid' });
     }
     if (selSD.security) {
       reset();
-      return history.push('/sicherheit');
+      return history.push('/sicherheit', { from: 'valid' });
     }
-    return history.push('/confirm');
+    return history.push('/confirm', { from: 'valid' });
   };
 
   const handleClick = (input) => {

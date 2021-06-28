@@ -41,6 +41,11 @@ const api = axios.create({
 
 function Confirm() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
   const [loading, setLoading] = useState(false);
 
   // selSD stands for selectionStateDisplay
@@ -121,7 +126,7 @@ function Confirm() {
         selectionStateChange(backendResponseAction(res.data));
         console.log(res.data);
 
-        history.push('/overview');
+        history.push('/overview', { from: 'valid' });
       })
       .catch((err) => {
         console.log(err);

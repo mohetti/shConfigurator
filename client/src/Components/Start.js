@@ -1,15 +1,16 @@
-import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import selectionActionsContainer from '../actions';
 
 function Start() {
   let history = useHistory();
-
-  const test = useSelector((state) => state.selectionState);
   const selectionState = useDispatch();
+  useEffect(() => {
+    selectionState(selectionActionsContainer.resetAll());
+  }, []);
 
   let start = () => {
-    selectionState(selectionActionsContainer.resetAll());
     return history.push('/kategorien');
   };
 

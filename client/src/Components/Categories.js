@@ -6,8 +6,8 @@ import lightImgW from '../images/categories/lightW.png';
 import heatingImgW from '../images/categories/heatingW.png';
 import securityImgW from '../images/categories/securityW.png';
 
-import { useHistory } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import MediaQuery from 'react-responsive';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -116,15 +116,15 @@ function Categories(props) {
   const next = () => {
     if (selSD.light) {
       reset();
-      return history.push('/beleuchtung');
+      return history.push('/beleuchtung', { from: 'valid' });
     }
     if (selSD.heating) {
       reset();
-      return history.push('/heizung');
+      return history.push('/heizung', { from: 'valid' });
     }
     if (selSD.security) {
       reset();
-      return history.push('/sicherheit');
+      return history.push('/sicherheit', { from: 'valid' });
     }
     return alert('Bitte mindestens eine Kategorie auswählen.');
   };

@@ -24,6 +24,11 @@ import selectionActionsContainer from '../actions';
 
 function Heating() {
   let history = useHistory();
+  useEffect(() => {
+    if (history.location.state === undefined) {
+      return history.push('/start');
+    }
+  }, []);
   // selSD stands for selectionStateDisplay
   const selSD = useSelector((state) => state.selectionState);
   const selectionStateChange = useDispatch();
@@ -55,11 +60,14 @@ function Heating() {
   };
 
   const back = () => {
-    if (selSD.garden) return history.push('/gartenbeleuchtung');
-    if (selSD.innerLights) return history.push('/innenbeleuchtung');
-    if (selSD.lightbulbs) return history.push('/gluehbirnen');
-    if (selSD.light) return history.push('/beleuchtung');
-    return history.push('/kategorien');
+    if (selSD.garden)
+      return history.push('/gartenbeleuchtung', { from: 'valid' });
+    if (selSD.innerLights)
+      return history.push('/innenbeleuchtung', { from: 'valid' });
+    if (selSD.lightbulbs)
+      return history.push('/gluehbirnen', { from: 'valid' });
+    if (selSD.light) return history.push('/beleuchtung', { from: 'valid' });
+    return history.push('/kategorien', { from: 'valid' });
   };
 
   const next = () => {
@@ -77,8 +85,8 @@ function Heating() {
           selectionActionsContainer.resetSome('heatingTemp')
         );
 
-    if (selSD.security) return history.push('/sicherheit');
-    return history.push('/confirm');
+    if (selSD.security) return history.push('/sicherheit', { from: 'valid' });
+    return history.push('/confirm', { from: 'valid' });
   };
 
   const handleClick = (input, type) => {
