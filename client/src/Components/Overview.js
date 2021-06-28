@@ -10,6 +10,12 @@ function Overview() {
   const results = useSelector((state) => state.backendResponse);
   const storeDetailedSystem = useDispatch();
 
+  const [modal, setModal] = useState(true);
+
+  const closeModal = () => {
+    return setModal(false);
+  };
+
   const details = (system) => {
     storeDetailedSystem(detailedSystem(system));
     sessionStorage.setItem('system', system);
@@ -83,6 +89,91 @@ function Overview() {
       <div className="whiteBackground">
         <div className="contentContainer mgZero">{populateResults()}</div>
       </div>
+      {modal && (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="mgl2">
+              <h2>Übersicht</h2>
+            </div>
+            <div className="mgl2 modalBorder pdt2">
+              <div className="checkmarkModalDiv">
+                <ul className="checkmarkModal mgl pdr2">
+                  <div className="fontSizeModal1">
+                    <strong>Aufbau:</strong>
+                  </div>
+                  <li className="fontSizeModal">
+                    Auf dieser Seite werden Dir Smart Home Lösungen basierend
+                    auf Deinen Auswahlkriterien aufgelistet.
+                  </li>
+                  <li className="fontSizeModal">
+                    Ganz oben steht das Hauptsystem, welches möglichst viele
+                    Deiner gewünschten Smart Home Geräte abdeckt.
+                  </li>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>"in Verbindung mit":</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Darunter findest Du alle Subsysteme, die Du zusätzlich
+                      benötigst, um gemeinsam mit dem Hauptsystem Deine gesamte
+                      Auswahl abzudecken.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Subsysteme werden mit einem Ampelsystem visualisiert.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Basisstationen:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Die Zahl beschreib die Anzahl an Basisstationen, die Du
+                      für diese bestimmte Auswahl benötigst.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Anzahl hängt von der Menge an Subsystemen ab.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Das Ampelsystem:</strong>
+                    </div>
+                    <li className="fontSizeModal test">
+                      Grün steht für <strong>kompatibel</strong>. Nach der
+                      Installation über die App des Subsystems, lassen sich
+                      Geräte dieses Herstellers in der App des Hauptsystems
+                      steuern, konfigurieren und in Automationen einbinden.
+                    </li>
+                    <li className="fontSizeModal">
+                      Gelb steht für <strong>teilweise kompatibel</strong>. Nach
+                      der Installation über die App des Subsystems, lassen sich
+                      ein Großteil der Geräte-Funktionen dieses Herstellers in
+                      der App des Hauptsystems steuern, aber nicht alle.
+                    </li>
+                    <li className="fontSizeModal">
+                      Rot steht für <strong>nicht kompatibel</strong>. Die
+                      Steuerung und Konfiguration dieser Geräte funktioniert nur
+                      in der App des Subsystems. Möglicherweise lassen sich
+                      Schnnittstellen zum Hauptsystem über
+                      Drittanbieter-Software wie IFTTT oder Conrad-Connect
+                      realisieren.
+                    </li>
+                    <li className="fontSizeModal">
+                      Blau steht für <strong>Hauptsystem</strong>. Diese Geräte
+                      gehören zur Produktlinie des Hauptsystems.
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+            <div className="modalBorder btnSingle mgt3 pdt2">
+              <button onClick={closeModal} className="btn">
+                Verstanden
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

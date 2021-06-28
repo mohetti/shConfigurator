@@ -4,6 +4,7 @@ const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,8 +19,7 @@ app.use((req, res, next) => {
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB =
-  'mongodb+srv://moritz:GvUvJ40avsnrfB6g@cluster0.jswpi.mongodb.net/shProducts?retryWrites=true&w=majority';
+var mongoDB = process.env.DB_HOST;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
