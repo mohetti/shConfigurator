@@ -19,8 +19,7 @@ function Overview() {
   }, []);
 
   const closeModal = () => {
-    setReduxState(helpers());
-    return setModal(false);
+    return setReduxState(helpers());
   };
 
   const details = (system) => {

@@ -251,7 +251,7 @@ function Details() {
 
   const populateStations = () => {
     let stationsArray = [];
-    if (system.mainBase !== '') {
+    if (system.mainBase !== 'null') {
       stationsArray.push(system.mainBase);
     }
     system.substations.map((x) => stationsArray.push(x));

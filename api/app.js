@@ -21,7 +21,8 @@ app.use((req, res, next) => {
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = process.env.DB_HOST;
+var mongoDB =
+  'mongodb+srv://moritz:bYcEVrQDkj0jA5d4@cluster0.jswpi.mongodb.net/shProducts?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
