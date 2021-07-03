@@ -38,6 +38,7 @@ import backendResponseAction from '../actions/backendResponse';
 const api = axios.create({
   baseURL: 'https://affectionate-shirley.89-22-116-52.plesk.page/result',
 });
+// 'http://localhost:9000/result' ||
 
 function Confirm() {
   let history = useHistory();
@@ -55,9 +56,16 @@ function Confirm() {
   const backendRequest = () => {
     setLoading(true);
     let categories = {
-      light: selSD.light,
-      heating: selSD.heating,
-      security: selSD.security,
+      light:
+        selSD.lightbulbsTemp === true
+          ? true
+          : selSD.innerLightsTemp === true
+          ? true
+          : selSD.gardenTemp === true
+          ? true
+          : false,
+      heating: selSD.heatingTemp,
+      security: selSD.securityTemp,
     };
 
     let products = [
@@ -124,12 +132,11 @@ function Confirm() {
       .post('/', transferData)
       .then((res) => {
         selectionStateChange(backendResponseAction(res.data));
-        console.log(res.data);
 
         history.push('/overview', { from: 'valid' });
       })
       .catch((err) => {
-        console.log(err);
+        alert('Ups, da ging wohl etwas Schief. Laden Sie die Seite neu.');
       });
   };
 

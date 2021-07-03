@@ -75,6 +75,7 @@ function Security() {
       : selectionStateChange(
           selectionActionsContainer.resetSome('securityTemp')
         );
+
     return history.push('/confirm', { from: 'valid' });
   };
 

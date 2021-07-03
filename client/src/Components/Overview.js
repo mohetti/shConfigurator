@@ -115,35 +115,23 @@ function Overview() {
                     Ganz oben steht das Hauptsystem, welches möglichst viele
                     Deiner gewünschten Smart Home Geräte abdeckt.
                   </li>
+
                   <div className="pdt2">
                     <div className="fontSizeModal1">
                       <strong>"in Verbindung mit":</strong>
                     </div>
                     <li className="fontSizeModal">
-                      Darunter findest Du alle Subsysteme, die Du zusätzlich
-                      benötigst, um gemeinsam mit dem Hauptsystem Deine gesamte
-                      Auswahl abzudecken.
+                      Nach dem Hauptsystem findest Du alle Subsysteme, die Du
+                      zusätzlich benötigst, um Deine gesamte Auswahl abzudecken.
                     </li>
                     <li className="fontSizeModal">
                       Die Subsysteme werden mit einem Ampelsystem visualisiert.
                     </li>
-                    <li>
+                    <li className="fontSizeModal">
                       Subsysteme können mehr als einmal aufgelistet sein. In
                       diesen Fällen sind manche Geräte des Subsystems mit dem
                       Hauptsystem kompatibel und andere nicht. In den Details
                       wird das dann genauer aufgelistet.
-                    </li>
-                  </div>
-                  <div className="pdt2">
-                    <div className="fontSizeModal1">
-                      <strong>Basisstationen:</strong>
-                    </div>
-                    <li className="fontSizeModal">
-                      Die Zahl beschreib die Anzahl an Basisstationen, die Du
-                      für diese bestimmte Auswahl benötigst.
-                    </li>
-                    <li className="fontSizeModal">
-                      Die Anzahl hängt von der Menge an Subsystemen ab.
                     </li>
                   </div>
                   <div className="pdt2">
@@ -173,6 +161,18 @@ function Overview() {
                     <li className="fontSizeModal">
                       Blau steht für <strong>Hauptsystem</strong>. Diese Geräte
                       gehören zur Produktlinie des Hauptsystems.
+                    </li>
+                  </div>
+                  <div className="pdt2">
+                    <div className="fontSizeModal1">
+                      <strong>Basisstationen:</strong>
+                    </div>
+                    <li className="fontSizeModal">
+                      Die Zahl beschreib die Anzahl an Basisstationen, die Du
+                      für diese bestimmte Auswahl benötigst.
+                    </li>
+                    <li className="fontSizeModal">
+                      Die Anzahl hängt von der Menge an Subsystemen ab.
                     </li>
                   </div>
                 </ul>

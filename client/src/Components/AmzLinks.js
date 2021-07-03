@@ -504,7 +504,7 @@ export const amzLinks = {
     src2: 'https://ir-de.amazon-adsystem.com/e/ir?t=komwoh-21&language=de_DE&l=li2&o=3&a=B075411FZ2',
     link: 'https://amzn.to/3zOioSw',
   },
-  'LIFX 100 mm Downlight': {
+  'LIFX 100 mm Downlight Colour': {
     href: 'https://www.amazon.de/LIFX-100mm-Downlight-Colour-Schwarz/dp/B08XNH946L?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=LIFX+100+mm+Downlight&qid=1624358749&sr=8-1&linkCode=li2&tag=komwoh-21&linkId=558def4c603ae9db13887f254deb710f&language=de_DE&ref_=as_li_ss_il',
     src1: '//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08XNH946L&Format=_SL160_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=komwoh-21&language=de_DE',
     src2: 'https://ir-de.amazon-adsystem.com/e/ir?t=komwoh-21&language=de_DE&l=li2&o=3&a=B08XNH946L',

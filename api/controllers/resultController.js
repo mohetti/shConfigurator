@@ -1,5 +1,5 @@
-var shProducts = require('../models/shProducts');
-var shSystems = require('../models/shSystems');
+let shProducts = require('../models/shProducts');
+let shSystems = require('../models/shSystems');
 
 exports.result_get = function (req, res, next) {
   // categories is an object with the keys light(s), heating and security.
@@ -82,7 +82,6 @@ exports.result_get = function (req, res, next) {
        * extractedDatabaseSystems has all suitable systems in it. It is used to modify responseSystems.
        * 3 arr.map are executed after above query.
        */
-
       let extractedDatabaseSystems = docs;
       let responseSystems = [];
 
@@ -151,9 +150,7 @@ exports.result_get = function (req, res, next) {
                 system: y[0].system,
                 comp: null,
               });
-              /*
-Bug with Philips Hue not compatible with Magenta (just use Glühbirnen to reproduce)
-*/
+
               if (x.notCompSystems.indexOf(y[0].system) === -1) {
                 x.notCompSystems.push(y[0].system);
                 subStationQuery.push(y[0].system);
@@ -163,6 +160,7 @@ Bug with Philips Hue not compatible with Magenta (just use Glühbirnen to reprod
             x.products.push({
               name: y[0].name,
               type: y[0].type[0],
+              system: y[0].system,
               comp: 'main',
             });
           }
@@ -233,15 +231,22 @@ Bug with Philips Hue not compatible with Magenta (just use Glühbirnen to reprod
             }
           });
 
+          /*
+          WORKING ON A SOLUTION:
+          Should it only show the best systems, even though the results are a bit sqewed? 
+          Or should it show all systems and their shortcomings. So people can choose what they dont want
+          */
           let singleSystem = false;
           let responseWithSingleSystem = [];
-          responseSystems.map((x) => {
-            if (x.substations < 1) {
-              singleSystem = true;
-              responseWithSingleSystem.push(x);
-              return;
-            }
-          });
+          if (categories.light && !categories.heating && !categories.security) {
+            responseSystems.map((x) => {
+              if (x.substations.length < 1) {
+                singleSystem = true;
+                responseWithSingleSystem.push(x);
+                return;
+              }
+            });
+          }
           singleSystem === true
             ? res.send(responseWithSingleSystem)
             : res.send(responseSystems);

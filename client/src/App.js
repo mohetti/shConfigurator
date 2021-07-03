@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import React from 'react';
 
 // import Components
-import Default from './Components/Default';
 import Start from './Components/Start';
 import Categories from './Components/Categories';
 import Lights from './Components/Lights';
@@ -60,7 +59,7 @@ function App() {
           <Details />
         </Route>
         <Route exact path="/">
-          <Default />
+          <Start />
         </Route>
       </Switch>
     </Router>

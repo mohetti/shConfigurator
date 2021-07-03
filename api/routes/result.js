@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var resultController = require('../controllers/resultController');
+let express = require('express');
+let router = express.Router();
+let resultController = require('../controllers/resultController');
 
 /* GET users listing. */
 router.post('/', resultController.result_get);
