@@ -36,9 +36,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import backendResponseAction from '../actions/backendResponse';
 
 const api = axios.create({
-  baseURL: 'http://localhost:9000/result',
+  baseURL: 'https://konfigurator.komwoh.de/result',
 });
-//https://affectionate-shirley.89-22-116-52.plesk.page/result
+// http://localhost:9000/result
 
 function Confirm() {
   let history = useHistory();

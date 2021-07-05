@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6d316cde.chunk.css",
+    "main.js": "/static/js/main.f5d08104.chunk.js",
+    "main.js.map": "/static/js/main.f5d08104.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a06e69b5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a06e69b5.js.map",
+    "static/js/2.73753cdf.chunk.js": "/static/js/2.73753cdf.chunk.js",
+    "static/js/2.73753cdf.chunk.js.map": "/static/js/2.73753cdf.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.6d316cde.chunk.css.map": "/static/css/main.6d316cde.chunk.css.map",
+    "static/js/2.73753cdf.chunk.js.LICENSE.txt": "/static/js/2.73753cdf.chunk.js.LICENSE.txt",
+    "static/media/gardenStripW.1f691c2c.png": "/static/media/gardenStripW.1f691c2c.png",
+    "static/media/lightAmbiance.d4a0e6a5.png": "/static/media/lightAmbiance.d4a0e6a5.png",
+    "static/media/lightColor.a736ea28.png": "/static/media/lightColor.a736ea28.png",
+    "static/media/lightWhite.4110a6e4.png": "/static/media/lightWhite.4110a6e4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a06e69b5.js",
+    "static/js/2.73753cdf.chunk.js",
+    "static/css/main.6d316cde.chunk.css",
+    "static/js/main.f5d08104.chunk.js"
+  ]
+}

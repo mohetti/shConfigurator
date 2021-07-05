@@ -332,7 +332,7 @@ function Heating() {
             className={`contentBox cursor ${selSD.radiator && 'selected'}`}
           >
             {selSD.radiator ? (
-              <img src={radiatorImg} />
+              <img src={radiatorImgW} />
             ) : (
               <img src={radiatorImg} />
             )}
